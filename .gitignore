@@ -1,0 +1,8 @@
+# Environment variables
+private.env
+
+# Python environment
+.venv
+
+# VS Code
+.vscode

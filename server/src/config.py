@@ -1,0 +1,58 @@
+# server/src/config.py
+from pydantic import Field, model_validator, field_validator
+from pydantic_settings import BaseSettings
+from typing import Optional, Union
+from src.constraints import DEFAULT_LOG_LEVEL, DEFAULT_POOL_CONN_RETRIES, DEFAULT_POOL_CONN_RETRY_DELAY, DEFAULT_DEV_PORT
+
+
+# Database connection parameters
+class PostgresSettings(BaseSettings):
+    host: str = Field("postgres", env="POSTGRES_HOST")
+    port: int = Field(5432, env="POSTGRES_PORT")
+    user: str = Field("postgres", env="POSTGRES_USER")
+    password: str = Field("postgres", env="POSTGRES_PASSWORD")
+    dbname: str = Field("postgres", env="POSTGRES_DB")
+    pool_conn_retries: int = DEFAULT_POOL_CONN_RETRIES
+    pool_conn_retry_delay: int = DEFAULT_POOL_CONN_RETRY_DELAY
+    minconn: int = Field(2, env="POOL_MINCONN")
+    maxconn: int = Field(20, env="POOL_MAXCONN")
+        
+    @property
+    def dsn(self) -> str:
+        return f"postgresql://{self.user}:{self.password}@{self.host}:{self.port}/{self.dbname}"
+
+
+class LoggingSettings(BaseSettings):
+    log_level: str = Field(DEFAULT_LOG_LEVEL, env="LOG_LEVEL")
+    
+    @model_validator(mode="after")
+    def validate_log_level(self):
+        valid_levels = ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL")
+        if self.log_level not in valid_levels:
+            raise ValueError(f"Invalid log level. Must be one of {valid_levels}")
+        return self
+
+
+class ServerSettings(BaseSettings):
+    port: str = DEFAULT_DEV_PORT
+
+    @field_validator("port", mode="after")
+    @classmethod
+    def validate_port(cls, value: str) -> str:
+        try:
+            port_int = int(value)
+        except ValueError:
+            raise ValueError('Port must be an integer represented as a string.')
+
+        if not (0 <= port_int <= 65535):
+            raise ValueError('Port must be between 0 and 65535.')
+
+        return value
+
+class Settings(BaseSettings):
+    postgres: PostgresSettings = PostgresSettings()
+    logging: LoggingSettings = LoggingSettings()
+    server: ServerSettings = ServerSettings()
+
+
+settings = Settings()
