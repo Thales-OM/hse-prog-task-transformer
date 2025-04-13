@@ -1,0 +1,115 @@
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --background-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --border-color: #dddddd;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.question-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.question-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.question-card:hover {
+    transform: translateY(-5px);
+}
+
+.question-card h2 {
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+
+.question-card p {
+    margin: 10px 0;
+}
+
+.question-type {
+    display: inline-block;
+    padding: 3px 8px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 3px;
+    font-size: 0.8em;
+}
+
+.question-detail {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.answers-section,
+.test-cases-section {
+    margin-top: 30px;
+}
+
+.answer-item,
+.test-case-item {
+    background: #f1f1f1;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.correct-answer {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+}
+
+.test-case-item {
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

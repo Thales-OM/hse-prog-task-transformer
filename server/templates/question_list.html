@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions List</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Questions List</h1>
+        </div>
+
+        <div class="question-list">
+            {% for question in questions %}
+            <div class="question-card">
+                <h2>{{ question.name }}</h2>
+                <p>{{ question.text[:100] }}{% if question.text|length > 100 %}...{% endif %}</p>
+                <span class="question-type">{{ question.type }}</span>
+                <p><a href="/pages/question/{{ question.id }}">View Details</a></p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

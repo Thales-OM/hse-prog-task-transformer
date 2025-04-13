@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ question.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <a href="/pages/questions/list" class="back-link">← Back to Questions List</a>
+
+        <div class="question-detail">
+            <h1>{{ question.name }}</h1>
+            <span class="question-type">{{ question.type }}</span>
+
+            <div class="question-text">
+                <h2>Question Text</h2>
+                <p>{{ question.text | safe }}</p>
+            </div>
+
+            {% if question.answers %}
+            <div class="answers-section">
+                <h2>Answers</h2>
+                {% for answer in question.answers %}
+                <div class="answer-item {% if answer.is_correct %}correct-answer{% endif %}">
+                    <p>{{ answer.text }}</p>
+                    {% if answer.is_correct %}<p><strong>Correct Answer</strong></p>{% endif %}
+                    {% if answer.fraction %}<p>Fraction: {{ answer.fraction }}</p>{% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if question.test_cases %}
+            <div class="test-cases-section">
+                <h2>Test Cases</h2>
+                {% for test_case in question.test_cases %}
+                <div class="test-case-item">
+                    <p><strong>Input:</strong> {{ test_case.input }}</p>
+                    <p><strong>Expected Output:</strong> {{ test_case.expected_output }}</p>
+                    {% if test_case.code %}<p><strong>Code:</strong> {{ test_case.code }}</p>{% endif %}
+                    {% if test_case.example %}<p><em>Example Test Case</em></p>{% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
