@@ -28,6 +28,9 @@ services:
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
+    volumes:
+      - ./server/templates:/app/templates
+      - ./server/static:/app/static
     ports:
       - "8080:8080"
     depends_on:

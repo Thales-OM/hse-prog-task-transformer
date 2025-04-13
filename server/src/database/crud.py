@@ -1,5 +1,5 @@
 from psycopg2.extensions import cursor
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from src.logger import LoggerFactory
 from src.schemas import (
     Question,
@@ -7,7 +7,7 @@ from src.schemas import (
     AnswerMultichoice,
     AnswerCoderunner,
     TestCase,
-    QuestionResponse
+    QuestionPageResponse
 )
 from src.exceptions import AnswerMismatchException
 from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES
@@ -133,7 +133,7 @@ async def create_test_case(
     cursor.execute(upsert_query, data)
 
 
-async def get_questions_all(cursor: cursor) -> List[QuestionResponse]:
+async def get_questions_all(cursor: cursor) -> List[Tuple[int, Question]]:
     """Get all not soft-deleted questions in database"""
     select_query = "SELECT id, name, type, text FROM prod_storage.questions WHERE deleted_flg = false;"
     cursor.execute(select_query)
@@ -148,11 +148,11 @@ async def get_questions_all(cursor: cursor) -> List[QuestionResponse]:
         elif _type in QUESTION_CODERUNNER_TYPES:
             answers = await get_answers_coderunner(question_id=id, cursor=cursor)
             test_cases = await get_test_cases(question_id=id, cursor=cursor)
-        questions.append(QuestionResponse(id=id, name=name, type=_type, text=text, answers=answers, test_cases=test_cases))
+        questions.append((id, Question(name=name, type=_type, text=text, answers=answers, test_cases=test_cases)))
     return questions
 
 
-async def get_question(id: int, cursor: cursor) -> Optional[QuestionResponse]:
+async def get_question(id: int, cursor: cursor) -> Optional[Question]:
     select_query = "SELECT id, name, type, text FROM prod_storage.questions WHERE id = %s AND deleted_flg = false;"
     cursor.execute(select_query, (id,))
     question_record = cursor.fetchone()
@@ -168,7 +168,7 @@ async def get_question(id: int, cursor: cursor) -> Optional[QuestionResponse]:
         answers = await get_answers_coderunner(question_id=id, cursor=cursor)
         test_cases = await get_test_cases(question_id=id, cursor=cursor)
     
-    return QuestionResponse(id=id, name=name, type=_type, text=text, answers=answers, test_cases=test_cases)
+    return Question(name=name, type=_type, text=text, answers=answers, test_cases=test_cases)
 
 
 async def get_answers_multichoice(question_id: int, cursor: cursor) -> List[AnswerMultichoice]:

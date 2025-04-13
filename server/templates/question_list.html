@@ -17,8 +17,8 @@
         <div class="question-list">
             {% for question in questions %}
             <div class="question-card">
-                <h2>{{ question.name }}</h2>
-                <p>{{ question.text[:100] }}{% if question.text|length > 100 %}...{% endif %}</p>
+                <h3>{{ question.name }}</h3>
+                <p>{{ question.text_clean[:100] }}{% if question.text_clean|length > 100 %}...{% endif %}</p>
                 <span class="question-type">{{ question.type }}</span>
                 <p><a href="/pages/question/{{ question.id }}">View Details</a></p>
             </div>

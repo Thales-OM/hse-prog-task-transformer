@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends, status, Body
 from fastapi.exceptions import HTTPException
 from psycopg2.extensions import cursor
-from typing import List
+from typing import List, Tuple
 from src.logger import LoggerFactory
 from src.config import settings
 from src.utils import validate_xml
 from src.api.deps import get_db_cursor
-from src.schemas import QuestionResponse, QuestionsRandomIdResponse
+from src.schemas import QuestionPageResponse, QuestionsRandomIdResponse, Question
 from src.core import ingest_quiz_xml
 from src.database.crud import get_questions_all, get_question, get_random_question_id
 
@@ -22,7 +22,7 @@ router = APIRouter(
 
 @router.get(
     "/questions/all",
-    response_model=List[QuestionResponse],
+    response_model=List[Tuple[int, Question]],
     status_code=status.HTTP_200_OK,
     summary="Fetch all questions from database",
     description="Construct question objects from all non-deleted questions and their answers/test cases",
@@ -34,7 +34,7 @@ async def questions_all(cursor: cursor = Depends(get_db_cursor)):
 
 @router.get(
     "/question/{id}",
-    response_model=QuestionResponse,
+    response_model=Question,
     status_code=status.HTTP_200_OK,
     summary="Fetch a question from database by ID",
     description="Construct question object from non-deleted database record and its answers/test cases",

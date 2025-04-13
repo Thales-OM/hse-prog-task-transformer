@@ -8,7 +8,7 @@ from pathlib import Path
 import httpx
 from src.config import settings
 from src.constraints import KNOWN_QUESTION_TYPES, QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
-import os
+from src.schemas import QuestionPageResponse, Question
 
 
 BACKEND_URL = settings.server.url
@@ -29,9 +29,11 @@ async def list_questions(request: Request):
         async with httpx.AsyncClient() as client:
             response = await client.get(f"{BACKEND_URL}/read/questions/all")
             response.raise_for_status()
-            questions = response.json()
+            questions_list = response.json()
     except httpx.HTTPStatusError as e:
         raise HTTPException(status_code=e.response.status_code, detail="Failed to fetch questions")
+
+    questions = [QuestionPageResponse.from_question(id=id, question=Question(**question)) for id, question in questions_list]
 
     return templates.TemplateResponse(
         "question_list.html",
@@ -44,13 +46,16 @@ async def question_detail(request: Request, id: int):
         async with httpx.AsyncClient() as client:
             response = await client.get(f"{BACKEND_URL}/read/question/{id}")
             response.raise_for_status()
-            question = response.json()
+            question_json = response.json()
     except httpx.HTTPStatusError as e:
         raise HTTPException(status_code=e.response.status_code, detail=f"Failed to fetch question {id}")
     
+    question_obj = Question(**question_json)
+    question_page_response = QuestionPageResponse.from_question(id=id, question=question_obj)
+
     return templates.TemplateResponse(
         "question_detail.html",
-        {"request": request, "question": question}
+        {"request": request, "question": question_page_response}
     )
 
 

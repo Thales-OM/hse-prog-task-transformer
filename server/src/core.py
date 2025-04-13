@@ -42,7 +42,8 @@ def extract_quiz_data(xml_contents: str) -> List[Question]:
         name = name_element.text if name_element is not None else None
 
         # Extract and clean question text
-        qtext = ' '.join(question.find('questiontext').find('text').text.strip().split())
+        # [TODO] use safe_deep_find()
+        qtext = question.find('questiontext').find('text').text
         
         answers = []
         test_cases = []
@@ -63,7 +64,8 @@ def extract_mutlichoice_answers(content: Tag) -> List[AnswerMultichoice]:
     fractions = []
     
     for answer in content.find_all('answer'):
-        text = ' '.join((element.text if (element := answer.find("text")) else "").strip().split())
+        # [TODO] use safe_deep_find()
+        text = (element.text if (element := answer.find("text")) else "")
         fraction = float(answer.get('fraction', '0'))
         raw_answers.append((text, fraction))
         fractions.append(fraction)
@@ -90,7 +92,7 @@ def extract_coderunner_answers(content: Tag) -> List[AnswerCoderunner]:
     answers = []
     
     for answer in content.find_all('answer'):
-        text = ' '.join(answer.text.strip().split())
+        text = answer.text
         answers.append(AnswerCoderunner(text=text))
     
     return answers

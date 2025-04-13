@@ -54,7 +54,7 @@ body {
     transform: translateY(-5px);
 }
 
-.question-card h2 {
+.question-card h3 {
     color: var(--secondary-color);
     margin-top: 0;
 }
