@@ -4,6 +4,7 @@ from psycopg2 import OperationalError
 from psycopg2.extensions import connection
 from typing import Generator, Optional
 import asyncio
+from time import sleep
 from src.logger import LoggerFactory
 from src.config import settings
 from src.exceptions import DatabaseUnavailableException
@@ -40,7 +41,7 @@ class ConnectionPoolManager:
                 )
                 if attempt < max_retries - 1:
                     logger.info(f"Retrying connection after {retry_delay} secs")
-                    asyncio.sleep(retry_delay)
+                    sleep(retry_delay)
                 else:
                     logger.critical("Max retries reached. Could not initialize pool.")
                     raise DatabaseUnavailableException(

@@ -1,6 +1,6 @@
 from typing import List
 from lxml import etree
-from bs4.element import _OneElement
+from bs4 import Tag
 from typing import Any
 from psycopg2.extensions import cursor, connection
 from src.config import settings
@@ -22,7 +22,7 @@ def validate_xml(data: str) -> None:
         raise InvalidXMLException(f"Invalid XML syntax:\n{e}")
 
 
-def safe_deep_find(element: _OneElement, names: List[str], default: Any = None, recursive: bool = True) -> Any:
+def safe_deep_find(element: Tag, names: List[str], default: Any = None, recursive: bool = True) -> Any:
     current_element = element
     for name in names:
         current_element = current_element.find(name=name, recursive=recursive)

@@ -33,8 +33,8 @@ class Question(BaseModel):
     name: str
     type: str
     text: str
-    answers: List[Answer] = Field(default_factory=list, min_items=1)
-    test_cases: List[TestCase] = Field(default_factory=list, min_items=1)
+    answers: List[Answer] = Field(default_factory=list)
+    test_cases: List[TestCase] = Field(default_factory=list)
 
     @field_validator("type", mode="after")
     @classmethod
@@ -69,3 +69,9 @@ class Question(BaseModel):
         return self
 
 
+class QuestionResponse(Question):
+    id: int
+
+
+class QuestionsRandomIdResponse(BaseModel):
+    id: int

@@ -8,6 +8,8 @@ DEFAULT_POOL_CONN_RETRY_DELAY=10
 
 # FastAPI application
 DEFAULT_DEV_PORT="8080"
+DEFAULT_DEV_HOST = "localhost"
+DEFAULT_DEV_PROTOCOL = "http"
 
 # Questions
 QUESTION_MULTICHOICE_TYPES = ("multichoice", "multichoiceset")

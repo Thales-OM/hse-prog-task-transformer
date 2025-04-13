@@ -1,8 +1,8 @@
 # server/src/config.py
 from pydantic import Field, model_validator, field_validator
 from pydantic_settings import BaseSettings
-from typing import Optional, Union
-from src.constraints import DEFAULT_LOG_LEVEL, DEFAULT_POOL_CONN_RETRIES, DEFAULT_POOL_CONN_RETRY_DELAY, DEFAULT_DEV_PORT
+from typing import Optional, Union, Literal
+from src.constraints import DEFAULT_LOG_LEVEL, DEFAULT_POOL_CONN_RETRIES, DEFAULT_POOL_CONN_RETRY_DELAY, DEFAULT_DEV_PORT, DEFAULT_DEV_HOST, DEFAULT_DEV_PROTOCOL
 
 
 # Database connection parameters
@@ -34,7 +34,13 @@ class LoggingSettings(BaseSettings):
 
 
 class ServerSettings(BaseSettings):
+    protocol: Literal["http", "https"] = DEFAULT_DEV_PROTOCOL
+    host: str = Field(DEFAULT_DEV_HOST, min_length=1)
     port: str = DEFAULT_DEV_PORT
+
+    @property
+    def url(self) -> str:
+        return self.protocol + "://" + self.host + ":" + self.port
 
     @field_validator("port", mode="after")
     @classmethod
@@ -48,6 +54,7 @@ class ServerSettings(BaseSettings):
             raise ValueError('Port must be between 0 and 65535.')
 
         return value
+
 
 class Settings(BaseSettings):
     postgres: PostgresSettings = PostgresSettings()

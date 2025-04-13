@@ -13,7 +13,7 @@ logger = LoggerFactory.getLogger(__name__)
 
 router = APIRouter(
     tags=["upload"],
-    prefix="/upload"
+    prefix=""
 )
 
 @router.post(
@@ -21,7 +21,7 @@ router = APIRouter(
     response_model=MessageSuccessResponse,
     status_code=status.HTTP_201_CREATED,
     summary="Upload quiz into database",
-    description="Accepts an .xml file. Parses quiestions, answers etc and updates database.",
+    description="Accepts an .xml file. Parses quiestions, answers etc and updates database",
 )
 async def quiz_xml(xml_data: str = Body(..., media_type="application/xml"), cursor: cursor = Depends(get_db_cursor)):
     validate_xml(data=xml_data)

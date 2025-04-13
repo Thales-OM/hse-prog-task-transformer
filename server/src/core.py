@@ -1,6 +1,5 @@
 from typing import List
-from bs4 import BeautifulSoup
-from bs4.element import _OneElement
+from bs4 import BeautifulSoup, Tag
 from psycopg2.extensions import cursor
 from src.config import settings
 from src.constraints import KNOWN_QUESTION_TYPES, QUESTION_CLOZE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_MULTICHOICE_TYPES
@@ -59,7 +58,7 @@ def extract_quiz_data(xml_contents: str) -> List[Question]:
     return questions
 
 
-def extract_mutlichoice_answers(content: _OneElement) -> List[AnswerMultichoice]:
+def extract_mutlichoice_answers(content: Tag) -> List[AnswerMultichoice]:
     raw_answers = []
     fractions = []
     
@@ -87,7 +86,7 @@ def extract_mutlichoice_answers(content: _OneElement) -> List[AnswerMultichoice]
     return answers
 
 
-def extract_coderunner_answers(content: _OneElement) -> List[AnswerCoderunner]:
+def extract_coderunner_answers(content: Tag) -> List[AnswerCoderunner]:
     answers = []
     
     for answer in content.find_all('answer'):
@@ -97,7 +96,7 @@ def extract_coderunner_answers(content: _OneElement) -> List[AnswerCoderunner]:
     return answers
 
 
-def extract_coderunner_test_cases(content: _OneElement) -> List[TestCase]:
+def extract_coderunner_test_cases(content: Tag) -> List[TestCase]:
     testcases = content.find("testcases")
     if testcases is None:
         return []
