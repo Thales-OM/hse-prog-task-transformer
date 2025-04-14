@@ -1,0 +1,50 @@
+/* dashboard.css */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.dashboard-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.card-content {
+    padding: 30px;
+}
+
+.dashboard-card h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.dashboard-card p {
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+/* Add some color variation to the cards */
+.dashboard-card:nth-child(1) {
+    border-top: 4px solid #4a6fa5;
+}
+
+.dashboard-card:nth-child(2) {
+    border-top: 4px solid #166088;
+}

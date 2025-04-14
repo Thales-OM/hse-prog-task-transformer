@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ question.name }}</title>
     <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', path='inference_nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='inference.css') }}">
     <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 </head>
 
@@ -54,17 +54,15 @@
                 {% endif %}
             </div>
 
-            <div class="inference-nav">
-                <h3>AI Inferences</h3>
-                <div class="inference-buttons">
-                    {% if question.inference_ids %}
-                        {% for inference_id in question.inference_ids %}
-                        <a href="/pages/questions/inference/{{ inference_id }}" class="inference-button">
-                            Inference #{{ loop.index }}
-                        </a>
-                        {% endfor %}
+            <div class="inference-panel">
+                <h2>AI Analysis</h2>
+                <div class="inference-content">
+                    {% if question.inference_text %}
+                    <md-block>
+                        {{ question.inference_text | safe }}
+                    </md-block>
                     {% else %}
-                        <p class="no-inferences">No inferences available</p>
+                    <p class="no-inference">No AI analysis available for this question.</p>
                     {% endif %}
                 </div>
             </div>

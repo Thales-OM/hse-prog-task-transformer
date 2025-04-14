@@ -1,0 +1,54 @@
+/* inference.css */
+.question-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.inference-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-self: start;
+    position: sticky;
+    top: 20px;
+}
+
+.inference-panel h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.inference-content {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.no-inference {
+    color: #666;
+    font-style: italic;
+}
+
+/* Highlight important parts of inference */
+.inference-content strong {
+    color: var(--secondary-color);
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .question-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .inference-panel {
+        position: static;
+        margin-top: 30px;
+    }
+}

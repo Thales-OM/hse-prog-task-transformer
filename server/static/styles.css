@@ -5,6 +5,10 @@
     --card-bg: #ffffff;
     --text-color: #333333;
     --border-color: #dddddd;
+    --inference-bg: #f8fafc;
+    --inference-accent: #e3f2fd;
+    --inference-button-bg: var(--secondary-color);
+    --inference-button-hover: var(--primary-color);
 }
 
 body {
@@ -78,6 +82,9 @@ body {
     border-radius: 5px;
     padding: 30px;
     margin-top: 20px;
+    position: relative;
+    flex-grow: 1;
+    min-width: 0; /* Fixes flexbox overflow issues */
 }
 
 .answers-section,
@@ -112,4 +119,8 @@ body {
 
 .back-link:hover {
     text-decoration: underline;
+}
+
+html {
+    scroll-behavior: smooth;
 }

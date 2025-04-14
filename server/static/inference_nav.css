@@ -1,0 +1,79 @@
+/* inference_nav.css */
+.question-layout {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 30px;
+    align-items: start;
+}
+
+.inference-nav {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 20px;
+    width: 220px;
+    position: sticky;
+    top: 20px;
+}
+
+.inference-nav h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.inference-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inference-button {
+    display: block;
+    padding: 6px 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 3px;
+    font-size: 0.8em;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.inference-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.no-inferences {
+    color: #666;
+    font-size: 0.9em;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .question-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .inference-nav {
+        width: auto;
+        position: static;
+        order: -1;
+        margin-bottom: 20px;
+    }
+    
+    .inference-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .inference-button {
+        flex: 1 0 calc(50% - 4px);
+    }
+}
