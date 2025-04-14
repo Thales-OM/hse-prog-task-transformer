@@ -96,6 +96,7 @@ CREATE TABLE
   IF NOT EXISTS prod_storage.models (
     id SERIAL PRIMARY KEY,
     base_model_name VARCHAR(200) NOT NULL,
+    model_name VARCHAR(200) NOT NULL,
     version INT NOT NULL CHECK (version >= 0),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -115,6 +116,7 @@ CREATE TABLE
     id SERIAL PRIMARY KEY,
     question_id INT NOT NULL,
     model_id INT NOT NULL,
+    thinking TEXT,
     text TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_flg BOOLEAN NOT NULL DEFAULT false,
