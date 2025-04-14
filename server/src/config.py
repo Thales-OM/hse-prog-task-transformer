@@ -3,6 +3,7 @@ from pydantic import Field, model_validator, field_validator
 from pydantic_settings import BaseSettings
 from typing import Optional, Union, Literal
 from src.constraints import DEFAULT_LOG_LEVEL, DEFAULT_POOL_CONN_RETRIES, DEFAULT_POOL_CONN_RETRY_DELAY, DEFAULT_DEV_PORT, DEFAULT_DEV_HOST, DEFAULT_DEV_PROTOCOL
+from src.models.constraints import DEFAULT_OPENAI_BASE_URL
 
 
 # Database connection parameters
@@ -55,11 +56,16 @@ class ServerSettings(BaseSettings):
 
         return value
 
+class OpenAISettings(BaseSettings):
+    base_url: str = Field(DEFAULT_OPENAI_BASE_URL, env="OPENAI_BASE_URL")
+    api_key: Optional[str] = Field(None, env="OPENAI_API_KEY")
+
 
 class Settings(BaseSettings):
     postgres: PostgresSettings = PostgresSettings()
     logging: LoggingSettings = LoggingSettings()
     server: ServerSettings = ServerSettings()
+    openai: OpenAISettings = OpenAISettings()
 
 
 settings = Settings()

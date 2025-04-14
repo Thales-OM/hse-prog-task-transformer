@@ -1,6 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status, Request
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn
+import httpx
 from pathlib import Path
 from src.logger import LoggerFactory
 from src.config import settings
@@ -41,6 +43,11 @@ app.include_router(upload.router, prefix="/upload")
 app.include_router(health.router, prefix="/health")
 app.include_router(read.router, prefix="/read")
 app.include_router(pages.router, prefix="/pages")
+
+# Root redirect
+@app.get("/", response_class=RedirectResponse, status_code=status.HTTP_200_OK)
+async def root():
+    return RedirectResponse(url="/pages/main")
 
 def main():
     uvicorn.run(app, host="0.0.0.0", port=settings.server.port)
