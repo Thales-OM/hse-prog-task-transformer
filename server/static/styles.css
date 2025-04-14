@@ -81,7 +81,6 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 30px;
-    margin-top: 20px;
     position: relative;
     flex-grow: 1;
     min-width: 0; /* Fixes flexbox overflow issues */

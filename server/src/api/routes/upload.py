@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, status, Body
 from psycopg2.extensions import cursor
 from openai import AsyncClient
+from typing import List
 from src.logger import LoggerFactory
 from src.config import settings
 from src.utils import validate_xml
@@ -52,3 +53,15 @@ async def models_new(body: PostModelRequest, cursor: cursor = Depends(get_db_cur
 async def inference_new(body: PostInferenceRequest, openai_client: AsyncClient = Depends(get_openai_client), cursor: cursor = Depends(get_db_cursor)):
     await make_inference(client=openai_client, model_id=body.model_id, question_id=body.question_id, cursor=cursor, temperature=body.temperature)
     return MessageSuccessResponse(message="Inference created successfully")
+
+
+@router.post(
+    "/inferences/new",
+    response_model=MessageSuccessResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Create several new AI inferences based on question texts using a chosen models",
+)
+async def inferences_new(body: List[PostInferenceRequest], openai_client: AsyncClient = Depends(get_openai_client), cursor: cursor = Depends(get_db_cursor)):
+    for inference_request in body:
+        await make_inference(client=openai_client, model_id=inference_request.model_id, question_id=inference_request.question_id, cursor=cursor, temperature=inference_request.temperature)
+    return MessageSuccessResponse(message="All Inferences created successfully")

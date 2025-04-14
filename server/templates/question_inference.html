@@ -12,7 +12,10 @@
 
 <body>
     <div class="container">
-        <a href="/pages/questions/list" class="back-link">← Back to Questions List</a>
+        <div class="back-links-container">
+            <a href="/pages/questions/list" class="back-link">← Back to Questions List</a>
+            <a href="/pages/question/{{ question.id }}" class="back-link back-link-right">Back to Question →</a>
+        </div>
 
         <div class="question-layout">
             <div class="question-detail">

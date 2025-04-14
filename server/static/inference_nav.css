@@ -10,10 +10,11 @@
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    padding: 20px;
+    padding: 30px 20px 20px; /* Top padding increased to 30px */
     width: 220px;
     position: sticky;
-    top: 20px;
+    top: 55px;
+    margin-top: 10px; /* Additional margin to compensate for question-detail's top spacing */
 }
 
 .inference-nav h3 {
@@ -65,7 +66,9 @@
         width: auto;
         position: static;
         order: -1;
+        margin-top: 0;
         margin-bottom: 20px;
+        padding: 20px; /* Reset padding for mobile */
     }
     
     .inference-buttons {

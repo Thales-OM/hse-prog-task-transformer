@@ -13,7 +13,6 @@
     padding: 25px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     align-self: start;
-    position: sticky;
     top: 20px;
 }
 
@@ -41,6 +40,27 @@
     color: var(--secondary-color);
 }
 
+/* Back links container styling */
+.back-links-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    /* border-bottom: 1px solid var(--border-color); */
+}
+
+/* Right-aligned back link */
+.back-link-right {
+    margin-left: auto; /* Pushes it to the right */
+    text-align: right;
+}
+
+/* Optional: Add some spacing between the links */
+.back-link + .back-link-right {
+    margin-left: 20px;
+}
+
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
     .question-layout {
@@ -50,5 +70,16 @@
     .inference-panel {
         position: static;
         margin-top: 30px;
+    }
+
+    .back-links-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .back-link-right {
+        margin-left: 0;
+        align-self: flex-end;
     }
 }
