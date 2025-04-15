@@ -14,7 +14,6 @@
     width: 220px;
     position: sticky;
     top: 55px;
-    margin-top: 10px; /* Additional margin to compensate for question-detail's top spacing */
 }
 
 .inference-nav h3 {
