@@ -12,6 +12,7 @@ from src.schemas import (
     PostModelRequest,
     ReasoningLLModelResponse,
     GetInferenceResponse,
+    PostInferenceScoreRequest,
 )
 from src.exceptions import AnswerMismatchException
 from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES
@@ -288,3 +289,19 @@ async def get_question_inference_ids(question_id: int, cursor: cursor) -> List[i
     select_query = "SELECT id FROM prod_storage.questions_transformed WHERE question_id = %s AND deleted_flg = false;"
     cursor.execute(select_query, (question_id,))
     return [record[0] for record in cursor.fetchall()]
+
+
+async def create_inference_score(inference_id: int, score: PostInferenceScoreRequest, cursor: cursor) -> int:
+    insert_query = """
+        INSERT INTO prod_storage.inference_scores
+            (inference_id, helpful, does_not_reveal_answer, does_not_contain_errors, well_formatted)
+        VALUES
+            (%(inference_id)s, %(helpful)s, %(does_not_reveal_answer)s, %(does_not_contain_errors)s, %(well_formatted)s)
+        RETURNING id
+        ;
+    """
+    data = score.model_dump(include={"helpful", "does_not_reveal_answer", "does_not_contain_errors", "well_formatted"})
+    data["inference_id"] = inference_id
+    cursor.execute(insert_query, data)
+    score_id = cursor.fetchone()[0]
+    return score_id

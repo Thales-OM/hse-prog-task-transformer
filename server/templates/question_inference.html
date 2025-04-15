@@ -68,9 +68,100 @@
                     <p class="no-inference">No AI analysis available for this question.</p>
                     {% endif %}
                 </div>
+                <div class="scoring-form">
+                    <h3>Rate this Analysis</h3>
+                    <form id="scoreForm">
+                        <div class="form-group">
+                            <label>Helpful:</label>
+                            <div class="score-input">
+                                <input type="range" name="helpful" min="1" max="10" value="5" required>
+                                <span class="score-value">5</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Does not reveal answer:</label>
+                            <div class="score-input">
+                                <input type="range" name="does_not_reveal_answer" min="1" max="10" value="5" required>
+                                <span class="score-value">5</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Does not contain errors:</label>
+                            <div class="score-input">
+                                <input type="range" name="does_not_contain_errors" min="1" max="10" value="5" required>
+                                <span class="score-value">5</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Well formatted:</label>
+                            <div class="score-input">
+                                <input type="range" name="well_formatted" min="1" max="10" value="5" required>
+                                <span class="score-value">5</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-button">Submit Rating</button>
+                    </form>
+                    <div class="alert alert-success" style="display: none;">
+                        Score submitted successfully
+                    </div>
+                    <div class="alert alert-error" style="display: none;">
+                        <span class="error-message">Error submitting score</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('scoreForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const alerts = document.querySelectorAll('.alert');
+            
+            // Reset alerts and disable button
+            alerts.forEach(alert => alert.style.display = 'none');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+        
+            try {
+                const response = await fetch(`/upload/inference/{{ question.inference_id }}/score/new`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        helpful: parseInt(form.helpful.value),
+                        does_not_reveal_answer: parseInt(form.does_not_reveal_answer.value),
+                        does_not_contain_errors: parseInt(form.does_not_contain_errors.value),
+                        well_formatted: parseInt(form.well_formatted.value)
+                    })
+                });
+        
+                if (response.ok) {
+                    document.querySelector('.alert-success').style.display = 'block';
+                    form.style.opacity = '0.5';
+                    submitButton.disabled = true;
+                } else {
+                    const error = await response.json();
+                    const errorMessage = error.message || 'Unknown error occurred';
+                    document.querySelector('.error-message').textContent = errorMessage;
+                    document.querySelector('.alert-error').style.display = 'block';
+                }
+            } catch (error) {
+                document.querySelector('.error-message').textContent = 'Network error - please try again';
+                document.querySelector('.alert-error').style.display = 'block';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit Rating';
+            }
+        });
+
+        // Update score values in real-time
+        document.querySelectorAll('input[type="range"]').forEach(input => {
+            input.addEventListener('input', (e) => {
+                e.target.parentNode.querySelector('.score-value').textContent = e.target.value;
+            });
+        });
+    </script>
 </body>
 
 </html>

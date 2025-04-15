@@ -124,3 +124,19 @@ CREATE TABLE
     FOREIGN KEY (question_id) REFERENCES prod_storage.questions (id) ON DELETE CASCADE,
     FOREIGN KEY (model_id) REFERENCES prod_storage.models (id) ON DELETE CASCADE
   );
+
+
+-- Append-only table storing inference user scores
+CREATE TABLE
+  IF NOT EXISTS prod_storage.inference_scores (
+    id SERIAL PRIMARY KEY,
+    inference_id INT NOT NULL,
+    helpful INT NOT NULL CHECK (helpful BETWEEN 1 AND 10),
+    does_not_reveal_answer INT NOT NULL CHECK (does_not_reveal_answer BETWEEN 1 AND 10),
+    does_not_contain_errors INT NOT NULL CHECK (does_not_contain_errors BETWEEN 1 AND 10),
+    well_formatted INT NOT NULL CHECK (well_formatted BETWEEN 1 AND 10),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_flg BOOLEAN NOT NULL DEFAULT false,
+
+    FOREIGN KEY (inference_id) REFERENCES prod_storage.questions_transformed (id) ON DELETE CASCADE
+  );

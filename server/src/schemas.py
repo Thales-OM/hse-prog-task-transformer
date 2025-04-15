@@ -133,6 +133,7 @@ class QuestionInferencePageResponse(GetQuestionResponse):
     text_clean: str
     answers: List[AnswerPageResponse] = Field(default_factory=list)
     test_cases: List[TestCase] = Field(default_factory=list)
+    inference_id: int
     inference_text: str
 
     @classmethod
@@ -147,6 +148,7 @@ class QuestionInferencePageResponse(GetQuestionResponse):
             text_rendered=convert_code_blocks_to_html(text=question_response.text), 
             text_clean=clean_html_tags(question_response.text),
             inference_ids=question_response.inference_ids,
+            inference_id=inference.id,
             inference_text=inference.text
         )
 
@@ -190,6 +192,7 @@ class GetInferenceResponse(BaseModel):
     thinking: Optional[str] = None
     text: str
 
+
 class PostModelRequest(BaseModel):
     base_model_name: str
     model_name: str
@@ -206,3 +209,10 @@ class PostInferenceRequest(BaseModel):
     question_id: int
     model_id: int
     temperature: float = DEFAULT_MODEL_TEMPERATURE
+
+
+class PostInferenceScoreRequest(BaseModel):
+    helpful: int = Field(..., ge=1, le=10)
+    does_not_reveal_answer: int = Field(..., ge=1, le=10)
+    does_not_contain_errors: int = Field(..., ge=1, le=10)
+    well_formatted: int = Field(..., ge=1, le=10)

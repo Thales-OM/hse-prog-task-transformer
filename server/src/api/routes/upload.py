@@ -6,9 +6,9 @@ from src.logger import LoggerFactory
 from src.config import settings
 from src.utils import validate_xml
 from src.api.deps import get_db_cursor, get_openai_client
-from src.schemas import MessageSuccessResponse, PostModelRequest, PostInferenceRequest
+from src.schemas import MessageSuccessResponse, PostModelRequest, PostInferenceRequest, PostInferenceScoreRequest
 from src.core import ingest_quiz_xml
-from src.database.crud import create_model
+from src.database.crud import create_model, create_inference_score
 from src.models.core import make_inference
 
 
@@ -65,3 +65,14 @@ async def inferences_new(body: List[PostInferenceRequest], openai_client: AsyncC
     for inference_request in body:
         await make_inference(client=openai_client, model_id=inference_request.model_id, question_id=inference_request.question_id, cursor=cursor, temperature=inference_request.temperature)
     return MessageSuccessResponse(message="All Inferences created successfully")
+
+
+@router.post(
+    "/inference/{id}/score/new",
+    response_model=MessageSuccessResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Accept user score of an AI inferences based on question text",
+)
+async def inference_score_new(id: int, body: PostInferenceScoreRequest, cursor: cursor = Depends(get_db_cursor)):
+    await create_inference_score(inference_id=id, score=body, cursor=cursor)
+    return MessageSuccessResponse(message="Inference score saved successfully")
