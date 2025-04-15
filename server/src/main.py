@@ -7,7 +7,7 @@ from pathlib import Path
 from src.logger import LoggerFactory
 from src.config import settings
 from src.api.lifespan import lifespan
-from src.api.routes import upload, health, pages, read
+from src.api.routes import upload, health, pages, read, root
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -26,6 +26,10 @@ tags_metadata = [
         "name": "read",
         "description": "Read database contents",
     },
+    {
+        "name": "pages",
+        "description": "Development pages",
+    },
 ]
 
 app = FastAPI(lifespan=lifespan, openapi_tags=tags_metadata)
@@ -39,18 +43,16 @@ app.mount(
     name="static"
 )
 
+app.include_router(root.router, prefix="")
 app.include_router(upload.router, prefix="/upload")
 app.include_router(health.router, prefix="/health")
 app.include_router(read.router, prefix="/read")
 app.include_router(pages.router, prefix="/pages")
 
-# Root redirect
-@app.get("/", response_class=RedirectResponse, status_code=status.HTTP_200_OK)
-async def root():
-    return RedirectResponse(url="/pages/main")
 
 def main():
     uvicorn.run(app, host="0.0.0.0", port=settings.server.port)
+
 
 if __name__ == "__main__":
     main()

@@ -15,6 +15,7 @@ BACKEND_URL = settings.server.url
 
 
 router = APIRouter(
+    tags=["pages"],
     prefix=""
 )
 
