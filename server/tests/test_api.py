@@ -1,7 +1,8 @@
 # tests/test_api.py
 import pytest
-from src.schemas import GetQuestionResponse, MessageSuccessResponse
-import xml.etree.ElementTree as ET
+from unittest.mock import AsyncMock, MagicMock
+from src.schemas import GetInferenceResponse, MessageSuccessResponse
+
 
 SAMPLE_XML = """<?xml version="1.0" ?>
 <quiz>
