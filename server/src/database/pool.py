@@ -66,11 +66,19 @@ class ConnectionPoolManager:
         
         conn_id = None
         with cls._pool.getconn() as conn:
-            conn_id = get_connection_id(conn)
-            logger.debug(f"Acquired connection (ID {conn_id}) from pool")
-            yield conn
-            conn.commit() # Commit transaction
-        logger.debug(f"Returned connection (ID {conn_id}) to pool")
+            try:
+                conn_id = get_connection_id(conn)
+                logger.debug(f"Acquired connection (ID {conn_id}) from pool")
+                yield conn
+                conn.commit() # Commit transaction
+            except Exception as e:
+                conn.rollback()  # Rollback on error
+                logger.error(f"Database operation failed: {e}")
+                raise
+            finally:
+                if conn:
+                    cls._pool.putconn(conn)
+                logger.debug(f"Returned connection (ID {conn_id}) to pool")
 
     @classmethod
     @contextmanager
