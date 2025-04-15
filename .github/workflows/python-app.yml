@@ -47,6 +47,9 @@ jobs:
   test:
     needs: [docker-build]
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server  # Set default working directory
     services:
       postgres:
         image: ${{ needs.docker-build.outputs.image-tag }}
