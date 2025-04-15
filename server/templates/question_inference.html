@@ -93,9 +93,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Well formatted:</label>
+                            <label>Relevance:</label>
                             <div class="score-input">
-                                <input type="range" name="well_formatted" min="1" max="10" value="5" required>
+                                <input type="range" name="only_relevant_info" min="1" max="10" value="5" required>
                                 <span class="score-value">5</span>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                         helpful: parseInt(form.helpful.value),
                         does_not_reveal_answer: parseInt(form.does_not_reveal_answer.value),
                         does_not_contain_errors: parseInt(form.does_not_contain_errors.value),
-                        well_formatted: parseInt(form.well_formatted.value)
+                        only_relevant_info: parseInt(form.only_relevant_info.value)
                     })
                 });
         

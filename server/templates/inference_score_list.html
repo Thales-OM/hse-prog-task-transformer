@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inference Scores</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='inference_scores.css') }}">
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Main</a>
+        <div class="header">
+            <h1>Inference Scores</h1>
+        </div>
+
+        <div class="score-list">
+            {% for score in scores %}
+            <div class="score-card">
+                <div class="score-header">
+                    <h3>{{ score.question_name }}</h3>
+                    <span class="score-id">ID: {{ score.id }}</span>
+                </div>
+                
+                <div class="score-grid">
+                    <div class="score-item helpful" data-score="{{ score.helpful }}">
+                        <span>Helpful</span>
+                        <span class="score-value">{{ score.helpful }}</span>
+                    </div>
+                    <div class="score-item no-reveal" data-score="{{ score.does_not_reveal_answer }}">
+                        <span>Answer Protection</span>
+                        <span class="score-value">{{ score.does_not_reveal_answer }}</span>
+                    </div>
+                    <div class="score-item accuracy" data-score="{{ score.does_not_contain_errors }}">
+                        <span>Accuracy</span>
+                        <span class="score-value">{{ score.does_not_contain_errors }}</span>
+                    </div>
+                    <div class="score-item formatting" data-score="{{ score.only_relevant_info }}">
+                        <span>Relevance</span>
+                        <span class="score-value">{{ score.only_relevant_info }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+    // Apply color coding based on score values
+    document.querySelectorAll('.score-item').forEach(item => {
+        const score = parseInt(item.dataset.score);
+        if(score <= 3) {
+            item.style.backgroundColor = '#ffebee';
+            item.style.color = '#b71c1c';
+        } else if(score <= 6) {
+            item.style.backgroundColor = '#fff3e0';
+            item.style.color = '#ef6c00';
+        } else {
+            item.style.backgroundColor = '#e8f5e9';
+            item.style.color = '#2e7d32';
+        }
+    });
+    </script>
+</body>
+</html>

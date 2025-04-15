@@ -134,7 +134,7 @@ CREATE TABLE
     helpful INT NOT NULL CHECK (helpful BETWEEN 1 AND 10),
     does_not_reveal_answer INT NOT NULL CHECK (does_not_reveal_answer BETWEEN 1 AND 10),
     does_not_contain_errors INT NOT NULL CHECK (does_not_contain_errors BETWEEN 1 AND 10),
-    well_formatted INT NOT NULL CHECK (well_formatted BETWEEN 1 AND 10),
+    only_relevant_info INT NOT NULL CHECK (only_relevant_info BETWEEN 1 AND 10),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_flg BOOLEAN NOT NULL DEFAULT false,
 

@@ -13,6 +13,7 @@ from src.schemas import (
     ReasoningLLModelResponse,
     GetInferenceResponse,
     PostInferenceScoreRequest,
+    GetInferenceScoreResponse,
 )
 from src.exceptions import AnswerMismatchException
 from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES
@@ -294,14 +295,35 @@ async def get_question_inference_ids(question_id: int, cursor: cursor) -> List[i
 async def create_inference_score(inference_id: int, score: PostInferenceScoreRequest, cursor: cursor) -> int:
     insert_query = """
         INSERT INTO prod_storage.inference_scores
-            (inference_id, helpful, does_not_reveal_answer, does_not_contain_errors, well_formatted)
+            (inference_id, helpful, does_not_reveal_answer, does_not_contain_errors, only_relevant_info)
         VALUES
-            (%(inference_id)s, %(helpful)s, %(does_not_reveal_answer)s, %(does_not_contain_errors)s, %(well_formatted)s)
+            (%(inference_id)s, %(helpful)s, %(does_not_reveal_answer)s, %(does_not_contain_errors)s, %(only_relevant_info)s)
         RETURNING id
         ;
     """
-    data = score.model_dump(include={"helpful", "does_not_reveal_answer", "does_not_contain_errors", "well_formatted"})
+    data = score.model_dump(include={"helpful", "does_not_reveal_answer", "does_not_contain_errors", "only_relevant_info"})
     data["inference_id"] = inference_id
     cursor.execute(insert_query, data)
     score_id = cursor.fetchone()[0]
     return score_id
+
+async def get_inference_scores_all(cursor: cursor) -> List[GetInferenceScoreResponse]:
+    select_query = """
+        SELECT 
+            isc.id,
+            q.name as question_name, 
+            qt.id as inference_id,
+            isc.helpful,
+            isc.does_not_reveal_answer,
+            isc.does_not_contain_errors,
+            isc.only_relevant_info
+        FROM
+            (SELECT * FROM prod_storage.inference_scores WHERE deleted_flg = false) isc
+            INNER JOIN prod_storage.questions_transformed qt
+                ON isc.inference_id = qt.id
+            INNER JOIN prod_storage.questions q
+                ON qt.question_id = q.id
+        ;
+    """
+    cursor.execute(select_query)
+    return [GetInferenceScoreResponse(id=id, question_name=question_name, inference_id=inference_id, helpful=helpful, does_not_reveal_answer=does_not_reveal_answer, does_not_contain_errors=does_not_contain_errors, only_relevant_info=only_relevant_info) for id, question_name, inference_id, helpful, does_not_reveal_answer, does_not_contain_errors, only_relevant_info in cursor.fetchall()]

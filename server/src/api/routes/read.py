@@ -6,9 +6,9 @@ from src.logger import LoggerFactory
 from src.config import settings
 from src.utils import validate_xml
 from src.api.deps import get_db_cursor
-from src.schemas import GetQuestionResponse, QuestionsRandomIdResponse, Question, GetModelResponse, GetInferenceResponse
+from src.schemas import GetQuestionResponse, QuestionsRandomIdResponse, Question, GetModelResponse, GetInferenceResponse, GetInferenceScoreResponse
 from src.core import ingest_quiz_xml
-from src.database.crud import get_questions_all, get_question, get_random_question_id, get_models_all, get_inference
+from src.database.crud import get_questions_all, get_question, get_random_question_id, get_models_all, get_inference, get_inference_scores_all
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -82,3 +82,13 @@ async def inference(id: int, cursor: cursor = Depends(get_db_cursor)):
     if inference is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Inference was not found: wrong ID or was deleted")
     return inference
+
+
+@router.get(
+    "/inferences/scores/all",
+    response_model=List[GetInferenceScoreResponse],
+    status_code=status.HTTP_200_OK,
+    summary="Fetch all non-deleted inference scores from database",
+)
+async def inferences_scores_all(cursor: cursor = Depends(get_db_cursor)):
+    return await get_inference_scores_all(cursor=cursor)

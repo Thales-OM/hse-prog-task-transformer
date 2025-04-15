@@ -215,4 +215,14 @@ class PostInferenceScoreRequest(BaseModel):
     helpful: int = Field(..., ge=1, le=10)
     does_not_reveal_answer: int = Field(..., ge=1, le=10)
     does_not_contain_errors: int = Field(..., ge=1, le=10)
-    well_formatted: int = Field(..., ge=1, le=10)
+    only_relevant_info: int = Field(..., ge=1, le=10)
+
+
+class GetInferenceScoreResponse(BaseModel):
+    id: int
+    question_name: str
+    inference_id: int
+    helpful: int = Field(..., ge=1, le=10)
+    does_not_reveal_answer: int = Field(..., ge=1, le=10)
+    does_not_contain_errors: int = Field(..., ge=1, le=10)
+    only_relevant_info: int = Field(..., ge=1, le=10)
