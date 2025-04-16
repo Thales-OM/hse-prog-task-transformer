@@ -7,11 +7,12 @@ from src.logger import LoggerFactory
 from src.config import settings
 from src.utils import validate_xml
 from src.api.deps import get_db_cursor, get_openai_client
-from src.schemas import MessageSuccessResponse, PostModelRequest, PostInferenceRequest, PostInferenceScoreRequest
+from src.schemas import MessageSuccessResponse, PostModelRequest, PostInferenceRequest, PostInferenceScoreRequest, PostRenewTokenResponse
 from src.core import ingest_quiz_xml
 from src.database.crud import create_model, create_inference_score
 from src.models.core import make_inference
 from src.api.deps import get_auth_token
+from src.api.auth import renew_auth_token
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -83,3 +84,14 @@ async def inferences_new(body: List[PostInferenceRequest], openai_client: AsyncC
 async def inference_score_new(id: int, body: PostInferenceScoreRequest, cursor: cursor = Depends(get_db_cursor)):
     await create_inference_score(inference_id=id, score=body, cursor=cursor)
     return MessageSuccessResponse(message="Inference score saved successfully")
+
+
+@router.post(
+    "/auth/token/renew",
+    dependencies=[Depends(get_auth_token)],
+    response_model=PostRenewTokenResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Generate and return new authToken, old one is discarded",
+)
+async def auth_token_renew():
+    return renew_auth_token()

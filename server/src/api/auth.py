@@ -7,8 +7,9 @@ import datetime
 from typing import Optional, Literal
 from src.exceptions import UnauthorizedException, PublicKeyMissingException
 from src.config import settings
-from src.schemas import RSAKeyPair
+from src.schemas import RSAKeyPair, PostRenewTokenResponse
 from src.logger import LoggerFactory
+from src.utils import key_to_form
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -113,3 +114,10 @@ def verify_rsa_key_pair(private_pem: bytes | str, public_pem: bytes | str) -> bo
     except Exception as e:
         logger.warning(f"Key verification failed: {str(e)}")
         return False
+
+
+def renew_auth_token() -> PostRenewTokenResponse:
+    key_pair = generate_rsa_key_pair()
+    settings.server.set_public_api_key(public_pem=key_pair.public_pem)
+    private_pem_string = key_to_form(text=key_pair.private_pem)
+    return PostRenewTokenResponse(private_pem=private_pem_string)
