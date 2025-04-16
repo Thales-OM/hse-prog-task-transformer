@@ -231,3 +231,7 @@ class GetInferenceScoreResponse(BaseModel):
 class RSAKeyPair(BaseModel):
     public_pem: str = Field(..., min_length=1)
     private_pem: str = Field(..., min_length=1)
+
+
+class PostRenewTokenResponse(BaseModel):
+    private_pem: str = Field(..., min_length=1)

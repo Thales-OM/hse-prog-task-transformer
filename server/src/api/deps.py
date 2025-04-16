@@ -45,19 +45,9 @@ async def get_openai_client(openai_url: str = Depends(get_openai_url), openai_ap
 
 
 async def get_auth_token(authToken: str = Header(...)) -> str:
-    public_pem = settings.server.public_api_key
-    if public_pem is None:
-        # Try to fetch from env variable
-        public_pem = os.getenv("PUBLIC_API_KEY", None)
-        if not public_pem:
-            raise PublicKeyMissingException()
-        else:
-            settings.server.public_api_key = public_pem
-
+    public_pem = settings.server.get_public_api_key()
     authToken = form_to_key(text=authToken)
 
-    logger.info("Private key:" + authToken)
-    logger.info("Public key:" + public_pem)
     if not verify_rsa_key_pair(private_pem=authToken, public_pem=public_pem):
         raise UnauthorizedException()
     return authToken
