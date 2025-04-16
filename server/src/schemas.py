@@ -226,3 +226,8 @@ class GetInferenceScoreResponse(BaseModel):
     does_not_reveal_answer: int = Field(..., ge=1, le=10)
     does_not_contain_errors: int = Field(..., ge=1, le=10)
     only_relevant_info: int = Field(..., ge=1, le=10)
+
+
+class RSAKeyPair(BaseModel):
+    public_pem: str = Field(..., min_length=1)
+    private_pem: str = Field(..., min_length=1)

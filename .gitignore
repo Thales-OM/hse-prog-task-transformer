@@ -1,6 +1,9 @@
 # Environment variables
 private.env
 
+# RSA Keys
+private_key.pem
+
 # Python environment
 .venv
 

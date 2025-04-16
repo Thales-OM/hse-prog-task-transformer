@@ -41,3 +41,17 @@ class InvalidQuestionException(HTTPException):
         super().__init__(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=detail
         )
+    
+
+class UnauthorizedException(HTTPException):
+    def __init__(self, detail: Any = "Unauthorized access to protected resource"):
+        super().__init__(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail=detail
+        )
+
+
+class PublicKeyMissingException(HTTPException):
+    def __init__(self, detail: Any = "Public Auth token not found. Set manually."):
+        super().__init__(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail=detail
+        )

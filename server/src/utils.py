@@ -1,6 +1,9 @@
-from typing import List
+from fastapi import Depends
+from typing import List, Callable, Optional
 from lxml import etree
 import re
+import inspect
+from inspect import signature, Parameter
 import markdown
 from bs4 import Tag, BeautifulSoup
 from typing import Any
@@ -86,3 +89,29 @@ def clean_html_tags(text: str) -> str:
     soup = BeautifulSoup(text, "html.parser")
     clean_text = soup.get_text()  # Extract text without HTML tags
     return clean_text.strip()  # Remove leading and trailing whitespace
+
+
+def form_to_key(text):
+    """
+    Replace all newline escape symbols with actual newlines.
+    
+    Args:
+    text (str): The input string containing newline escape symbols.
+    
+    Returns:
+    str: The modified string with actual newlines.
+    """
+    return text.replace('\\n', '\n')
+
+
+def key_to_form(text):
+    """
+    Replace all actual newlines with newline escape symbols.
+    
+    Args:
+    text (str): The input string containing actual newlines.
+    
+    Returns:
+    str: The modified string with newline escape symbols.
+    """
+    return text.replace('\n', '\\n')

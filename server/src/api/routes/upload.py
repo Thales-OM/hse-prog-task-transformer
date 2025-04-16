@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Depends, status, Body
+from fastapi import APIRouter, Depends, status, Body, Form
 from psycopg2.extensions import cursor
+from typing import Annotated
 from openai import AsyncClient
 from typing import List
 from src.logger import LoggerFactory
@@ -10,6 +11,7 @@ from src.schemas import MessageSuccessResponse, PostModelRequest, PostInferenceR
 from src.core import ingest_quiz_xml
 from src.database.crud import create_model, create_inference_score
 from src.models.core import make_inference
+from src.api.deps import get_auth_token
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -20,8 +22,10 @@ router = APIRouter(
     prefix=""
 )
 
+
 @router.post(
     "/quiz/xml",
+    dependencies=[Depends(get_auth_token)],
     response_model=MessageSuccessResponse,
     status_code=status.HTTP_201_CREATED,
     summary="Upload quiz into database",
@@ -35,17 +39,19 @@ async def quiz_xml(xml_data: str = Body(..., media_type="application/xml"), curs
 
 @router.post(
     "/models/new",
+    dependencies=[Depends(get_auth_token)],
     response_model=MessageSuccessResponse,
     status_code=status.HTTP_201_CREATED,
     summary="Upload new model specification",
 )
-async def models_new(body: PostModelRequest, cursor: cursor = Depends(get_db_cursor)):
-    await create_model(model=body, cursor=cursor)
+async def models_new(model: PostModelRequest, cursor: cursor = Depends(get_db_cursor)):
+    await create_model(model=model, cursor=cursor)
     return MessageSuccessResponse(message="Model created/updated successfully")
 
 
 @router.post(
     "/inference/new",
+    dependencies=[Depends(get_auth_token)],
     response_model=MessageSuccessResponse,
     status_code=status.HTTP_201_CREATED,
     summary="Create new AI inference based on question text using a chosen model",
@@ -57,6 +63,7 @@ async def inference_new(body: PostInferenceRequest, openai_client: AsyncClient =
 
 @router.post(
     "/inferences/new",
+    dependencies=[Depends(get_auth_token)],
     response_model=MessageSuccessResponse,
     status_code=status.HTTP_201_CREATED,
     summary="Create several new AI inferences based on question texts using a chosen models",

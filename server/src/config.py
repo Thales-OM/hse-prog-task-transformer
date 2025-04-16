@@ -38,6 +38,7 @@ class ServerSettings(BaseSettings):
     protocol: Literal["http", "https"] = DEFAULT_DEV_PROTOCOL
     host: str = Field(DEFAULT_DEV_HOST, min_length=1)
     port: str = DEFAULT_DEV_PORT
+    public_api_key: str = Field(None, env="PUBLIC_API_KEY")
 
     @property
     def url(self) -> str:
@@ -58,7 +59,6 @@ class ServerSettings(BaseSettings):
 
 class OpenAISettings(BaseSettings):
     base_url: str = Field(DEFAULT_OPENAI_BASE_URL, env="OPENAI_BASE_URL")
-    api_key: Optional[str] = Field(None, env="OPENAI_API_KEY")
 
 
 class Settings(BaseSettings):
