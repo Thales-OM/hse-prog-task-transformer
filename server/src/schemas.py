@@ -235,3 +235,8 @@ class RSAKeyPair(BaseModel):
 
 class PostRenewTokenResponse(BaseModel):
     private_pem: str = Field(..., min_length=1)
+
+
+class QuestionLevel(BaseModel):
+    level_cd: str = Field(..., max_length=100)
+    level_desc: str

@@ -14,6 +14,7 @@ from src.schemas import (
     GetInferenceResponse,
     PostInferenceScoreRequest,
     GetInferenceScoreResponse,
+    QuestionLevel,
 )
 from src.exceptions import AnswerMismatchException
 from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES
@@ -327,3 +328,17 @@ async def get_inference_scores_all(cursor: cursor) -> List[GetInferenceScoreResp
     """
     cursor.execute(select_query)
     return [GetInferenceScoreResponse(id=id, question_name=question_name, inference_id=inference_id, helpful=helpful, does_not_reveal_answer=does_not_reveal_answer, does_not_contain_errors=does_not_contain_errors, only_relevant_info=only_relevant_info) for id, question_name, inference_id, helpful, does_not_reveal_answer, does_not_contain_errors, only_relevant_info in cursor.fetchall()]
+
+
+async def create_question_level(level: QuestionLevel, cursor: cursor) -> None:
+    insert_query = """
+        INSERT INTO prod_storage.dict_question_levels
+            (level_cd, level_desc)
+        VALUES
+            (%(level_cd)s, %(level_desc)s)
+        ON CONFLICT (level_cd) DO UPDATE 
+        SET 
+            level_desc = EXCLUDED.level_desc
+        ;
+    """
+    cursor.execute(insert_query, level.model_dump(include={"level_cd", "level_desc"}))

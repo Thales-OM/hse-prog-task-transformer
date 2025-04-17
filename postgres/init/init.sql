@@ -13,16 +13,32 @@ $$ LANGUAGE plpgsql;
 
 -- Create a table within the schema if it does not exist
 CREATE TABLE
+  IF NOT EXISTS prod_storage.dict_question_levels (
+    level_cd VARCHAR(100) PRIMARY KEY,
+    level_desc TEXT,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_flg BOOLEAN NOT NULL DEFAULT false
+  );
+
+CREATE TRIGGER set_dict_question_levels_updated_at
+AFTER UPDATE ON prod_storage.dict_question_levels
+FOR EACH ROW
+EXECUTE FUNCTION set_updated_at();
+
+CREATE TABLE
   IF NOT EXISTS prod_storage.questions (
     id SERIAL PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
     type VARCHAR(200) NOT NULL,
     text TEXT NOT NULL,
+    level_cd VARCHAR(100),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_flg BOOLEAN NOT NULL DEFAULT false,
 
-    CONSTRAINT questions_source_key_unique UNIQUE (name)
+    CONSTRAINT questions_source_key_unique UNIQUE (name),
+    FOREIGN KEY (level_cd) REFERENCES prod_storage.dict_question_levels (level_cd) ON DELETE SET NULL
   );
 
 CREATE TRIGGER set_questions_updated_at

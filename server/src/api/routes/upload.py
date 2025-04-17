@@ -7,9 +7,9 @@ from src.logger import LoggerFactory
 from src.config import settings
 from src.utils import validate_xml
 from src.api.deps import get_db_cursor, get_openai_client
-from src.schemas import MessageSuccessResponse, PostModelRequest, PostInferenceRequest, PostInferenceScoreRequest, PostRenewTokenResponse
+from src.schemas import MessageSuccessResponse, PostModelRequest, PostInferenceRequest, PostInferenceScoreRequest, PostRenewTokenResponse, QuestionLevel
 from src.core import ingest_quiz_xml
-from src.database.crud import create_model, create_inference_score
+from src.database.crud import create_model, create_inference_score, create_question_level
 from src.models.core import make_inference
 from src.api.deps import get_auth_token
 from src.api.auth import renew_auth_token
@@ -22,6 +22,18 @@ router = APIRouter(
     tags=["upload"],
     prefix=""
 )
+
+
+@router.post(
+    "/questions/level/new",
+    dependencies=[Depends(get_auth_token)],
+    response_model=MessageSuccessResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Create/update a question difficulty level specification in database",
+)
+async def quiz_xml(level: QuestionLevel, cursor: cursor = Depends(get_db_cursor)):
+    await create_question_level(level=level, cursor=cursor)
+    return MessageSuccessResponse(message="Level created/updated successfully")
 
 
 @router.post(
