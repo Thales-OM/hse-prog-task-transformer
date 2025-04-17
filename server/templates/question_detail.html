@@ -59,7 +59,9 @@
                 <div class="inference-buttons">
                     {% if question.inference_ids %}
                         {% for inference_id in question.inference_ids %}
-                        <a href="/pages/questions/inference/{{ inference_id }}" class="inference-button">
+                        <a href="/pages/questions/inference/{{ inference_id }}" 
+                           class="inference-button" 
+                           id="inference-btn-{{ inference_id }}">
                             Inference #{{ loop.index }}
                         </a>
                         {% endfor %}
@@ -70,6 +72,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check localStorage for scored inferences
+            {% if question.inference_ids %}
+                {% for inference_id in question.inference_ids %}
+                    const storageKey = `submitted_inference_{{ inference_id }}`;
+                    if (localStorage.getItem(storageKey)) {
+                        const button = document.getElementById('inference-btn-{{ inference_id }}');
+                        if (button) {
+                            button.classList.add('scored');
+                        }
+                    }
+                {% endfor %}
+            {% endif %}
+        });
+    </script>
+
 </body>
 
 </html>

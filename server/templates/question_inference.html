@@ -113,53 +113,80 @@
     </div>
 
     <script>
-        document.getElementById('scoreForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const form = e.target;
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('scoreForm');
             const submitButton = form.querySelector('button[type="submit"]');
+            const rangeInputs = form.querySelectorAll('input[type="range"]');
             const alerts = document.querySelectorAll('.alert');
-            
-            // Reset alerts and disable button
-            alerts.forEach(alert => alert.style.display = 'none');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Submitting...';
-        
-            try {
-                const response = await fetch(`/upload/inference/{{ question.inference_id }}/score/new`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        helpful: parseInt(form.helpful.value),
-                        does_not_reveal_answer: parseInt(form.does_not_reveal_answer.value),
-                        does_not_contain_errors: parseInt(form.does_not_contain_errors.value),
-                        only_relevant_info: parseInt(form.only_relevant_info.value)
-                    })
-                });
-        
-                if (response.ok) {
-                    document.querySelector('.alert-success').style.display = 'block';
-                    form.style.opacity = '0.5';
-                    submitButton.disabled = true;
-                } else {
-                    const error = await response.json();
-                    const errorMessage = error.message || 'Unknown error occurred';
-                    document.querySelector('.error-message').textContent = errorMessage;
-                    document.querySelector('.alert-error').style.display = 'block';
-                }
-            } catch (error) {
-                document.querySelector('.error-message').textContent = 'Network error - please try again';
-                document.querySelector('.alert-error').style.display = 'block';
-            } finally {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Submit Rating';
-            }
-        });
+            const inferenceId = '{{ question.inference_id }}';
+            const storageKey = `submitted_inference_${inferenceId}`;
 
-        // Update score values in real-time
-        document.querySelectorAll('input[type="range"]').forEach(input => {
-            input.addEventListener('input', (e) => {
-                e.target.parentNode.querySelector('.score-value').textContent = e.target.value;
+            // Check localStorage immediately on page load
+            if (localStorage.getItem(storageKey)) {
+                disableForm();
+                return; // Exit early if already submitted
+            }
+
+            // Update score values in real-time
+            rangeInputs.forEach(input => {
+                input.addEventListener('input', (e) => {
+                    e.target.parentNode.querySelector('.score-value').textContent = e.target.value;
+                });
             });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Prevent multiple submissions during processing
+                if (submitButton.disabled) return;
+                
+                // Reset alerts and disable button
+                alerts.forEach(alert => alert.style.display = 'none');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+            
+                try {
+                    const response = await fetch(`/upload/inference/${inferenceId}/score/new`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            helpful: parseInt(form.helpful.value),
+                            does_not_reveal_answer: parseInt(form.does_not_reveal_answer.value),
+                            does_not_contain_errors: parseInt(form.does_not_contain_errors.value),
+                            only_relevant_info: parseInt(form.only_relevant_info.value)
+                        })
+                    });
+            
+                    if (response.ok) {
+                        document.querySelector('.alert-success').style.display = 'block';
+                        disableForm();
+                        // Save to localStorage immediately
+                        localStorage.setItem(storageKey, 'true');
+                        // Also store the timestamp to potentially use later
+                        localStorage.setItem(`${storageKey}_timestamp`, Date.now());
+                    } else {
+                        throw new Error('Server returned an error');
+                    }
+                } catch (error) {
+                    document.querySelector('.error-message').textContent = 
+                        error.message || 'Network error - please try again';
+                    document.querySelector('.alert-error').style.display = 'block';
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Rating';
+                }
+            });
+
+            function disableForm() {
+                form.style.opacity = '0.5';
+                form.classList.add('disabled-form');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Already Submitted';
+                rangeInputs.forEach(input => {
+                    input.disabled = true;
+                });
+                // Also prevent form submission through JavaScript
+                form.onsubmit = () => false;
+            }
         });
     </script>
 </body>

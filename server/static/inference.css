@@ -165,10 +165,13 @@ input[type="range"]::-webkit-slider-thumb {
     content: '✗';
 }
 
-/* Form state changes */
-.scoring-form.disabled {
+.disabled-form {
     opacity: 0.5;
     pointer-events: none;
+}
+
+.disabled-form input[type="range"] {
+    opacity: 1; /* Keep sliders visible but non-interactive */
 }
 
 /* Responsive layout for smaller screens */

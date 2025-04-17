@@ -9,7 +9,6 @@ from src.exceptions import UnauthorizedException, PublicKeyMissingException
 from src.config import settings
 from src.schemas import RSAKeyPair, PostRenewTokenResponse
 from src.logger import LoggerFactory
-from src.utils import key_to_form
 
 
 logger = LoggerFactory.getLogger(__name__)
