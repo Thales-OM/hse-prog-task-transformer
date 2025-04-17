@@ -1,10 +1,6 @@
 from fastapi import Request, status
 from fastapi.exceptions import HTTPException
 from typing import Any
-from src.logger import LoggerFactory
-
-
-logger = LoggerFactory.getLogger(__name__)
 
 
 # Custom exception for when establishing database connection fails

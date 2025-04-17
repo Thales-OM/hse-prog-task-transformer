@@ -119,5 +119,4 @@ def verify_rsa_key_pair(private_pem: bytes | str, public_pem: bytes | str) -> bo
 def renew_auth_token() -> PostRenewTokenResponse:
     key_pair = generate_rsa_key_pair()
     settings.server.set_public_api_key(public_pem=key_pair.public_pem)
-    private_pem_string = key_to_form(text=key_pair.private_pem)
-    return PostRenewTokenResponse(private_pem=private_pem_string)
+    return PostRenewTokenResponse(private_pem=key_pair.private_pem)

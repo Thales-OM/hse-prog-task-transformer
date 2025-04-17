@@ -102,16 +102,3 @@ def form_to_key(text):
     str: The modified string with actual newlines.
     """
     return text.replace('\\n', '\n')
-
-
-def key_to_form(text):
-    """
-    Replace all actual newlines with newline escape symbols.
-    
-    Args:
-    text (str): The input string containing actual newlines.
-    
-    Returns:
-    str: The modified string with newline escape symbols.
-    """
-    return text.replace('\n', '\\n')
