@@ -1,11 +1,13 @@
 from pydantic import BaseModel, model_validator, Field, ConfigDict, field_validator, ValidationError
-from typing import Optional, List, Union
+from typing import Optional, List, Union, Dict
 import re
 from openai.types.chat import ChatCompletion
 from src.exceptions import  UnrecognizedQuestionTypeException, AnswerMismatchException, InvalidQuestionException
 from src.constraints import KNOWN_QUESTION_TYPES, QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
 from src.utils import render_md_to_html, clean_html_tags, convert_code_blocks_to_html
 from src.models.constraints import DEFAULT_MODEL_TEMPERATURE
+from src.types import UserGroupCD, LevelCD, PEM, InferenceScore, ModelTemperature
+
 
 class MessageSuccessResponse(BaseModel):
     message: str
@@ -208,35 +210,54 @@ class GetModelResponse(BaseModel):
 class PostInferenceRequest(BaseModel):
     question_id: int
     model_id: int
-    temperature: float = DEFAULT_MODEL_TEMPERATURE
+    temperature: ModelTemperature = DEFAULT_MODEL_TEMPERATURE
 
 
 class PostInferenceScoreRequest(BaseModel):
-    helpful: int = Field(..., ge=1, le=10)
-    does_not_reveal_answer: int = Field(..., ge=1, le=10)
-    does_not_contain_errors: int = Field(..., ge=1, le=10)
-    only_relevant_info: int = Field(..., ge=1, le=10)
+    helpful: InferenceScore
+    does_not_reveal_answer: InferenceScore
+    does_not_contain_errors: InferenceScore
+    only_relevant_info: InferenceScore
 
 
 class GetInferenceScoreResponse(BaseModel):
     id: int
     question_name: str
     inference_id: int
-    helpful: int = Field(..., ge=1, le=10)
-    does_not_reveal_answer: int = Field(..., ge=1, le=10)
-    does_not_contain_errors: int = Field(..., ge=1, le=10)
-    only_relevant_info: int = Field(..., ge=1, le=10)
+    helpful: InferenceScore
+    does_not_reveal_answer: InferenceScore
+    does_not_contain_errors: InferenceScore
+    only_relevant_info: InferenceScore
 
 
 class RSAKeyPair(BaseModel):
-    public_pem: str = Field(..., min_length=1)
-    private_pem: str = Field(..., min_length=1)
+    public_pem: PEM
+    private_pem: PEM
 
 
 class PostRenewTokenResponse(BaseModel):
-    private_pem: str = Field(..., min_length=1)
+    private_pem: PEM
 
 
 class QuestionLevel(BaseModel):
-    level_cd: str = Field(..., max_length=100)
-    level_desc: str
+    level_cd: LevelCD
+    level_desc: Optional[str] = None
+
+
+class UserGroup(BaseModel):
+    user_group_cd: UserGroupCD
+    user_group_desc: Optional[str] = None
+
+
+class PostUserGroupRequest(UserGroup):
+    pass
+
+
+class PostUserGroupLevelAddRequest(BaseModel):
+    user_group_cd: UserGroupCD
+    level_cd: LevelCD
+
+
+class PostSetUserGroupLevelRequest(BaseModel):
+    user_group_cd: UserGroupCD
+    level_cds: List[LevelCD]

@@ -27,6 +27,34 @@ FOR EACH ROW
 EXECUTE FUNCTION set_updated_at();
 
 CREATE TABLE
+  IF NOT EXISTS prod_storage.dict_user_groups (
+    user_group_cd VARCHAR(100) PRIMARY KEY,
+    user_group_desc TEXT,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_flg BOOLEAN NOT NULL DEFAULT false
+  );
+
+CREATE TRIGGER set_dict_user_groups_updated_at
+AFTER UPDATE ON prod_storage.dict_user_groups
+FOR EACH ROW
+EXECUTE FUNCTION set_updated_at();
+
+
+-- Append-only linking table
+CREATE TABLE
+  IF NOT EXISTS prod_storage.link_user_group_x_level (
+    id SERIAL PRIMARY KEY,
+    user_group_cd VARCHAR(100),
+    level_cd VARCHAR(100),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  
+    FOREIGN KEY (user_group_cd) REFERENCES prod_storage.dict_user_groups (user_group_cd) ON DELETE CASCADE,
+    FOREIGN KEY (level_cd) REFERENCES prod_storage.dict_question_levels (level_cd) ON DELETE CASCADE
+  );
+
+
+CREATE TABLE
   IF NOT EXISTS prod_storage.questions (
     id SERIAL PRIMARY KEY,
     name VARCHAR(200) NOT NULL,

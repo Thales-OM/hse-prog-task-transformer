@@ -1,5 +1,6 @@
 from psycopg2.extensions import cursor
-from typing import List, Optional, Tuple
+from typing import List, Optional, Literal
+import datetime
 from src.logger import LoggerFactory
 from src.schemas import (
     Question,
@@ -15,6 +16,10 @@ from src.schemas import (
     PostInferenceScoreRequest,
     GetInferenceScoreResponse,
     QuestionLevel,
+    PostUserGroupRequest,
+    PostUserGroupLevelAddRequest,
+    PostSetUserGroupLevelRequest,
+    UserGroup,
 )
 from src.exceptions import AnswerMismatchException
 from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES
@@ -342,3 +347,63 @@ async def create_question_level(level: QuestionLevel, cursor: cursor) -> None:
         ;
     """
     cursor.execute(insert_query, level.model_dump(include={"level_cd", "level_desc"}))
+
+
+async def create_user_group(group: PostUserGroupRequest, cursor: cursor) -> None:
+    insert_query = """
+        INSERT INTO prod_storage.dict_user_groups
+            (user_group_cd, user_group_desc)
+        VALUES
+            (%(user_group_cd)s, %(user_group_desc)s)
+        ON CONFLICT (user_group_cd) DO UPDATE 
+        SET 
+            user_group_desc = EXCLUDED.user_group_desc
+        ;
+    """
+    cursor.execute(insert_query, group.model_dump(include={"user_group_cd", "user_group_desc"}))
+
+
+async def create_user_group_x_level_link(group_level: PostUserGroupLevelAddRequest, cursor: cursor) -> None:
+    insert_query = """
+        INSERT INTO prod_storage.link_user_group_x_level
+            (user_group_cd, level_cd)
+        VALUES
+            (%(user_group_cd)s, %(level_cd)s)
+        ;
+    """
+    cursor.execute(insert_query, group_level.model_dump(include={"user_group_cd", "level_cd"}))
+
+
+async def set_user_group_x_level_link(group_levels: List[PostSetUserGroupLevelRequest], cursor: cursor) -> None:
+    delete_query = """
+        DELETE FROM prod_storage.link_user_group_x_level
+        WHERE user_group_cd = ANY(%s);
+    """
+    user_group_cds = [group.user_group_cd for group in group_levels]
+    cursor.execute(delete_query, (user_group_cds,))
+    
+    insert_query = """
+        INSERT INTO prod_storage.link_user_group_x_level
+            (user_group_cd, level_cd)
+        VALUES
+            (%s, %s)
+        ;
+    """
+    for group in group_levels:
+        user_group_cd = group.user_group_cd
+        for level_cd in group.level_cds:
+            cursor.execute(insert_query, (user_group_cd, level_cd))
+
+
+async def get_user_groups_all(cursor: cursor) -> List[UserGroup]:
+    select_query = """
+        SELECT  
+            user_group_cd, user_group_desc
+        FROM
+            prod_storage.dict_user_groups
+        WHERE
+            deleted_flg = false
+        ;
+    """
+    cursor.execute(select_query)
+    return [UserGroup(user_group_cd=user_group_cd, user_group_desc=user_group_desc) for user_group_cd, user_group_desc in cursor.fetchall()]
