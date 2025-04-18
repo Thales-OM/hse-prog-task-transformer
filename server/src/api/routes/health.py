@@ -13,7 +13,7 @@ router = APIRouter(
 )
 
 @router.get(
-    "",
+    "/",
     response_model=MessageSuccessResponse,
     status_code=status.HTTP_200_OK,
     summary="Simple server health check",

@@ -126,8 +126,8 @@ async def question_detail(request: Request, user_group_cd: str = Path(...)):
     )
 
 
-@router.get("/{user_group_cd}/main", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
-async def main(request: Request, user_group_cd: str = Path(...)):
+@router.get("/{user_group_cd}/dashboard", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
+async def dashboard(request: Request, user_group_cd: str = Path(...)):
     try:
         async with httpx.AsyncClient() as client:
             params = {"user_group_cd": user_group_cd}
@@ -137,7 +137,22 @@ async def main(request: Request, user_group_cd: str = Path(...)):
         raise HTTPException(status_code=e.response.status_code, detail=f"Invalid User Group path:\n{e}")
     
     return templates.TemplateResponse(
-        "main.html",
+        "dashboard.html",
         {"request": request, "user_group_cd": user_group_cd}
     )
 
+
+@router.get("/main", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
+async def main(request: Request):
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.get(f"{BACKEND_URL}/read/users/groups/all")
+            response.raise_for_status()
+            user_groups = response.json()
+    except httpx.HTTPStatusError as e:
+        raise HTTPException(status_code=e.response.status_code, detail=f"Failed to retrieve User Groups:\n{e}")
+    
+    return templates.TemplateResponse(
+        "main.html",
+        {"request": request, "user_groups": user_groups}
+    )
