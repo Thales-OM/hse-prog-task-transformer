@@ -68,7 +68,7 @@ class ConnectionPoolManager:
         with cls._pool.getconn() as conn:
             try:
                 conn_id = get_connection_id(conn)
-                logger.debug(f"Acquired connection (ID {conn_id}) from pool")
+                logger.info(f"Acquired connection (ID {conn_id}) from pool")
                 yield conn
                 conn.commit() # Commit transaction
             except Exception as e:
@@ -78,7 +78,7 @@ class ConnectionPoolManager:
             finally:
                 if conn:
                     cls._pool.putconn(conn)
-                logger.debug(f"Returned connection (ID {conn_id}) to pool")
+                logger.info(f"Returned connection (ID {conn_id}) to pool")
 
     @classmethod
     @contextmanager

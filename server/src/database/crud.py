@@ -2,6 +2,7 @@ from psycopg2.extensions import cursor
 from typing import List, Optional, Literal
 import datetime
 from src.logger import LoggerFactory
+from src.types import UserGroupCD
 from src.schemas import (
     Question,
     Answer,
@@ -21,7 +22,7 @@ from src.schemas import (
     PostSetUserGroupLevelRequest,
     UserGroup,
 )
-from src.exceptions import AnswerMismatchException
+from src.exceptions import AnswerMismatchException, UnauthorizedException
 from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES
 
 
@@ -130,10 +131,19 @@ async def create_test_case(
     cursor.execute(upsert_query, data)
 
 
-async def get_questions_all(cursor: cursor) -> List[GetQuestionResponse]:
+async def get_questions_all(user_group_cd: UserGroupCD, cursor: cursor) -> List[GetQuestionResponse]:
     """Get all not soft-deleted questions in database"""
-    select_query = "SELECT id, name, type, text FROM prod_storage.questions WHERE deleted_flg = false;"
-    cursor.execute(select_query)
+    select_query = """
+        SELECT 
+            q.id, q.name, q.type, q.text 
+        FROM 
+            (SELECT * FROM prod_storage.questions WHERE deleted_flg = false) q
+            INNER JOIN (SELECT * FROM prod_storage.link_user_group_x_level WHERE user_group_cd = %s) link
+                ON q.level_cd = link.level_cd
+            ;
+    """
+    cursor.execute(select_query, (user_group_cd, ))
+    
     question_records = cursor.fetchall()
     questions = []
     for question_record in question_records:
@@ -152,14 +162,26 @@ async def get_questions_all(cursor: cursor) -> List[GetQuestionResponse]:
     return questions
 
 
-async def get_question(id: int, cursor: cursor) -> Optional[GetQuestionResponse]:
-    select_query = "SELECT id, name, type, text FROM prod_storage.questions WHERE id = %s AND deleted_flg = false;"
-    cursor.execute(select_query, (id,))
+async def get_question(user_group_cd: UserGroupCD, id: int, cursor: cursor) -> Optional[GetQuestionResponse]:
+    select_query = """
+        SELECT 
+            q.id, q.name, q.type, q.text, (link.level_cd is not NULL) as allowed_flg 
+        FROM 
+            (SELECT * FROM prod_storage.questions WHERE id = %s AND deleted_flg = false) q
+            LEFT JOIN (SELECT * FROM prod_storage.link_user_group_x_level WHERE user_group_cd= %s) link
+                ON q.level_cd = link.level_cd
+        ;
+    """
+    cursor.execute(select_query, (id, user_group_cd))
     question_record = cursor.fetchone()
     if question_record is None:
         return None
     
-    id, name, _type, text = question_record
+    id, name, _type, text, allowed_flg = question_record
+
+    if not allowed_flg:
+        raise UnauthorizedException(f'User Group "{user_group_cd}" is not allowed to access Question ID {id}')
+
     answers = []
     test_cases = []
     if _type in QUESTION_MULTICHOICE_TYPES:
@@ -221,9 +243,20 @@ async def get_test_cases(question_id: int, cursor: cursor) -> List[TestCase]:
     return [TestCase(code=code, input=input, expected_output=expected_output, example=example) for code, input, expected_output, example in test_case_records]
 
 
-async def get_random_question_id(cursor: cursor) -> Optional[int]:
-    select_query = "SELECT id FROM prod_storage.questions WHERE deleted_flg = false ORDER BY RANDOM() LIMIT 1;"
-    cursor.execute(select_query,)
+async def get_random_question_id(user_group_cd: UserGroupCD, cursor: cursor) -> Optional[int]:
+    select_query = """
+        SELECT 
+            q.id 
+        FROM 
+            (SELECT * FROM prod_storage.questions WHERE deleted_flg = false) q
+            INNER JOIN (SELECT * FROM prod_storage.link_user_group_x_level WHERE user_group_cd= %s) link
+                ON q.level_cd = link.level_cd
+        ORDER BY 
+            RANDOM() 
+        LIMIT 1
+        ;
+    """
+    cursor.execute(select_query, (user_group_cd,))
     question_record = cursor.fetchone()
     if question_record is None:
         return None
@@ -301,19 +334,20 @@ async def get_question_inference_ids(question_id: int, cursor: cursor) -> List[i
 async def create_inference_score(inference_id: int, score: PostInferenceScoreRequest, cursor: cursor) -> int:
     insert_query = """
         INSERT INTO prod_storage.inference_scores
-            (inference_id, helpful, does_not_reveal_answer, does_not_contain_errors, only_relevant_info)
+            (inference_id, user_group_cd, helpful, does_not_reveal_answer, does_not_contain_errors, only_relevant_info)
         VALUES
-            (%(inference_id)s, %(helpful)s, %(does_not_reveal_answer)s, %(does_not_contain_errors)s, %(only_relevant_info)s)
+            (%(inference_id)s, %(user_group_cd)s, %(helpful)s, %(does_not_reveal_answer)s, %(does_not_contain_errors)s, %(only_relevant_info)s)
         RETURNING id
         ;
     """
-    data = score.model_dump(include={"helpful", "does_not_reveal_answer", "does_not_contain_errors", "only_relevant_info"})
+    data = score.model_dump(include={"user_group_cd", "helpful", "does_not_reveal_answer", "does_not_contain_errors", "only_relevant_info"})
     data["inference_id"] = inference_id
     cursor.execute(insert_query, data)
     score_id = cursor.fetchone()[0]
     return score_id
 
-async def get_inference_scores_all(cursor: cursor) -> List[GetInferenceScoreResponse]:
+
+async def get_inference_scores_all(user_group_cd: UserGroupCD, cursor: cursor) -> List[GetInferenceScoreResponse]:
     select_query = """
         SELECT 
             isc.id,
@@ -329,9 +363,12 @@ async def get_inference_scores_all(cursor: cursor) -> List[GetInferenceScoreResp
                 ON isc.inference_id = qt.id
             INNER JOIN prod_storage.questions q
                 ON qt.question_id = q.id
+            INNER JOIN prod_storage.link_user_group_x_level link
+                ON q.level_cd = link.level_cd
+                AND link.user_group_cd = %s
         ;
     """
-    cursor.execute(select_query)
+    cursor.execute(select_query, (user_group_cd,))
     return [GetInferenceScoreResponse(id=id, question_name=question_name, inference_id=inference_id, helpful=helpful, does_not_reveal_answer=does_not_reveal_answer, does_not_contain_errors=does_not_contain_errors, only_relevant_info=only_relevant_info) for id, question_name, inference_id, helpful, does_not_reveal_answer, does_not_contain_errors, only_relevant_info in cursor.fetchall()]
 
 

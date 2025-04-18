@@ -1,14 +1,17 @@
 import os
-from fastapi import Query, Depends, Header
+from fastapi import Query, Depends, Header, Path
 from typing import Generator, Optional, Literal
 from contextlib import contextmanager
+from psycopg2.extensions import cursor
 from src.database.pool import ConnectionPoolManager
 import openai
 from src.config import settings
 from src.api.auth import verify_rsa_key_pair
-from src.exceptions import PublicKeyMissingException, UnauthorizedException
+from src.exceptions import PublicKeyMissingException, UnauthorizedException, UserGroupNotFoundException
 from src.utils import form_to_key
 from src.logger import LoggerFactory
+from src.types import UserGroupCD
+from src.api.utils import existing_user_group_cd
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -51,3 +54,11 @@ async def get_auth_token(authToken: str = Header(...)) -> str:
     if not verify_rsa_key_pair(private_pem=authToken, public_pem=public_pem):
         raise UnauthorizedException()
     return authToken
+
+
+async def get_user_group_query(user_group_cd: Optional[UserGroupCD] = Query(...), cursor: cursor = Depends(get_db_cursor)) -> Optional[UserGroupCD]:
+    if user_group_cd is None:
+        return None
+    if not (await existing_user_group_cd(user_group_cd=user_group_cd, cursor=cursor)):
+        raise UserGroupNotFoundException()
+    return user_group_cd

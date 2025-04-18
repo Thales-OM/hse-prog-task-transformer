@@ -5,10 +5,11 @@ from typing import List, Tuple
 from src.logger import LoggerFactory
 from src.config import settings
 from src.utils import validate_xml
-from src.api.deps import get_db_cursor
-from src.schemas import GetQuestionResponse, QuestionsRandomIdResponse, Question, GetModelResponse, GetInferenceResponse, GetInferenceScoreResponse
+from src.types import UserGroupCD
+from src.api.deps import get_db_cursor, get_user_group_query
+from src.schemas import GetQuestionResponse, QuestionsRandomIdResponse, Question, GetModelResponse, GetInferenceResponse, GetInferenceScoreResponse, GetUserGroupResponse, MessageSuccessResponse
 from src.core import ingest_quiz_xml
-from src.database.crud import get_questions_all, get_question, get_random_question_id, get_models_all, get_inference, get_inference_scores_all
+from src.database.crud import get_questions_all, get_question, get_random_question_id, get_models_all, get_inference, get_inference_scores_all, get_user_groups_all
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -27,8 +28,8 @@ router = APIRouter(
     summary="Fetch all questions from database",
     description="Construct question objects from all non-deleted questions and their answers/test cases",
 )
-async def questions_all(cursor: cursor = Depends(get_db_cursor)):
-    questions = await get_questions_all(cursor=cursor)
+async def questions_all(user_group_cd: UserGroupCD = Depends(get_user_group_query), cursor: cursor = Depends(get_db_cursor)):
+    questions = await get_questions_all(user_group_cd=user_group_cd, cursor=cursor)
     return questions
 
 
@@ -39,8 +40,8 @@ async def questions_all(cursor: cursor = Depends(get_db_cursor)):
     summary="Fetch a question from database by ID",
     description="Construct question object from non-deleted database record and its answers/test cases",
 )
-async def question(id: int, cursor: cursor = Depends(get_db_cursor)):
-    question = await get_question(id=id, cursor=cursor)
+async def question(id: int, user_group_cd: UserGroupCD = Depends(get_user_group_query), cursor: cursor = Depends(get_db_cursor)):
+    question = await get_question(user_group_cd=user_group_cd, id=id, cursor=cursor)
     if question is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Question does not exist in database or was deleted")
     return question
@@ -52,8 +53,8 @@ async def question(id: int, cursor: cursor = Depends(get_db_cursor)):
     status_code=status.HTTP_200_OK,
     summary="Fetch a random question ID from database",
 )
-async def questions_random_id(cursor: cursor = Depends(get_db_cursor)):
-    id = await get_random_question_id(cursor=cursor)
+async def questions_random_id(user_group_cd: UserGroupCD = Depends(get_user_group_query), cursor: cursor = Depends(get_db_cursor)):
+    id = await get_random_question_id(user_group_cd=user_group_cd, cursor=cursor)
     if id is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Empty Question ID was received: database error or empty")
     return QuestionsRandomIdResponse(id=id)
@@ -90,5 +91,25 @@ async def inference(id: int, cursor: cursor = Depends(get_db_cursor)):
     status_code=status.HTTP_200_OK,
     summary="Fetch all non-deleted inference scores from database",
 )
-async def inferences_scores_all(cursor: cursor = Depends(get_db_cursor)):
-    return await get_inference_scores_all(cursor=cursor)
+async def inferences_scores_all(user_group_cd: UserGroupCD = Depends(get_user_group_query), cursor: cursor = Depends(get_db_cursor)):
+    return await get_inference_scores_all(user_group_cd=user_group_cd, cursor=cursor)
+
+
+@router.get(
+    "/users/groups/all",
+    response_model=List[GetUserGroupResponse],
+    status_code=status.HTTP_200_OK,
+    summary="Fetch all non-deleted User Groups from database",
+)
+async def users_groups_all(cursor: cursor = Depends(get_db_cursor)):
+    return await get_user_groups_all(cursor=cursor)
+
+
+@router.get(
+    "/users/group/verify",
+    response_model=MessageSuccessResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Verify that User Group is present in database",
+)
+async def users_groups_all(user_group_cd: UserGroupCD = Depends(get_user_group_query)):
+    return MessageSuccessResponse(message="ok")

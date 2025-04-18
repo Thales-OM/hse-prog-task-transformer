@@ -49,5 +49,12 @@ class UnauthorizedException(HTTPException):
 class PublicKeyMissingException(HTTPException):
     def __init__(self, detail: Any = "Public Auth token not found. Set manually."):
         super().__init__(
-            status_code=status.HTTP_401_UNAUTHORIZED, detail=detail
+            status_code=status.HTTP_501_NOT_IMPLEMENTED, detail=detail
+        )
+
+
+class UserGroupNotFoundException(HTTPException):
+    def __init__(self, detail: Any = "Given User Group does not exist in database"):
+        super().__init__(
+            status_code=status.HTTP_404_NOT_FOUND, detail=detail
         )

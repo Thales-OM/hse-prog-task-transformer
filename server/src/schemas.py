@@ -6,7 +6,7 @@ from src.exceptions import  UnrecognizedQuestionTypeException, AnswerMismatchExc
 from src.constraints import KNOWN_QUESTION_TYPES, QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
 from src.utils import render_md_to_html, clean_html_tags, convert_code_blocks_to_html
 from src.models.constraints import DEFAULT_MODEL_TEMPERATURE
-from src.types import UserGroupCD, LevelCD, PEM, InferenceScore, ModelTemperature
+from src.types import UserGroupCD, LevelCD, PEM, InferenceScoreVal, ModelTemperature
 
 
 class MessageSuccessResponse(BaseModel):
@@ -213,21 +213,20 @@ class PostInferenceRequest(BaseModel):
     temperature: ModelTemperature = DEFAULT_MODEL_TEMPERATURE
 
 
-class PostInferenceScoreRequest(BaseModel):
-    helpful: InferenceScore
-    does_not_reveal_answer: InferenceScore
-    does_not_contain_errors: InferenceScore
-    only_relevant_info: InferenceScore
+class InferenceScore(BaseModel):
+    helpful: InferenceScoreVal
+    does_not_reveal_answer: InferenceScoreVal
+    does_not_contain_errors: InferenceScoreVal
+    only_relevant_info: InferenceScoreVal
+
+class PostInferenceScoreRequest(InferenceScore):
+    user_group_cd: UserGroupCD
 
 
-class GetInferenceScoreResponse(BaseModel):
+class GetInferenceScoreResponse(InferenceScore):
     id: int
     question_name: str
     inference_id: int
-    helpful: InferenceScore
-    does_not_reveal_answer: InferenceScore
-    does_not_contain_errors: InferenceScore
-    only_relevant_info: InferenceScore
 
 
 class RSAKeyPair(BaseModel):
@@ -250,6 +249,10 @@ class UserGroup(BaseModel):
 
 
 class PostUserGroupRequest(UserGroup):
+    pass
+
+
+class GetUserGroupResponse(UserGroup):
     pass
 
 

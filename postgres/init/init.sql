@@ -44,11 +44,11 @@ EXECUTE FUNCTION set_updated_at();
 -- Append-only linking table
 CREATE TABLE
   IF NOT EXISTS prod_storage.link_user_group_x_level (
-    id SERIAL PRIMARY KEY,
     user_group_cd VARCHAR(100),
     level_cd VARCHAR(100),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   
+    PRIMARY KEY (user_group_cd, level_cd),
     FOREIGN KEY (user_group_cd) REFERENCES prod_storage.dict_user_groups (user_group_cd) ON DELETE CASCADE,
     FOREIGN KEY (level_cd) REFERENCES prod_storage.dict_question_levels (level_cd) ON DELETE CASCADE
   );
@@ -175,6 +175,7 @@ CREATE TABLE
   IF NOT EXISTS prod_storage.inference_scores (
     id SERIAL PRIMARY KEY,
     inference_id INT NOT NULL,
+    user_group_cd VARCHAR(100),
     helpful INT NOT NULL CHECK (helpful BETWEEN 1 AND 10),
     does_not_reveal_answer INT NOT NULL CHECK (does_not_reveal_answer BETWEEN 1 AND 10),
     does_not_contain_errors INT NOT NULL CHECK (does_not_contain_errors BETWEEN 1 AND 10),
@@ -182,5 +183,6 @@ CREATE TABLE
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_flg BOOLEAN NOT NULL DEFAULT false,
 
-    FOREIGN KEY (inference_id) REFERENCES prod_storage.questions_transformed (id) ON DELETE CASCADE
+    FOREIGN KEY (inference_id) REFERENCES prod_storage.questions_transformed (id) ON DELETE CASCADE,
+    FOREIGN KEY (user_group_cd) REFERENCES prod_storage.dict_user_groups (user_group_cd) ON DELETE SET NULL
   );

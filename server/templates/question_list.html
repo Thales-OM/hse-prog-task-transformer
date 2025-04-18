@@ -13,14 +13,14 @@
         <div class="header">
             <h1>Questions List</h1>
         </div>
-        <a href="/pages/main" class="back-link">← Back to Dashboard</a>
+        <a href="/pages/{{ user_group_cd }}/main" class="back-link">← Back to Dashboard</a>
         <div class="question-list">
             {% for question in questions %}
             <div class="question-card">
                 <h3>{{ question.name }}</h3>
                 <p>{{ question.text_clean[:100] }}{% if question.text_clean|length > 100 %}...{% endif %}</p>
                 <span class="question-type">{{ question.type }}</span>
-                <p><a href="/pages/question/{{ question.id }}">View Details</a></p>
+                <p><a href="/pages/{{ user_group_cd }}/question/{{ question.id }}">View Details</a></p>
             </div>
             {% endfor %}
         </div>

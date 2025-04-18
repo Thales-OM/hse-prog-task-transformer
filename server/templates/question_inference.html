@@ -13,8 +13,8 @@
 <body>
     <div class="container">
         <div class="back-links-container">
-            <a href="/pages/questions/list" class="back-link">← Back to Questions List</a>
-            <a href="/pages/question/{{ question.id }}" class="back-link back-link-right">Back to Question →</a>
+            <a href="/pages/{{ user_group_cd }}/questions/list" class="back-link">← Back to Questions List</a>
+            <a href="/pages/{{ user_group_cd }}/question/{{ question.id }}" class="back-link back-link-right">Back to Question →</a>
         </div>
 
         <div class="question-layout">
@@ -150,6 +150,7 @@
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify({
+                            user_group_cd: '{{ user_group_cd }}',
                             helpful: parseInt(form.helpful.value),
                             does_not_reveal_answer: parseInt(form.does_not_reveal_answer.value),
                             does_not_contain_errors: parseInt(form.does_not_contain_errors.value),
