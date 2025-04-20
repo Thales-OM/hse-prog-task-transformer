@@ -1,12 +1,12 @@
 from pydantic import BaseModel, model_validator, Field, ConfigDict, field_validator, ValidationError
-from typing import Optional, List, Union, Dict
+from typing import Optional, List, Union, get_args, Any
 import re
 from openai.types.chat import ChatCompletion
 from src.exceptions import  UnrecognizedQuestionTypeException, AnswerMismatchException, InvalidQuestionException
 from src.constraints import KNOWN_QUESTION_TYPES, QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
 from src.utils import render_md_to_html, clean_html_tags, convert_code_blocks_to_html
 from src.models.constraints import DEFAULT_MODEL_TEMPERATURE
-from src.types import UserGroupCD, LevelCD, PEM, InferenceScoreVal, ModelTemperature
+from src.types import UserGroupCD, LevelCD, PEM, InferenceScoreVal, ModelTemperature, Language
 
 
 class MessageSuccessResponse(BaseModel):
@@ -264,3 +264,10 @@ class PostUserGroupLevelAddRequest(BaseModel):
 class PostSetUserGroupLevelRequest(BaseModel):
     user_group_cd: UserGroupCD
     level_cds: List[LevelCD]
+
+
+class LanguagePageResponse(BaseModel):
+    available: List[Language] = [lang for lang in get_args(Language)]
+    current: Language
+    pack: Any
+    

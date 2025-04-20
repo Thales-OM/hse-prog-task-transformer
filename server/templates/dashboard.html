@@ -4,37 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question Management</title>
+    <title>{{ languages.pack.header }}</title>
     <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='language.css') }}">
+    <script src="{{ url_for('static', path='scripts/language.js') }}"></script>
 </head>
 
 <body>
     <div class="container">
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <button class="language-button" onclick="toggleLanguageDropdown()">
+                {{ languages.current|upper }}
+                <span>▼</span>
+            </button>
+            <div class="language-dropdown" id="languageDropdown">
+                {% for lang in languages.available %}
+                    {% if lang != languages.current %}
+                        <div class="language-option" onclick="changeLanguage('{{ lang }}', '{{ languages.current }}')">{{ lang|upper }}</div>
+                    {% else %}
+                        <div class="language-option current">{{ lang|upper }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
         <div class="header">
-            <h1>Question Management Dashboard</h1>
+            <h1>{{ languages.pack.header }}</h1>
         </div>
 
         <div class="dashboard-grid">
             <a href="/pages/{{ user_group_cd }}/questions/list" class="dashboard-card">
                 <div class="card-content">
-                    <h2>Questions List</h2>
-                    <p>View and manage all available questions</p>
+                    <h2>{{ languages.pack.question_list_nm }}</h2>
+                    <p>{{ languages.pack.question_list_desc }}</p>
                 </div>
             </a>
 
             <a href="/pages/{{ user_group_cd }}/questions/random" class="dashboard-card">
                 <div class="card-content">
-                    <h2>Random Question</h2>
-                    <p>Pick a random question from the list</p>
+                    <h2>{{ languages.pack.random_question_nm }}</h2>
+                    <p>{{ languages.pack.random_question_desc }}</p>
                 </div>
             </a>
         </div>
         <div class="dashboard-grid">
             <a href="/pages/{{ user_group_cd }}/inferences/scores/list" class="dashboard-card">
                 <div class="card-content">
-                    <h2>Inference Scores</h2>
-                    <p>Analyze question patterns and insights</p>
+                    <h2>{{ languages.pack.inference_scores_nm }}</h2>
+                    <p>{{ languages.pack.inference_scores_desc }}</p>
                 </div>
             </a>
         </div>

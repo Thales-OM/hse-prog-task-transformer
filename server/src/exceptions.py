@@ -58,3 +58,10 @@ class UserGroupNotFoundException(HTTPException):
         super().__init__(
             status_code=status.HTTP_404_NOT_FOUND, detail=detail
         )
+
+
+class RedisUnavailableException(HTTPException):
+    def __init__(self, detail: Any = "Failed to connect to Redis"):
+        super().__init__(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=detail
+        )

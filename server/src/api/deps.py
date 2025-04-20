@@ -1,6 +1,6 @@
 import os
-from fastapi import Query, Depends, Header, Path
-from typing import Generator, Optional, Literal
+from fastapi import Query, Depends, Header, Path, Request
+from typing import Generator, Optional, get_args, AsyncGenerator
 from contextlib import contextmanager
 from psycopg2.extensions import cursor
 from src.database.pool import ConnectionPoolManager
@@ -8,10 +8,12 @@ import openai
 from src.config import settings
 from src.api.auth import verify_rsa_key_pair
 from src.exceptions import PublicKeyMissingException, UnauthorizedException, UserGroupNotFoundException
-from src.utils import form_to_key
+from src.utils import form_to_key, get_request_ip
 from src.logger import LoggerFactory
-from src.types import UserGroupCD
+from src.types import UserGroupCD, Language
 from src.api.utils import existing_user_group_cd
+from src.session.storage import SessionStorage, RedisConnection
+from src.session.schemas import UserSessionData
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -62,3 +64,20 @@ async def get_user_group_query(user_group_cd: Optional[UserGroupCD] = Query(...)
     if not (await existing_user_group_cd(user_group_cd=user_group_cd, cursor=cursor)):
         raise UserGroupNotFoundException()
     return user_group_cd
+
+
+async def get_redis_connection() -> AsyncGenerator:
+    async with SessionStorage.get_connection() as redis_connection:
+        yield redis_connection
+
+
+async def get_language_query(request: Request, lang: Optional[Language] = Query(None), redis_connection: RedisConnection = Depends(get_redis_connection)) -> Language:
+    ip = get_request_ip(request=request)
+    if lang is None or lang not in get_args(Language):
+        if ip:
+            user_data = await redis_connection.get(ip=ip)
+            lang = user_data.lang if user_data else None
+        lang = lang or settings.frontend.default_language
+    if ip:
+        await redis_connection.set(ip=ip, data=UserSessionData(lang=lang))
+    return lang

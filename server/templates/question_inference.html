@@ -8,13 +8,32 @@
     <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='inference.css') }}">
     <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='language.css') }}">
+    <script src="{{ url_for('static', path='scripts/language.js') }}"></script>
 </head>
 
 <body>
     <div class="container">
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <button class="language-button" onclick="toggleLanguageDropdown()">
+                {{ languages.current|upper }}
+                <span>▼</span>
+            </button>
+            <div class="language-dropdown" id="languageDropdown">
+                {% for lang in languages.available %}
+                    {% if lang != languages.current %}
+                        <div class="language-option" onclick="changeLanguage('{{ lang }}', '{{ languages.current }}')">{{ lang|upper }}</div>
+                    {% else %}
+                        <div class="language-option current">{{ lang|upper }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        
         <div class="back-links-container">
-            <a href="/pages/{{ user_group_cd }}/questions/list" class="back-link">← Back to Questions List</a>
-            <a href="/pages/{{ user_group_cd }}/question/{{ question.id }}" class="back-link back-link-right">Back to Question →</a>
+            <a href="/pages/{{ user_group_cd }}/questions/list" class="back-link">← {{ languages.pack.back_button_1 }}</a>
+            <a href="/pages/{{ user_group_cd }}/question/{{ question.id }}" class="back-link back-link-right">{{ languages.pack.back_button_2 }} →</a>
         </div>
 
         <div class="question-layout">
@@ -23,7 +42,7 @@
                 <span class="question-type">{{ question.type }}</span>
 
                 <div class="question-text">
-                    <h2>Question Text</h2>
+                    <h2>{{ languages.pack.question_text_header }}</h2>
                     <md-block>
                         <p>{{ question.text_rendered | safe }}</p>
                     </md-block>
@@ -31,7 +50,7 @@
 
                 {% if question.answers %}
                 <div class="answers-section">
-                    <h2>Answers</h2>
+                    <h2>{{ languages.pack.answers_header }}</h2>
                     {% for answer in question.answers %}
                     <div class="answer-item {% if answer.is_correct %}correct-answer{% endif %}">
                         <p>{{ answer.text | safe }}</p>
@@ -44,7 +63,7 @@
 
                 {% if question.test_cases %}
                 <div class="test-cases-section">
-                    <h2>Test Cases</h2>
+                    <h2>{{ languages.pack.test_cases_header }}</h2>
                     {% for test_case in question.test_cases %}
                     <div class="test-case-item">
                         <p><strong>Input:</strong> {{ test_case.input }}</p>
@@ -58,7 +77,7 @@
             </div>
 
             <div class="inference-panel">
-                <h2>AI Analysis</h2>
+                <h2>{{ languages.pack.inference_header }}</h2>
                 <div class="inference-content">
                     {% if question.inference_text %}
                     <md-block>
@@ -69,31 +88,31 @@
                     {% endif %}
                 </div>
                 <div class="scoring-form">
-                    <h3>Rate this Analysis</h3>
+                    <h3>{{ languages.pack.rating_header }}</h3>
                     <form id="scoreForm">
                         <div class="form-group">
-                            <label>Helpful:</label>
+                            <label>{{ languages.pack.rating_helpful_nm }}</label>
                             <div class="score-input">
                                 <input type="range" name="helpful" min="1" max="10" value="5" required>
                                 <span class="score-value">5</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Does not reveal answer:</label>
+                            <label>{{ languages.pack.rating_no_answer_nm }}</label>
                             <div class="score-input">
                                 <input type="range" name="does_not_reveal_answer" min="1" max="10" value="5" required>
                                 <span class="score-value">5</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Does not contain errors:</label>
+                            <label>{{ languages.pack.rating_no_error_nm }}</label>
                             <div class="score-input">
                                 <input type="range" name="does_not_contain_errors" min="1" max="10" value="5" required>
                                 <span class="score-value">5</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Relevance:</label>
+                            <label>{{ languages.pack.rating_relevant_nm }}</label>
                             <div class="score-input">
                                 <input type="range" name="only_relevant_info" min="1" max="10" value="5" required>
                                 <span class="score-value">5</span>

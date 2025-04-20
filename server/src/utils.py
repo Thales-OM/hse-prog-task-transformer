@@ -1,4 +1,4 @@
-from fastapi import Depends
+from fastapi import Depends, Request
 from typing import List, Callable, Optional
 from lxml import etree
 import re
@@ -102,3 +102,10 @@ def form_to_key(text):
     str: The modified string with actual newlines.
     """
     return text.replace('\\n', '\n')
+
+
+def get_request_ip(request: Request) -> str:
+    client_ip = request.headers.get("X-Envoy-External-Address")
+    if client_ip is None:
+        client_ip = request.client.host
+    return client_ip

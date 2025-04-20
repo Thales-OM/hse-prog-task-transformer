@@ -2,22 +2,23 @@ import os
 from pydantic import Field, model_validator, field_validator
 from pydantic_settings import BaseSettings
 from typing import Optional, Union, Literal
-from src.constraints import DEFAULT_LOG_LEVEL, DEFAULT_POOL_CONN_RETRIES, DEFAULT_POOL_CONN_RETRY_DELAY, DEFAULT_DEV_PORT, DEFAULT_DEV_HOST, DEFAULT_DEV_PROTOCOL
+from src.constraints import DEFAULT_LOG_LEVEL, DEFAULT_POOL_CONN_RETRIES, DEFAULT_POOL_CONN_RETRY_DELAY, DEFAULT_DEV_PORT, DEFAULT_DEV_HOST, DEFAULT_DEV_PROTOCOL, DEFAULT_FRONTEND_LANGUAGE, DEFAULT_POSTGRES_HOST, DEFAULT_POSTGRES_PORT, DEFAULT_POSTGRES_DB, DEFAULT_POSTGRES_USER, DEFAULT_POSTGRES_PASSWORD, DEFAULT_POOL_MINCONN, DEFAULT_POOL_MAXCONN, DEFAULT_REDIS_PASSWORD, DEFAULT_REDIS_USER, DEFAULT_REDIS_USER_PASSWORD, DEFAULT_REDIS_HOST, DEFAULT_REDIS_PORT, DEFAULT_REDIS_POOL_SIZE, DEFAULT_REDIS_DB, DEFAULT_REDIS_EX
 from src.models.constraints import DEFAULT_OPENAI_BASE_URL
 from src.exceptions import PublicKeyMissingException
+from src.types import Language
 
 
 # Database connection parameters
 class PostgresSettings(BaseSettings):
-    host: str = Field("postgres", env="POSTGRES_HOST")
-    port: int = Field(5432, env="POSTGRES_PORT")
-    user: str = Field("postgres", env="POSTGRES_USER")
-    password: str = Field("postgres", env="POSTGRES_PASSWORD")
-    dbname: str = Field("postgres", env="POSTGRES_DB")
+    host: str = Field(DEFAULT_POSTGRES_HOST, env="POSTGRES_HOST")
+    port: int = Field(DEFAULT_POSTGRES_PORT, env="POSTGRES_PORT")
+    user: str = Field(DEFAULT_POSTGRES_USER, env="POSTGRES_USER")
+    password: str = Field(DEFAULT_POSTGRES_PASSWORD, env="POSTGRES_PASSWORD")
+    dbname: str = Field(DEFAULT_POSTGRES_DB, env="POSTGRES_DB")
     pool_conn_retries: int = DEFAULT_POOL_CONN_RETRIES
     pool_conn_retry_delay: int = DEFAULT_POOL_CONN_RETRY_DELAY
-    minconn: int = Field(2, env="POOL_MINCONN")
-    maxconn: int = Field(20, env="POOL_MAXCONN")
+    minconn: int = Field(DEFAULT_POOL_MINCONN, env="POOL_MINCONN")
+    maxconn: int = Field(DEFAULT_POOL_MAXCONN, env="POOL_MAXCONN")
         
     @property
     def dsn(self) -> str:
@@ -80,8 +81,28 @@ class ServerSettings(BaseSettings):
 
         return value
 
+
 class OpenAISettings(BaseSettings):
     base_url: str = Field(DEFAULT_OPENAI_BASE_URL, env="OPENAI_BASE_URL")
+
+
+class FrontendSettings(BaseSettings):
+    default_language: Language = Field(DEFAULT_FRONTEND_LANGUAGE, env="DEFAULT_FRONTEND_LANGUAGE")
+
+
+class RedisSettings(BaseSettings):
+    host: str = Field(DEFAULT_REDIS_HOST, env="REDIS_HOST")
+    port: int = Field(DEFAULT_REDIS_PORT, env="REDIS_PORT")
+    password: str = Field(DEFAULT_REDIS_PASSWORD, env="REDIS_PASSWORD")
+    user: str = Field(DEFAULT_REDIS_USER, env="REDIS_USER")
+    user_password: str = Field(DEFAULT_REDIS_USER_PASSWORD, env="REDIS_USER_PASSWORD")
+    pool_size: int = Field(DEFAULT_REDIS_POOL_SIZE, env="REDIS_POOL_SIZE")
+    db: int = Field(DEFAULT_REDIS_DB, env="REDIS_DB")
+    ex: int = DEFAULT_REDIS_EX
+
+    @property
+    def url(self) -> str:
+        return f"redis://@{self.host}:{self.port}/{self.db}"
 
 
 class Settings(BaseSettings):
@@ -89,6 +110,8 @@ class Settings(BaseSettings):
     logging: LoggingSettings = LoggingSettings()
     server: ServerSettings = ServerSettings()
     openai: OpenAISettings = OpenAISettings()
+    frontend: FrontendSettings = FrontendSettings()
+    redis: RedisSettings = RedisSettings()
 
 
 settings = Settings()

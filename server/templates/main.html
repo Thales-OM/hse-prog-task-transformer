@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ languages.current }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Your Study Program</title>
+    <title>{{ languages.pack.header }}</title>
     <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='language.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', path='scripts/language.js') }}"></script>
 </head>
 
 <body>
     <div class="container">
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <button class="language-button" onclick="toggleLanguageDropdown()">
+                {{ languages.current|upper }}
+                <span>▼</span>
+            </button>
+            <div class="language-dropdown" id="languageDropdown">
+                {% for lang in languages.available %}
+                    {% if lang != languages.current %}
+                        <div class="language-option" onclick="changeLanguage('{{ lang }}', '{{ languages.current }}')">{{ lang|upper }}</div>
+                    {% else %}
+                        <div class="language-option current">{{ lang|upper }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
         <div class="header">
-            <h1>Choose Your Study Program</h1>
+            <h1>{{ languages.pack.header }}</h1>
         </div>
 
         <div class="program-selection-container">
@@ -28,6 +47,6 @@
             </div>
         </div>
     </div>
-</body>
 
+</body>
 </html>
