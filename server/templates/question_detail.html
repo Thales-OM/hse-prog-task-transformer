@@ -106,19 +106,15 @@
                     }
                 {% endfor %}
             {% endif %}
-        }
+        };
 
-        function init() {
-            if (document.readyState === 'loading') {
-                // Document is still loading, wait for DOMContentLoaded
-                document.addEventListener('DOMContentLoaded', SetInferenceButtons);
-            } else {
-                // Document is already ready, call the init function directly
-                SetInferenceButtons();
-            }
+        if (document.readyState === 'loading') {
+            // Document is still loading, wait for DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', SetInferenceButtons);
+        } else {
+            // Document is already ready, call the init function directly
+            SetInferenceButtons();
         }
-
-        init();
     </script>
 
 </body>

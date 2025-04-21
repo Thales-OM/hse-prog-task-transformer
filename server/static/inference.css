@@ -239,7 +239,6 @@ input[type="range"]::-webkit-slider-thumb {
     padding-right: 0;
 }
 
-/* Boolean Input Styling remains the same */
 .boolean-input {
     display: flex;
     gap: 20px;

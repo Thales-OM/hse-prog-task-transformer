@@ -178,13 +178,6 @@
                 return; // Exit early if already submitted
             }
 
-            // Update score values in real-time
-            rangeInputs.forEach(input => {
-                input.addEventListener('input', (e) => {
-                    e.target.parentNode.querySelector('.score-value')?.textContent = e.target.value;
-                });
-            });
-
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
