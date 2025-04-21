@@ -64,18 +64,9 @@ def convert_code_blocks_to_html(text):
     def replace_code_block(match):
         # Extract the code block content
         code_content = match.group(1).strip()
-        
-        # Split the content into lines based on line number indicators
-        lines = re.split(r'\s*\[\d+\]\s*', code_content)
-        
-        # Remove any empty lines that may result from splitting
-        cleaned_lines = [line.strip() for line in lines if line.strip()]
-        
-        # Join the cleaned lines into a single string
-        cleaned_code = '\n'.join(cleaned_lines)
-        
+
         # Create the HTML code block
-        html_code_block = f"<pre><code class='language-python'>\n{cleaned_code}\n</code></pre>"
+        html_code_block = f"<pre><code class='language-python'>\n{code_content}\n</code></pre>"
         return html_code_block
 
     # Replace all code blocks in the text
