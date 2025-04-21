@@ -1,0 +1,1 @@
+docker run --rm -v hse-prog-task-transformer_postgres_data:/source -v .:/backup alpine tar czvf /backup/postgres_data_backup_$(date +%Y%m%d_%H%M%S).tar.gz -C /source .

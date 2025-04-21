@@ -1,0 +1,1 @@
+cat postgres_backup_YYYYMMDD.sql | docker exec -i postgres psql -U postgres postgres
