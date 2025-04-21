@@ -8,8 +8,8 @@ import string
 import json
 from src.models.constraints import PROMPT_TEMPLATE_MULTICHOICE, PROMPT_TEMPLATE_CODERUNNER, PROMPT_TEMPLATE_OTHER, DEFAULT_MODEL_TEMPERATURE
 from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
-from src.schemas import Question, ReasoningLLModelResponse
-from src.database.crud import get_model, get_question, create_inference
+from src.schemas import Question, ReasoningLLModelResponse, GetPromptResponse
+from src.database.crud import get_model, get_question, create_inference, get_question_admin
 
 
 class PromptBuilder:
@@ -79,9 +79,15 @@ async def get_completion(client: AsyncClient, model: str, messages: List[dict], 
     return response
 
 
+async def make_prompt(question_id: int, cursor: cursor) -> GetPromptResponse:
+    question = await get_question_admin(id=question_id, cursor=cursor)
+    messages = construct_messages(question=question)
+    return GetPromptResponse(messages=messages, prompt=messages[1]["content"])
+
+
 async def make_inference(client: AsyncClient, model_id: int, question_id: int, cursor: cursor, temperature: float = DEFAULT_MODEL_TEMPERATURE) -> int:
     model = await get_model(id=model_id, cursor=cursor)
-    question = await get_question(id=question_id, cursor=cursor)
+    question = await get_question_admin(id=question_id, cursor=cursor)
     messages = construct_messages(question=question)
     completion = await get_completion(client=client, model=model.model_name, messages=messages, temperature=temperature)
     model_response = ReasoningLLModelResponse.from_completion(completion=completion)

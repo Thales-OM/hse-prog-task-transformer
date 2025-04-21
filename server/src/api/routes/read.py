@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status, Body
+from fastapi import APIRouter, Depends, status, Body, Path
 from fastapi.exceptions import HTTPException
 from psycopg2.extensions import cursor
 from typing import List, Tuple
@@ -7,9 +7,10 @@ from src.config import settings
 from src.utils import validate_xml
 from src.types import UserGroupCD
 from src.api.deps import get_db_cursor, get_user_group_query
-from src.schemas import GetQuestionResponse, QuestionsRandomIdResponse, Question, GetModelResponse, GetInferenceResponse, GetInferenceScoreResponse, GetUserGroupResponse, MessageSuccessResponse
+from src.schemas import GetQuestionResponse, QuestionsRandomIdResponse, Question, GetModelResponse, GetInferenceResponse, GetInferenceScoreResponse, GetUserGroupResponse, MessageSuccessResponse, GetPromptResponse
 from src.core import ingest_quiz_xml
 from src.database.crud import get_questions_all, get_question, get_random_question_id, get_models_all, get_inference, get_inference_scores_all, get_user_groups_all
+from src.models.core import make_prompt
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -113,3 +114,13 @@ async def users_groups_all(cursor: cursor = Depends(get_db_cursor)):
 )
 async def users_groups_all(user_group_cd: UserGroupCD = Depends(get_user_group_query)):
     return MessageSuccessResponse(message="ok")
+
+
+@router.get(
+    "/prompts/question/{id}",
+    response_model=GetPromptResponse,
+    status_code=status.HTTP_200_OK,
+    summary="Construct a ready prompt for a given question in database",
+)
+async def users_groups_all(id: int = Path(...), cursor: cursor = Depends(get_db_cursor)):
+    return await make_prompt(question_id=id, cursor=cursor)

@@ -29,6 +29,7 @@ class LanguagePack(BaseModel):
     question: "Question"
     inference: "Inference"
     score_list: "ScoreList"
+    tutorial: "Tutorial"
 
 class Main(BaseModel):
     header: BaseName
@@ -41,6 +42,8 @@ class Dashboard(BaseModel):
     random_question_desc: BaseDesc
     inference_scores_nm: BaseName
     inference_scores_desc: BaseDesc
+    tutorial_nm: BaseName
+    tutorial_desc: BaseDesc
 
 class QuestionList(BaseModel):
     header: BaseName
@@ -76,6 +79,15 @@ class ScoreList(BaseModel):
     rating_no_error_nm: BaseName
     rating_relevant_nm: BaseName
 
+class Tutorial(BaseModel):
+    back_button_1: BaseName
+    question_text_header: BaseName
+    answers_header: BaseName
+    inference_header: BaseName
+    rating_helpful_nm: BaseName
+    rating_no_answer_nm: BaseName
+    rating_no_error_nm: BaseName
+    rating_relevant_nm: BaseName
 
 ru_language_pack = LanguagePack(
     main=Main(
@@ -89,6 +101,8 @@ ru_language_pack = LanguagePack(
         random_question_desc="Получите случайное задание из списка",
         inference_scores_nm="История Оценок",
         inference_scores_desc="Посмотрите как другие респонденты оценили ответы ИИ",
+        tutorial_nm="Инструкции",
+        tutorial_desc="Ознакомьтесь с критериями оценки и примерами",
     ),
     question_list=QuestionList(
         header="Задания",
@@ -124,6 +138,16 @@ ru_language_pack = LanguagePack(
         rating_no_error_nm="Не содержит ошибок",
         rating_relevant_nm="Релевантно",
     ),
+    tutorial=Tutorial(
+        back_button_1="Дэшборд",
+        question_text_header="Текст задания",
+        answers_header="Ответы",
+        inference_header="Примеры оценки ИИ помощника",
+        rating_helpful_nm="Полезно",
+        rating_no_answer_nm="Не раскрывает ответ",
+        rating_no_error_nm="Не содержит ошибок",
+        rating_relevant_nm="Релевантно",
+    )
 )
 
 en_language_pack = LanguagePack(
@@ -138,6 +162,8 @@ en_language_pack = LanguagePack(
         random_question_desc="Pick a random question from the list",
         inference_scores_nm="User Scores",
         inference_scores_desc="See how other users scored AI suggestions",
+        tutorial_nm="Scoring Tutorial",
+        tutorial_desc="See how the scoring system is intended to be used (with examples)"
     ),
     question_list=QuestionList(
         header="Questions List",
@@ -173,6 +199,16 @@ en_language_pack = LanguagePack(
         rating_no_error_nm="Does not contain errors",
         rating_relevant_nm="Relevance",
     ),
+    tutorial=Tutorial(
+        back_button_1="Back to Dashboard",
+        question_text_header="Question Text",
+        answers_header="Answers",
+        inference_header="AI Inference Scoring Example",
+        rating_helpful_nm="Helpful",
+        rating_no_answer_nm="Does not reveal answer",
+        rating_no_error_nm="Does not contain errors",
+        rating_relevant_nm="Relevance",
+    )
 )
 
 

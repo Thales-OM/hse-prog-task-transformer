@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ languages.current }}">
 
 <head>
     <meta charset="UTF-8">
@@ -54,6 +54,13 @@
                 <div class="card-content">
                     <h2>{{ languages.pack.inference_scores_nm }}</h2>
                     <p>{{ languages.pack.inference_scores_desc }}</p>
+                </div>
+            </a>
+
+            <a href="/pages/{{ user_group_cd }}/tutorial" class="dashboard-card">
+                <div class="card-content">
+                    <h2>{{ languages.pack.tutorial_nm }}</h2>
+                    <p>{{ languages.pack.tutorial_desc }}</p>
                 </div>
             </a>
         </div>

@@ -195,6 +195,37 @@ async def get_question(user_group_cd: UserGroupCD, id: int, cursor: cursor) -> O
     return GetQuestionResponse(id=id, name=name, type=_type, text=text, answers=answers, test_cases=test_cases, inference_ids=inference_ids)
 
 
+async def get_question_admin(id: int, cursor: cursor) -> Optional[GetQuestionResponse]:
+    select_query = """
+        SELECT 
+            id, name, type, text 
+        FROM 
+            prod_storage.questions 
+        WHERE 
+            id = %s 
+            AND deleted_flg = false
+        ;
+    """
+    cursor.execute(select_query, (id, ))
+    question_record = cursor.fetchone()
+    if question_record is None:
+        return None
+    
+    id, name, _type, text = question_record
+
+    answers = []
+    test_cases = []
+    if _type in QUESTION_MULTICHOICE_TYPES:
+        answers = await get_answers_multichoice(question_id=id, cursor=cursor)
+    elif _type in QUESTION_CODERUNNER_TYPES:
+        answers = await get_answers_coderunner(question_id=id, cursor=cursor)
+        test_cases = await get_test_cases(question_id=id, cursor=cursor)
+    
+    inference_ids = await get_question_inference_ids(question_id=id, cursor=cursor)
+
+    return GetQuestionResponse(id=id, name=name, type=_type, text=text, answers=answers, test_cases=test_cases, inference_ids=inference_ids)
+
+
 async def get_answers_multichoice(question_id: int, cursor: cursor) -> List[AnswerMultichoice]:
     select_query = """
         SELECT 

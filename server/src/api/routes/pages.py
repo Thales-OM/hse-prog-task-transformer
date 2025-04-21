@@ -145,6 +145,14 @@ async def dashboard(request: Request, user_group_cd: str = Path(...), lang: Lang
     )
 
 
+@router.get("/{user_group_cd}/tutorial", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
+async def main(request: Request, user_group_cd: str = Path(...), lang: Language = Depends(get_language_query)):
+    return templates.TemplateResponse(
+        "tutorial.html",
+        {"request": request, "user_group_cd": user_group_cd, "languages": LanguagePageResponse(current=lang, pack=language_manager.get_language_pack(language=lang).tutorial)}
+    )
+
+
 @router.get("/main", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
 async def main(request: Request, lang: Language = Depends(get_language_query)):
     try:

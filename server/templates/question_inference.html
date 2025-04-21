@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ languages.current }}">
 
 <head>
     <meta charset="UTF-8">
@@ -90,34 +90,66 @@
                 <div class="scoring-form">
                     <h3>{{ languages.pack.rating_header }}</h3>
                     <form id="scoreForm">
+                        <!-- Clarity (using helpful field) -->
                         <div class="form-group">
                             <label>{{ languages.pack.rating_helpful_nm }}</label>
                             <div class="score-input">
-                                <input type="range" name="helpful" min="1" max="10" value="5" required>
-                                <span class="score-value">5</span>
+                                <input type="range" name="helpful" min="1" max="5" value="3" required style="width: 100%; box-sizing: border-box;">
+                                <div class="slider-labels">
+                                    <span>1 (Unclear)</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                    <span>5 (Very Clear)</span>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Does Not Reveal Answer -->
                         <div class="form-group">
                             <label>{{ languages.pack.rating_no_answer_nm }}</label>
                             <div class="score-input">
-                                <input type="range" name="does_not_reveal_answer" min="1" max="10" value="5" required>
-                                <span class="score-value">5</span>
+                                <input type="range" name="does_not_reveal_answer" min="1" max="5" value="3" required style="width: 100%; box-sizing: border-box;">
+                                <div class="slider-labels">
+                                    <span>1 (Reveals Answer)</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                    <span>5 (No Hint)</span>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Code/Logic Errors (using does_not_contain_errors field) -->
                         <div class="form-group">
                             <label>{{ languages.pack.rating_no_error_nm }}</label>
-                            <div class="score-input">
-                                <input type="range" name="does_not_contain_errors" min="1" max="10" value="5" required>
-                                <span class="score-value">5</span>
+                            <div class="boolean-input">
+                                <label>
+                                    <input type="radio" name="does_not_contain_errors" value="5" required>
+                                    <span class="radio-label">No Errors</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="does_not_contain_errors" value="1">
+                                    <span class="radio-label">Contains Errors</span>
+                                </label>
                             </div>
                         </div>
+
+                        <!-- Conciseness (using only_relevant_info field) -->
                         <div class="form-group">
                             <label>{{ languages.pack.rating_relevant_nm }}</label>
                             <div class="score-input">
-                                <input type="range" name="only_relevant_info" min="1" max="10" value="5" required>
-                                <span class="score-value">5</span>
+                                <input type="range" name="only_relevant_info" min="1" max="5" value="3" required style="width: 100%; box-sizing: border-box;">
+                                <div class="slider-labels">
+                                    <span>1 (Wordy)</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                    <span>5 (Concise)</span>
+                                </div>
                             </div>
                         </div>
+
                         <button type="submit" class="submit-button">Submit Rating</button>
                     </form>
                     <div class="alert alert-success" style="display: none;">
@@ -149,7 +181,7 @@
             // Update score values in real-time
             rangeInputs.forEach(input => {
                 input.addEventListener('input', (e) => {
-                    e.target.parentNode.querySelector('.score-value').textContent = e.target.value;
+                    e.target.parentNode.querySelector('.score-value')?.textContent = e.target.value;
                 });
             });
 
@@ -210,5 +242,4 @@
         });
     </script>
 </body>
-
 </html>

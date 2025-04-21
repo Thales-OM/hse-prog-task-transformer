@@ -1,12 +1,12 @@
 from pydantic import BaseModel, model_validator, Field, ConfigDict, field_validator, ValidationError
-from typing import Optional, List, Union, get_args, Any
+from typing import Optional, List, Union, get_args, Any, Dict
 import re
 from openai.types.chat import ChatCompletion
 from src.exceptions import  UnrecognizedQuestionTypeException, AnswerMismatchException, InvalidQuestionException
 from src.constraints import KNOWN_QUESTION_TYPES, QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
 from src.utils import render_md_to_html, clean_html_tags, convert_code_blocks_to_html
 from src.models.constraints import DEFAULT_MODEL_TEMPERATURE
-from src.types import UserGroupCD, LevelCD, PEM, InferenceScoreVal, ModelTemperature, Language
+from src.types import UserGroupCD, LevelCD, PEM, InferenceScoreVal, ModelTemperature, Language, BinaryInferenceScoreVal
 
 
 class MessageSuccessResponse(BaseModel):
@@ -216,7 +216,7 @@ class PostInferenceRequest(BaseModel):
 class InferenceScore(BaseModel):
     helpful: InferenceScoreVal
     does_not_reveal_answer: InferenceScoreVal
-    does_not_contain_errors: InferenceScoreVal
+    does_not_contain_errors: BinaryInferenceScoreVal
     only_relevant_info: InferenceScoreVal
 
 class PostInferenceScoreRequest(InferenceScore):
@@ -270,4 +270,8 @@ class LanguagePageResponse(BaseModel):
     available: List[Language] = [lang for lang in get_args(Language)]
     current: Language
     pack: Any
+
+class GetPromptResponse(BaseModel):
+    messages: List[Dict[str, str]]
+    prompt: str
     
