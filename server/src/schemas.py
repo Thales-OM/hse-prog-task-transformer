@@ -4,7 +4,7 @@ import re
 from openai.types.chat import ChatCompletion
 from src.exceptions import  UnrecognizedQuestionTypeException, AnswerMismatchException, InvalidQuestionException
 from src.constraints import KNOWN_QUESTION_TYPES, QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
-from src.utils import render_md_to_html, clean_html_tags, convert_code_blocks_to_html
+from src.utils import clean_html_tags, code_md_to_html, wrap_code_in_html
 from src.models.constraints import DEFAULT_MODEL_TEMPERATURE
 from src.types import UserGroupCD, LevelCD, PEM, InferenceScoreVal, ModelTemperature, Language, BinaryInferenceScoreVal
 
@@ -41,14 +41,19 @@ class AnswerPageResponse(Answer):
     @classmethod
     def from_answer(cls, answer: Answer) -> "AnswerPageResponse":
         answer_dict = answer.model_dump()
-        return cls(**answer_dict, text_rendered=convert_code_blocks_to_html(text=answer.text), text_clean=clean_html_tags(answer.text))
+        return cls(**answer_dict, text_rendered=wrap_code_in_html(text=answer.text), text_clean=clean_html_tags(answer.text))
 
 
 class AnswerMultichoicePageResponse(AnswerMultichoice, AnswerPageResponse):
-    pass
+    @classmethod
+    def from_answer(cls, answer: AnswerMultichoice) -> "AnswerMultichoicePageResponse":
+        answer_dict = answer.model_dump()
+        return cls(**answer_dict, text_rendered=answer.text, text_clean=clean_html_tags(answer.text))
+
 
 class AnswerCoderunnerPageResponse(AnswerCoderunner, AnswerPageResponse):
     pass
+
 
 class TestCase(BaseModel):
     code: Optional[str] = None
@@ -81,7 +86,11 @@ class Question(BaseModel):
             if any([answer_type is not first_answer_type for answer_type in answer_types]):
                 raise AnswerMismatchException("Different answer types received in question")
             expected_answer_type = first_answer_type
-        
+
+            # Avoid casting Answers if inside PageResponse object
+            if isinstance(self, QuestionPageResponse):
+                return self
+
             if self.type in QUESTION_MULTICHOICE_TYPES and expected_answer_type is not AnswerMultichoice:
                 try:
                     self.answers = [AnswerMultichoice(**answer.model_dump()) for answer in self.answers]
@@ -108,10 +117,9 @@ class GetQuestionResponse(Question):
     inference_ids: List[int] = Field(default_factory=list)
 
 class QuestionPageResponse(GetQuestionResponse):
-    id: int
     text_rendered: str
     text_clean: str
-    answers: List[AnswerPageResponse] = Field(default_factory=list)
+    answers: List[Union[AnswerMultichoicePageResponse, AnswerCoderunnerPageResponse, AnswerPageResponse]] = Field(default_factory=list)
     test_cases: List[TestCase] = Field(default_factory=list)
 
     @classmethod
@@ -123,18 +131,13 @@ class QuestionPageResponse(GetQuestionResponse):
             text=question_response.text,
             answers=[answer.render() for answer in question_response.answers],
             test_cases=question_response.test_cases,
-            text_rendered=convert_code_blocks_to_html(text=question_response.text), 
+            text_rendered=code_md_to_html(text=question_response.text), 
             text_clean=clean_html_tags(question_response.text),
             inference_ids=question_response.inference_ids
         )
 
 
-class QuestionInferencePageResponse(GetQuestionResponse):
-    id: int
-    text_rendered: str
-    text_clean: str
-    answers: List[AnswerPageResponse] = Field(default_factory=list)
-    test_cases: List[TestCase] = Field(default_factory=list)
+class QuestionInferencePageResponse(QuestionPageResponse):
     inference_id: int
     inference_text: str
 
@@ -147,7 +150,7 @@ class QuestionInferencePageResponse(GetQuestionResponse):
             text=question_response.text,
             answers=[answer.render() for answer in question_response.answers],
             test_cases=question_response.test_cases,
-            text_rendered=convert_code_blocks_to_html(text=question_response.text), 
+            text_rendered=code_md_to_html(text=question_response.text), 
             text_clean=clean_html_tags(question_response.text),
             inference_ids=question_response.inference_ids,
             inference_id=inference.id,

@@ -123,3 +123,11 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+.question-detail pre {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 4px solid #ddd;
+    overflow-x: auto;
+}

@@ -53,7 +53,7 @@
                     <h2>{{ languages.pack.answers_header }}</h2>
                     {% for answer in question.answers %}
                     <div class="answer-item {% if answer.is_correct %}correct-answer{% endif %}">
-                        <p>{{ answer.text | safe }}</p>
+                        <p>{{ answer.text_rendered | safe }}</p>
                         {% if answer.is_correct %}<p><strong>Correct Answer</strong></p>{% endif %}
                         {% if answer.fraction %}<p>Fraction: {{ answer.fraction }}</p>{% endif %}
                     </div>

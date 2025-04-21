@@ -50,9 +50,9 @@
                         <span>{{ languages.pack.rating_no_answer_nm }}</span>
                         <span class="score-value">{{ score.does_not_reveal_answer }}</span>
                     </div>
-                    <div class="score-item accuracy" data-score="{{ score.does_not_contain_errors }}">
+                    <div class="score-item score-item-bool accuracy" data-score="{{ score.does_not_contain_errors }}">
                         <span>{{ languages.pack.rating_no_error_nm }}</span>
-                        <span class="score-value">{{ score.does_not_contain_errors }}</span>
+                        <span class="score-value">{{ score.does_not_contain_errors > 1 }}</span>
                     </div>
                     <div class="score-item formatting" data-score="{{ score.only_relevant_info }}">
                         <span>{{ languages.pack.rating_relevant_nm }}</span>
@@ -66,17 +66,44 @@
 
     <script>
     // Apply color coding based on score values
-    document.querySelectorAll('.score-item').forEach(item => {
+    // Handle score items that are NOT boolean
+    document.querySelectorAll('.score-item:not(.score-item-bool)').forEach(item => {
         const score = parseInt(item.dataset.score);
-        if(score <= 3) {
+        if (score <= 1) {
+            item.style.backgroundColor = '#ffcdd2'; // Soft red
+            item.style.color = '#b71c1c'; // Dark red text
+        } else if (score <=2) {
             item.style.backgroundColor = '#ffebee';
             item.style.color = '#b71c1c';
-        } else if(score <= 6) {
+        } else if (score <= 3) {
             item.style.backgroundColor = '#fff3e0';
             item.style.color = '#ef6c00';
-        } else {
+        } else if (score <=4) {
             item.style.backgroundColor = '#e8f5e9';
             item.style.color = '#2e7d32';
+        } else {
+            item.style.backgroundColor = '#c8e6c9'; // Soft green
+            item.style.color = '#2e7d32'; // Dark green text
+        }
+    });
+
+    // Handle score items that are boolean
+    document.querySelectorAll('.score-item-bool').forEach(item => {
+        // Fetch the score value from the 'score-value' span
+        const scoreValueElement = item.querySelector('.score-value');
+        
+        // Get the text content of the score value
+        const scoreValue = scoreValueElement.textContent.trim(); // Use trim() to remove any extra whitespace
+
+        console.log(scoreValue)
+
+        // Check if the score value is "true" or "false"
+        if (scoreValue.toLowerCase() === 'true') {
+            item.style.backgroundColor = '#c8e6c9'; // Soft green
+            item.style.color = '#2e7d32'; // Dark green text
+        } else {
+            item.style.backgroundColor = '#ffcdd2'; // Soft red
+            item.style.color = '#b71c1c'; // Dark red text
         }
     });
     </script>

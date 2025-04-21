@@ -41,23 +41,7 @@ def get_connection_id(connection: connection) -> int:
     return id(connection)
 
 
-def render_md_to_html(text: str) -> str:
-    """Convert Markdown to HTML while preserving existing html tags"""
-    escaped_text = escape_html(text)
-     
-    # Convert Markdown to HTML
-    markdown_html = markdown.markdown(escaped_text)
-        
-    # Return the final rendered HTML
-    return markdown_html
-
-
-def escape_html(text: str) -> str:
-    # Escape HTML tags to prevent them from being rendered
-    return re.sub(r'&', '&amp;', re.sub(r'<', '&lt;', re.sub(r'>', '&gt;', text)))
-
-
-def convert_code_blocks_to_html(text):
+def code_md_to_html(text):
     # Regular expression to find code blocks with the pattern ```lang:python
     code_block_pattern = r'```lang:\w+;;(.*?)```'
     
@@ -80,6 +64,11 @@ def clean_html_tags(text: str) -> str:
     soup = BeautifulSoup(text, "html.parser")
     clean_text = soup.get_text()  # Extract text without HTML tags
     return clean_text.strip()  # Remove leading and trailing whitespace
+
+
+def wrap_code_in_html(text: str) -> str:
+    html_code_block = f"<pre><code class='language-python'>\n{text}\n</code></pre>"
+    return html_code_block
 
 
 def form_to_key(text):
