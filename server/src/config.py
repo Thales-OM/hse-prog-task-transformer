@@ -38,8 +38,8 @@ class LoggingSettings(BaseSettings):
 
 class ServerSettings(BaseSettings):
     protocol: Literal["http", "https"] = DEFAULT_DEV_PROTOCOL
-    host: str = Field(DEFAULT_DEV_HOST, min_length=1)
-    port: str = DEFAULT_DEV_PORT
+    host: str = Field(DEFAULT_DEV_HOST, min_length=1, env="SERVER_HOST")
+    port: int = Field(DEFAULT_DEV_PORT, env="SERVER_PORT")
     public_api_key: str = Field(None, env="PUBLIC_API_KEY")
 
     def set_public_api_key(self, public_pem: str) -> None:
@@ -66,7 +66,7 @@ class ServerSettings(BaseSettings):
 
     @property
     def url(self) -> str:
-        return self.protocol + "://" + self.host + ":" + self.port
+        return self.protocol + "://" + self.host + ":" + str(self.port)
 
     @field_validator("port", mode="after")
     @classmethod

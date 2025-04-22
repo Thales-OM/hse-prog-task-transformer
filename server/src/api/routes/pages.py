@@ -12,6 +12,10 @@ from src.schemas import QuestionPageResponse, Question, GetQuestionResponse, Get
 from src.language import language_manager
 from src.types import Language
 from src.api.deps import get_language_query
+from src.logger import LoggerFactory
+
+
+logger = LoggerFactory.getLogger(__name__)
 
 
 BACKEND_URL = settings.server.url
@@ -155,6 +159,7 @@ async def main(request: Request, user_group_cd: str = Path(...), lang: Language 
 
 @router.get("/main", response_class=HTMLResponse, status_code=status.HTTP_200_OK)
 async def main(request: Request, lang: Language = Depends(get_language_query)):
+    logger.info("Attempting GET on " + f"{BACKEND_URL}/read/users/groups/all")
     try:
         async with httpx.AsyncClient() as client:
             response = await client.get(f"{BACKEND_URL}/read/users/groups/all")
