@@ -17,8 +17,10 @@ logger = LoggerFactory.getLogger(__name__)
 
 
 def validate_xml(data: str) -> None:
-    parser = etree.XMLParser(no_network=True, resolve_entities=False)  # Disable external entities for security
-    
+    parser = etree.XMLParser(
+        no_network=True, resolve_entities=False
+    )  # Disable external entities for security
+
     try:
         # Attempt to parse the XML string
         etree.fromstring(data.encode(), parser)
@@ -27,7 +29,9 @@ def validate_xml(data: str) -> None:
         raise InvalidXMLException(f"Invalid XML syntax:\n{e}")
 
 
-def safe_deep_find(element: Tag, names: List[str], default: Any = None, recursive: bool = True) -> Any:
+def safe_deep_find(
+    element: Tag, names: List[str], default: Any = None, recursive: bool = True
+) -> Any:
     current_element = element
     for name in names:
         current_element = current_element.find(name=name, recursive=recursive)
@@ -43,19 +47,23 @@ def get_connection_id(connection: connection) -> int:
 
 def code_md_to_html(text):
     # Regular expression to find code blocks with the pattern ```lang:python
-    code_block_pattern = r'```lang:\w+;;(.*?)```'
-    
+    code_block_pattern = r"```lang:\w+;;(.*?)```"
+
     def replace_code_block(match):
         # Extract the code block content
         code_content = match.group(1).strip()
 
         # Create the HTML code block
-        html_code_block = f"<pre><code class='language-python'>\n{code_content}\n</code></pre>"
+        html_code_block = (
+            f"<pre><code class='language-python'>\n{code_content}\n</code></pre>"
+        )
         return html_code_block
 
     # Replace all code blocks in the text
-    converted_text = re.sub(code_block_pattern, replace_code_block, text, flags=re.DOTALL)
-    
+    converted_text = re.sub(
+        code_block_pattern, replace_code_block, text, flags=re.DOTALL
+    )
+
     return converted_text
 
 
@@ -74,14 +82,14 @@ def wrap_code_in_html(text: str) -> str:
 def form_to_key(text):
     """
     Replace all newline escape symbols with actual newlines.
-    
+
     Args:
     text (str): The input string containing newline escape symbols.
-    
+
     Returns:
     str: The modified string with actual newlines.
     """
-    return text.replace('\\n', '\n')
+    return text.replace("\\n", "\n")
 
 
 def get_request_ip(request: Request) -> str:

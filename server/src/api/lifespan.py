@@ -10,7 +10,7 @@ async def lifespan(app: FastAPI):
         ConnectionPoolManager.initialize_pool()
         await SessionStorage.initialize()
         yield
-    finally: 
+    finally:
         # Ensure pool is closed
         ConnectionPoolManager.close_pool()
         await SessionStorage.close()

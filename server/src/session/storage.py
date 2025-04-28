@@ -14,6 +14,7 @@ logger = LoggerFactory.getLogger(__name__)
 
 class RedisConnection:
     """Wrapper for a Redis connection with session operations"""
+
     def __init__(self, connection: Redis):
         self._connection = connection
 
@@ -37,7 +38,7 @@ class RedisConnection:
             session = UserSessionData.model_validate_json(existing)
             for key, value in update_data.items():
                 setattr(session, key, value)
-        
+
         await self._connection.set(ip, session.model_dump_json(), ex=settings.redis.ex)
         return session
 
@@ -67,9 +68,9 @@ class SessionStorage:
         if cls._redis_pool is None:
             try:
                 cls._redis_pool = ConnectionPool.from_url(
-                    url=settings.redis.url, 
+                    url=settings.redis.url,
                     max_connections=settings.redis.pool_size,
-                    decode_responses=False
+                    decode_responses=False,
                 )
                 logger.info("Redis connection pool initialized successfully")
             except RedisError as e:
@@ -87,14 +88,14 @@ class SessionStorage:
     async def get_connection(cls) -> AsyncGenerator:
         """
         Get a Redis connection as a context manager.
-        
+
         Usage:
             async with storage.get_connection() as conn:
                 await conn.get_session(...)
         """
         if cls._redis_pool is None:
             await cls.initialize()
-        
+
         redis = Redis(connection_pool=cls._redis_pool)
         redis_connection = RedisConnection(connection=redis)
         try:

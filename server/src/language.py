@@ -19,8 +19,11 @@ class LanguageManager(BaseModel):
     def validate_languages(self):
         for language in get_args(Language):
             if language not in self.language_packs:
-                raise ValidationError(f"A language pack is missing for a declared language: {language}")
+                raise ValidationError(
+                    f"A language pack is missing for a declared language: {language}"
+                )
         return self
+
 
 class LanguagePack(BaseModel):
     main: "Main"
@@ -31,8 +34,10 @@ class LanguagePack(BaseModel):
     score_list: "ScoreList"
     tutorial: "Tutorial"
 
+
 class Main(BaseModel):
     header: BaseName
+
 
 class Dashboard(BaseModel):
     header: BaseName
@@ -45,10 +50,12 @@ class Dashboard(BaseModel):
     tutorial_nm: BaseName
     tutorial_desc: BaseDesc
 
+
 class QuestionList(BaseModel):
     header: BaseName
     back_button_1: BaseName
     detail_link: BaseName
+
 
 class Question(BaseModel):
     back_button_1: BaseName
@@ -57,6 +64,7 @@ class Question(BaseModel):
     test_cases_header: BaseName
     inferences_header: BaseName
     inference_item_nm: BaseName
+
 
 class Inference(BaseModel):
     back_button_1: BaseName
@@ -71,6 +79,7 @@ class Inference(BaseModel):
     rating_no_error_nm: BaseName
     rating_relevant_nm: BaseName
 
+
 class ScoreList(BaseModel):
     header: BaseName
     back_button_1: BaseName
@@ -78,6 +87,7 @@ class ScoreList(BaseModel):
     rating_no_answer_nm: BaseName
     rating_no_error_nm: BaseName
     rating_relevant_nm: BaseName
+
 
 class Tutorial(BaseModel):
     back_button_1: BaseName
@@ -88,6 +98,7 @@ class Tutorial(BaseModel):
     rating_no_answer_nm: BaseName
     rating_no_error_nm: BaseName
     rating_relevant_nm: BaseName
+
 
 ru_language_pack = LanguagePack(
     main=Main(
@@ -147,13 +158,11 @@ ru_language_pack = LanguagePack(
         rating_no_answer_nm="Не раскрывает ответ",
         rating_no_error_nm="Не содержит ошибок",
         rating_relevant_nm="Релевантно",
-    )
+    ),
 )
 
 en_language_pack = LanguagePack(
-    main=Main(
-        header="Choose Your Study Program"
-    ),
+    main=Main(header="Choose Your Study Program"),
     dashboard=Dashboard(
         header="How Does AI Make Programming Clearer? Your Opinion Matters!",
         question_list_nm="Questions List",
@@ -163,7 +172,7 @@ en_language_pack = LanguagePack(
         inference_scores_nm="User Scores",
         inference_scores_desc="See how other users scored AI suggestions",
         tutorial_nm="Scoring Tutorial",
-        tutorial_desc="See how the scoring system is intended to be used (with examples)"
+        tutorial_desc="See how the scoring system is intended to be used (with examples)",
     ),
     question_list=QuestionList(
         header="Questions List",
@@ -208,7 +217,7 @@ en_language_pack = LanguagePack(
         rating_no_answer_nm="Does not reveal answer",
         rating_no_error_nm="Does not contain errors",
         rating_relevant_nm="Relevance",
-    )
+    ),
 )
 
 

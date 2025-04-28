@@ -7,10 +7,8 @@ from src.schemas import MessageSuccessResponse
 logger = LoggerFactory.getLogger(__name__)
 
 
-router = APIRouter(
-    tags=["health"],
-    prefix=""
-)
+router = APIRouter(tags=["health"], prefix="")
+
 
 @router.get(
     "/",

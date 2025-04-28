@@ -2,7 +2,30 @@ import os
 from pydantic import Field, model_validator, field_validator
 from pydantic_settings import BaseSettings
 from typing import Optional, Union, Literal
-from src.constraints import DEFAULT_LOG_LEVEL, DEFAULT_POOL_CONN_RETRIES, DEFAULT_POOL_CONN_RETRY_DELAY, DEFAULT_DEV_PORT, DEFAULT_DEV_HOST, DEFAULT_DEV_PROTOCOL, DEFAULT_FRONTEND_LANGUAGE, DEFAULT_POSTGRES_HOST, DEFAULT_POSTGRES_PORT, DEFAULT_POSTGRES_DB, DEFAULT_POSTGRES_USER, DEFAULT_POSTGRES_PASSWORD, DEFAULT_POOL_MINCONN, DEFAULT_POOL_MAXCONN, DEFAULT_REDIS_PASSWORD, DEFAULT_REDIS_USER, DEFAULT_REDIS_USER_PASSWORD, DEFAULT_REDIS_HOST, DEFAULT_REDIS_PORT, DEFAULT_REDIS_POOL_SIZE, DEFAULT_REDIS_DB, DEFAULT_REDIS_EX
+from src.constraints import (
+    DEFAULT_LOG_LEVEL,
+    DEFAULT_POOL_CONN_RETRIES,
+    DEFAULT_POOL_CONN_RETRY_DELAY,
+    DEFAULT_DEV_PORT,
+    DEFAULT_DEV_HOST,
+    DEFAULT_DEV_PROTOCOL,
+    DEFAULT_FRONTEND_LANGUAGE,
+    DEFAULT_POSTGRES_HOST,
+    DEFAULT_POSTGRES_PORT,
+    DEFAULT_POSTGRES_DB,
+    DEFAULT_POSTGRES_USER,
+    DEFAULT_POSTGRES_PASSWORD,
+    DEFAULT_POOL_MINCONN,
+    DEFAULT_POOL_MAXCONN,
+    DEFAULT_REDIS_PASSWORD,
+    DEFAULT_REDIS_USER,
+    DEFAULT_REDIS_USER_PASSWORD,
+    DEFAULT_REDIS_HOST,
+    DEFAULT_REDIS_PORT,
+    DEFAULT_REDIS_POOL_SIZE,
+    DEFAULT_REDIS_DB,
+    DEFAULT_REDIS_EX,
+)
 from src.models.constraints import DEFAULT_OPENAI_BASE_URL
 from src.exceptions import PublicKeyMissingException
 from src.types import Language
@@ -19,7 +42,7 @@ class PostgresSettings(BaseSettings):
     pool_conn_retry_delay: int = DEFAULT_POOL_CONN_RETRY_DELAY
     minconn: int = Field(DEFAULT_POOL_MINCONN, env="POOL_MINCONN")
     maxconn: int = Field(DEFAULT_POOL_MAXCONN, env="POOL_MAXCONN")
-        
+
     @property
     def dsn(self) -> str:
         return f"postgresql://{self.user}:{self.password}@{self.host}:{self.port}/{self.dbname}"
@@ -27,7 +50,7 @@ class PostgresSettings(BaseSettings):
 
 class LoggingSettings(BaseSettings):
     log_level: str = Field(DEFAULT_LOG_LEVEL, env="LOG_LEVEL")
-    
+
     @model_validator(mode="after")
     def validate_log_level(self):
         valid_levels = ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL")
@@ -74,10 +97,10 @@ class ServerSettings(BaseSettings):
         try:
             port_int = int(value)
         except ValueError:
-            raise ValueError('Port must be an integer represented as a string.')
+            raise ValueError("Port must be an integer represented as a string.")
 
         if not (0 <= port_int <= 65535):
-            raise ValueError('Port must be between 0 and 65535.')
+            raise ValueError("Port must be between 0 and 65535.")
 
         return value
 
@@ -87,7 +110,9 @@ class OpenAISettings(BaseSettings):
 
 
 class FrontendSettings(BaseSettings):
-    default_language: Language = Field(DEFAULT_FRONTEND_LANGUAGE, env="DEFAULT_FRONTEND_LANGUAGE")
+    default_language: Language = Field(
+        DEFAULT_FRONTEND_LANGUAGE, env="DEFAULT_FRONTEND_LANGUAGE"
+    )
 
 
 class RedisSettings(BaseSettings):

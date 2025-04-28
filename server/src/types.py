@@ -9,6 +9,6 @@ InferenceScoreVal = Annotated[int, Field(..., ge=1, le=5)]
 BinaryInferenceScoreVal = Literal[1, 5]
 ModelTemperature = Annotated[float, Field(..., gt=0.0, le=1.0)]
 
-Language = Literal['ru', 'en']
+Language = Literal["ru", "en"]
 BaseName = Annotated[str, Field(..., min_length=1)]
 BaseDesc = Annotated[str, Field(..., min_length=1)]
