@@ -75,9 +75,17 @@ class Inference(BaseModel):
     inference_header: BaseName
     rating_header: BaseName
     rating_helpful_nm: BaseName
+    rating_helpful_min_nm: BaseName
+    rating_helpful_max_nm: BaseName
     rating_no_answer_nm: BaseName
+    rating_no_answer_min_nm: BaseName
+    rating_no_answer_max_nm: BaseName
     rating_no_error_nm: BaseName
+    rating_no_error_true_nm: BaseName
+    rating_no_error_false_nm: BaseName
     rating_relevant_nm: BaseName
+    rating_relevant_min_nm: BaseName
+    rating_relevant_max_nm: BaseName
 
 
 class ScoreList(BaseModel):
@@ -136,10 +144,18 @@ ru_language_pack = LanguagePack(
         test_cases_header="Тестовые данные",
         inference_header="ИИ помощник",
         rating_header="Оцените ответ",
-        rating_helpful_nm="Полезно",
+        rating_helpful_nm="Полезно для решения/понимания задачи",
+        rating_helpful_min_nm="Никак",
+        rating_helpful_max_nm="Очень",
         rating_no_answer_nm="Не раскрывает ответ",
-        rating_no_error_nm="Не содержит ошибок",
-        rating_relevant_nm="Релевантно",
+        rating_no_answer_min_nm="Явно показан ответ",
+        rating_no_answer_max_nm="Нет намеков",
+        rating_no_error_nm="Не содержит ошибок (фактических/в коде)",
+        rating_no_error_true_nm="Нет ошибок",
+        rating_no_error_false_nm="Есть",
+        rating_relevant_nm="Только релевантная информация",
+        rating_relevant_min_nm="Много бессмыссленого текста",
+        rating_relevant_max_nm="Нет ничего лишнего"
     ),
     score_list=ScoreList(
         header="История оценок",
@@ -195,10 +211,18 @@ en_language_pack = LanguagePack(
         test_cases_header="Test Cases",
         inference_header="AI Inference",
         rating_header="Rate this Analysis",
-        rating_helpful_nm="Helpful",
+        rating_helpful_nm="Helps find solution",
+        rating_helpful_min_nm="Unclear",
+        rating_helpful_max_nm="Very Clear",
         rating_no_answer_nm="Does not reveal answer",
+        rating_no_answer_min_nm="Reveals Answer",
+        rating_no_answer_max_nm="No Hint",
         rating_no_error_nm="Does not contain errors",
+        rating_no_error_true_nm="No Errors",
+        rating_no_error_false_nm="Contains Errors",
         rating_relevant_nm="Relevance",
+        rating_relevant_min_nm="Wordy",
+        rating_relevant_max_nm="Conscise"
     ),
     score_list=ScoreList(
         header="User Scores",

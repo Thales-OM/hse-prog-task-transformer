@@ -44,9 +44,7 @@
 
                 <div class="question-text">
                     <h2>{{ languages.pack.question_text_header }}</h2>
-                    <md-block>
-                        <p>{{ question.text_rendered | safe }}</p>
-                    </md-block>
+                    <p>{{ question.text_rendered | safe }}</p>
                 </div>
 
                 {% if question.answers %}
@@ -81,11 +79,9 @@
                 <h2>{{ languages.pack.inference_header }}</h2>
                 <div class="inference-content">
                     {% if question.inference_text %}
-                    <md-block>
-                        {{ question.inference_text | safe }}
-                    </md-block>
+                        <p>{{ question.inference_text | safe }}</p>
                     {% else %}
-                    <p class="no-inference">No AI analysis available for this question.</p>
+                        <p class="no-inference">No AI analysis available for this question.</p>
                     {% endif %}
                 </div>
                 <div class="scoring-form">
@@ -97,11 +93,11 @@
                             <div class="score-input">
                                 <input type="range" name="helpful" min="1" max="5" value="3" required style="width: 100%; box-sizing: border-box;">
                                 <div class="slider-labels">
-                                    <span>1 (Unclear)</span>
+                                    <span>1 ({{ languages.pack.rating_helpful_min_nm }})</span>
                                     <span>2</span>
                                     <span>3</span>
                                     <span>4</span>
-                                    <span>5 (Very Clear)</span>
+                                    <span>5 ({{ languages.pack.rating_helpful_max_nm }})</span>
                                 </div>
                             </div>
                         </div>
@@ -112,11 +108,11 @@
                             <div class="score-input">
                                 <input type="range" name="does_not_reveal_answer" min="1" max="5" value="3" required style="width: 100%; box-sizing: border-box;">
                                 <div class="slider-labels">
-                                    <span>1 (Reveals Answer)</span>
+                                    <span>1 ({{ languages.pack.rating_no_answer_min_nm }})</span>
                                     <span>2</span>
                                     <span>3</span>
                                     <span>4</span>
-                                    <span>5 (No Hint)</span>
+                                    <span>5 ({{ languages.pack.rating_no_answer_max_nm }})</span>
                                 </div>
                             </div>
                         </div>
@@ -127,11 +123,11 @@
                             <div class="boolean-input">
                                 <label>
                                     <input type="radio" name="does_not_contain_errors" value="5" required>
-                                    <span class="radio-label">No Errors</span>
+                                    <span class="radio-label">{{ languages.pack.rating_no_error_true_nm }}</span>
                                 </label>
                                 <label>
                                     <input type="radio" name="does_not_contain_errors" value="1">
-                                    <span class="radio-label">Contains Errors</span>
+                                    <span class="radio-label">{{ languages.pack.rating_no_error_false_nm }}</span>
                                 </label>
                             </div>
                         </div>
@@ -142,11 +138,11 @@
                             <div class="score-input">
                                 <input type="range" name="only_relevant_info" min="1" max="5" value="3" required style="width: 100%; box-sizing: border-box;">
                                 <div class="slider-labels">
-                                    <span>1 (Wordy)</span>
+                                    <span>1 ({{ languages.pack.rating_relevant_min_nm }})</span>
                                     <span>2</span>
                                     <span>3</span>
                                     <span>4</span>
-                                    <span>5 (Concise)</span>
+                                    <span>5 ({{ languages.pack.rating_relevant_max_nm }})</span>
                                 </div>
                             </div>
                         </div>

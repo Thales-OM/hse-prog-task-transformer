@@ -8,7 +8,6 @@
     <link rel="icon" href="{{ url_for('static', path='images/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='inference_nav.css') }}">
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', path='language.css') }}">
     <script src="{{ url_for('static', path='scripts/language.js') }}"></script>
 </head>
@@ -41,9 +40,7 @@
 
                 <div class="question-text">
                     <h2>{{ languages.pack.question_text_header }}</h2>
-                    <md-block>
-                        <p>{{ question.text_rendered | safe }}</p>
-                    </md-block>
+                    <p>{{ question.text_rendered | safe }}</p>
                 </div>
 
                 {% if question.answers %}

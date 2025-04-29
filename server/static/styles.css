@@ -124,7 +124,7 @@ html {
     scroll-behavior: smooth;
 }
 
-.question-detail pre {
+.question-detail pre:has(code) {
     background: #f8f9fa;
     padding: 15px;
     border-radius: 6px;

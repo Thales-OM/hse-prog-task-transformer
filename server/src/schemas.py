@@ -67,24 +67,24 @@ class AnswerPageResponse(Answer):
         answer_dict = answer.model_dump()
         return cls(
             **answer_dict,
-            text_rendered=wrap_code_in_html(text=answer.text),
+            text_rendered=code_md_to_html(text=answer.text),
             text_clean=clean_html_tags(answer.text),
         )
 
 
 class AnswerMultichoicePageResponse(AnswerMultichoice, AnswerPageResponse):
-    @classmethod
-    def from_answer(cls, answer: AnswerMultichoice) -> "AnswerMultichoicePageResponse":
-        answer_dict = answer.model_dump()
-        return cls(
-            **answer_dict,
-            text_rendered=answer.text,
-            text_clean=clean_html_tags(answer.text),
-        )
+    pass
 
 
 class AnswerCoderunnerPageResponse(AnswerCoderunner, AnswerPageResponse):
-    pass
+    @classmethod
+    def from_answer(cls, answer: AnswerCoderunner) -> "AnswerCoderunnerPageResponse":
+        answer_dict = answer.model_dump()
+        return cls(
+            **answer_dict,
+            text_rendered=wrap_code_in_html(text=answer.text),
+            text_clean=clean_html_tags(answer.text),
+        )
 
 
 class TestCase(BaseModel):

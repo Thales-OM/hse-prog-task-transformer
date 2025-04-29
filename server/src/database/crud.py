@@ -23,7 +23,8 @@ from src.schemas import (
     UserGroup,
 )
 from src.exceptions import AnswerMismatchException, UnauthorizedException
-from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES
+from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
+from src.utils import replace_and_append_options
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -161,6 +162,8 @@ async def get_questions_all(
         elif _type in QUESTION_CODERUNNER_TYPES:
             answers = await get_answers_coderunner(question_id=id, cursor=cursor)
             test_cases = await get_test_cases(question_id=id, cursor=cursor)
+        elif _type in QUESTION_CLOZE_TYPES:
+            text = replace_and_append_options(text=text)
 
         inference_ids = await get_question_inference_ids(question_id=id, cursor=cursor)
 
@@ -209,6 +212,8 @@ async def get_question(
     elif _type in QUESTION_CODERUNNER_TYPES:
         answers = await get_answers_coderunner(question_id=id, cursor=cursor)
         test_cases = await get_test_cases(question_id=id, cursor=cursor)
+    elif _type in QUESTION_CLOZE_TYPES:
+        text = replace_and_append_options(text=text)
 
     inference_ids = await get_question_inference_ids(question_id=id, cursor=cursor)
 
@@ -248,6 +253,8 @@ async def get_question_admin(id: int, cursor: cursor) -> Optional[GetQuestionRes
     elif _type in QUESTION_CODERUNNER_TYPES:
         answers = await get_answers_coderunner(question_id=id, cursor=cursor)
         test_cases = await get_test_cases(question_id=id, cursor=cursor)
+    elif _type in QUESTION_CLOZE_TYPES:
+        text = replace_and_append_options(text=text)
 
     inference_ids = await get_question_inference_ids(question_id=id, cursor=cursor)
 

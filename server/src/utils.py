@@ -2,9 +2,6 @@ from fastapi import Depends, Request
 from typing import List, Callable, Optional
 from lxml import etree
 import re
-import inspect
-from inspect import signature, Parameter
-import markdown
 from bs4 import Tag, BeautifulSoup
 from typing import Any
 from psycopg2.extensions import cursor, connection
@@ -97,3 +94,30 @@ def get_request_ip(request: Request) -> str:
     if client_ip is None:
         client_ip = request.client.host
     return client_ip
+
+
+def replace_and_append_options(text):
+    # Define the regex pattern to find the specified format
+    pattern = r"{:MCS:=(.*?)}"
+    
+    # Search for the pattern in the text
+    match = re.search(pattern, text)
+    
+    if match:
+        contents = match.group(1)  # Get the contents inside the braces
+        # Split the contents by [int]~ or just ~
+        options = re.split(r'\s*\[-?\d+\]?~\s*', contents)
+        # Replace the original match with <choose option>
+        replacement = "<Выберите вариант>"
+        # Create the options string
+        options_str = "<pre>" + "Варианты ответа:" + "\n  - " + "\n  - ".join(options) + "</pre>"
+        
+        # Replace the first occurrence of the pattern in the text
+        new_text = text.replace(match.group(0), replacement)
+        # Append the options string at the end of the original text
+        new_text += "\n" + options_str + "\n"
+        
+        return new_text
+    else:
+        # If no match is found, return the original text
+        return text
