@@ -105,6 +105,8 @@ class Tutorial(BaseModel):
     rating_helpful_nm: BaseName
     rating_no_answer_nm: BaseName
     rating_no_error_nm: BaseName
+    rating_no_error_true_nm: BaseName
+    rating_no_error_false_nm: BaseName
     rating_relevant_nm: BaseName
 
 
@@ -173,6 +175,8 @@ ru_language_pack = LanguagePack(
         rating_helpful_nm="Полезно",
         rating_no_answer_nm="Не раскрывает ответ",
         rating_no_error_nm="Не содержит ошибок",
+        rating_no_error_true_nm="Нет ошибок",
+        rating_no_error_false_nm="Есть",
         rating_relevant_nm="Релевантно",
     ),
 )
@@ -240,6 +244,8 @@ en_language_pack = LanguagePack(
         rating_helpful_nm="Helpful",
         rating_no_answer_nm="Does not reveal answer",
         rating_no_error_nm="Does not contain errors",
+        rating_no_error_true_nm="No Errors",
+        rating_no_error_false_nm="Contains Errors",
         rating_relevant_nm="Relevance",
     ),
 )

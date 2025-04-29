@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='inference.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='language.css') }}">
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
     <script src="{{ url_for('static', path='scripts/language.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', path='tutorial.css') }}">
 </head>
@@ -130,8 +131,13 @@
                                 <p>Прямо показан исправленный оператор сравнения (==)</p>
                             </div>
                             <div class="rating-metric">
-                                <span>{{ languages.pack.rating_no_error_nm }}: Есть</span>
+                                <span>{{ languages.pack.rating_no_error_nm }}: {{ languages.pack.rating_no_error_false_nm }}</span>
                                 <p>В примере используется русскоязычная переменная "вывод" вместо print</p>
+                            </div>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_relevant_nm }}: 3/5</span>
+                                <div class="rating-bar average"></div>
+                                <p>Лишней информации нет, но текст в целом только кратко переформулирует само задание и ничего не добавляет</p>
                             </div>
                         </div>
                     </div>
@@ -141,33 +147,34 @@
                 <div class="reformulation-example good-example">
                     <h3>Хорошая реформулировка ✅</h3>
                     <div class="example-content">
-                        <p>Представьте, что вы управляете бюджетом для покупки книг в библиотеку. У вас есть:</p>
-                        <ul>
-                            <li>Общий бюджет (переменная <em>бюджет</em>)</li>
-                            <li>Цена одной книги (переменная <em>цена_книги</em>)</li>
-                        </ul>
-                        
-                        <p>Программа должна:</p>
-                        <ol>
-                            <li>Проверить, можно ли потратить весь бюджет без остатка</li>
-                            <li>Если да - показать сообщение "Бюджет полностью использован!"</li>
-                            <li>Если нет - рассчитать сколько книг можно купить и остаток бюджета</li>
-                        </ol>
-                        
-                        <p>Пример кода:</p>
-                        <pre>if бюджет % цена_книги == 0:
-    print('Бюджет полностью использован!')
-else:
-    количество = бюджет // цена_книги
-    остаток = бюджет - (количество * цена_книги)
-    print(f'Купили {количество} книг. Осталось {остаток} рублей')</pre>
+                        <md-block>
+**Ситуация:**  
+Вы хотите купить шоколадки на имеющуюся сумму. Нужно определить, сколько можно купить и сколько денег останется.  
 
+**Что делает программа:**  
+1. Если деньги делятся на цену шоколадки ровно — выводит сообщение, что всё потрачено.  
+2. Если нет — считает количество шоколадок и остаток, затем выводит оба значения.  
+
+**Проблема:**  
+Код содержит ошибки, из-за которых он работает неправильно.  
+
+**На что обратить внимание:**  
+- Проверка условий (как в Python пишут сравнение?).  
+- Деление (целое или дробное число должно получиться?).  
+- Форматирование вывода (как правильно вставить переменные в текст?).  
+- Структура кода (все ли команды находятся в нужных блоках?).  
+
+**Задание:**  
+Найдите **две ключевые ошибки**, мешающие программе работать корректно.  
+
+*(Анализируйте внимательно — ошибки связаны с базовыми концепциями Python.)*
+                        </md-block>
                         <div class="rating-analysis">
                             <h4>Оценка качества:</h4>
                             <div class="rating-metric">
                                 <span>{{ languages.pack.rating_helpful_nm }}: 5/5</span>
                                 <div class="rating-bar best"></div>
-                                <p>Конкретный пример из гуманитарной сферы, четкая пошаговая инструкция</p>
+                                <p>Конкретный пример, четкая пошаговая инструкция</p>
                             </div>
                             <div class="rating-metric">
                                 <span>{{ languages.pack.rating_no_answer_nm }}: 5/5</span>
@@ -175,8 +182,13 @@ else:
                                 <p>Не показывает прямо ошибки из исходного кода</p>
                             </div>
                             <div class="rating-metric">
-                                <span>{{ languages.pack.rating_no_error_nm }}: Нет</span>
+                                <span>{{ languages.pack.rating_no_error_nm }}: {{ languages.pack.rating_no_error_true_nm }}</span>
                                 <p>Синтаксис Python соблюден, все переменные корректны</p>
+                            </div>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_relevant_nm }}: 5/5</span>
+                                <div class="rating-bar best"></div>
+                                <p>Нет повторения исходного текста, кратко и по делу</p>
                             </div>
                         </div>
                     </div>

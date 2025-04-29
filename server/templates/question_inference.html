@@ -79,7 +79,7 @@
                 <h2>{{ languages.pack.inference_header }}</h2>
                 <div class="inference-content">
                     {% if question.inference_text %}
-                        <p>{{ question.inference_text | safe }}</p>
+                        <md-block>{{ question.inference_text | safe }}</md-block>
                     {% else %}
                         <p class="no-inference">No AI analysis available for this question.</p>
                     {% endif %}

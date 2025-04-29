@@ -64,6 +64,10 @@
     background: linear-gradient(90deg, #ff4d4d 0%, #ff4d4d 40%, transparent 40%);
 }
 
+.rating-bar.average {
+    background: linear-gradient(90deg, #fffc4d 0%, #fffc4d 50%, transparent 50%);
+}
+
 .reformulation-example h3 {
     color: #333;
     padding-bottom: 10px;
