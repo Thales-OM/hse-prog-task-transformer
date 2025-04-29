@@ -247,7 +247,7 @@ class ReasoningLLModelResponse(LLModelResponse):
     reasoning: str
 
     @classmethod
-    def from_completion(cls, completion: ChatCompletion) -> "ReasoningLLModelResponse":
+    def from_completion(cls, completion: ChatCompletion) -> Union["ReasoningLLModelResponse", LLModelResponse]:
         choice = completion.choices[0]
         response_content = choice.message.content
 
@@ -256,6 +256,8 @@ class ReasoningLLModelResponse(LLModelResponse):
             r"<think>(.*?)</think>", response_content, re.DOTALL
         )
         reasoning = reasoning_match.group(1).strip() if reasoning_match else None
+        if reasoning is None:
+            return LLModelResponse(response=response_content.strip())
 
         # Remove the <think> block to get the final response
         response = re.sub(

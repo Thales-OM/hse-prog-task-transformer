@@ -4,6 +4,9 @@ private.env
 # RSA Keys
 private_key.pem
 
+# OpenAI
+openai_token.txt
+
 # Python environment
 .venv
 

@@ -21,6 +21,7 @@ from src.schemas import (
     PostUserGroupLevelAddRequest,
     PostSetUserGroupLevelRequest,
     UserGroup,
+    LLModelResponse,
 )
 from src.exceptions import AnswerMismatchException, UnauthorizedException
 from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
@@ -399,7 +400,7 @@ async def get_model(id: int, cursor: cursor) -> Optional[GetModelResponse]:
 
 
 async def create_inference(
-    question_id: int, model_id: int, inference: ReasoningLLModelResponse, cursor: cursor
+    question_id: int, model_id: int, inference: LLModelResponse , cursor: cursor
 ) -> int:
     insert_query = """
         INSERT INTO prod_storage.questions_transformed
@@ -410,6 +411,8 @@ async def create_inference(
         ;
     """
     data = inference.model_dump(include={"reasoning", "response"})
+    if "reasoning" not in data:
+        data["reasoning"] = None
     data["question_id"] = question_id
     data["model_id"] = model_id
     cursor.execute(insert_query, data)
