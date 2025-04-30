@@ -404,13 +404,13 @@ async def create_inference(
 ) -> int:
     insert_query = """
         INSERT INTO prod_storage.questions_transformed
-            (question_id, model_id, thinking, text)
+            (question_id, model_id, thinking, text, temperature)
         VALUES
-            (%(question_id)s, %(model_id)s, %(reasoning)s, %(response)s)
+            (%(question_id)s, %(model_id)s, %(reasoning)s, %(response)s, %(temperature)s)
         RETURNING id
         ;
     """
-    data = inference.model_dump(include={"reasoning", "response"})
+    data = inference.model_dump(include={"reasoning", "response", "temperature"})
     if "reasoning" not in data:
         data["reasoning"] = None
     data["question_id"] = question_id

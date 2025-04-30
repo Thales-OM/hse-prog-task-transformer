@@ -162,6 +162,7 @@ CREATE TABLE
     model_id INT NOT NULL,
     thinking TEXT,
     text TEXT NOT NULL,
+    temperature FLOAT CHECK(temperature > 0.0 and temperature <= 1.0),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_flg BOOLEAN NOT NULL DEFAULT false,
 

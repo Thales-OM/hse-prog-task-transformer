@@ -137,7 +137,7 @@ async def make_inference(
         messages=messages,
         temperature=temperature,
     )
-    model_response = ReasoningLLModelResponse.from_completion(completion=completion)
+    model_response = ReasoningLLModelResponse.from_completion(completion=completion, temperature=temperature)
     return await create_inference(
         question_id=question_id,
         model_id=model_id,

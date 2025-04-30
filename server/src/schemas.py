@@ -235,19 +235,20 @@ class QuestionsRandomIdResponse(BaseModel):
 
 class LLModelResponse(BaseModel):
     response: str
+    temperature: ModelTemperature
 
     @classmethod
-    def from_completion(cls, completion: ChatCompletion) -> "LLModelResponse":
+    def from_completion(cls, completion: ChatCompletion, temperature: float) -> "LLModelResponse":
         choice = completion.choices[0]
         response_content = choice.message.content
-        return response_content
+        return LLModelResponse(response=response_content, temperature=temperature)
 
 
 class ReasoningLLModelResponse(LLModelResponse):
     reasoning: str
 
     @classmethod
-    def from_completion(cls, completion: ChatCompletion) -> Union["ReasoningLLModelResponse", LLModelResponse]:
+    def from_completion(cls, completion: ChatCompletion, temperature: float) -> Union["ReasoningLLModelResponse", LLModelResponse]:
         choice = completion.choices[0]
         response_content = choice.message.content
 
@@ -257,14 +258,14 @@ class ReasoningLLModelResponse(LLModelResponse):
         )
         reasoning = reasoning_match.group(1).strip() if reasoning_match else None
         if reasoning is None:
-            return LLModelResponse(response=response_content.strip())
+            return LLModelResponse(response=response_content.strip(), temperature=temperature)
 
         # Remove the <think> block to get the final response
         response = re.sub(
             r"<think>.*?</think>", "", response_content, flags=re.DOTALL
         ).strip()
 
-        return cls(response=response, reasoning=reasoning)
+        return cls(response=response, reasoning=reasoning, temperature=temperature)
 
 
 class GetInferenceResponse(BaseModel):
