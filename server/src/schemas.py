@@ -238,7 +238,9 @@ class LLModelResponse(BaseModel):
     temperature: ModelTemperature
 
     @classmethod
-    def from_completion(cls, completion: ChatCompletion, temperature: float) -> "LLModelResponse":
+    def from_completion(
+        cls, completion: ChatCompletion, temperature: float
+    ) -> "LLModelResponse":
         choice = completion.choices[0]
         response_content = choice.message.content
         return LLModelResponse(response=response_content, temperature=temperature)
@@ -248,7 +250,9 @@ class ReasoningLLModelResponse(LLModelResponse):
     reasoning: str
 
     @classmethod
-    def from_completion(cls, completion: ChatCompletion, temperature: float) -> Union["ReasoningLLModelResponse", LLModelResponse]:
+    def from_completion(
+        cls, completion: ChatCompletion, temperature: float
+    ) -> Union["ReasoningLLModelResponse", LLModelResponse]:
         choice = completion.choices[0]
         response_content = choice.message.content
 
@@ -258,7 +262,9 @@ class ReasoningLLModelResponse(LLModelResponse):
         )
         reasoning = reasoning_match.group(1).strip() if reasoning_match else None
         if reasoning is None:
-            return LLModelResponse(response=response_content.strip(), temperature=temperature)
+            return LLModelResponse(
+                response=response_content.strip(), temperature=temperature
+            )
 
         # Remove the <think> block to get the final response
         response = re.sub(
@@ -309,6 +315,7 @@ class GetInferenceScoreResponse(InferenceScore):
     id: int
     question_name: str
     inference_id: int
+    user_group_cd: UserGroupCD
 
 
 class RSAKeyPair(BaseModel):

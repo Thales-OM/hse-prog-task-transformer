@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Depends, status, Body, Path
 from fastapi.exceptions import HTTPException
+from fastapi.responses import StreamingResponse
 from psycopg2.extensions import cursor
+from io import StringIO
 from typing import List, Tuple
 from src.logger import LoggerFactory
 from src.config import settings
@@ -28,7 +30,7 @@ from src.database.crud import (
     get_inference_scores_all,
     get_user_groups_all,
 )
-from src.models.core import make_prompt
+from src.models.core import make_prompt, build_report_df
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -163,3 +165,17 @@ async def users_groups_all(
     id: int = Path(...), cursor: cursor = Depends(get_db_cursor)
 ):
     return await make_prompt(question_id=id, cursor=cursor)
+
+
+@router.get(
+    "/report/csv",
+    response_model=None,
+    status_code=status.HTTP_200_OK,
+    summary="Get a full report on questions, inference, scores in a CSV file",
+)
+async def report_csv(cursor: cursor = Depends(get_db_cursor)):
+    report_df = await build_report_df(cursor=cursor)
+    csv_buffer = StringIO()
+    report_df.to_csv(csv_buffer, index=False)
+    csv_buffer.seek(0)
+    return StreamingResponse(csv_buffer, media_type='text/csv', headers={"Content-Disposition": f"attachment; filename={settings.server.filenames.report_csv}"})

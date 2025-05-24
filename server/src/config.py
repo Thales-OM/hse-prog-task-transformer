@@ -25,6 +25,7 @@ from src.constraints import (
     DEFAULT_REDIS_POOL_SIZE,
     DEFAULT_REDIS_DB,
     DEFAULT_REDIS_EX,
+    DEFAULT_FILENAME_REPORT_CSV,
 )
 from src.models.constraints import DEFAULT_OPENAI_BASE_URL
 from src.exceptions import PublicKeyMissingException
@@ -59,11 +60,16 @@ class LoggingSettings(BaseSettings):
         return self
 
 
+class Filenames(BaseSettings):
+    report_csv: str = DEFAULT_FILENAME_REPORT_CSV
+
+
 class ServerSettings(BaseSettings):
     protocol: Literal["http", "https"] = DEFAULT_DEV_PROTOCOL
     host: str = Field(DEFAULT_DEV_HOST, min_length=1, env="SERVER_HOST")
     port: int = Field(DEFAULT_DEV_PORT, env="SERVER_PORT")
     public_api_key: str = Field(None, env="PUBLIC_API_KEY")
+    filenames: Filenames = Filenames()
 
     def set_public_api_key(self, public_pem: str) -> None:
         if not public_pem:

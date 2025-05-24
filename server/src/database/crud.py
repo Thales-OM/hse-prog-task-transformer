@@ -24,7 +24,11 @@ from src.schemas import (
     LLModelResponse,
 )
 from src.exceptions import AnswerMismatchException, UnauthorizedException
-from src.constraints import QUESTION_MULTICHOICE_TYPES, QUESTION_CODERUNNER_TYPES, QUESTION_CLOZE_TYPES
+from src.constraints import (
+    QUESTION_MULTICHOICE_TYPES,
+    QUESTION_CODERUNNER_TYPES,
+    QUESTION_CLOZE_TYPES,
+)
 from src.utils import replace_and_append_options
 
 
@@ -400,7 +404,7 @@ async def get_model(id: int, cursor: cursor) -> Optional[GetModelResponse]:
 
 
 async def create_inference(
-    question_id: int, model_id: int, inference: LLModelResponse , cursor: cursor
+    question_id: int, model_id: int, inference: LLModelResponse, cursor: cursor
 ) -> int:
     insert_query = """
         INSERT INTO prod_storage.questions_transformed
@@ -472,6 +476,7 @@ async def get_inference_scores_all(
             isc.id,
             q.name as question_name, 
             qt.id as inference_id,
+            isc.user_group_cd,
             isc.helpful,
             isc.does_not_reveal_answer,
             isc.does_not_contain_errors,
@@ -493,12 +498,13 @@ async def get_inference_scores_all(
             id=id,
             question_name=question_name,
             inference_id=inference_id,
+            user_group_cd=user_group_cd,
             helpful=helpful,
             does_not_reveal_answer=does_not_reveal_answer,
             does_not_contain_errors=does_not_contain_errors,
             only_relevant_info=only_relevant_info,
         )
-        for id, question_name, inference_id, helpful, does_not_reveal_answer, does_not_contain_errors, only_relevant_info in cursor.fetchall()
+        for id, question_name, inference_id, user_group_cd, helpful, does_not_reveal_answer, does_not_contain_errors, only_relevant_info in cursor.fetchall()
     ]
 
 
@@ -585,3 +591,126 @@ async def get_user_groups_all(cursor: cursor) -> List[UserGroup]:
         UserGroup(user_group_cd=user_group_cd, user_group_desc=user_group_desc)
         for user_group_cd, user_group_desc in cursor.fetchall()
     ]
+
+
+async def get_questions_all_admin(cursor: cursor) -> List[GetQuestionResponse]:
+    """Get all not soft-deleted questions in database"""
+    select_query = """
+        SELECT 
+            q.id, q.name, q.type, q.text 
+        FROM 
+            (SELECT * FROM prod_storage.questions WHERE deleted_flg = false) q
+        ;
+    """
+    cursor.execute(select_query)
+
+    question_records = cursor.fetchall()
+    questions = []
+    for question_record in question_records:
+        id, name, _type, text = question_record
+        answers = []
+        test_cases = []
+        if _type in QUESTION_MULTICHOICE_TYPES:
+            answers = await get_answers_multichoice(question_id=id, cursor=cursor)
+        elif _type in QUESTION_CODERUNNER_TYPES:
+            answers = await get_answers_coderunner(question_id=id, cursor=cursor)
+            test_cases = await get_test_cases(question_id=id, cursor=cursor)
+        elif _type in QUESTION_CLOZE_TYPES:
+            text = replace_and_append_options(text=text)
+
+        inference_ids = await get_question_inference_ids(question_id=id, cursor=cursor)
+
+        questions.append(
+            GetQuestionResponse(
+                id=id,
+                name=name,
+                type=_type,
+                text=text,
+                answers=answers,
+                test_cases=test_cases,
+                inference_ids=inference_ids,
+            )
+        )
+    return questions
+
+
+async def get_scores_for_inference(
+    inference_id: int, cursor: cursor
+) -> List[GetInferenceScoreResponse]:
+    select_query = """
+        SELECT 
+            isc.id,
+            q.name as question_name, 
+            qt.id as inference_id,
+            isc.user_group_cd,
+            isc.helpful,
+            isc.does_not_reveal_answer,
+            isc.does_not_contain_errors,
+            isc.only_relevant_info
+        FROM
+            (SELECT * FROM prod_storage.inference_scores WHERE inference_id = %s AND deleted_flg = false) isc
+            INNER JOIN prod_storage.questions_transformed qt
+                ON isc.inference_id = qt.id
+            INNER JOIN prod_storage.questions q
+                ON qt.question_id = q.id
+        ;
+    """
+    cursor.execute(select_query, (inference_id,))
+    return [
+        GetInferenceScoreResponse(
+            id=id,
+            question_name=question_name,
+            inference_id=inference_id,
+            user_group_cd=user_group_cd,
+            helpful=helpful,
+            does_not_reveal_answer=does_not_reveal_answer,
+            does_not_contain_errors=does_not_contain_errors,
+            only_relevant_info=only_relevant_info,
+        )
+        for id, question_name, inference_id, user_group_cd, helpful, does_not_reveal_answer, does_not_contain_errors, only_relevant_info in cursor.fetchall()
+    ]
+
+
+async def get_questions(
+    user_group_cd: UserGroupCD, cursor: cursor
+) -> List[GetQuestionResponse]:
+    """Get all not soft-deleted questions in database"""
+    select_query = """
+        SELECT 
+            q.id, q.name, q.type, q.text 
+        FROM 
+            (SELECT * FROM prod_storage.questions WHERE deleted_flg = false) q
+            INNER JOIN (SELECT * FROM prod_storage.link_user_group_x_level WHERE user_group_cd = %s) link
+                ON q.level_cd = link.level_cd
+            ;
+    """
+    cursor.execute(select_query, (user_group_cd,))
+
+    question_records = cursor.fetchall()
+    questions = []
+    for question_record in question_records:
+        id, name, _type, text = question_record
+        answers = []
+        test_cases = []
+        if _type in QUESTION_MULTICHOICE_TYPES:
+            answers = await get_answers_multichoice(question_id=id, cursor=cursor)
+        elif _type in QUESTION_CODERUNNER_TYPES:
+            answers = await get_answers_coderunner(question_id=id, cursor=cursor)
+            test_cases = await get_test_cases(question_id=id, cursor=cursor)
+        elif _type in QUESTION_CLOZE_TYPES:
+            text = replace_and_append_options(text=text)
+
+        inference_ids = await get_question_inference_ids(question_id=id, cursor=cursor)
+
+        questions.append(
+            GetQuestionResponse(
+                id=id,
+                name=name,
+                type=_type,
+                text=text,
+                answers=answers,
+                test_cases=test_cases,
+                inference_ids=inference_ids,
+            )
+        )
+    return questions

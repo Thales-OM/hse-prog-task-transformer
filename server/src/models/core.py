@@ -6,6 +6,7 @@ from openai import AsyncClient
 from openai.types.chat import ChatCompletion
 import string
 import json
+import pandas as pd
 from src.models.constraints import (
     PROMPT_TEMPLATE_MULTICHOICE,
     PROMPT_TEMPLATE_CODERUNNER,
@@ -23,6 +24,9 @@ from src.database.crud import (
     get_question,
     create_inference,
     get_question_admin,
+    get_questions_all_admin,
+    get_inference,
+    get_scores_for_inference,
 )
 
 
@@ -137,10 +141,44 @@ async def make_inference(
         messages=messages,
         temperature=temperature,
     )
-    model_response = ReasoningLLModelResponse.from_completion(completion=completion, temperature=temperature)
+    model_response = ReasoningLLModelResponse.from_completion(
+        completion=completion, temperature=temperature
+    )
     return await create_inference(
         question_id=question_id,
         model_id=model_id,
         inference=model_response,
         cursor=cursor,
     )
+
+
+async def build_report_df(cursor: cursor) -> pd.DataFrame:
+    all_questions_in_db = await get_questions_all_admin(cursor=cursor)
+    data = []
+    for question in all_questions_in_db:
+        messages = construct_messages(question=question)
+        prompt = PromptBuilder.build(question=question)
+        for inference_id in question.inference_ids:
+            inference = await get_inference(id=inference_id, cursor=cursor)
+            model = await get_model(id=inference.model_id, cursor=cursor)
+            scores = await get_scores_for_inference(
+                inference_id=inference.id, cursor=cursor
+            )
+            for score in scores:
+                data.append(
+                    {
+                        "base_model_name": model.base_model_name,
+                        "model_version": model.version,
+                        "user_group_cd": score.user_group_cd,
+                        "messages": json.dumps(messages),
+                        "prompt_id": question.id,
+                        "prompt": prompt,
+                        "response_id": inference.id,
+                        "response": inference.text,
+                        "helpful": score.helpful,
+                        "does_not_reveal_answer": score.does_not_reveal_answer,
+                        "does_not_contain_errors": (score.does_not_contain_errors > 1),
+                        "only_relevant_info": score.only_relevant_info,
+                    }
+                )
+    return pd.DataFrame(data)

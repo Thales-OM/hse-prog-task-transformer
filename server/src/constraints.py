@@ -18,6 +18,8 @@ DEFAULT_POOL_CONN_RETRY_DELAY = 10
 DEFAULT_DEV_PORT = 80
 DEFAULT_DEV_HOST = "server"
 DEFAULT_DEV_PROTOCOL = "http"
+## Filenames
+DEFAULT_FILENAME_REPORT_CSV = "report.csv"
 
 # Questions
 QUESTION_MULTICHOICE_TYPES = ("multichoice", "multichoiceset")
