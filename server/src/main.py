@@ -37,11 +37,7 @@ app = FastAPI(lifespan=lifespan, openapi_tags=tags_metadata)
 BASE_DIR = Path(__file__).parent.parent
 
 # Mount static files
-app.mount(
-    "/static",
-    StaticFiles(directory=str(BASE_DIR / "static")),
-    name="static"
-)
+app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 
 app.include_router(root.router, prefix="")
 app.include_router(upload.router, prefix="/upload")

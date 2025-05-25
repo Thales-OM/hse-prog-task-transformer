@@ -7,9 +7,7 @@ from src.config import settings
 logger = LoggerFactory.getLogger(__name__)
 
 
-router = APIRouter(
-    prefix=""
-)
+router = APIRouter(prefix="")
 
 
 # Root redirect

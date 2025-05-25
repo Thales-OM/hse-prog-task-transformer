@@ -18,6 +18,7 @@ SAMPLE_XML = """<?xml version="1.0" ?>
   </question>
 </quiz>"""
 
+
 def test_extract_quiz_data():
     questions = extract_quiz_data(SAMPLE_XML)
     assert len(questions) == 1
@@ -26,6 +27,7 @@ def test_extract_quiz_data():
     assert question.type == "multichoice"
     assert len(question.answers) == 2
     assert isinstance(question.answers[0], AnswerMultichoice)
+
 
 def test_invalid_question_type():
     invalid_xml = SAMPLE_XML.replace("multichoice", "invalidtype")

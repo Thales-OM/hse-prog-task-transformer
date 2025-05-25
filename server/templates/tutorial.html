@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="{{ languages.current }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial</title>
+    <link rel="icon" href="{{ url_for('static', path='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='inference.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='language.css') }}">
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <script src="{{ url_for('static', path='scripts/language.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='tutorial.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <button class="language-button" onclick="toggleLanguageDropdown()">
+                {{ languages.current|upper }}
+                <span>▼</span>
+            </button>
+            <div class="language-dropdown" id="languageDropdown">
+                {% for lang in languages.available %}
+                    {% if lang != languages.current %}
+                        <div class="language-option" onclick="changeLanguage('{{ lang }}', '{{ languages.current }}')">{{ lang|upper }}</div>
+                    {% else %}
+                        <div class="language-option current">{{ lang|upper }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <a href="/pages/{{ user_group_cd }}/dashboard" class="back-link">← {{ languages.pack.back_button_1 }}</a>
+
+        <div class="question-layout">
+            <div class="question-detail">
+                <h1>A03_ELEM_PROG_DEMO_2023/24</h1>
+                <span class="question-type">multichoiceset</span>
+
+                <div class="question-text">
+                    <h2>{{ languages.pack.question_text_header }}</h2>
+                    <p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"></span></p><p>Дан фрагмент кода:</p>
+<pre><code class="language-python">
+[1] money = 1000
+[2] price_per_unit = 80
+[3]
+[4] if money % price_per_unit = 0:
+[5]     print('Тратим все деньги на шоколадки!')
+[6] else:
+[7]     amount = money / price_per_unit
+[8]     print(f'Покупаем {amount} шоколадок!')
+[9]     remainder = money - amount * price_per_unit
+[10] print(f'После покупки осталось {remainder} рублей')
+</code></pre>
+
+<p>В переменных <strong>money</strong> и <strong>price_per_unit</strong> сохранено количество рублей и цена одной шоколадки соответственно. Программа выше должна проверять, сколько денег будет потрачено на шоколадки. Если на шоколадки потрачены все деньги программа печатает только фразу <strong>"Тратим все деньги на шоколадки!"</strong>, иначе — программа печатает, сколько шоколадок было куплено и сколько осталось денег после покупки. Например, для сохраненных в переменные <strong>money</strong> и <strong>price_per_unit</strong> значений программа должна выводить:</p>
+<pre><code class="language-python">
+Покупаем 12 шоколадок!
+После покупки осталось 40 рублей
+</code></pre>
+<p>Выберите <u>все причины (минимум две)</u>, по которым код не будет работать как ожидается.</p><p><em>Важно! Номера в квадратных скобках не являются частью программы и просто обозначают порядковый номер строки.</em></p><p></p>
+                </div>
+
+                
+                <div class="answers-section">
+                    <h2>{{ languages.pack.answers_header }}</h2>
+                    
+                    <div class="answer-item correct-answer">
+                        <p></p><p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[4]</b> вместо одного знака <b>=</b> должно стоять два <b>==</b></span></p><p></p>
+                        <p><strong>Correct Answer</strong></p>
+                        <p>Fraction: 100.0</p>
+                    </div>
+                    
+                    <div class="answer-item ">
+                        <p></p><p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[5]</b> отсутствует префикс <b>f</b> перед строкой, переданной функции <b>print()</b></span></p><p></p>
+                        
+                        
+                    </div>
+                    
+                    <div class="answer-item correct-answer">
+                        <p></p><p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[7]</b> вместо арифметического оператора <b>/</b> должен стоять <b>//</b></span></p><p></p>
+                        <p><strong>Correct Answer</strong></p>
+                        <p>Fraction: 100.0</p>
+                    </div>
+                    
+                    <div class="answer-item ">
+                        <p></p><p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[2]</b> имя переменной не должно содержать знак нижнего подчеркивания <b>_</b></span></p><p></p>
+                        
+                        
+                    </div>
+                    
+                    <div class="answer-item correct-answer">
+                        <p></p><p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[10]</b> отсутствует отступ перед функцией <b>print()</b></span></p><p></p>
+                        <p><strong>Correct Answer</strong></p>
+                        <p>Fraction: 100.0</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="inference-panel">
+                <h2>{{ languages.pack.inference_header }}</h2>
+                
+                <!-- Bad Reformulation Example -->
+                <div class="reformulation-example bad-example">
+                    <h3>Плохая реформулировка ⚠️</h3>
+                    <div class="example-content">
+                        <p>Рассмотрим ситуацию с распределением ресурсов. В коде есть переменные, которые нужно проверить. 
+                        Если выполняется определенное условие, выводится сообщение. Иначе считаем количество и остаток. 
+                        Найдите проблемы в этом коде:</p>
+                        
+                        <pre>если деньги % цена == 0:
+    вывод('Все деньги потрачены!')
+иначе:
+    количество = деньги / цена
+    ...</pre>
+                        
+                        <div class="rating-analysis">
+                            <h4>Оценка качества:</h4>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_helpful_nm }}: 2/5</span>
+                                <div class="rating-bar bad"></div>
+                                <p>Использует абстрактные понятия ("распределение ресурсов"), нет четкого сценария</p>
+                            </div>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_no_answer_nm }}: 1/5</span>
+                                <div class="rating-bar worst"></div>
+                                <p>Прямо показан исправленный оператор сравнения (==)</p>
+                            </div>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_no_error_nm }}: {{ languages.pack.rating_no_error_false_nm }}</span>
+                                <p>В примере используется русскоязычная переменная "вывод" вместо print</p>
+                            </div>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_relevant_nm }}: 3/5</span>
+                                <div class="rating-bar average"></div>
+                                <p>Лишней информации нет, но текст в целом только кратко переформулирует само задание и ничего не добавляет</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Good Reformulation Example -->
+                <div class="reformulation-example good-example">
+                    <h3>Хорошая реформулировка ✅</h3>
+                    <div class="example-content">
+                        <md-block>
+**Ситуация:**  
+Вы хотите купить шоколадки на имеющуюся сумму. Нужно определить, сколько можно купить и сколько денег останется.  
+
+**Что делает программа:**  
+1. Если деньги делятся на цену шоколадки ровно — выводит сообщение, что всё потрачено.  
+2. Если нет — считает количество шоколадок и остаток, затем выводит оба значения.  
+
+**Проблема:**  
+Код содержит ошибки, из-за которых он работает неправильно.  
+
+**На что обратить внимание:**  
+- Проверка условий (как в Python пишут сравнение?).  
+- Деление (целое или дробное число должно получиться?).  
+- Форматирование вывода (как правильно вставить переменные в текст?).  
+- Структура кода (все ли команды находятся в нужных блоках?).  
+
+**Задание:**  
+Найдите **две ключевые ошибки**, мешающие программе работать корректно.  
+
+*(Анализируйте внимательно — ошибки связаны с базовыми концепциями Python.)*
+                        </md-block>
+                        <div class="rating-analysis">
+                            <h4>Оценка качества:</h4>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_helpful_nm }}: 5/5</span>
+                                <div class="rating-bar best"></div>
+                                <p>Конкретный пример, четкая пошаговая инструкция</p>
+                            </div>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_no_answer_nm }}: 5/5</span>
+                                <div class="rating-bar best"></div>
+                                <p>Не показывает прямо ошибки из исходного кода</p>
+                            </div>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_no_error_nm }}: {{ languages.pack.rating_no_error_true_nm }}</span>
+                                <p>Синтаксис Python соблюден, все переменные корректны</p>
+                            </div>
+                            <div class="rating-metric">
+                                <span>{{ languages.pack.rating_relevant_nm }}: 5/5</span>
+                                <div class="rating-bar best"></div>
+                                <p>Нет повторения исходного текста, кратко и по делу</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

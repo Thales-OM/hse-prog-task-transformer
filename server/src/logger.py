@@ -26,10 +26,10 @@ class LoggerFactory:
             cls._handler = cls._create_handler()
 
         log_level = getattr(logging, settings.logging.log_level)
-        
+
         logger.setLevel(log_level)
         logger.addHandler(cls._handler)
-        
+
         # Prevent duplicate logs from propagating to root logger
         logger.propagate = False
 

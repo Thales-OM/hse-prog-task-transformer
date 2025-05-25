@@ -1,10 +1,6 @@
 from fastapi import Request, status
 from fastapi.exceptions import HTTPException
 from typing import Any
-from src.logger import LoggerFactory
-
-
-logger = LoggerFactory.getLogger(__name__)
 
 
 # Custom exception for when establishing database connection fails
@@ -30,7 +26,9 @@ class UnrecognizedQuestionTypeException(HTTPException):
 
 
 class AnswerMismatchException(HTTPException):
-    def __init__(self, detail: Any = "Answers' type does not match the one expected by Question"):
+    def __init__(
+        self, detail: Any = "Answers' type does not match the one expected by Question"
+    ):
         super().__init__(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=detail
         )
@@ -41,17 +39,25 @@ class InvalidQuestionException(HTTPException):
         super().__init__(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=detail
         )
-    
+
 
 class UnauthorizedException(HTTPException):
     def __init__(self, detail: Any = "Unauthorized access to protected resource"):
-        super().__init__(
-            status_code=status.HTTP_401_UNAUTHORIZED, detail=detail
-        )
+        super().__init__(status_code=status.HTTP_401_UNAUTHORIZED, detail=detail)
 
 
 class PublicKeyMissingException(HTTPException):
     def __init__(self, detail: Any = "Public Auth token not found. Set manually."):
+        super().__init__(status_code=status.HTTP_501_NOT_IMPLEMENTED, detail=detail)
+
+
+class UserGroupNotFoundException(HTTPException):
+    def __init__(self, detail: Any = "Given User Group does not exist in database"):
+        super().__init__(status_code=status.HTTP_404_NOT_FOUND, detail=detail)
+
+
+class RedisUnavailableException(HTTPException):
+    def __init__(self, detail: Any = "Failed to connect to Redis"):
         super().__init__(
-            status_code=status.HTTP_401_UNAUTHORIZED, detail=detail
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=detail
         )

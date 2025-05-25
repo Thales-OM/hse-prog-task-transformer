@@ -79,3 +79,19 @@
         flex: 1 0 calc(50% - 4px);
     }
 }
+
+.inference-button.scored {
+    background-color: #a0a0a0; /* Grayish color */
+    opacity: 0.8;
+    position: relative;
+}
+
+.inference-button.scored::after {
+    content: "✓";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+}

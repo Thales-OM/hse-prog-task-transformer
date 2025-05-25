@@ -13,9 +13,11 @@ from src.config import settings
 # Get the directory of this conftest.py file
 current_dir = Path(__file__).parent
 
+
 @pytest.fixture(scope="session")
 def test_client():
     return TestClient(app)
+
 
 @pytest.fixture(scope="session")
 def mock_db_pool():
@@ -27,28 +29,29 @@ def mock_db_pool():
         "port": settings.postgres.port,
         "dbname": "test_db",  # Use separate test database
         "user": settings.postgres.user,
-        "password": settings.postgres.password
+        "password": settings.postgres.password,
     }
-    
+
     # Initialize connection pool
     test_pool = SimpleConnectionPool(**test_db_config)
     ConnectionPoolManager._pool = test_pool
-    
+
     # Initialize database schema
     init_sql_path = current_dir.parent / "postgres" / "init" / "init.sql"
     with test_pool.getconn() as conn:
         conn.autocommit = True  # Needed for schema creation
         with conn.cursor() as cursor:
-            with open(init_sql_path, 'r') as f:
+            with open(init_sql_path, "r") as f:
                 sql = f.read()
                 cursor.execute(sql)
         test_pool.putconn(conn)
-    
+
     yield test_pool
-    
+
     # Cleanup
     test_pool.closeall()
     ConnectionPoolManager._pool = None
+
 
 @pytest.fixture
 def db_connection(mock_db_pool):
@@ -58,10 +61,12 @@ def db_connection(mock_db_pool):
     conn.rollback()  # Rollback after test to maintain isolation
     mock_db_pool.putconn(conn)
 
+
 @pytest.fixture
 def db_cursor(db_connection):
     with db_connection.cursor() as cursor:
         yield cursor
+
 
 @pytest.fixture
 def mock_openai():
@@ -77,10 +82,11 @@ def mock_openai():
             ]
         )
     )
-    
-    with patch('src.api.deps.openai.AsyncClient') as mock:
+
+    with patch("src.api.deps.openai.AsyncClient") as mock:
         mock.return_value = mock_client
         yield mock_client
+
 
 @pytest.fixture(autouse=True)
 def override_settings():

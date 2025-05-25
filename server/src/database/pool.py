@@ -21,7 +21,7 @@ class ConnectionPoolManager:
     def initialize_pool(cls) -> None:
         max_retries = settings.postgres.pool_conn_retries
         retry_delay = settings.postgres.pool_conn_retry_delay
-        
+
         for attempt in range(max_retries):
             try:
                 cls._pool = SimpleConnectionPool(
@@ -63,14 +63,14 @@ class ConnectionPoolManager:
     def get_connection(cls) -> Generator:
         if cls._pool is None:
             cls.initialize_pool()
-        
+
         conn_id = None
         with cls._pool.getconn() as conn:
             try:
                 conn_id = get_connection_id(conn)
-                logger.debug(f"Acquired connection (ID {conn_id}) from pool")
+                logger.info(f"Acquired connection (ID {conn_id}) from pool")
                 yield conn
-                conn.commit() # Commit transaction
+                conn.commit()  # Commit transaction
             except Exception as e:
                 conn.rollback()  # Rollback on error
                 logger.error(f"Database operation failed: {e}")
@@ -78,7 +78,7 @@ class ConnectionPoolManager:
             finally:
                 if conn:
                     cls._pool.putconn(conn)
-                logger.debug(f"Returned connection (ID {conn_id}) to pool")
+                logger.info(f"Returned connection (ID {conn_id}) to pool")
 
     @classmethod
     @contextmanager
@@ -86,4 +86,3 @@ class ConnectionPoolManager:
         with cls.get_connection() as conn:
             with conn.cursor() as cursor:
                 yield cursor
-

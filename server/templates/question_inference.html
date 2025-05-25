@@ -1,20 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ languages.current }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ question.name }}</title>
+    <link rel="icon" href="{{ url_for('static', path='images/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='inference.css') }}">
     <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='language.css') }}">
+    <script src="{{ url_for('static', path='scripts/language.js') }}"></script>
 </head>
 
 <body>
     <div class="container">
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <button class="language-button" onclick="toggleLanguageDropdown()">
+                {{ languages.current|upper }}
+                <span>▼</span>
+            </button>
+            <div class="language-dropdown" id="languageDropdown">
+                {% for lang in languages.available %}
+                    {% if lang != languages.current %}
+                        <div class="language-option" onclick="changeLanguage('{{ lang }}', '{{ languages.current }}')">{{ lang|upper }}</div>
+                    {% else %}
+                        <div class="language-option current">{{ lang|upper }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        
         <div class="back-links-container">
-            <a href="/pages/questions/list" class="back-link">← Back to Questions List</a>
-            <a href="/pages/question/{{ question.id }}" class="back-link back-link-right">Back to Question →</a>
+            <a href="/pages/{{ user_group_cd }}/questions/list" class="back-link">← {{ languages.pack.back_button_1 }}</a>
+            <a href="/pages/{{ user_group_cd }}/question/{{ question.id }}" class="back-link back-link-right">{{ languages.pack.back_button_2 }} →</a>
         </div>
 
         <div class="question-layout">
@@ -23,18 +43,16 @@
                 <span class="question-type">{{ question.type }}</span>
 
                 <div class="question-text">
-                    <h2>Question Text</h2>
-                    <md-block>
-                        <p>{{ question.text_rendered | safe }}</p>
-                    </md-block>
+                    <h2>{{ languages.pack.question_text_header }}</h2>
+                    <p>{{ question.text_rendered | safe }}</p>
                 </div>
 
                 {% if question.answers %}
                 <div class="answers-section">
-                    <h2>Answers</h2>
+                    <h2>{{ languages.pack.answers_header }}</h2>
                     {% for answer in question.answers %}
                     <div class="answer-item {% if answer.is_correct %}correct-answer{% endif %}">
-                        <p>{{ answer.text | safe }}</p>
+                        <p>{{ answer.text_rendered | safe }}</p>
                         {% if answer.is_correct %}<p><strong>Correct Answer</strong></p>{% endif %}
                         {% if answer.fraction %}<p>Fraction: {{ answer.fraction }}</p>{% endif %}
                     </div>
@@ -44,7 +62,7 @@
 
                 {% if question.test_cases %}
                 <div class="test-cases-section">
-                    <h2>Test Cases</h2>
+                    <h2>{{ languages.pack.test_cases_header }}</h2>
                     {% for test_case in question.test_cases %}
                     <div class="test-case-item">
                         <p><strong>Input:</strong> {{ test_case.input }}</p>
@@ -58,47 +76,77 @@
             </div>
 
             <div class="inference-panel">
-                <h2>AI Analysis</h2>
+                <h2>{{ languages.pack.inference_header }}</h2>
                 <div class="inference-content">
                     {% if question.inference_text %}
-                    <md-block>
-                        {{ question.inference_text | safe }}
-                    </md-block>
+                        <md-block>{{ question.inference_text | safe }}</md-block>
                     {% else %}
-                    <p class="no-inference">No AI analysis available for this question.</p>
+                        <p class="no-inference">No AI analysis available for this question.</p>
                     {% endif %}
                 </div>
                 <div class="scoring-form">
-                    <h3>Rate this Analysis</h3>
+                    <h3>{{ languages.pack.rating_header }}</h3>
                     <form id="scoreForm">
+                        <!-- Clarity (using helpful field) -->
                         <div class="form-group">
-                            <label>Helpful:</label>
+                            <label>{{ languages.pack.rating_helpful_nm }}</label>
                             <div class="score-input">
-                                <input type="range" name="helpful" min="1" max="10" value="5" required>
-                                <span class="score-value">5</span>
+                                <input type="range" name="helpful" min="1" max="5" value="3" required style="width: 100%; box-sizing: border-box;">
+                                <div class="slider-labels">
+                                    <span>1 ({{ languages.pack.rating_helpful_min_nm }})</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                    <span>5 ({{ languages.pack.rating_helpful_max_nm }})</span>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Does Not Reveal Answer -->
                         <div class="form-group">
-                            <label>Does not reveal answer:</label>
+                            <label>{{ languages.pack.rating_no_answer_nm }}</label>
                             <div class="score-input">
-                                <input type="range" name="does_not_reveal_answer" min="1" max="10" value="5" required>
-                                <span class="score-value">5</span>
+                                <input type="range" name="does_not_reveal_answer" min="1" max="5" value="3" required style="width: 100%; box-sizing: border-box;">
+                                <div class="slider-labels">
+                                    <span>1 ({{ languages.pack.rating_no_answer_min_nm }})</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                    <span>5 ({{ languages.pack.rating_no_answer_max_nm }})</span>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Code/Logic Errors (using does_not_contain_errors field) -->
                         <div class="form-group">
-                            <label>Does not contain errors:</label>
-                            <div class="score-input">
-                                <input type="range" name="does_not_contain_errors" min="1" max="10" value="5" required>
-                                <span class="score-value">5</span>
+                            <label>{{ languages.pack.rating_no_error_nm }}</label>
+                            <div class="boolean-input">
+                                <label>
+                                    <input type="radio" name="does_not_contain_errors" value="5" required>
+                                    <span class="radio-label">{{ languages.pack.rating_no_error_true_nm }}</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="does_not_contain_errors" value="1">
+                                    <span class="radio-label">{{ languages.pack.rating_no_error_false_nm }}</span>
+                                </label>
                             </div>
                         </div>
+
+                        <!-- Conciseness (using only_relevant_info field) -->
                         <div class="form-group">
-                            <label>Relevance:</label>
+                            <label>{{ languages.pack.rating_relevant_nm }}</label>
                             <div class="score-input">
-                                <input type="range" name="only_relevant_info" min="1" max="10" value="5" required>
-                                <span class="score-value">5</span>
+                                <input type="range" name="only_relevant_info" min="1" max="5" value="3" required style="width: 100%; box-sizing: border-box;">
+                                <div class="slider-labels">
+                                    <span>1 ({{ languages.pack.rating_relevant_min_nm }})</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                    <span>5 ({{ languages.pack.rating_relevant_max_nm }})</span>
+                                </div>
                             </div>
                         </div>
+
                         <button type="submit" class="submit-button">Submit Rating</button>
                     </form>
                     <div class="alert alert-success" style="display: none;">
@@ -113,55 +161,75 @@
     </div>
 
     <script>
-        document.getElementById('scoreForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const form = e.target;
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('scoreForm');
             const submitButton = form.querySelector('button[type="submit"]');
+            const rangeInputs = form.querySelectorAll('input[type="range"]');
             const alerts = document.querySelectorAll('.alert');
-            
-            // Reset alerts and disable button
-            alerts.forEach(alert => alert.style.display = 'none');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Submitting...';
-        
-            try {
-                const response = await fetch(`/upload/inference/{{ question.inference_id }}/score/new`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        helpful: parseInt(form.helpful.value),
-                        does_not_reveal_answer: parseInt(form.does_not_reveal_answer.value),
-                        does_not_contain_errors: parseInt(form.does_not_contain_errors.value),
-                        only_relevant_info: parseInt(form.only_relevant_info.value)
-                    })
-                });
-        
-                if (response.ok) {
-                    document.querySelector('.alert-success').style.display = 'block';
-                    form.style.opacity = '0.5';
-                    submitButton.disabled = true;
-                } else {
-                    const error = await response.json();
-                    const errorMessage = error.message || 'Unknown error occurred';
-                    document.querySelector('.error-message').textContent = errorMessage;
-                    document.querySelector('.alert-error').style.display = 'block';
-                }
-            } catch (error) {
-                document.querySelector('.error-message').textContent = 'Network error - please try again';
-                document.querySelector('.alert-error').style.display = 'block';
-            } finally {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Submit Rating';
-            }
-        });
+            const inferenceId = '{{ question.inference_id }}';
+            const storageKey = `submitted_inference_${inferenceId}`;
 
-        // Update score values in real-time
-        document.querySelectorAll('input[type="range"]').forEach(input => {
-            input.addEventListener('input', (e) => {
-                e.target.parentNode.querySelector('.score-value').textContent = e.target.value;
+            // Check localStorage immediately on page load
+            if (localStorage.getItem(storageKey)) {
+                disableForm();
+                return; // Exit early if already submitted
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Prevent multiple submissions during processing
+                if (submitButton.disabled) return;
+                
+                // Reset alerts and disable button
+                alerts.forEach(alert => alert.style.display = 'none');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+            
+                try {
+                    const response = await fetch(`/upload/inference/${inferenceId}/score/new`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            user_group_cd: '{{ user_group_cd }}',
+                            helpful: parseInt(form.helpful.value),
+                            does_not_reveal_answer: parseInt(form.does_not_reveal_answer.value),
+                            does_not_contain_errors: parseInt(form.does_not_contain_errors.value),
+                            only_relevant_info: parseInt(form.only_relevant_info.value)
+                        })
+                    });
+            
+                    if (response.ok) {
+                        document.querySelector('.alert-success').style.display = 'block';
+                        disableForm();
+                        // Save to localStorage immediately
+                        localStorage.setItem(storageKey, 'true');
+                        // Also store the timestamp to potentially use later
+                        localStorage.setItem(`${storageKey}_timestamp`, Date.now());
+                    } else {
+                        throw new Error('Server returned an error');
+                    }
+                } catch (error) {
+                    document.querySelector('.error-message').textContent = 
+                        error.message || 'Network error - please try again';
+                    document.querySelector('.alert-error').style.display = 'block';
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Rating';
+                }
             });
+
+            function disableForm() {
+                form.style.opacity = '0.5';
+                form.classList.add('disabled-form');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Already Submitted';
+                rangeInputs.forEach(input => {
+                    input.disabled = true;
+                });
+                // Also prevent form submission through JavaScript
+                form.onsubmit = () => false;
+            }
         });
     </script>
 </body>
-
 </html>
