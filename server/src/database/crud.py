@@ -35,7 +35,7 @@ from src.utils import replace_and_append_options
 logger = LoggerFactory.getLogger(__name__)
 
 
-async def update_db_state(question: Question, cursor: cursor) -> None:
+async def update_db_state(question: Question, cursor: cursor) -> int:
     question_id = await create_question(question=question, cursor=cursor)
     for answer in question.answers:
         await create_answer(question_id=question_id, answer=answer, cursor=cursor)
@@ -43,6 +43,7 @@ async def update_db_state(question: Question, cursor: cursor) -> None:
         await create_test_case(
             question_id=question_id, test_case=test_case, cursor=cursor
         )
+    return question_id
 
 
 async def create_question(question: Question, cursor: cursor) -> int:

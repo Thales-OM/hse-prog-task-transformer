@@ -1,0 +1,2023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 13319745  -->
+  <question type="coderunner">
+    <name>
+      <text>A01_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">
+    <p>Реализуйте программу, которая проверит, удовлетворяет слово определенным условиям или нет.</p>
+    <h5><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></h5>
+    <ul>
+        <li>На первой строке вводится слово.&nbsp;</li>
+        <li>Затем вводится последовательность букв.</li> </ul>
+  <h5><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВЫВОДА</span></h5>
+       <ul> <li>Программа должна проверять, что слово&nbsp;<u>начинается</u> с введенной последовательности букв (подстроки)&nbsp;и при этом <u>состоит более чем из 5 символов</u>, и если да, то печатать фразу <b>"Подходит"</b>. Эта строка сохранена для вас в переменную <b>ok</b>.
+        </li>
+        <li>В остальных случаях программа печатает фразу <b>"Что-то не так"</b>. Эта строка сохранена для вас в переменную <b>not_ok</b>.</li>
+    </ul>
+</span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>10</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload>ok = 'Подходит'
+not_ok = 'Что-то не так'
+
+# ваш код ниже</answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[word = input()
+part = input()
+
+ok = 'Подходит'
+not_ok = 'Что-то не так'
+
+if word.startswith(part) and len(word) > 5:
+    print(ok)
+else:
+    print(not_ok)]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>лисичка
+ли</text>
+      </stdin>
+      <expected>
+                <text>Подходит
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>кролик
+рол</text>
+      </stdin>
+      <expected>
+                <text>Что-то не так
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>котик
+кот</text>
+      </stdin>
+      <expected>
+                <text>Что-то не так
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>морковка
+морков</text>
+      </stdin>
+      <expected>
+                <text>Подходит
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>кот
+кот</text>
+      </stdin>
+      <expected>
+                <text>Что-то не так
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319747  -->
+  <question type="coderunner">
+    <name>
+      <text>A02_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Реализуйте программу, добавляющую в список слова из менее семи букв:</span></p>
+<h5 style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></strong></span></h5>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В цикле </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">while</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"> считываются строки до тех пор, пока не введен 0.</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что до 0 будет введена как минимум одна строка.</span></li></ul>
+  <h5 style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></strong></span></h5>  
+  <ul><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">Для каждой вводимой строки сделайте проверку&nbsp;— если она состоит </span><u><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">только из букв и ее длина менее 7 символов</span></u><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">, добавьте ее в список.</span></span></li>
+    <li><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">Напечатайте получившийся список</span><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">. Строки в нем должны идти в том же порядке, что и при вводе.</span></li>
+</ul>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>10</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[result = []
+
+while True:
+    info = input()
+    if info == '0':
+        break
+    
+    if info.isalpha() and len(info) < 7:
+        result.append(info)
+        
+print(result)]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>котик
+ватру4шка
+12вареник
+14263
+морковка
+луковка
+лук
+вода
+подушка
+лупа
+0</text>
+      </stdin>
+      <expected>
+                <text>['котик', 'лук', 'вода', 'лупа']
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>129
+морковка1
+морковка2
+луковка1
+редиска10
+0</text>
+      </stdin>
+      <expected>
+                <text>[]
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>котик
+пончик
+печенька
+конфетка
+телефон
+0</text>
+      </stdin>
+      <expected>
+                <text>['котик', 'пончик']
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>редиска
+луковка
+морковка1234
+1234
+0</text>
+      </stdin>
+      <expected>
+                <text>[]
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>1123
+1245
+1359
+1384
+0</text>
+      </stdin>
+      <expected>
+                <text>[]
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319748  -->
+  <question type="coderunner">
+    <name>
+      <text>A03_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Рон хочет понять, по каким предметам ему нужно усерднее учиться.&nbsp;Напишите программу, которая поможет Рону.&nbsp;</span></p><h5><strong>ФОРМАТ ВВОДА</strong></h5><p dir="ltr"></p><ul><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На первой строке через запятую и пробел вводятся оценки Рона в формате&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">'&lt;название предмета&gt; : &lt;оценка&gt;'</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.&nbsp;Гарантируется, что строка состоит минимум из одного предмета и соответствующей оценки за него.&nbsp;</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На второй строке вводится целое число — оценка, которая устраивает маму Рона.&nbsp;</span></li></ul><p></p><p dir="ltr"><strong></strong></p><h5><span><span style="font-family: &quot;HSE Sans&quot;, sans-serif;" class=""><strong>ФОРМАТ ВЫВОДА</strong></span></span></h5><ul><li><span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если есть предметы, оценки по которым&nbsp;</span><u style=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">выше или равны той</span></u><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">, которая бы устраивала маму Рона, то в одной строке в&nbsp;</span><u style=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">алфавитном порядке</span></u><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&nbsp;через запятую и пробел перечисляются эти предметы.&nbsp;</span></span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если таких предметов нет, то выводится строка:&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">"Рон, нужно больше стараться!"</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">. Фраза сохранена для вас в переменную <strong>ron</strong>.</span></li></ul>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>20</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload><![CDATA[ron = "Рон, нужно больше стараться!"
+
+# ваш код ниже]]></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[ron = "Рон, нужно больше стараться!"
+marks = input().split(', ')
+m = int(input())
+
+good = []
+for i in marks:
+    if int(i.split(' : ')[1]) >= m:
+        good.append(i.split(' : ')[0])
+
+if len(good) > 0:
+    print(', '.join(sorted(good)))
+else:
+    print(ron)]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Полёты на мётлах : 10, Защита от Тёмных искусств : 6, Зельеварение : 3, История магии : 8
+7</text>
+      </stdin>
+      <expected>
+                <text>История магии, Полёты на мётлах
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Полёты на мётлах : 6, Трансфигурация : 4
+8</text>
+      </stdin>
+      <expected>
+                <text>Рон, нужно больше стараться!</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Трансфигурация : 10
+10</text>
+      </stdin>
+      <expected>
+                <text>Трансфигурация</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Трансфигурация : 4, Защита от Тёмных искусств : 2, Зельеварение : 3
+5</text>
+      </stdin>
+      <expected>
+                <text>Рон, нужно больше стараться!</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Травология : 2, Зельеварение : 5, История магии : 4
+3</text>
+      </stdin>
+      <expected>
+                <text>Зельеварение, История магии</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319749  -->
+  <question type="coderunner">
+    <name>
+      <text>A04_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Катя и Петя хотят завести домашнее животное. Реализуйте программу, которая поможет им сделать выбор.</span></p>
+<h5 style="text-align: left;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></strong></h5>
+<p dir="ltr" style="text-align: left;"></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На первой строке через пробел считываются названия животных, которые нравятся Кате.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На второй строке через пробел считываются названия животных, которые нравятся Пете.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На третьей строке через пробел считываются названия животных, на которых у обоих ребят есть аллергия.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что названия животных в каждой строке уникальны.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Любая строка может оказаться пустой.</span></li></ul>
+<h5 style="text-align: left;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВЫВОДА</span></strong></h5>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Программа выводит&nbsp;<u>через запятую с пробелом</u> названия животных, которых <u>хотят завести сразу и Катя, и Петя, и при этом на этих животных нет аллергии</u>.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Названия должны быть отсортированы <u>в алфавитном порядке</u>.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если таких животных нет, программа ничего не выводит.&nbsp;</span></li>
+</ul>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>10</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[katya_pets = set(input().split())
+petya_pets = set(input().split())
+allergy = set(input().split())
+
+print(*sorted((katya_pets & petya_pets) - allergy), sep = ', ')]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>лисичка кролик котик собачка
+
+рыбка свинка</text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>лисичка
+рысь тигр пантера
+лисичка</text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>лисичка тигр рыбка лев котик мопсик мышка
+тигр лев рыбка лисичка котик зайчик мышка
+тигр</text>
+      </stdin>
+      <expected>
+                <text>котик, лев, лисичка, мышка, рыбка
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>рысь заяц лиса свинка кролик
+кролик лиса котик
+котик</text>
+      </stdin>
+      <expected>
+                <text>кролик, лиса
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>кролик рысь пантера лев зебра
+
+зебра</text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319752  -->
+  <question type="coderunner">
+    <name>
+      <text>B01_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Реализуйте программу, которая определит, сколько самолетов летает в определенный город:</span></p>
+<h5 style="text-align: left;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></h5>
+<p dir="ltr" style="text-align: left;"></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Дан словарь <strong>airlines</strong>, где ключи&nbsp;— это названия авиакомпаний, а значения — словари (где ключи — названия самолетов, а значения — списки с городами, в которые эти самолеты летают). Этот код уже написан.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Считывается название города.</span></li></ul>
+  
+  <h5 style="text-align: left;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВЫВОДА</span></h5>
+  
+    <ul><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Определите, <u><span>сколько</span> самолетов летает в указанный город</u> и напечатайте это число.</span></li>
+</ul>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>15</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload>airlines = {
+    'Аэро_зум': {'12iy34': ['Милан', 'Париж', 'Казань'], '193tyw': ['Рим', 'Токио']},
+    'Аэрофлот_экспресс': {'12oa': ['Дублин', 'Токио', 'Рим'], 'llwo24': ['Рим']},
+    'S7_авиа': {'qw124': ['Рим', 'Милан', 'Москва'], '1987ytr': ['Токио', 'Пекин']},
+    'Love_airline': {'12kcsl': ['Париж']}
+}
+
+# ваш код ниже</answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer>airlines = {
+    'Аэро_зум': {'12iy34': ['Милан', 'Париж', 'Казань'], '193tyw': ['Рим', 'Токио']},
+    'Аэрофлот_экспресс': {'12oa': ['Дублин', 'Токио', 'Рим'], 'llwo24': ['Рим']},
+    'S7_авиа': {'qw124': ['Рим', 'Милан', 'Москва'], '1987ytr': ['Токио', 'Пекин']},
+    'Love_airline': {'12kcsl': ['Париж']}
+}
+
+city = input()
+
+count = 0
+for key, value in airlines.items():
+    for k, v in value.items():
+        if city in v:
+            count += 1
+    
+print(count)</answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Париж</text>
+      </stdin>
+      <expected>
+                <text>2</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Люксембург</text>
+      </stdin>
+      <expected>
+                <text>0</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Каир</text>
+      </stdin>
+      <expected>
+                <text>0</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Рим</text>
+      </stdin>
+      <expected>
+                <text>4</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Токио</text>
+      </stdin>
+      <expected>
+                <text>3</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319753  -->
+  <question type="coderunner">
+    <name>
+      <text>B02_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Преподаватель хочет определить рейтинг студентов по итогам четырех тестов.&nbsp;</span><span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Напишите программу, которая поможет преподавателю.&nbsp;</span><br></span></p><h5><span><strong>ФОРМАТ ВВОДА&nbsp;</strong></span></h5>
+<p></p>
+<p></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Вводится информация о каждом студенте в формате&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">'&lt;имя студента&gt;: &lt;оценки за четыре теста через запятую и пробел&gt;'</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.&nbsp; Между собой информация о студентах&nbsp;</span><span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">разделена точкой с запятой и пробелом</span></span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.&nbsp;</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что имена студентов не повторяются.</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что строка состоит
+        минимум из информации об одном студенте.</span></li>
+</ul>
+<p></p>
+<h5><strong>ФОРМАТ ВЫВОДА&nbsp;</strong></h5>
+<p></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><u>Имена студентов</u> в порядке <u>от меньшего среднего балла к большему</u>.</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Каждое имя должно выводиться с новой строки.</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если средний балл студентов одинаковый, то имена идут в алфавитном порядке.</span></li></ul><ol>
+</ol>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>20</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer>info = input()
+
+info = info.split('; ')
+
+res = {}
+for person in info:
+    person, marks = person.split(': ')
+    marks = list(map(int, marks.split(', ')))
+    av = sum(marks) / len(marks)
+    res[person] = av
+
+res2 = []
+for k, v in res.items():
+    res2.append((v, k))
+
+final = sorted(res2)
+
+for p in final:
+    print(p[-1])</answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Лиза: 3, 7, 2, 3; Ева-Мария: 2, 8, 9, 2; Ира: 4, 2, 1, 9; Карина: 6, 6, 2, 9</text>
+      </stdin>
+      <expected>
+                <text>Лиза
+Ира
+Ева-Мария
+Карина
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Маша: 4, 5, 5, 4; Марина: 5, 5, 4, 4; Настя: 4, 5, 4, 5</text>
+      </stdin>
+      <expected>
+                <text>Марина
+Маша
+Настя
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Марина: 5, 5, 4, 4</text>
+      </stdin>
+      <expected>
+                <text>Марина
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Лиза: 3, 7, 2, 3; Марина: 2, 8, 9, 2; Ира: 4, 2, 1, 9; Карина: 6, 6, 2, 9; Маша: 4, 5, 5, 4; Настя: 4, 5, 4, 5</text>
+      </stdin>
+      <expected>
+                <text>Лиза
+Ира
+Маша
+Настя
+Марина
+Карина
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319754  -->
+  <question type="coderunner">
+    <name>
+      <text>B03_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Напишите функцию, определяющую пароли, которые соответствуют правилам составления.&nbsp;</span></p>
+<h5 style="text-align: left;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ТРЕБУЕМАЯ ФУНКЦИЯ&nbsp;</span></strong>
+    </span>
+</h5>
+<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">
+</span></p>
+<ul>
+    <li><span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;" class=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Функция </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">get_passwords</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">, параметрами которой является список строк </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">passwords</span></strong>
+        <span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"> (набор возможных паролей) и целое число </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">rule</span></strong>
+        <span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"> (определяет правило, согласно которому должен быть составлен пароль).</span></span></li>
+    <li><span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;" class=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Параметр функции </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">rule</span></strong>
+        <span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"> может принимать два возможных значения: </span>
+        <ul>
+            <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">0 (пароль должен состоять только из цифр)</span></li>
+            <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">1 (пароль должен состоять только из букв)</span></li>
+        </ul>
+
+        </span>
+    </li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Функция должна возвращать список&nbsp;— пароли, которые соответствуют указанному в функции правилу составления. Пароли добавляются в список в том же порядке, как и в исходном списке.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если таких паролей нет, то возвращается пустой список.</span></li>
+</ul><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><em>
+      
+ВАЖНО! В этой задаче вы только определяете функцию, вызывать ее и считывать значения не нужно, это произойдет автоматически при проверке.<br></em></span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>20</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[import sys
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """{{ STUDENT_ANSWER | e('py') }}"""
+
+if 'import ' in __student_answer__:
+    print('В этой задаче нельзя использовать import\n и загружать дополнительные модули')
+    sys.exit()
+if 'input(' in __student_answer__.replace(' ',''):
+    print('В этой задаче нельзя использовать input()!')
+    sys.exit()
+if 'def' not in __student_answer__:
+    print('В этой задаче обязательно создавать функцию!')
+    sys.exit()
+if 'print(' in __student_answer__.replace(' ',''):
+    print('В этой задаче нельзя использовать print()!')
+    sys.exit()
+if 'get_passwords' not in __student_answer__.replace(' ',''):
+    print('Ваша функция должна называться get_passwords')
+    sys.exit()
+
+SEPARATOR = "#<ab@17943918#@>#"
+
+{% for TEST in TESTCASES %}
+ret = get_passwords({{TEST.stdin}})
+if ret == {{TEST.expected}}:
+    print(ret)
+else:
+    print(f'Функция вернула неверное значение: "{ret}"')
+del ret
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}]]></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer>def get_passwords(passwords, rule):
+    res = []
+    for i in passwords:
+        if rule ==  0:
+            if i.isdigit():
+                res.append(i)
+        else:
+            if i.isalpha():
+                res.append(i)
+    return res</answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['_123_XWQ', '1234', 'QwErTy', 'QWE124RTY'], 0</text>
+      </stdin>
+      <expected>
+                <text>['1234']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['_123_XWQ', '1234', 'QwErTy', 'QWfsiofcRTY'], 1</text>
+      </stdin>
+      <expected>
+                <text>['QwErTy', 'QWfsiofcRTY']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['_123_XWQ', 'QwErTy', 'QWE124RTY'], 0</text>
+      </stdin>
+      <expected>
+                <text>[]</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['_123_XWQ', 'QWE124RTY'], 0</text>
+      </stdin>
+      <expected>
+                <text>[]</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['1234', '5678'], 0</text>
+      </stdin>
+      <expected>
+                <text>['1234', '5678']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['qwer', 'asdhj'], 1</text>
+      </stdin>
+      <expected>
+                <text>['qwer', 'asdhj']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['qwer', 'asdhj', '1235'], 1</text>
+      </stdin>
+      <expected>
+                <text>['qwer', 'asdhj']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319755  -->
+  <question type="coderunner">
+    <name>
+      <text>B04_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В магазинчике итальянского мороженого продается мороженое разных вкусов, при этом в одной порции можно собрать несколько шариков разных вкусов.&nbsp;</span></p>
+
+<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Для каждой проданной порции записываются вкусы всех шариков в этой порции.&nbsp;</span></p>
+
+<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Напишите программу, которая определяет вкус, встречающийся в наибольшем количестве проданных порций.</span></p>
+
+<h5><strong>ФОРМАТ ВВОДА</strong></h5>
+
+<ul>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Файл&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">ice-cream.csv</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&nbsp;в кодировке&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">utf-8</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">, гарантировано, что в файле есть минимум одна строка с данными.</span>
+
+    </li>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На каждой строке файла записаны вкусы шариков через точку с запятой. Например,&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">'клубника;манго;зеленое яблоко'</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.&nbsp;</span><br></li>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Одна строка файла описывает одну порцию мороженого.</span></li>
+
+</ul>
+
+<p></p>
+
+<h5><strong>ФОРМАТ ВЫВОДА&nbsp;</strong></h5>
+
+<p></p>
+
+<ul>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Вкус мороженого, который встречался <u>в наибольшем</u> количестве порций (каждая порция описана одной строкой таблицы).&nbsp;</span></li>
+
+    <li><span id="docs-internal-guid-5e6bd384-7fff-44ec-f489-42f3da18b777"><span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если в одной порции присутствует несколько шариков с одинаковым вкусом, то такой вкус для этой порции нужно учесть только один раз.</span></span>
+
+        </span>
+
+    </li>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что самый популярный вкус только один.</span></li>
+
+</ul>
+
+<p></p>
+
+<h5><strong>ДОПОЛНИТЕЛЬНО</strong></h5>
+
+<p></p>
+
+<p></p>
+
+<ul>
+
+    <li><span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;" class="">Ваше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл <strong>ice-cream</strong></span><strong style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.csv</span></strong>
+
+        <span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;" class="">&nbsp;без дополнительных указаний (например, пути к файлу на вашем компьютере).</span>
+
+    </li>
+
+    <li><span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В открытом тесте используется файл&nbsp;<strong style="font-size: 0.9375rem;"><span><a href="@@PLUGINFILE@@/ice-cream.csv" target="_blank">ice-cream.csv</a></span></strong>
+
+        <span style="font-size: 0.9375rem;">. Вы можете скачать его и проверить свое решение локально.</span>
+
+            </span><br></li>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.</span></li></ul><ol>
+
+</ol>]]></text>
+<file name="ice-cream.csv" path="/" encoding="base64">0LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwO9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L4K0LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LAK0YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LA70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+CtC60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YAK0LDRgNCx0YPQtwrQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwCtGP0LHQu9C+0LrQvjvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0CtC60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YAK0LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvQsNGA0LHRg9C3CtC80LDQvdCz0L470LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtC60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgArRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470LDRgNCx0YPQtzvQvNCw0L3Qs9C+CtGH0LjQt9C60LXQudC6O9GH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGACtGH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQ70YfQuNC30LrQtdC50LoK0LzQsNC90LPQvgrQutC70YPQsdC90LjQutCwO9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvRh9C40LfQutC10LnQujvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9C80LDQvdCz0L470LDRgNCx0YPQtzvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YAK0LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtDvQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9C80LDQvdCz0L470YfQuNC30LrQtdC50Lo70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3O9GH0LjQt9C60LXQudC6O9C60LvRg9Cx0L3QuNC60LAK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3O9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0YfQuNC30LrQtdC50LoK0LzQsNC90LPQvjvRh9C40LfQutC10LnQujvRh9C40LfQutC10LnQujvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwCtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0LcK0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGACtC/0LvQvtC80LHQuNGAO9GH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvjvQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L4K0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9GI0L7QutC+0LvQsNC0O9GI0L7QutC+0LvQsNC0O9C80LDQvdCz0L4K0Y/QsdC70L7QutC+CtC80LDQvdCz0L470LDRgNCx0YPQtzvRh9C40LfQutC10LnQujvQsNGA0LHRg9C3O9Cw0YDQsdGD0LcK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQK0YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LDRgNCx0YPQtwrQsNGA0LHRg9C3CtGP0LHQu9C+0LrQvjvQsNGA0LHRg9C3O9GI0L7QutC+0LvQsNC0CtCw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9C80LDQvdCz0L4K0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50Lo70Y/QsdC70L7QutC+O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtGH0LjQt9C60LXQudC6O9C80LDQvdCz0L4K0Y/QsdC70L7QutC+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70YfQuNC30LrQtdC50LoK0YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvRiNC+0LrQvtC70LDQtDvQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9GI0L7QutC+0LvQsNC0CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70L/Qu9C+0LzQsdC40YAK0LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9GH0LjQt9C60LXQudC6O9C/0LvQvtC80LHQuNGACtC80LDQvdCz0L470Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6CtGH0LjQt9C60LXQudC6CtCw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470Y/QsdC70L7QutC+CtGH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YfQuNC30LrQtdC50Lo70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L4K0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtC80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3CtC60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50Lo70YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvRh9C40LfQutC10LnQugrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+CtGP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+O9C/0LvQvtC80LHQuNGAO9C80LDQvdCz0L4K0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LA70L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0LcK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+CtC/0LvQvtC80LHQuNGACtGI0L7QutC+0LvQsNC0O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtzvQvNCw0L3Qs9C+O9C/0LvQvtC80LHQuNGACtGP0LHQu9C+0LrQvjvRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9Cw0YDQsdGD0LcK0LzQsNC90LPQvgrRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70YjQvtC60L7Qu9Cw0LQK0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3CtC80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6CtC60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L4K0L/Qu9C+0LzQsdC40YA70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470Y/QsdC70L7QutC+O9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L4K0LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwO9GP0LHQu9C+0LrQvgrRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvgrRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvgrQvNCw0L3Qs9C+O9GI0L7QutC+0LvQsNC0O9Cw0YDQsdGD0LcK0LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LAK0LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtArQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6O9C80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgDvQv9C70L7QvNCx0LjRgArRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGACtGP0LHQu9C+0LrQvjvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvRj9Cx0LvQvtC60L470LDRgNCx0YPQtwrQsNGA0LHRg9C3O9GP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70LzQsNC90LPQvgrRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+CtC80LDQvdCz0L4K0LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9C60LvRg9Cx0L3QuNC60LAK0YjQvtC60L7Qu9Cw0LQ70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQugrRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+CtC80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtwrRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+CtGP0LHQu9C+0LrQvgrQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgDvRh9C40LfQutC10LnQugrRj9Cx0LvQvtC60L470LzQsNC90LPQvgrRj9Cx0LvQvtC60L470LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtwrQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQsNGA0LHRg9C3O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvgrRh9C40LfQutC10LnQugrRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3CtGH0LjQt9C60LXQudC6Cg==</file>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p dir="ltr"><br></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>20</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[from shutil import copyfile
+__student_answer__ = """{{ STUDENT_ANSWER | e('py') }}"""
+
+SEPARATOR = "#<ab@17943918#@>#"
+
+{% for TEST in TESTCASES %}
+copyfile(str({{ TEST.testcode }})+'.csv', 'ice-cream.csv')
+
+{{ STUDENT_ANSWER }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}]]></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer>data = {}
+
+with open('ice-cream.csv', encoding = 'utf8') as inf:
+    for line in inf:
+        ice_cream = set(line.strip().split(';'))
+        for i in ice_cream:
+            if i not in data:
+                data[i] = 1
+            else:
+                data[i] += 1
+
+maxi = max(data.values())
+
+for k, v in data.items():
+    if v == maxi:
+        print(k)</answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>twig</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>0</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>манго</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>1</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>яблоко</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+<file name="0.csv" path="/" encoding="base64">0LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwO9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L4K0LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LAK0YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LA70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+CtC60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YAK0LDRgNCx0YPQtwrQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwCtGP0LHQu9C+0LrQvjvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0CtC60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YAK0LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvQsNGA0LHRg9C3CtC80LDQvdCz0L470LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtC60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgArRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470LDRgNCx0YPQtzvQvNCw0L3Qs9C+CtGH0LjQt9C60LXQudC6O9GH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGACtGH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQ70YfQuNC30LrQtdC50LoK0LzQsNC90LPQvgrQutC70YPQsdC90LjQutCwO9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvRh9C40LfQutC10LnQujvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9C80LDQvdCz0L470LDRgNCx0YPQtzvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YAK0LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtDvQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9C80LDQvdCz0L470YfQuNC30LrQtdC50Lo70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3O9GH0LjQt9C60LXQudC6O9C60LvRg9Cx0L3QuNC60LAK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3O9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0YfQuNC30LrQtdC50LoK0LzQsNC90LPQvjvRh9C40LfQutC10LnQujvRh9C40LfQutC10LnQujvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwCtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0LcK0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGACtC/0LvQvtC80LHQuNGAO9GH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvjvQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L4K0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9GI0L7QutC+0LvQsNC0O9GI0L7QutC+0LvQsNC0O9C80LDQvdCz0L4K0Y/QsdC70L7QutC+CtC80LDQvdCz0L470LDRgNCx0YPQtzvRh9C40LfQutC10LnQujvQsNGA0LHRg9C3O9Cw0YDQsdGD0LcK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQK0YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LDRgNCx0YPQtwrQsNGA0LHRg9C3CtGP0LHQu9C+0LrQvjvQsNGA0LHRg9C3O9GI0L7QutC+0LvQsNC0CtCw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9C80LDQvdCz0L4K0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50Lo70Y/QsdC70L7QutC+O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtGH0LjQt9C60LXQudC6O9C80LDQvdCz0L4K0Y/QsdC70L7QutC+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70YfQuNC30LrQtdC50LoK0YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvRiNC+0LrQvtC70LDQtDvQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9GI0L7QutC+0LvQsNC0CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70L/Qu9C+0LzQsdC40YAK0LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9GH0LjQt9C60LXQudC6O9C/0LvQvtC80LHQuNGACtC80LDQvdCz0L470Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6CtGH0LjQt9C60LXQudC6CtCw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470Y/QsdC70L7QutC+CtGH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YfQuNC30LrQtdC50Lo70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L4K0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtC80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3CtC60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50Lo70YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvRh9C40LfQutC10LnQugrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+CtGP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+O9C/0LvQvtC80LHQuNGAO9C80LDQvdCz0L4K0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LA70L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0LcK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+CtC/0LvQvtC80LHQuNGACtGI0L7QutC+0LvQsNC0O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtzvQvNCw0L3Qs9C+O9C/0LvQvtC80LHQuNGACtGP0LHQu9C+0LrQvjvRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9Cw0YDQsdGD0LcK0LzQsNC90LPQvgrRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70YjQvtC60L7Qu9Cw0LQK0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3CtC80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6CtC60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L4K0L/Qu9C+0LzQsdC40YA70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470Y/QsdC70L7QutC+O9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L4K0LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwO9GP0LHQu9C+0LrQvgrRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvgrRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvgrQvNCw0L3Qs9C+O9GI0L7QutC+0LvQsNC0O9Cw0YDQsdGD0LcK0LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LAK0LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtArQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6O9C80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgDvQv9C70L7QvNCx0LjRgArRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGACtGP0LHQu9C+0LrQvjvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvRj9Cx0LvQvtC60L470LDRgNCx0YPQtwrQsNGA0LHRg9C3O9GP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70LzQsNC90LPQvgrRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+CtC80LDQvdCz0L4K0LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9C60LvRg9Cx0L3QuNC60LAK0YjQvtC60L7Qu9Cw0LQ70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQugrRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+CtC80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtwrRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+CtGP0LHQu9C+0LrQvgrQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgDvRh9C40LfQutC10LnQugrRj9Cx0LvQvtC60L470LzQsNC90LPQvgrRj9Cx0LvQvtC60L470LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtwrQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQsNGA0LHRg9C3O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvgrRh9C40LfQutC10LnQugrRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3CtGH0LjQt9C60LXQudC6Cg==</file>
+<file name="1.csv" path="/" encoding="base64">0Y/QsdC70L7QutC+O9GP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+CtGH0LjQt9C60LXQudC6O9GH0LjQt9C60LXQudC6O9GP0LHQu9C+0LrQvjvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC70LjQvdCwO9GP0LHQu9C+0LrQvjvQutGA0LXQvC3QsdGA0Y7Qu9C1CtGI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQK0Y/QsdC70L7QutC+CtC60YDQtdC8LdCx0YDRjtC70LU70LrQu9GD0LHQvdC40LrQsDvQvNCw0LvQuNC90LAK0L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6O9C60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L4K0LDRgNCx0YPQtwrQvNCw0LvQuNC90LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LrRgNC10Lwt0LHRgNGO0LvQtQrQvNCw0LvQuNC90LA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgArRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L4K0LDRgNCx0YPQtzvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwCtGI0L7QutC+0LvQsNC0O9C80LDQu9C40L3QsDvQutGA0LXQvC3QsdGA0Y7Qu9C1O9C60YDQtdC8LdCx0YDRjtC70LU70LzQsNC90LPQvgrQutGA0LXQvC3QsdGA0Y7Qu9C1CtGP0LHQu9C+0LrQvgrRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC70LjQvdCwCtGH0LjQt9C60LXQudC6O9C/0LvQvtC80LHQuNGAO9C80LDQu9C40L3QsDvRj9Cx0LvQvtC60L4K0YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9C80LDQvdCz0L470LrRgNC10Lwt0LHRgNGO0LvQtTvQutGA0LXQvC3QsdGA0Y7Qu9C1O9C60LvRg9Cx0L3QuNC60LAK0LzQsNC70LjQvdCwO9Cw0YDQsdGD0LcK0LDRgNCx0YPQtwrQsNGA0LHRg9C3O9Cw0YDQsdGD0Lc70YfQuNC30LrQtdC50LoK0LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L4K0Y/QsdC70L7QutC+O9C80LDQu9C40L3QsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQvNCw0LvQuNC90LA70LrRgNC10Lwt0LHRgNGO0LvQtQrQvNCw0LvQuNC90LA70Y/QsdC70L7QutC+O9C80LDQvdCz0L470LzQsNC70LjQvdCwCtCw0YDQsdGD0Lc70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtzvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQK0LzQsNC70LjQvdCwO9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YAK0LrRgNC10Lwt0LHRgNGO0LvQtTvQsNGA0LHRg9C3O9C/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9C80LDQvdCz0L470YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtzvQsNGA0LHRg9C3O9C80LDQu9C40L3QsArQvNCw0LvQuNC90LA70LzQsNC90LPQvjvQvNCw0LvQuNC90LAK0L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvQvNCw0L3Qs9C+O9GH0LjQt9C60LXQudC6CtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LzQsNC70LjQvdCwCtC80LDQu9C40L3QsDvRh9C40LfQutC10LnQugrQutC70YPQsdC90LjQutCwO9C60YDQtdC8LdCx0YDRjtC70LU70LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgDvQvNCw0LvQuNC90LA70LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwCtC80LDQvdCz0L4K0LrRgNC10Lwt0LHRgNGO0LvQtQrQvNCw0L3Qs9C+O9C80LDQu9C40L3QsDvQutC70YPQsdC90LjQutCwO9C/0LvQvtC80LHQuNGACtGI0L7QutC+0LvQsNC0CtC60YDQtdC8LdCx0YDRjtC70LU70YfQuNC30LrQtdC50Lo70LrRgNC10Lwt0LHRgNGO0LvQtQrQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGACtC80LDQvdCz0L470Y/QsdC70L7QutC+O9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0LrRgNC10Lwt0LHRgNGO0LvQtTvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3O9C60YDQtdC8LdCx0YDRjtC70LU70Y/QsdC70L7QutC+CtC80LDQu9C40L3QsDvRiNC+0LrQvtC70LDQtDvRh9C40LfQutC10LnQugrQvNCw0L3Qs9C+CtC80LDQu9C40L3QsDvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470LzQsNC70LjQvdCwCtGH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6O9C60YDQtdC8LdCx0YDRjtC70LUK0LrRgNC10Lwt0LHRgNGO0LvQtTvRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70LrRgNC10Lwt0LHRgNGO0LvQtQrQutGA0LXQvC3QsdGA0Y7Qu9C1CtC80LDQu9C40L3QsDvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LAK0YfQuNC30LrQtdC50Lo70LzQsNC70LjQvdCwCtGH0LjQt9C60LXQudC6O9C80LDQu9C40L3QsArQutGA0LXQvC3QsdGA0Y7Qu9C1O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L470LrRgNC10Lwt0LHRgNGO0LvQtTvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LAK0LzQsNC70LjQvdCwO9C60YDQtdC8LdCx0YDRjtC70LU70LDRgNCx0YPQtzvQutGA0LXQvC3QsdGA0Y7Qu9C1CtGI0L7QutC+0LvQsNC0O9GI0L7QutC+0LvQsNC0O9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70LzQsNC70LjQvdCwO9C80LDQu9C40L3QsArQutC70YPQsdC90LjQutCwO9GP0LHQu9C+0LrQvgrRiNC+0LrQvtC70LDQtDvQvNCw0LvQuNC90LA70LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgArRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQutGA0LXQvC3QsdGA0Y7Qu9C1CtGI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvjvQutC70YPQsdC90LjQutCwCtGI0L7QutC+0LvQsNC0O9C60YDQtdC8LdCx0YDRjtC70LU70Y/QsdC70L7QutC+O9C60YDQtdC8LdCx0YDRjtC70LU70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGAO9C60YDQtdC8LdCx0YDRjtC70LU70L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50LoK0LzQsNC70LjQvdCwO9C80LDQu9C40L3QsArRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQutGA0LXQvC3QsdGA0Y7Qu9C1O9GI0L7QutC+0LvQsNC0CtC60LvRg9Cx0L3QuNC60LAK0LzQsNC90LPQvjvRh9C40LfQutC10LnQugrQsNGA0LHRg9C3O9C60YDQtdC8LdCx0YDRjtC70LU70Y/QsdC70L7QutC+O9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70LzQsNC70LjQvdCwCtC80LDQu9C40L3QsDvQutC70YPQsdC90LjQutCwO9C60YDQtdC8LdCx0YDRjtC70LU70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArRh9C40LfQutC10LnQujvQutGA0LXQvC3QsdGA0Y7Qu9C1O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGACtGH0LjQt9C60LXQudC6O9GP0LHQu9C+0LrQvjvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470Y/QsdC70L7QutC+CtGP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+CtC60YDQtdC8LdCx0YDRjtC70LU70LrRgNC10Lwt0LHRgNGO0LvQtQrQutGA0LXQvC3QsdGA0Y7Qu9C1O9GP0LHQu9C+0LrQvjvQsNGA0LHRg9C3O9C80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9C80LDQvdCz0L470LzQsNC90LPQvgrQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50LoK0YfQuNC30LrQtdC50LoK0LzQsNC70LjQvdCwO9GP0LHQu9C+0LrQvgrQutGA0LXQvC3QsdGA0Y7Qu9C1O9C80LDQu9C40L3QsDvRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgArQutGA0LXQvC3QsdGA0Y7Qu9C1CtC60YDQtdC8LdCx0YDRjtC70LU70LzQsNC70LjQvdCwCtGP0LHQu9C+0LrQvgrRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvjvQutGA0LXQvC3QsdGA0Y7Qu9C1O9GI0L7QutC+0LvQsNC0CtGI0L7QutC+0LvQsNC0O9C60YDQtdC8LdCx0YDRjtC70LU70LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwCtC60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtwrQutC70YPQsdC90LjQutCwO9GP0LHQu9C+0LrQvgrRiNC+0LrQvtC70LDQtDvQutGA0LXQvC3QsdGA0Y7Qu9C1O9C60LvRg9Cx0L3QuNC60LA70LzQsNC70LjQvdCwCg==</file>
+    </testcases>
+  </question>
+
+<!-- question: 13319756  -->
+  <question type="coderunner">
+    <name>
+      <text>С01_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h5><span style="font-weight: normal;"><span style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif; color: rgb(73, 80, 87); font-size: 0.9375rem;">Маша готовит ужин и собирает информацию о всех продуктах, которые есть у нее дома. Затем выбирает только те, которые нужны по рецепту и считает их калорийность.</span><br></span></h5>
+<h5><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></strong></h5>
+<p></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Записи о по продуктах, которые есть у Маши, вида </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&lt;название продукта&gt;: &lt;кол-во белков&gt;, &lt;кол-во жиров&gt;, &lt;кол-во углеводов&gt;</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">. Каждая запись вводится с новой строки. Количество белков, жиров и углеводов всегда
+        являются целыми числами.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В каждой строке указывается информация только об одном продукте.</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что названия продуктов не повторяются.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Когда записи заканчиваются, на отдельной строке вводится слово&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">"СТОП"</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.&nbsp;</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Далее вводится строка, где через запятую и пробел перечислены продукты, необходимые для блюда. Также в строке указано, сколько (в штуках) нужно каждого продукта.</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что все продукты из рецепта есть в нужном количестве у Маши.</span></li><li><span class="" style=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Считаем, что калорийность продукта рассчитывается, как <strong>4 * кол-во белков + 9 * кол-во жиров + 4 * кол-во углеводов</strong>.</span><br></span></li>
+</ul>
+<h5><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВЫВОДА&nbsp;</span></strong></h5>
+<p></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Строки вида <strong>"Продукт: &lt;название продукта из рецепта&gt;, калорийность: &lt;суммарная калорийность&gt;"</strong>.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Под суммарной калорийностью подразумевается следующее: если калорийность огурчика равна 50, а Маше их нужно 3 штуки, то суммарно калорийность будет равна 150.&nbsp;</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Строки должны выводиться <u>в зависимости от количества белков в продукте (от меньшего к большему)</u>.</span></li>
+</ul>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>25</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer>products = {} 
+
+while True:
+    info = input()
+    if info == 'СТОП':
+        break
+    pro, data = info.split(': ')
+    data = list(map(int, data.split(', ')))
+    
+    col = 4 * data[0] + 9 * data[1] + 4 * data[2]
+    
+    products[pro] = [data, col]
+
+recipe = input().split(', ')
+
+data = {}
+for item in recipe:
+    item = item.split('-')
+    data[item[0]] = int(item[1])
+    
+res = [] 
+for key, value in data.items():
+    res.append((key, products[key][-1] * value, products[key][0]))
+
+res = sorted(res, key = lambda x: x[2][0])
+
+for item in res:
+    print(f'Продукт: {item[0]}, калорийность: {item[1]}')</answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>арахис: 187, 378, 28
+киви: 189, 72, 222
+банан: 156, 782, 875
+рыба: 76, 98, 82
+СТОП
+арахис-2, рыба-4, банан-1</text>
+      </stdin>
+      <expected>
+                <text>Продукт: рыба, калорийность: 6056
+Продукт: банан, калорийность: 11162
+Продукт: арахис, калорийность: 8524
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>икра: 76, 20, 89
+СТОП
+икра-10</text>
+      </stdin>
+      <expected>
+                <text>Продукт: икра, калорийность: 8400
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>рыба: 78, 28, 2
+кетчуп: 89, 82, 8
+майонез: 72, 89, 87
+СТОП
+кетчуп-1, майонез-3, рыба-10</text>
+      </stdin>
+      <expected>
+                <text>Продукт: майонез, калорийность: 4311
+Продукт: рыба, калорийность: 5720
+Продукт: кетчуп, калорийность: 1126
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>рыба: 78, 28, 2
+кетчуп: 89, 82, 8
+майонез: 72, 89, 87
+арахис: 187, 378, 28
+киви: 189, 72, 222
+банан: 156, 782, 875
+лимон: 167, 16, 8
+СТОП
+арахис-8, киви-9, банан-9</text>
+      </stdin>
+      <expected>
+                <text>Продукт: банан, калорийность: 100458
+Продукт: арахис, калорийность: 34096
+Продукт: киви, калорийность: 20628
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>арахис: 187, 378, 28
+киви: 189, 72, 222
+банан: 156, 782, 875
+лимон: 167, 16, 8
+икра: 76, 20, 89
+СТОП
+икра-8, лимон-1, киви-7</text>
+      </stdin>
+      <expected>
+                <text>Продукт: икра, калорийность: 6720
+Продукт: лимон, калорийность: 844
+Продукт: киви, калорийность: 16044
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319757  -->
+  <question type="coderunner">
+    <name>
+      <text>С02_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><span style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif; ">Друзья хотят решить, куда поехать на выходных. Помогите определить, кто из них, в каких городах был и в какие города хочет поехать. Определите, в какие города можно поехать, при условии, что в них никто ни разу не был.</span></p>
+<h5><strong>ФОРМАТ ВВОДА</strong></h5>
+<p></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Текстовый файл </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">travel_notes</span></strong><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.csv</span></strong>
+        <span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">, в котором записаны данные о людях и городах, в которых они побывали и в которых еще только хотят побывать. Например,&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">"Алла,Москва;Минск;Ростов,Каир;Курск"</span></strong>
+        <span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">. В данном примере <strong>"Алла"</strong>— имя человека, <span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">"</span></span><span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Москва;Минск;Ростов"&nbsp;— </span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">города, в которых она была;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&nbsp;</span></strong></span><span style=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Каир;Курск&nbsp;— </span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">города, в которых она еще хочет побывать.</span></span></span></span><br>
+    </li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что имена людей не повторяются.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что каждый был или хочет посетить минимум один город.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Разделителем в файле служат запятые. Разделителями между городами является точка с запятой.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что в файле есть минимум одна строка с данными.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Далее вводится строка (первая буква имени).</span></li>
+</ul>
+<p></p>
+<h5><strong>ФОРМАТ ВЫВОДА</strong><br></h5>
+<p></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Текстовый файл <strong>vacation.csv</strong> с четырьмя строками следующего формата:</span></li>
+    <ul>
+        <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong>"Успели побывать: &lt;уникальные города, в которых успели побывать люди с именами, начинающимися на введенную букву&gt;".</strong> Города должны выводиться в алфавитном порядке через запятую и пробел.</span></li>
+        <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong>"Хотим побывать: &lt;уникальные города, в которых хотят побывать люди с именами, начинающимися на введенную букву&gt;"</strong>. Города должны выводиться в алфавитном порядке через запятую и пробел.</span></li>
+        <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong>"Никто не был в: &lt;уникальные города, в которых никто из людей с именами, начинающимися на введенную букву, не был&gt;"</strong>.&nbsp;Города должны выводиться в алфавитном порядке через запятую и пробел.</span></li>
+        <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong>"В итоге едем в: &lt;город&gt;"</strong>. Первый по алфавиту город из списка с уникальными городами, в которых никто из людей с именами, начинающимися на введенную букву, не был.</span></li>
+    </ul>
+</ul>
+<p><strong></strong></p>
+<h5><strong>ДОПОЛНИТЕЛЬНО</strong><br></h5>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В открытом тесте используются файлы&nbsp;</span><a href="@@PLUGINFILE@@/travel_notes.csv" target="_blank"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">travel_notes.csv</span></strong></span></a><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&nbsp;</span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">и </span><a href="@@PLUGINFILE@@/vacation.csv" target="_blank"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">vacation.csv</span></a><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">
+        </span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&nbsp;Вы можете скачать их и проверить свое решение локально.
+        </span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">
+        </span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.</span></li>
+</ul>]]></text>
+<file name="travel_notes.csv" path="/" encoding="base64">0JvQuNC30LAs0JzQvtGB0LrQstCwO9Cf0LjRgtC10YA70JvRjtC60YHQtdC80LHRg9GA0LMs0JrQsNC40YA70JvQtdCy0LDQvTvQnNC40L3RgdC6DQrQkNGA0YLQtdC80LjQuSzQn9C40YLQtdGAO9Cd0LjQttC90LjQuSDQndC+0LLQs9C+0YDQvtC0LNCf0LjQvdGB0Lo70KDQvtGB0YLQvtCyO9Ce0LTQuNC90YbQvtCy0L470JzQuNC90YHQug0K0JXQs9C+0YAs0JzQvtGB0LrQstCwO9Cb0Y7QsdC10YDRhtGLO9CU0YPQsdCw0Lks0JrRgNCw0YHQvdC+0LTQsNGAO9Cd0LDQsdC10YDQtdC20L3Ri9C1INCn0LXQu9C90Ys70JrQsNC30LDQvdGMDQrQktC70LDQtCzQoNC+0YHRgtC+0LI70J3QuNC20L3QuNC5INCd0L7QstCz0L7RgNC+0LQs0KLQvtC60LjQvjvQn9C10LrQuNC9DQrQndCw0YHRgtGPLNCh0YLQsNCy0YDQvtC/0L7Qu9GMO9Ch0LDRgNCw0YLQvtCyO9Cf0LDRgNC40LYs0JrQsNC30LDQvdGMDQrQm9C10YDQsCzQmtC40LXQsjvQnNC40L3RgdC6O9Cc0L7RgdC60LLQsCzQkNC70LzQsNGC0YsNCtCb0Y7QsdCwLNCf0LXQutC40L070JTRg9GI0LDQvdCx0LU70KLQsdC40LvQuNGB0Lg70JDQutGC0LDRgyzQmtCw0LjRgDvQnNC40L3RgdC6DQrQm9Cw0YDQuNGB0LAs0J3RjNGOLdCZ0L7RgNC6O9CY0YDQutGD0YLRgdC6O9CS0LvQsNC00LjQutCw0LLQutCw0Lcs0J3QuNC20L3QuNC5INCi0LDQs9C40Ls70JrRg9GA0YHQujvQntGA0LXQuw0K0JvRjtCx0L7QstGMLNCf0LXQutC40L070JrQuNC10LIs0KLQvtC60LjQvg0K0JDQvdC90LAs0JzQuNC90YHQuizQnNC+0YHQutCy0LANCtCg0YPRgdC70LDQvSzQm9GO0LHQtdGA0YbRizvQntC00LjQvdGG0L7QstC+O9Cd0LjQttC90LjQuSDQotCw0LPQuNC7LNCa0LjQtdCyO9Cf0LXRgNC80Yw=</file>
+<file name="vacation.csv" path="/" encoding="base64">0KPRgdC/0LXQu9C4INC/0L7QsdGL0LLQsNGC0Yw6INCQ0LrRgtCw0YMsINCS0LvQsNC00LjQutCw0LLQutCw0LcsINCU0YPRiNCw0L3QsdC1LCDQmNGA0LrRg9GC0YHQuiwg0JrQuNC10LIsINCb0Y7QutGB0LXQvNCx0YPRgNCzLCDQnNC40L3RgdC6LCDQnNC+0YHQutCy0LAsINCd0YzRji3QmdC+0YDQuiwg0J/QtdC60LjQvSwg0J/QuNGC0LXRgCwg0KLQsdC40LvQuNGB0LgK0KXQvtGC0LjQvCDQv9C+0LHRi9Cy0LDRgtGMOiDQkNC70LzQsNGC0YssINCa0LDQuNGALCDQmtGD0YDRgdC6LCDQm9C10LLQsNC9LCDQnNC40L3RgdC6LCDQndC40LbQvdC40Lkg0KLQsNCz0LjQuywg0J7RgNC10LssINCi0L7QutC40L4K0J3QuNC60YLQviDQvdC1INCx0YvQuyDQsjog0JDQu9C80LDRgtGLLCDQmtCw0LjRgCwg0JrRg9GA0YHQuiwg0JvQtdCy0LDQvSwg0J3QuNC20L3QuNC5INCi0LDQs9C40LssINCe0YDQtdC7LCDQotC+0LrQuNC+CtCSINC40YLQvtCz0LUg0LXQtNC10Lwg0LI6INCQ0LvQvNCw0YLRiwo=</file>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>25</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[from shutil import copyfile
+import os.path
+import subprocess
+
+f = open('studentfile','w')
+f.write("""{{ STUDENT_ANSWER | e('py') }}""")
+f.close()
+
+SEPARATOR = "#<ab@17943918#@>#"
+
+{% for TEST in TESTCASES %}
+copyfile(str({{ TEST.testcode }})+'.csv', 'travel_notes.csv')
+
+
+with open('studentfile') as file:
+    student_answer = file.read()
+    print(subprocess.run(["python3",'studentfile'], stdout=subprocess.PIPE, universal_newlines=True, encoding='utf-8').stdout.strip())
+
+    if 'import ' in student_answer:
+        print('***ПРЕДУПРЕЖДЕНИЕ***\nВ этой задаче нельзя использовать import\nи загружать дополнительные модули\n')
+    if 'vacation.csv' not in student_answer:
+        print('***ОШИБКА***\nФайл vacation.csv не найден\n')
+
+if os.path.isfile('vacation.csv'):
+    with open('vacation.csv', encoding='utf-8') as file:
+        print('FILE:\n', file.read().strip(), sep='')
+    with open('vacation.csv', 'w') as file:
+        pass
+
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}
+
+
+]]></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[data = {'Уже были': {}, 'Хотим поехать': {}}
+with open('travel_notes.csv', 'r', encoding = 'utf8') as inf:
+    for line in inf:
+        name, was, will = line.strip().split(',')
+        was = was.split(';')
+        will = will.split(';')
+        
+        for town in was:
+            data['Уже были'].setdefault(town, [])
+            data['Уже были'][town].append(name)
+            
+        for town in will:
+            data['Хотим поехать'].setdefault(town, [])
+            data['Хотим поехать'][town].append(name)
+
+letter = input()
+
+res_was = set()
+
+for key, value in data['Уже были'].items():
+    for name in value:
+        if name[0] == letter:
+            res_was.add(key)
+            
+res_will = set()
+
+for key, value in data['Хотим поехать'].items():
+    for name in value:
+        if name[0] == letter:
+            res_will.add(key)
+            
+with open('vacation.csv', 'w', encoding = 'utf8') as ouf:
+    print(f'Успели побывать: {", ".join(sorted(res_was))}', file = ouf)
+    print(f'Хотим побывать: {", ".join(sorted(res_will))}', file = ouf)
+    res = sorted(res_will - res_was)
+    print(f'Никто не был в: {", ".join(res)}', file = ouf)
+    print(f'В итоге едем в: {res[0]}', file = ouf)]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>0</text>
+      </testcode>
+      <stdin>
+                <text>Л</text>
+      </stdin>
+      <expected>
+                <text>
+FILE:
+Успели побывать: Актау, Владикавказ, Душанбе, Иркутск, Киев, Люксембург, Минск, Москва, Нью-Йорк, Пекин, Питер, Тбилиси
+Хотим побывать: Алматы, Каир, Курск, Леван, Минск, Нижний Тагил, Орел, Токио
+Никто не был в: Алматы, Каир, Курск, Леван, Нижний Тагил, Орел, Токио
+В итоге едем в: Алматы</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>0</text>
+      </testcode>
+      <stdin>
+                <text>Р</text>
+      </stdin>
+      <expected>
+                <text>
+FILE:
+Успели побывать: Люберцы, Нижний Тагил, Одинцово
+Хотим побывать: Киев, Пермь
+Никто не был в: Киев, Пермь
+В итоге едем в: Киев</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>1</text>
+      </testcode>
+      <stdin>
+                <text>В</text>
+      </stdin>
+      <expected>
+                <text>
+FILE:
+Успели побывать: Минск, Нижний Новгород, Одинцово, Пинск, Ростов
+Хотим побывать: Нижний Новгород, Пекин, Питер, Токио
+Никто не был в: Пекин, Питер, Токио
+В итоге едем в: Пекин</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>1</text>
+      </testcode>
+      <stdin>
+                <text>К</text>
+      </stdin>
+      <expected>
+                <text>
+FILE:
+Успели побывать: Дубай, Каир, Леван, Люберцы, Минск, Москва, Нижний Новгород, Ростов
+Хотим побывать: Казань, Краснодар, Люксембург, Москва, Набережные Челны, Пекин, Питер, Токио
+Никто не был в: Казань, Краснодар, Люксембург, Набережные Челны, Пекин, Питер, Токио
+В итоге едем в: Казань</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>1</text>
+      </testcode>
+      <stdin>
+                <text>М</text>
+      </stdin>
+      <expected>
+                <text>
+FILE:
+Успели побывать: Рим, Токио
+Хотим побывать: Москва
+Никто не был в: Москва
+В итоге едем в: Москва</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+<file name="0.csv" path="/" encoding="base64">0JvQuNC30LAs0JzQvtGB0LrQstCwO9Cf0LjRgtC10YA70JvRjtC60YHQtdC80LHRg9GA0LMs0JrQsNC40YA70JvQtdCy0LDQvTvQnNC40L3RgdC6DQrQkNGA0YLQtdC80LjQuSzQn9C40YLQtdGAO9Cd0LjQttC90LjQuSDQndC+0LLQs9C+0YDQvtC0LNCf0LjQvdGB0Lo70KDQvtGB0YLQvtCyO9Ce0LTQuNC90YbQvtCy0L470JzQuNC90YHQug0K0JXQs9C+0YAs0JzQvtGB0LrQstCwO9Cb0Y7QsdC10YDRhtGLO9CU0YPQsdCw0Lks0JrRgNCw0YHQvdC+0LTQsNGAO9Cd0LDQsdC10YDQtdC20L3Ri9C1INCn0LXQu9C90Ys70JrQsNC30LDQvdGMDQrQktC70LDQtCzQoNC+0YHRgtC+0LI70J3QuNC20L3QuNC5INCd0L7QstCz0L7RgNC+0LQs0KLQvtC60LjQvjvQn9C10LrQuNC9DQrQndCw0YHRgtGPLNCh0YLQsNCy0YDQvtC/0L7Qu9GMO9Ch0LDRgNCw0YLQvtCyO9Cf0LDRgNC40LYs0JrQsNC30LDQvdGMDQrQm9C10YDQsCzQmtC40LXQsjvQnNC40L3RgdC6O9Cc0L7RgdC60LLQsCzQkNC70LzQsNGC0YsNCtCb0Y7QsdCwLNCf0LXQutC40L070JTRg9GI0LDQvdCx0LU70KLQsdC40LvQuNGB0Lg70JDQutGC0LDRgyzQmtCw0LjRgDvQnNC40L3RgdC6DQrQm9Cw0YDQuNGB0LAs0J3RjNGOLdCZ0L7RgNC6O9CY0YDQutGD0YLRgdC6O9CS0LvQsNC00LjQutCw0LLQutCw0Lcs0J3QuNC20L3QuNC5INCi0LDQs9C40Ls70JrRg9GA0YHQujvQntGA0LXQuw0K0JvRjtCx0L7QstGMLNCf0LXQutC40L070JrQuNC10LIs0KLQvtC60LjQvg0K0JDQvdC90LAs0JzQuNC90YHQuizQnNC+0YHQutCy0LANCtCg0YPRgdC70LDQvSzQm9GO0LHQtdGA0YbRizvQntC00LjQvdGG0L7QstC+O9Cd0LjQttC90LjQuSDQotCw0LPQuNC7LNCa0LjQtdCyO9Cf0LXRgNC80Yw=</file>
+<file name="1.csv" path="/" encoding="base64">0JvQuNC30LAs0JzQvtGB0LrQstCwO9Cf0LjRgtC10YA70JvRjtC60YHQtdC80LHRg9GA0LMs0JrQsNC40YA70JvQtdCy0LDQvTvQnNC40L3RgdC6DQrQkNGA0YLQtdC80LjQuSzQn9C40YLQtdGAO9Cd0LjQttC90LjQuSDQndC+0LLQs9C+0YDQvtC0LNCf0LjQvdGB0Lo70KDQvtGB0YLQvtCyO9Ce0LTQuNC90YbQvtCy0L470JzQuNC90YHQug0K0JXQs9C+0YAs0JzQvtGB0LrQstCwO9Cb0Y7QsdC10YDRhtGLO9CU0YPQsdCw0Lks0JrRgNCw0YHQvdC+0LTQsNGAO9Cd0LDQsdC10YDQtdC20L3Ri9C1INCn0LXQu9C90Ys70JrQsNC30LDQvdGMDQrQktC70LDQtCzQoNC+0YHRgtC+0LI70J3QuNC20L3QuNC5INCd0L7QstCz0L7RgNC+0LQs0KLQvtC60LjQvjvQn9C10LrQuNC9DQrQndCw0YHRgtGPLNCh0YLQsNCy0YDQvtC/0L7Qu9GMO9Ch0LDRgNCw0YLQvtCyO9Cf0LDRgNC40LYs0JrQsNC30LDQvdGMDQrQm9C10YDQsCzQmtC40LXQsjvQnNC40L3RgdC6O9Cc0L7RgdC60LLQsCzQkNC70LzQsNGC0YsNCtCb0Y7QsdCwLNCf0LXQutC40L070JTRg9GI0LDQvdCx0LU70KLQsdC40LvQuNGB0Lg70JDQutGC0LDRgyzQmtCw0LjRgDvQnNC40L3RgdC6DQrQm9Cw0YDQuNGB0LAs0J3RjNGOLdCZ0L7RgNC6O9CY0YDQutGD0YLRgdC6O9CS0LvQsNC00LjQutCw0LLQutCw0Lcs0J3QuNC20L3QuNC5INCi0LDQs9C40Ls70JrRg9GA0YHQujvQntGA0LXQuw0K0JvRjtCx0L7QstGMLNCf0LXQutC40L070JrQuNC10LIs0KLQvtC60LjQvg0K0JDQvdC90LAs0JzQuNC90YHQuizQnNC+0YHQutCy0LANCtCg0YPRgdC70LDQvSzQm9GO0LHQtdGA0YbRizvQntC00LjQvdGG0L7QstC+O9Cd0LjQttC90LjQuSDQotCw0LPQuNC7LNCa0LjQtdCyO9Cf0LXRgNC80YwNCtCa0LjRgNCwLNCa0LDQuNGAO9Cb0LXQstCw0L070JzQuNC90YHQuizQnNC+0YHQutCy0LA70J/QuNGC0LXRgDvQm9GO0LrRgdC10LzQsdGD0YDQsw0K0JzQsNGA0LjQvdCwLNCg0LjQvDvQotC+0LrQuNC+LNCc0L7RgdC60LLQsA0K0JLQsNC00LjQvCzQn9C40L3RgdC6O9Cg0L7RgdGC0L7QsjvQntC00LjQvdGG0L7QstC+O9Cc0LjQvdGB0Los0J/QuNGC0LXRgDvQndC40LbQvdC40Lkg0J3QvtCy0LPQvtGA0L7QtA0K0JjRgNCwLNCb0Y7QsdC10YDRhtGLO9Ce0LTQuNC90YbQvtCy0L470J3QuNC20L3QuNC5INCi0LDQs9C40Lss0JrQuNC10LI70J/QtdGA0LzRjA0K0JrRgNC40YHRgtC40L3QsCzQoNC+0YHRgtC+0LI70J3QuNC20L3QuNC5INCd0L7QstCz0L7RgNC+0LQs0KLQvtC60LjQvjvQn9C10LrQuNC9DQrQmtCw0YDQuNC90LAs0JzQvtGB0LrQstCwO9Cb0Y7QsdC10YDRhtGLO9CU0YPQsdCw0Lks0JrRgNCw0YHQvdC+0LTQsNGAO9Cd0LDQsdC10YDQtdC20L3Ri9C1INCn0LXQu9C90Ys70JrQsNC30LDQvdGM</file>
+    </testcases>
+  </question>
+
+</quiz>

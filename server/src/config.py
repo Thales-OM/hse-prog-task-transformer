@@ -26,6 +26,7 @@ from src.constraints import (
     DEFAULT_REDIS_DB,
     DEFAULT_REDIS_EX,
     DEFAULT_FILENAME_REPORT_CSV,
+    DEFAULT_FILENAME_DATASET_CSV,
 )
 from src.models.constraints import DEFAULT_OPENAI_BASE_URL
 from src.exceptions import PublicKeyMissingException
@@ -62,7 +63,7 @@ class LoggingSettings(BaseSettings):
 
 class Filenames(BaseSettings):
     report_csv: str = DEFAULT_FILENAME_REPORT_CSV
-
+    dataset_csv: str = DEFAULT_FILENAME_DATASET_CSV
 
 class ServerSettings(BaseSettings):
     protocol: Literal["http", "https"] = DEFAULT_DEV_PROTOCOL

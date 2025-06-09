@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 import re
 from psycopg2.extensions import cursor
 from typing import List
@@ -181,4 +181,31 @@ async def build_report_df(cursor: cursor) -> pd.DataFrame:
                         "only_relevant_info": score.only_relevant_info,
                     }
                 )
+    return pd.DataFrame(data)
+
+
+async def build_dataset_df(
+    cursor: cursor, question_ids: Optional[List[int]] = None
+) -> pd.DataFrame:
+    if question_ids is None:
+        questions = await get_questions_all_admin(cursor=cursor)
+    else:
+        questions = [
+            question
+            for question_id in question_ids
+            if (question := await get_question_admin(id=question_id, cursor=cursor))
+            is not None
+        ]
+
+    data = []
+    for question in questions:
+        messages = construct_messages(question=question)
+        prompt = PromptBuilder.build(question=question)
+        data.append(
+            {
+                "messages": json.dumps(messages),
+                "prompt_id": question.id,
+                "prompt": prompt,
+            }
+        )
     return pd.DataFrame(data)

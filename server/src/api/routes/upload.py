@@ -17,6 +17,7 @@ from src.schemas import (
     PostUserGroupRequest,
     PostUserGroupLevelAddRequest,
     PostSetUserGroupLevelRequest,
+    PostQuizXMLResponse,
 )
 from src.core import ingest_quiz_xml
 from src.database.crud import (
@@ -96,7 +97,7 @@ async def users_group_level_set(
 @router.post(
     "/quiz/xml",
     dependencies=[Depends(get_auth_token)],
-    response_model=MessageSuccessResponse,
+    response_model=PostQuizXMLResponse,
     status_code=status.HTTP_201_CREATED,
     summary="Upload quiz into database",
     description="Accepts an .xml file. Parses quiestions, answers etc and updates database",
@@ -106,8 +107,8 @@ async def quiz_xml(
     cursor: cursor = Depends(get_db_cursor),
 ):
     validate_xml(data=xml_data)
-    await ingest_quiz_xml(xml_contents=xml_data, cursor=cursor)
-    return MessageSuccessResponse(message="File processed successfully")
+    question_ids = await ingest_quiz_xml(xml_contents=xml_data, cursor=cursor)
+    return PostQuizXMLResponse(question_ids=question_ids, message="File processed successfully")
 
 
 @router.post(
