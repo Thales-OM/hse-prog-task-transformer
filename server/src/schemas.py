@@ -364,3 +364,7 @@ class LanguagePageResponse(BaseModel):
 class GetPromptResponse(BaseModel):
     messages: List[Dict[str, str]]
     prompt: str
+
+class PostQuizXMLResponse(BaseModel):
+    question_ids: List[int]
+    message: str

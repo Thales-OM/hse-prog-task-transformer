@@ -1,0 +1,1868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 6298026  -->
+  <question type="multichoiceset">
+    <name>
+      <text>A02_ELEM_PROG_DEMO_2023/24</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><p>В переменных <strong>kakao</strong> и <strong>sugar</strong> хранятся вещественные числа — процент содержания какао и сахара в шоколадке соответственно. В переменной <strong>almond</strong> хранится целое число (1 или 0) — шоколадка с миндалем (1) или нет (0).</p>
+<p>Оля купит шоколадку, если в ней <u>нет миндаля</u> и выполняется <u>хотя бы одно</u> условие:</p>
+<ul>
+    <li>процент содержания <u>какао не меньше 75</u>;</li>
+    <li>процент содержания <u>сахара меньше 30</u>.</li>
+</ul>
+<p>Выберите <u>все логические выражения (минимум два)</u>, которые проверяют — купит ли Оля шоколадку.</p></span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"></p><p dir="ltr"></p><br><p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Ваш ответ верный.</text>
+    </correctfeedback>
+    <incorrectfeedback format="html">
+      <text>Ваш ответ неправильный.</text>
+    </incorrectfeedback>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <answer fraction="100" format="html">
+      <text><![CDATA[```lang:python;;almond == 0 and (kakao &gt;= 75 or sugar &lt; 30)```]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[```lang:python;;not(almond != 0) and (kakao &gt;= 75 or sugar &lt; 30)```]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[```lang:python;;almond = 0 and (kakao &gt;= 75 or sugar &lt; 30)```]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[```lang:python;;almond != 1 and (kakao &gt;= 75 or not(sugar &gt;= 30))```]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[```lang:python;;almond == 0 or (kakao &gt;= 75 or sugar &lt; 30)```]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 6298027  -->
+  <question type="multichoiceset">
+    <name>
+      <text>A03_ELEM_PROG_DEMO_2023/24</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><p>Дан фрагмент кода:</p>
+
+```lang:python;; [1] money = 1000
+ [2] price_per_unit = 80
+ [3]
+ [4] if money % price_per_unit = 0:
+ [5]     print('Тратим все деньги на шоколадки!')
+ [6] else:
+ [7]     amount = money / price_per_unit
+ [8]     print(f'Покупаем {amount} шоколадок!')
+ [9]     remainder = money - amount * price_per_unit
+[10] print(f'После покупки осталось {remainder} рублей')```
+
+<p>В переменных <strong>money</strong> и <strong>price_per_unit</strong> сохранено количество рублей и цена одной шоколадки соответственно. Программа выше должна проверять, сколько денег будет потрачено на шоколадки. Если на шоколадки потрачены все деньги программа печатает только фразу <strong>"Тратим все деньги на шоколадки!"</strong>, иначе — программа печатает, сколько шоколадок было куплено и сколько осталось денег после покупки. Например, для сохраненных в переменные <strong>money</strong> и <strong>price_per_unit</strong> значений программа должна выводить:</p>
+```lang:python;;Покупаем 12 шоколадок!
+После покупки осталось 40 рублей```
+<p>Выберите <u>все причины (минимум две)</u>, по которым код не будет работать как ожидается.</p><p><em>Важно! Номера в квадратных скобках не являются частью программы и просто обозначают порядковый номер строки.</em></p></span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Ваш ответ верный.</text>
+    </correctfeedback>
+    <incorrectfeedback format="html">
+      <text>Ваш ответ неправильный.</text>
+    </incorrectfeedback>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[4]</b> вместо одного знака <b>=</b> должно стоять два <b>==</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[5]</b> отсутствует префикс <b>f</b> перед строкой, переданной функции <b>print()</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[7]</b> вместо арифметического оператора <b>/</b> должен стоять <b>//</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[2]</b> имя переменной не должно содержать знак нижнего подчеркивания <b>_</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[10]</b> отсутствует отступ перед функцией <b>print()</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 6298028  -->
+  <question type="multichoiceset">
+    <name>
+      <text>A04_ELEM_PROG_DEMO_2023/24</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><p>Дан фрагмент кода:</p>
+
+```lang:python;;[1] names = 'Анна, Лиза, Ира, Катя, Азалия, Алла, Аня'
+[2]
+[3] for name in names.split():
+[4]     if name[0] == 'А' or name[-1] == 'я':
+[5]     print(name)```
+
+<p>В переменной <strong>names</strong> сохранена строка с именами. Программа выше должна проверять, что имя начинается с буквы <b>"А"</b> и заканчивается на букву <b>"я"</b>, и если да — печатать его. Для сохраненной в переменную <strong>names</strong> строки программа должна выводить:</p>
+```lang:python;;Азалия
+Аня```
+<p>Выберите <u>все причины</u> (минимум две), по которым код не будет работать как ожидается.</p><p><em>Важно! Номера в квадратных скобках не являются частью программы и просто обозначают порядковый номер строки.</em></p></span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Ваш ответ верный.</text>
+    </correctfeedback>
+    <incorrectfeedback format="html">
+      <text>Ваш ответ неправильный.</text>
+    </incorrectfeedback>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[3]</b> неверно указан разделитель в методе <b>.split()</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[3]</b> в цикле <b>for</b> вместо переменной <b>name</b> должна использоваться переменная <b>i</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[4]</b> неверно указан индекс <b>-1</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[4]</b> вместо оператора <b>or</b> должен стоять оператор <b>and</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[5]</b> отсутствует отступ перед функцией <b>print()</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 13319745  -->
+  <question type="coderunner">
+    <name>
+      <text>A01_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">
+    <p>Реализуйте программу, которая проверит, удовлетворяет слово определенным условиям или нет.</p>
+    <h5><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></h5>
+    <ul>
+        <li>На первой строке вводится слово.&nbsp;</li>
+        <li>Затем вводится последовательность букв.</li> </ul>
+  <h5><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВЫВОДА</span></h5>
+       <ul> <li>Программа должна проверять, что слово&nbsp;<u>начинается</u> с введенной последовательности букв (подстроки)&nbsp;и при этом <u>состоит более чем из 5 символов</u>, и если да, то печатать фразу <b>"Подходит"</b>. Эта строка сохранена для вас в переменную <b>ok</b>.
+        </li>
+        <li>В остальных случаях программа печатает фразу <b>"Что-то не так"</b>. Эта строка сохранена для вас в переменную <b>not_ok</b>.</li>
+    </ul>
+</span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>10</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload>ok = 'Подходит'
+not_ok = 'Что-то не так'
+
+# ваш код ниже</answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[word = input()
+part = input()
+
+ok = 'Подходит'
+not_ok = 'Что-то не так'
+
+if word.startswith(part) and len(word) > 5:
+    print(ok)
+else:
+    print(not_ok)]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>лисичка
+ли</text>
+      </stdin>
+      <expected>
+                <text>Подходит
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>кролик
+рол</text>
+      </stdin>
+      <expected>
+                <text>Что-то не так
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>котик
+кот</text>
+      </stdin>
+      <expected>
+                <text>Что-то не так
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>морковка
+морков</text>
+      </stdin>
+      <expected>
+                <text>Подходит
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>кот
+кот</text>
+      </stdin>
+      <expected>
+                <text>Что-то не так
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319747  -->
+  <question type="coderunner">
+    <name>
+      <text>A02_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Реализуйте программу, добавляющую в список слова из менее семи букв:</span></p>
+<h5 style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></strong></span></h5>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В цикле </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">while</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"> считываются строки до тех пор, пока не введен 0.</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что до 0 будет введена как минимум одна строка.</span></li></ul>
+  <h5 style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></strong></span></h5>  
+  <ul><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">Для каждой вводимой строки сделайте проверку&nbsp;— если она состоит </span><u><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">только из букв и ее длина менее 7 символов</span></u><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">, добавьте ее в список.</span></span></li>
+    <li><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">Напечатайте получившийся список</span><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">. Строки в нем должны идти в том же порядке, что и при вводе.</span></li>
+</ul>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>10</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[result = []
+
+while True:
+    info = input()
+    if info == '0':
+        break
+    
+    if info.isalpha() and len(info) < 7:
+        result.append(info)
+        
+print(result)]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>котик
+ватру4шка
+12вареник
+14263
+морковка
+луковка
+лук
+вода
+подушка
+лупа
+0</text>
+      </stdin>
+      <expected>
+                <text>['котик', 'лук', 'вода', 'лупа']
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>129
+морковка1
+морковка2
+луковка1
+редиска10
+0</text>
+      </stdin>
+      <expected>
+                <text>[]
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>котик
+пончик
+печенька
+конфетка
+телефон
+0</text>
+      </stdin>
+      <expected>
+                <text>['котик', 'пончик']
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>редиска
+луковка
+морковка1234
+1234
+0</text>
+      </stdin>
+      <expected>
+                <text>[]
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>1123
+1245
+1359
+1384
+0</text>
+      </stdin>
+      <expected>
+                <text>[]
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319748  -->
+  <question type="coderunner">
+    <name>
+      <text>A03_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Рон хочет понять, по каким предметам ему нужно усерднее учиться.&nbsp;Напишите программу, которая поможет Рону.&nbsp;</span></p><h5><strong>ФОРМАТ ВВОДА</strong></h5><p dir="ltr"></p><ul><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На первой строке через запятую и пробел вводятся оценки Рона в формате&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">'&lt;название предмета&gt; : &lt;оценка&gt;'</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.&nbsp;Гарантируется, что строка состоит минимум из одного предмета и соответствующей оценки за него.&nbsp;</span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На второй строке вводится целое число — оценка, которая устраивает маму Рона.&nbsp;</span></li></ul><p></p><p dir="ltr"><strong></strong></p><h5><span><span style="font-family: &quot;HSE Sans&quot;, sans-serif;" class=""><strong>ФОРМАТ ВЫВОДА</strong></span></span></h5><ul><li><span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если есть предметы, оценки по которым&nbsp;</span><u style=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">выше или равны той</span></u><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">, которая бы устраивала маму Рона, то в одной строке в&nbsp;</span><u style=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">алфавитном порядке</span></u><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&nbsp;через запятую и пробел перечисляются эти предметы.&nbsp;</span></span></li><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если таких предметов нет, то выводится строка:&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">"Рон, нужно больше стараться!"</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">. Фраза сохранена для вас в переменную <strong>ron</strong>.</span></li></ul>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>20</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload><![CDATA[ron = "Рон, нужно больше стараться!"
+
+# ваш код ниже]]></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[ron = "Рон, нужно больше стараться!"
+marks = input().split(', ')
+m = int(input())
+
+good = []
+for i in marks:
+    if int(i.split(' : ')[1]) >= m:
+        good.append(i.split(' : ')[0])
+
+if len(good) > 0:
+    print(', '.join(sorted(good)))
+else:
+    print(ron)]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Полёты на мётлах : 10, Защита от Тёмных искусств : 6, Зельеварение : 3, История магии : 8
+7</text>
+      </stdin>
+      <expected>
+                <text>История магии, Полёты на мётлах
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Полёты на мётлах : 6, Трансфигурация : 4
+8</text>
+      </stdin>
+      <expected>
+                <text>Рон, нужно больше стараться!</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Трансфигурация : 10
+10</text>
+      </stdin>
+      <expected>
+                <text>Трансфигурация</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Трансфигурация : 4, Защита от Тёмных искусств : 2, Зельеварение : 3
+5</text>
+      </stdin>
+      <expected>
+                <text>Рон, нужно больше стараться!</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Травология : 2, Зельеварение : 5, История магии : 4
+3</text>
+      </stdin>
+      <expected>
+                <text>Зельеварение, История магии</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 6395570  -->
+  <question type="multichoiceset">
+    <name>
+      <text>A06_ELEM_PROG_DEMO_2023/24</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><p>В переменных <strong>dasha_fr</strong> и <strong>masha_fr</strong> хранятся множества строк с именами друзей Даши и Маши соответственно.</p>
+<p>Выберите <u>все выражения (минимум два)</u>, которые помогут найти всех, с кем дружит <u>только Даша</u>, и сохранить результат в переменную <b>only_dasha_fr</b>.</p></span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"></p><p dir="ltr"></p><br><p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Ваш ответ верный.</text>
+    </correctfeedback>
+    <incorrectfeedback format="html">
+      <text>Ваш ответ неправильный.</text>
+    </incorrectfeedback>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <answer fraction="100" format="html">
+      <text>```lang:python;;only_dasha_fr = dasha_fr - masha_fr```</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>```lang:python;;only_dasha_fr = dasha_fr.difference(masha_fr)```</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>```lang:python;;only_dasha_fr = masha_fr.difference(dasha_fr)```</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>```lang:python;;only_dasha_fr = (masha_fr | dasha_fr) - masha_fr```</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>```lang:python;;only_dasha_fr = masha_fr.symmetric_difference(dasha_fr)```</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 6298023  -->
+  <question type="cloze">
+    <name>
+      <text>A07_ELEM_PROG_DEMO_2023/24</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><p>В словаре <strong>emperors</strong> хранятся пары объектов, в которых <span>ключи</span> — имена императоров России, а <span>значения</span> — строки с годами их правления.</p>
+<p>Программа ниже должна печатать через запятую <u>имя императора</u> и <u>год начала его правления</u>. Каждая пара печатается на новой строке.</p>
+
+```lang:python;;emperors = {
+    'Пётр I': '1721-1725', 
+    'Анна Иоанновна': '1730-1740', 
+    'Елизавета Петровна': '1741-1762',
+    'Павел I': '1796-1801'
+} 
+
+for name, years in emperors.items(): 
+    print({:MCS:=name, years.split('-')[-2]~name, years[0]~name, years~name, years.split('-')[1]~name, years.split('-')[-1]~emperor, first_year}, sep=',')```
+
+<p><u>Выберите такой вариант</u>&nbsp;из выпадающего списка, чтобы программа работала корректно.</p>
+</span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 6298031  -->
+  <question type="multichoiceset">
+    <name>
+      <text>A08_ELEM_PROG_DEMO_2023/24</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><p>Дан фрагмент программы:</p>
+
+```lang:python;; [1] def get_av(marks):
+ [2]     marks = list(map(int, marks.split()))
+ [3]     return sum(marks) / len(marks)
+ [4]
+ [5] def best_st(data):
+ [6]     res = []
+ [7]    
+ [8]     for name, marks in data.items():
+ [9]         res.append(get_av(marks), name)
+[10]         
+[11]     best = sorted(res)[0]
+[12]    
+[13]     return best[-1], best[0]
+[14]
+[15] data = {'Аня': '3, 5, 7, 8', 'Вика': '6, 7, 3, 5', 'Лиза': '7, 4, 5, 8'}
+[16] print(best_st(data))```
+
+<p>Программа должна находить студента с максимальным средним баллом и выводить информацию об этом студенте:</p>
+```lang:python;;('Лиза', 6.0)```
+<p>Выберите <u>все причины (минимум две)</u>, по которым код не будет работать как ожидается.</p><p><em>Важно! Номера в квадратных скобках не являются частью программы и просто обозначают порядковый номер строки.</em></p></span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Ваш ответ верный.</text>
+    </correctfeedback>
+    <incorrectfeedback format="html">
+      <text>Ваш ответ неправильный.</text>
+    </incorrectfeedback>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[2]</b> неверно указан разделитель в методе <b>.split()</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <strong>[9]</strong>&nbsp;в метод <strong>.append() </strong>нельзя передать два аргумента, нужно передать ему кортеж с ними</span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[11]</b> неверно указан индекс</span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[2]</b> в функции <b>map()</b> вместо аргумента <b>int</b> должен стоять аргумент <b>str</b></span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В строке <b>[6]</b> неверно создан список — вместо квадратных скобок нужно использовать круглые</span></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 13319749  -->
+  <question type="coderunner">
+    <name>
+      <text>A04_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Катя и Петя хотят завести домашнее животное. Реализуйте программу, которая поможет им сделать выбор.</span></p>
+<h5 style="text-align: left;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></strong></h5>
+<p dir="ltr" style="text-align: left;"></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На первой строке через пробел считываются названия животных, которые нравятся Кате.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На второй строке через пробел считываются названия животных, которые нравятся Пете.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На третьей строке через пробел считываются названия животных, на которых у обоих ребят есть аллергия.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что названия животных в каждой строке уникальны.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Любая строка может оказаться пустой.</span></li></ul>
+<h5 style="text-align: left;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВЫВОДА</span></strong></h5>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Программа выводит&nbsp;<u>через запятую с пробелом</u> названия животных, которых <u>хотят завести сразу и Катя, и Петя, и при этом на этих животных нет аллергии</u>.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Названия должны быть отсортированы <u>в алфавитном порядке</u>.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если таких животных нет, программа ничего не выводит.&nbsp;</span></li>
+</ul>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>10</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[katya_pets = set(input().split())
+petya_pets = set(input().split())
+allergy = set(input().split())
+
+print(*sorted((katya_pets & petya_pets) - allergy), sep = ', ')]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>лисичка кролик котик собачка
+
+рыбка свинка</text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>лисичка
+рысь тигр пантера
+лисичка</text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>лисичка тигр рыбка лев котик мопсик мышка
+тигр лев рыбка лисичка котик зайчик мышка
+тигр</text>
+      </stdin>
+      <expected>
+                <text>котик, лев, лисичка, мышка, рыбка
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>рысь заяц лиса свинка кролик
+кролик лиса котик
+котик</text>
+      </stdin>
+      <expected>
+                <text>кролик, лиса
+</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>кролик рысь пантера лев зебра
+
+зебра</text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319752  -->
+  <question type="coderunner">
+    <name>
+      <text>B01_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Реализуйте программу, которая определит, сколько самолетов летает в определенный город:</span></p>
+<h5 style="text-align: left;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></h5>
+<p dir="ltr" style="text-align: left;"></p>
+<ul>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Дан словарь <strong>airlines</strong>, где ключи&nbsp;— это названия авиакомпаний, а значения — словари (где ключи — названия самолетов, а значения — списки с городами, в которые эти самолеты летают). Этот код уже написан.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Считывается название города.</span></li></ul>
+  
+  <h5 style="text-align: left;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВЫВОДА</span></h5>
+  
+    <ul><li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Определите, <u><span>сколько</span> самолетов летает в указанный город</u> и напечатайте это число.</span></li>
+</ul>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>15</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload>airlines = {
+    'Аэро_зум': {'12iy34': ['Милан', 'Париж', 'Казань'], '193tyw': ['Рим', 'Токио']},
+    'Аэрофлот_экспресс': {'12oa': ['Дублин', 'Токио', 'Рим'], 'llwo24': ['Рим']},
+    'S7_авиа': {'qw124': ['Рим', 'Милан', 'Москва'], '1987ytr': ['Токио', 'Пекин']},
+    'Love_airline': {'12kcsl': ['Париж']}
+}
+
+# ваш код ниже</answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer>airlines = {
+    'Аэро_зум': {'12iy34': ['Милан', 'Париж', 'Казань'], '193tyw': ['Рим', 'Токио']},
+    'Аэрофлот_экспресс': {'12oa': ['Дублин', 'Токио', 'Рим'], 'llwo24': ['Рим']},
+    'S7_авиа': {'qw124': ['Рим', 'Милан', 'Москва'], '1987ytr': ['Токио', 'Пекин']},
+    'Love_airline': {'12kcsl': ['Париж']}
+}
+
+city = input()
+
+count = 0
+for key, value in airlines.items():
+    for k, v in value.items():
+        if city in v:
+            count += 1
+    
+print(count)</answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Париж</text>
+      </stdin>
+      <expected>
+                <text>2</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Люксембург</text>
+      </stdin>
+      <expected>
+                <text>0</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Каир</text>
+      </stdin>
+      <expected>
+                <text>0</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Рим</text>
+      </stdin>
+      <expected>
+                <text>4</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>Токио</text>
+      </stdin>
+      <expected>
+                <text>3</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13319754  -->
+  <question type="coderunner">
+    <name>
+      <text>B03_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Напишите функцию, определяющую пароли, которые соответствуют правилам составления.&nbsp;</span></p>
+<h5 style="text-align: left;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;"><strong><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ТРЕБУЕМАЯ ФУНКЦИЯ&nbsp;</span></strong>
+    </span>
+</h5>
+<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">
+</span></p>
+<ul>
+    <li><span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;" class=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Функция </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">get_passwords</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">, параметрами которой является список строк </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">passwords</span></strong>
+        <span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"> (набор возможных паролей) и целое число </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">rule</span></strong>
+        <span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"> (определяет правило, согласно которому должен быть составлен пароль).</span></span></li>
+    <li><span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;" class=""><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Параметр функции </span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">rule</span></strong>
+        <span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"> может принимать два возможных значения: </span>
+        <ul>
+            <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">0 (пароль должен состоять только из цифр)</span></li>
+            <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">1 (пароль должен состоять только из букв)</span></li>
+        </ul>
+
+        </span>
+    </li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Функция должна возвращать список&nbsp;— пароли, которые соответствуют указанному в функции правилу составления. Пароли добавляются в список в том же порядке, как и в исходном списке.</span></li>
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если таких паролей нет, то возвращается пустой список.</span></li>
+</ul><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><em>
+      
+ВАЖНО! В этой задаче вы только определяете функцию, вызывать ее и считывать значения не нужно, это произойдет автоматически при проверке.<br></em></span>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>20</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[import sys
+{{ STUDENT_ANSWER }}
+
+__student_answer__ = """{{ STUDENT_ANSWER | e('py') }}"""
+
+if 'import ' in __student_answer__:
+    print('В этой задаче нельзя использовать import\n и загружать дополнительные модули')
+    sys.exit()
+if 'input(' in __student_answer__.replace(' ',''):
+    print('В этой задаче нельзя использовать input()!')
+    sys.exit()
+if 'def' not in __student_answer__:
+    print('В этой задаче обязательно создавать функцию!')
+    sys.exit()
+if 'print(' in __student_answer__.replace(' ',''):
+    print('В этой задаче нельзя использовать print()!')
+    sys.exit()
+if 'get_passwords' not in __student_answer__.replace(' ',''):
+    print('Ваша функция должна называться get_passwords')
+    sys.exit()
+
+SEPARATOR = "#<ab@17943918#@>#"
+
+{% for TEST in TESTCASES %}
+ret = get_passwords({{TEST.stdin}})
+if ret == {{TEST.expected}}:
+    print(ret)
+else:
+    print(f'Функция вернула неверное значение: "{ret}"')
+del ret
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}]]></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer>def get_passwords(passwords, rule):
+    res = []
+    for i in passwords:
+        if rule ==  0:
+            if i.isdigit():
+                res.append(i)
+        else:
+            if i.isalpha():
+                res.append(i)
+    return res</answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['_123_XWQ', '1234', 'QwErTy', 'QWE124RTY'], 0</text>
+      </stdin>
+      <expected>
+                <text>['1234']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['_123_XWQ', '1234', 'QwErTy', 'QWfsiofcRTY'], 1</text>
+      </stdin>
+      <expected>
+                <text>['QwErTy', 'QWfsiofcRTY']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['_123_XWQ', 'QwErTy', 'QWE124RTY'], 0</text>
+      </stdin>
+      <expected>
+                <text>[]</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['_123_XWQ', 'QWE124RTY'], 0</text>
+      </stdin>
+      <expected>
+                <text>[]</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['1234', '5678'], 0</text>
+      </stdin>
+      <expected>
+                <text>['1234', '5678']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['qwer', 'asdhj'], 1</text>
+      </stdin>
+      <expected>
+                <text>['qwer', 'asdhj']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text>['qwer', 'asdhj', '1235'], 1</text>
+      </stdin>
+      <expected>
+                <text>['qwer', 'asdhj']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 13397938  -->
+  <question type="coderunner">
+    <name>
+      <text>В08_ELEM_PROG_DEMO_2023/24</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На олимпиаде по информатике для школьников участники представляли различные регионы. Результаты олимпиады записаны в файле формата csv. Напишите программу, которая выводит все строки, соответствующие&nbsp;</span><u><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">победителям</span></u><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&nbsp;в определенном регионе.</span><br></p><h5 style="text-align: left;"><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВВОДА</span></h5>
+<p dir="ltr" style="text-align: left;"></p>
+    <ul>
+        <li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;На олимпиаде по информатике для школьников участники представляли различные регионы. Результаты олимпиады записаны в файле формата csv. Напишите программу, которая по названию региона определяет процент победителей олимпиады из этого региона по отношению к общему числу участников из этого региона.\n\nФОРМАТ ВВОДА\nСтруктурированный текстовый файл olymp.csv, в кодировке utf-8, где на каждой строке записана информация об участнике: в первой колонке его имя, во второй — регион, в третьей — его сумма баллов, в четвертой  —  строка \&quot;Победитель\&quot; или \&quot;Призер\&quot;, если участник является победителем или призером соответственно. \nРазделителями данных в файле служат запятые.\nГарантируется, что в файле есть как минимум одна строка с данными.\nВАЖНО! Ваше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл olymp.csv' без дополнительных указаний (например, пути к файлу на вашем компьютере)\nС клавиатуры вводится строка, название региона. \nГарантируется, что в файле есть как минимум один представитель данного региона.\n\nФОРМАТ ВЫВОДА\nЦелое число — процент победителей из введенного региона по отношению к общему числу участников из этого региона (например, если их половина, вывести 50). \nДля округления используйте стандартную функцию round()\n\nДОПОЛНИТЕЛЬНО\n\nВ открытом тесте используется файл olymp.csv. Вы можете скачать его и проверить свое решение локально.\nВ примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:4,&quot;12&quot;:0}"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Программа должна открывать структурированный текстовый файл&nbsp;</span><span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">olymp.csv</span></strong></span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">, в кодировке&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">utf-8</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">, где на каждой строке записана следующая информация об участнике: его имя, регион, сумма баллов, строка&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">"Победитель"</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&nbsp;или&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">"Призер"</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">,
+            если участник является победителем или призером соответственно. Например,&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">"</span></strong></span><span><span style=""><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Константин А.,город Москва,557,Победитель"</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.</span></span></span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">
+        </span></li>
+        <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Разделителями данных в файле служат запятые.</span></li>
+        <li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;На олимпиаде по информатике для школьников участники представляли различные регионы. Результаты олимпиады записаны в файле формата csv. Напишите программу, которая по названию региона определяет процент победителей олимпиады из этого региона по отношению к общему числу участников из этого региона.\n\nФОРМАТ ВВОДА\nСтруктурированный текстовый файл olymp.csv, в кодировке utf-8, где на каждой строке записана информация об участнике: в первой колонке его имя, во второй — регион, в третьей — его сумма баллов, в четвертой  —  строка \&quot;Победитель\&quot; или \&quot;Призер\&quot;, если участник является победителем или призером соответственно. \nРазделителями данных в файле служат запятые.\nГарантируется, что в файле есть как минимум одна строка с данными.\nВАЖНО! Ваше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл olymp.csv' без дополнительных указаний (например, пути к файлу на вашем компьютере)\nС клавиатуры вводится строка, название региона. \nГарантируется, что в файле есть как минимум один представитель данного региона.\n\nФОРМАТ ВЫВОДА\nЦелое число — процент победителей из введенного региона по отношению к общему числу участников из этого региона (например, если их половина, вывести 50). \nДля округления используйте стандартную функцию round()\n\nДОПОЛНИТЕЛЬНО\n\nВ открытом тесте используется файл olymp.csv. Вы можете скачать его и проверить свое решение локально.\nВ примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:4,&quot;12&quot;:0}"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что в файле есть как минимум одна строка с данными</span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.&nbsp;</span></span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">
+        </span></li>
+        <li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;На олимпиаде по информатике для школьников участники представляли различные регионы. Результаты олимпиады записаны в файле формата csv. Напишите программу, которая по названию региона определяет процент победителей олимпиады из этого региона по отношению к общему числу участников из этого региона.\n\nФОРМАТ ВВОДА\nСтруктурированный текстовый файл olymp.csv, в кодировке utf-8, где на каждой строке записана информация об участнике: в первой колонке его имя, во второй — регион, в третьей — его сумма баллов, в четвертой  —  строка \&quot;Победитель\&quot; или \&quot;Призер\&quot;, если участник является победителем или призером соответственно. \nРазделителями данных в файле служат запятые.\nГарантируется, что в файле есть как минимум одна строка с данными.\nВАЖНО! Ваше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл olymp.csv' без дополнительных указаний (например, пути к файлу на вашем компьютере)\nС клавиатуры вводится строка, название региона. \nГарантируется, что в файле есть как минимум один представитель данного региона.\n\nФОРМАТ ВЫВОДА\nЦелое число — процент победителей из введенного региона по отношению к общему числу участников из этого региона (например, если их половина, вывести 50). \nДля округления используйте стандартную функцию round()\n\nДОПОЛНИТЕЛЬНО\n\nВ открытом тесте используется файл olymp.csv. Вы можете скачать его и проверить свое решение локально.\nВ примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:4,&quot;12&quot;:0}" class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">С клавиатуры вводится строка, название региона.</span></li>
+        <li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;На олимпиаде по информатике для школьников участники представляли различные регионы. Результаты олимпиады записаны в файле формата csv. Напишите программу, которая по названию региона определяет процент победителей олимпиады из этого региона по отношению к общему числу участников из этого региона.\n\nФОРМАТ ВВОДА\nСтруктурированный текстовый файл olymp.csv, в кодировке utf-8, где на каждой строке записана информация об участнике: в первой колонке его имя, во второй — регион, в третьей — его сумма баллов, в четвертой  —  строка \&quot;Победитель\&quot; или \&quot;Призер\&quot;, если участник является победителем или призером соответственно. \nРазделителями данных в файле служат запятые.\nГарантируется, что в файле есть как минимум одна строка с данными.\nВАЖНО! Ваше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл olymp.csv' без дополнительных указаний (например, пути к файлу на вашем компьютере)\nС клавиатуры вводится строка, название региона. \nГарантируется, что в файле есть как минимум один представитель данного региона.\n\nФОРМАТ ВЫВОДА\nЦелое число — процент победителей из введенного региона по отношению к общему числу участников из этого региона (например, если их половина, вывести 50). \nДля округления используйте стандартную функцию round()\n\nДОПОЛНИТЕЛЬНО\n\nВ открытом тесте используется файл olymp.csv. Вы можете скачать его и проверить свое решение локально.\nВ примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:4,&quot;12&quot;:0}" class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что в файле есть как минимум один представитель данного региона.</span></li></ul><h5><span class="" style="font-family: &quot;HSE Sans&quot;, sans-serif;">ФОРМАТ ВЫВОДА</span></h5><ul>
+        <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Программа должна выводить строки из оригинального файла, которые соответствуют <u>победителям в введенном регионе</u> (не забудьте удалить символы конца строки!).</span><br></li>
+    </ul>
+    <p></p>
+    <h5><strong>ДОПОЛНИТЕЛЬНО</strong></h5>
+    <ul>
+        <li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;На олимпиаде по информатике для школьников участники представляли различные регионы. Результаты олимпиады записаны в файле формата csv. Напишите программу, которая по названию региона определяет процент победителей олимпиады из этого региона по отношению к общему числу участников из этого региона.\n\nФОРМАТ ВВОДА\nСтруктурированный текстовый файл olymp.csv, в кодировке utf-8, где на каждой строке записана информация об участнике: в первой колонке его имя, во второй — регион, в третьей — его сумма баллов, в четвертой  —  строка \&quot;Победитель\&quot; или \&quot;Призер\&quot;, если участник является победителем или призером соответственно. \nРазделителями данных в файле служат запятые.\nГарантируется, что в файле есть как минимум одна строка с данными.\nВАЖНО! Ваше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл olymp.csv' без дополнительных указаний (например, пути к файлу на вашем компьютере)\nС клавиатуры вводится строка, название региона. \nГарантируется, что в файле есть как минимум один представитель данного региона.\n\nФОРМАТ ВЫВОДА\nЦелое число — процент победителей из введенного региона по отношению к общему числу участников из этого региона (например, если их половина, вывести 50). \nДля округления используйте стандартную функцию round()\n\nДОПОЛНИТЕЛЬНО\n\nВ открытом тесте используется файл olymp.csv. Вы можете скачать его и проверить свое решение локально.\nВ примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:4,&quot;12&quot;:0}"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В</span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">аше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл&nbsp;</span><span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">olymp.csv</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">
+</span></span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">без дополнительных указаний (например, пути к файлу на вашем компьютере).</span><br></span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">
+        </span></li>
+        <li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;На олимпиаде по информатике для школьников участники представляли различные регионы. Результаты олимпиады записаны в файле формата csv. Напишите программу, которая по названию региона определяет процент победителей олимпиады из этого региона по отношению к общему числу участников из этого региона.\n\nФОРМАТ ВВОДА\nСтруктурированный текстовый файл olymp.csv, в кодировке utf-8, где на каждой строке записана информация об участнике: в первой колонке его имя, во второй — регион, в третьей — его сумма баллов, в четвертой  —  строка \&quot;Победитель\&quot; или \&quot;Призер\&quot;, если участник является победителем или призером соответственно. \nРазделителями данных в файле служат запятые.\nГарантируется, что в файле есть как минимум одна строка с данными.\nВАЖНО! Ваше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл olymp.csv' без дополнительных указаний (например, пути к файлу на вашем компьютере)\nС клавиатуры вводится строка, название региона. \nГарантируется, что в файле есть как минимум один представитель данного региона.\n\nФОРМАТ ВЫВОДА\nЦелое число — процент победителей из введенного региона по отношению к общему числу участников из этого региона (например, если их половина, вывести 50). \nДля округления используйте стандартную функцию round()\n\nДОПОЛНИТЕЛЬНО\n\nВ открытом тесте используется файл olymp.csv. Вы можете скачать его и проверить свое решение локально.\nВ примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:4,&quot;12&quot;:0}"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В открытом тесте используется файл&nbsp;</span><span><strong><span><u><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><a href="@@PLUGINFILE@@/olymp.csv" target="_blank">olymp.csv</a></span></u></span></strong></span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">. Вы можете скачать его и проверить свое решение локально.</span></span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">
+        </span></li>
+        <li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;На олимпиаде по информатике для школьников участники представляли различные регионы. Результаты олимпиады записаны в файле формата csv. Напишите программу, которая по названию региона определяет процент победителей олимпиады из этого региона по отношению к общему числу участников из этого региона.\n\nФОРМАТ ВВОДА\nСтруктурированный текстовый файл olymp.csv, в кодировке utf-8, где на каждой строке записана информация об участнике: в первой колонке его имя, во второй — регион, в третьей — его сумма баллов, в четвертой  —  строка \&quot;Победитель\&quot; или \&quot;Призер\&quot;, если участник является победителем или призером соответственно. \nРазделителями данных в файле служат запятые.\nГарантируется, что в файле есть как минимум одна строка с данными.\nВАЖНО! Ваше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл olymp.csv' без дополнительных указаний (например, пути к файлу на вашем компьютере)\nС клавиатуры вводится строка, название региона. \nГарантируется, что в файле есть как минимум один представитель данного региона.\n\nФОРМАТ ВЫВОДА\nЦелое число — процент победителей из введенного региона по отношению к общему числу участников из этого региона (например, если их половина, вывести 50). \nДля округления используйте стандартную функцию round()\n\nДОПОЛНИТЕЛЬНО\n\nВ открытом тесте используется файл olymp.csv. Вы можете скачать его и проверить свое решение локально.\nВ примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.&quot;}" data-sheets-userformat="{&quot;2&quot;:769,&quot;3&quot;:{&quot;1&quot;:0},&quot;11&quot;:4,&quot;12&quot;:0}" class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.</span></li>
+    </ul>]]></text>
+<file name="olymp.csv" path="/" encoding="base64">0JDRgNGC0LXQvCDQki4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw0ODks0J/RgNC40LfQtdGACtCa0L7QvdGB0YLQsNC90YLQuNC9INCQLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1NTcs0J/QvtCx0LXQtNC40YLQtdC70YwK0JDQu9C10LrRgdCw0L3QtNGAINCcLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDY4MSzQn9C+0LHQtdC00LjRgtC10LvRjArQodC10YDQs9C10Lkg0KUuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsMzgyLArQnNC40YXQsNC40Lsg0KguLNCS0L7Qu9C+0LPQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsMzQzLArQmNCy0LDQvSDQkS4s0JLQvtC70L7Qs9C+0LTRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MTcsCtCQ0LvQtdC60YHQsNC90LTRgCDQnS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzE3LArQm9C10LIg0JsuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDUwLNCf0YDQuNC30LXRgArQnNC40LrQsNC40Lsg0JEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4MCzQn9GA0LjQt9C10YAK0J3QuNC60L7Qu9Cw0Lkg0J8uLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4MCzQn9GA0LjQt9C10YAK0JDQvdC00YDQtdC5INCVLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDU4MyzQn9C+0LHQtdC00LjRgtC10LvRjArQkNC90YLQvtC9INChLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1NDQs0J/QvtCx0LXQtNC40YLQtdC70YwK0KHQtdC80ZHQvSDQoS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNTYxLNCf0L7QsdC10LTQuNGC0LXQu9GMCtCc0LjRhdCw0LjQuyDQky4s0KHQsNGA0LDRgtC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NDEs0J/RgNC40LfQtdGACtCQ0YDRgtGR0Lwg0J0uLNCj0LTQvNGD0YDRgtGB0LrQsNGPINCg0LXRgdC/0YPQsdC70LjQutCwLDQzMiwK0JTQvNC40YLRgNC40Lkg0JQuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM1NywK0JXQstCz0LXQvdC40Lkg0JouLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDQwLNCf0YDQuNC30LXRgArQmNCz0L7RgNGMINCbLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NTcs0J/RgNC40LfQtdGACtCf0LXRgtGAINCmLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDMwNywK0KHQstC10YLQu9Cw0L3QsCDQqC4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MDgs0J/RgNC40LfQtdGACtCQ0L3QtNGA0LXQuSDQpC4s0KHQsNGA0LDRgtC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzNDgsCtCV0LPQvtGAINCTLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0OTgs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQsNC90LTRgCDQkS4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ1MizQn9GA0LjQt9C10YAK0JDRgNGC0YPRgCDQoS4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywzOTQsCtCY0LvRjNC00LDRgCDQky4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDY5NyzQn9C+0LHQtdC00LjRgtC10LvRjArQkdGD0LvQsNGCINCoLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MDYsCtCQ0LvQtdC60YHQsNC90LTRgCDQqC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNTQwLNCf0L7QsdC10LTQuNGC0LXQu9GMCtCV0LrQsNGC0LXRgNC40L3QsCDQqC4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NTIs0J/RgNC40LfQtdGACtCv0YDQvtGB0LvQsNCyINCYLizQp9GD0LLQsNGI0YHQutCw0Y8g0KDQtdGB0L/Rg9Cx0LvQuNC60LAsMzExLArQkNC70LXQutGB0LXQuSDQoy4s0J3QuNC20LXQs9C+0YDQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTM1LNCf0L7QsdC10LTQuNGC0LXQu9GMCtCd0LjQutC40YLQsCDQnC4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0MDMsCtCQ0YDRgtGR0Lwg0JEuLNCc0L7RgdC60L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDMzMiwK0JDQvdGC0L7QvSDQkS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDUyLNCf0YDQuNC30LXRgArQmtC40YDQuNC70Lsg0JAuLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDg0LNCf0YDQuNC30LXRgArQkNC30LDRgiDQmC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ5NyzQn9GA0LjQt9C10YAK0JTQtdC90LjRgSDQkS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDUyLNCf0YDQuNC30LXRgArQnNC40YXQsNC40Lsg0JwuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0OTks0J/RgNC40LfQtdGACtCc0LDRgNC40L3QsCDQny4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSwzOTAsCtCU0LDQvdC40LjQuyDQqC4s0KPQtNC80YPRgNGC0YHQutCw0Y8g0KDQtdGB0L/Rg9Cx0LvQuNC60LAsMzk2LArQkNC70LXQutGB0LXQuSDQnC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ3NyzQn9GA0LjQt9C10YAK0JzQsNC60YHQuNC8INCdLizQn9C10YDQvNGB0LrQuNC5INC60YDQsNC5LDM0NiwK0JTQvNC40YLRgNC40Lkg0JguLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDA2LArQkNC70LXQutGB0LDQvdC00YAg0KEuLNCh0LDRgNCw0YLQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDQyLNCf0YDQuNC30LXRgArQn9Cw0LLQtdC7INCXLizQm9C40L/QtdGG0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ0OSzQn9GA0LjQt9C10YAK0JHRg9C70LDRgiDQnC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ4NCzQn9GA0LjQt9C10YAK0KHQsNCy0LXQu9C40Lkg0JEuLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDg2LNCf0YDQuNC30LXRgArQlNCw0L3QuNC40Lsg0JguLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDUxLNCf0YDQuNC30LXRgArQlNCw0L3QuNC40Lsg0J8uLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQwMywK0JDQvdGC0L7QvSDQmy4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JDQtNGL0LPQtdGPLDMzMywK0JTQsNC90LjQuNC7INCSLizQodCw0LzQsNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTExLNCf0YDQuNC30LXRgArQkNC90LTRgNC10Lkg0JguLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4MCzQn9GA0LjQt9C10YAK0JTQsNC90LjQuNC7INCQLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDM4MSwK0JzQsNGA0LPQsNGA0LjRgtCwINCcLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDQ4NyzQn9GA0LjQt9C10YAK0JDQu9C10LrRgdC10Lkg0JAuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDUwOCzQn9GA0LjQt9C10YAK0KHRgtCw0L3QuNGB0LvQsNCyINCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0MDAsCtCU0LDRgNGM0Y8g0KEuLNCa0YDQsNGB0L3QvtGP0YDRgdC60LjQuSDQutGA0LDQuSw0MjQsCtCu0YDQuNC5INChLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1MTEs0J/RgNC40LfQtdGACtCV0LrQsNGC0LXRgNC40L3QsCDQoi4s0KXQsNC90YLRiy3QnNCw0L3RgdC40LnRgdC60LjQuSDQsNCy0YLQvtC90L7QvNC90YvQuSDQvtC60YDRg9CzLDQ1MyzQn9GA0LjQt9C10YAK0JDQvdCw0YHRgtCw0YHQuNGPINCgLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzOTUsCtCS0LvQsNC00LjQvNC40YAg0KAuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDU0NyzQn9C+0LHQtdC00LjRgtC10LvRjArQldCz0L7RgCDQmi4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw1MDIs0J/RgNC40LfQtdGACtCY0LvRjNGPINCjLizQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTAwLNCf0YDQuNC30LXRgArQmNCz0L7RgNGMINCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzNTcsCtCd0LjQutC40YLQsCDQqC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JzQvtGA0LTQvtCy0LjRjywzNjcsCtCa0LjRgNC40LvQuyDQkS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDA2LArQkdGD0LvQsNGCINClLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDU2LNCf0YDQuNC30LXRgArQkNC90LTRgNC10Lkg0J4uLNCb0LXQvdC40L3Qs9GA0LDQtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1MizQn9C+0LHQtdC00LjRgtC10LvRjArQkNGA0YLRkdC8INCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzODUsCtCc0LjRhdCw0LjQuyDQkS4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MjYs0J/QvtCx0LXQtNC40YLQtdC70YwK0JzQuNGF0LDQuNC7INCgLizQn9C10YDQvNGB0LrQuNC5INC60YDQsNC5LDQyMSwK0J/QsNCy0LXQuyDQmi4s0KPQtNC80YPRgNGC0YHQutCw0Y8g0KDQtdGB0L/Rg9Cx0LvQuNC60LAsNDk0LNCf0YDQuNC30LXRgArQktC10L3QuNCw0LzQuNC9INCkLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1MDMs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQmi4s0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ3MCzQn9GA0LjQt9C10YAK0JjQstCw0L0g0KQuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ5NyzQn9GA0LjQt9C10YAK0JfQsNGF0LDRgCDQmi4s0KHQsNC80LDRgNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM1NiwK0JDQvdC00YDQtdC5INCYLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0MjEsCtCY0LPQvtGA0Ywg0JAuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NjYs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQni4s0JvQuNC/0LXRhtC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MjUs0J/RgNC40LfQtdGACtCU0LXQvdC40YEg0JwuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDMyNywK0J/QvtC70LjQvdCwINCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NzYs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQsNC90LTRgCDQoC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDAwLArQodC10YDQs9C10Lkg0JsuLNCh0LDQvNCw0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0Mzks0J/RgNC40LfQtdGACtCU0LDQvdC40LjQuyDQny4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw1MDgs0J/RgNC40LfQtdGACtCv0YDQvtGB0LvQsNCy0LAg0KEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ1OSzQn9GA0LjQt9C10YAK0J3QuNC60LjRgtCwINCTLizQmNCy0LDQvdC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NzAs0J/RgNC40LfQtdGACtCe0LvQtdCzINCoLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1Nzks0J/QvtCx0LXQtNC40YLQtdC70YwK0JjQstCw0L0g0JMuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQwNywK0JXQu9C40YHQtdC5INChLizQktC+0LvQvtCz0L7QtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQxNCwK0JTQsNC90LjQuyDQmi4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0OTMs0J/RgNC40LfQtdGACtCS0LvQsNC00LjQvNC40YAg0JouLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQzNywK0JTQtdC90LjRgSDQmi4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0NTIs0J/RgNC40LfQtdGACtCQ0L3QtNGA0LXQuSDQny4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTEwLNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JQuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQzOCzQn9GA0LjQt9C10YAK0KHQtdGA0LPQtdC5INCQLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0MTEsCtCQ0YDRgtGR0Lwg0KIuLNCY0LLQsNC90L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQxMiwK0JDQu9C10LrRgdC10Lkg0JouLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDMxMCwK0JLRj9GH0LXRgdC70LDQsiDQoS4s0JHQtdC70LPQvtGA0L7QtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUyNSzQn9GA0LjQt9C10YAK0JDQvdCw0YLQvtC70LjQuSDQki4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDk0LNCf0YDQuNC30LXRgArQkdC+0LPQtNCw0L0g0K8uLNCl0LDQsdCw0YDQvtCy0YHQutC40Lkg0LrRgNCw0LksMzUxLArQnNC40YXQsNC40Lsg0KEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM4NiwK0JDQu9C10LrRgdCw0L3QtNGAINCcLizQodGC0LDQstGA0L7Qv9C+0LvRjNGB0LrQuNC5INC60YDQsNC5LDQyNCwK0J3QsNGC0LDQu9GM0Y8g0KEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQzOCwK0JXQstCz0LXQvdC40Lkg0J8uLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MzgsCtCc0LDQutGB0LjQvCDQqC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDk0LNCf0YDQuNC30LXRgArQktCw0YXRgtCw0L3QsyDQlS4s0JLQvtC70L7Qs9C+0LTRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzMDcsCtCU0LXQvdC40YEg0JAuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDUyLNCf0YDQuNC30LXRgArQktC40LrRgtC+0YAg0JwuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MzIsCtCh0LXRgNCz0LXQuSDQnC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzQ3LArQntC70LXQsyDQki4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzcwLArQktC70LDQtNC40LzQuNGAINCgLizQkdC10LvQs9C+0YDQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsMzExLArQktGP0YfQtdGB0LvQsNCyINCnLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCw0MDUsCtCQ0LvQtdC60YHQsNC90LTRgCDQlC4s0JrQsNC70LjQvdC40L3Qs9GA0LDQtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM4MSwK0JPRgNC40LPQvtGA0LjQuSDQnC4s0JLQvtGA0L7QvdC10LbRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MjIsCtCS0LDQu9C10YDQuNC5INCXLizQr9GA0L7RgdC70LDQstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU2OSzQn9C+0LHQtdC00LjRgtC10LvRjArQpNGR0LTQvtGAINCjLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0ODMs0J/RgNC40LfQtdGACtCc0LDQutGB0LjQvCDQnC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JrQsNGA0LXQu9C40Y8sNDUyLNCf0YDQuNC30LXRgArQldCy0LPQtdC90LjQuSDQoi4s0J7RgNC10L3QsdGD0YDQs9GB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDMzMiwK0JDQu9C10LrRgdCw0L3QtNGAINCTLizQn9C10YDQvNGB0LrQuNC5INC60YDQsNC5LDUwOCzQn9GA0LjQt9C10YAK0JTQtdC90LjRgSDQki4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JzQvtGA0LTQvtCy0LjRjyw0NjYs0J/RgNC40LfQtdGACtCX0LDRhdCw0YAg0JouLNCv0YDQvtGB0LvQsNCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDY2LNCf0YDQuNC30LXRgArQmtC40YDQuNC70Lsg0KEuLNCg0LXRgdC/0YPQsdC70LjQutCwINCc0L7RgNC00L7QstC40Y8sNDMyLArQntC70LXQsyDQnS4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDkyLNCf0YDQuNC30LXRgArQkNC70YzQsdC10YDRgiDQoS4s0KDQvtGB0YLQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsMzc5LArQlNCw0L3QuNC40Lsg0JUuLNCh0YLQsNCy0YDQvtC/0L7Qu9GM0YHQutC40Lkg0LrRgNCw0LksNDA1LArQpNGR0LTQvtGAINCaLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzODIsCtCQ0LvQtdC60YHQsNC90LTRgCDQnC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzQxLArQkNC90LDRgdGC0LDRgdC40Y8g0KIuLNCg0LXRgdC/0YPQsdC70LjQutCwINCc0L7RgNC00L7QstC40Y8sMzk1LArQlNCw0L3QuNC40Lsg0JouLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MDMs0J/RgNC40LfQtdGACtCY0LvRjNGPINCaLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCwzNzUsCtCh0LDQstC10LvQuNC5INCTLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUzNyzQn9C+0LHQtdC00LjRgtC10LvRjArQldCz0L7RgCDQny4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MDQsCtCb0LXQvtC90LjQtCDQmC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNTMzLNCf0L7QsdC10LTQuNGC0LXQu9GMCtCQ0YDRgtC10Lwg0JguLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzNTYsCtCU0LDQvdC40LvQsCDQly4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JDQtNGL0LPQtdGPLDUwMSzQn9GA0LjQt9C10YAK0KHQtdGA0LPQtdC5INCTLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NjYs0J/RgNC40LfQtdGACtCS0LvQsNC00LjRgdC70LDQsiDQnS4s0JrRgNCw0YHQvdC+0LTQsNGA0YHQutC40Lkg0LrRgNCw0LksMzkwLArQkNGA0YLQtdC8INCfLizQkNC70YLQsNC50YHQutC40Lkg0LrRgNCw0LksNDEzLArQodGC0LXQv9Cw0L0g0JQuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQzMiwK0KLQuNC80L7RhNC10Lkg0JMuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM2OSwK0JDQu9C10LrRgdCw0L3QtNGAINCdLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1MDMs0J/RgNC40LfQtdGACtCQ0YDRgdC10L3QuNC5INChLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDYxLNCf0YDQuNC30LXRgArQnNC40YXQsNC40Lsg0JouLNCa0YDQsNGB0L3QvtGP0YDRgdC60LjQuSDQutGA0LDQuSw0NzMs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQtdC5INCoLizQodCw0YDQsNGC0L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM4NywK0KHQtdGA0LPQtdC5INCbLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NDMs0J/RgNC40LfQtdGACtCQ0YDRgtC10Lwg0KIuLNCd0LjQttC10LPQvtGA0L7QtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQwNywK0JTQvNC40YLRgNC40Lkg0J8uLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ0MyzQn9GA0LjQt9C10YAK0J3QsNC80LjQsyDQlC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDM4LNCf0YDQuNC30LXRgArQkNGA0YLRkdC8INCXLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCw0MTUsCtCu0YDQuNC5INCfLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzMDcsCtCi0LjQvNC+0YTQtdC5INCkLizQoNC10YHQv9GD0LHQu9C40LrQsCDQnNC+0YDQtNC+0LLQuNGPLDU0OCzQn9C+0LHQtdC00LjRgtC10LvRjArQk9C10L7RgNCz0LjQuSDQoS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzE2LArQmNCy0LDQvSDQlC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzU3LArQkNC70LXRgdGPINCYLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NzYs0J/RgNC40LfQtdGACtCi0LDQs9C40YAg0KUuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw0NDUs0J/RgNC40LfQtdGACtCQ0LvQuNGB0LAg0JMuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0ODQs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQsNC90LTRgCDQny4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzgxLArQrdC80LjQu9GMINCSLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDEwLArQpNGR0LTQvtGAINCaLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1MjMs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQtdC5INCfLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM5MSwK0KHQtdGA0LPQtdC5INClLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDU0NCzQn9C+0LHQtdC00LjRgtC10LvRjArQmNC90YHQsNGEINClLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDY2LNCf0YDQuNC30LXRgArQmNC70YzRjyDQmy4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDUyLNCf0YDQuNC30LXRgArQlNCw0LvQtdGAINCXLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sMzE1LArQkNC70LXQvSDQkC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDgwLNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JouLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ5NCzQn9GA0LjQt9C10YAK0JrQuNGA0LjQu9C7INCRLizQoNC10YHQv9GD0LHQu9C40LrQsCDQnNC+0YDQtNC+0LLQuNGPLDM5NSwK0JDQu9C10LrRgdC10Lkg0JouLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDUwNyzQn9GA0LjQt9C10YAK0JzQsNC60YHQuNC8INCTLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MjUs0J/RgNC40LfQtdGACtCY0LLQsNC9INCbLizQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDg5LNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JIuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzMTAsCtCh0YLQtdC/0LDQvSDQni4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw0NzYs0J/RgNC40LfQtdGACtCh0YLQsNC90LjRgdC70LDQsiDQlC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDQ0LNCf0YDQuNC30LXRgArQodC10YDQs9C10Lkg0J8uLNCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksNDgzLNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JMuLNCa0LjRgNC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzODEsCtCc0LDQutGB0LjQvCDQkC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JrQvtC80LgsMzYyLArQodC10YDQs9C10Lkg0J8uLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ0NCzQn9GA0LjQt9C10YAK0J3QuNC60L7Qu9Cw0Lkg0JsuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4NizQn9GA0LjQt9C10YAK0KTRkdC00L7RgCDQkS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDExLArQmtC+0L3RgdGC0LDQvdGC0LjQvSDQpC4s0JvQuNC/0LXRhtC60LDRjyDQvtCx0LvQsNGB0YLRjCw1NDks0J/QvtCx0LXQtNC40YLQtdC70YwK0JjQstCw0L0g0JMuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM1NiwK0JLQsNC00LjQvCDQmi4s0JrQsNC70LjQvdC40L3Qs9GA0LDQtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUyNyzQn9C+0LHQtdC00LjRgtC10LvRjArQkNC90LTRgNC10Lkg0JMuLNCg0LXRgdC/0YPQsdC70LjQutCwINCR0LDRiNC60L7RgNGC0L7RgdGC0LDQvSwzOTYsCtCh0LLRj9GC0L7RgdC70LDQsiDQpi4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDg0LNCf0YDQuNC30LXRgArQlNCw0L3QuNC70LAg0KMuLNCh0LDQvNCw0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MDksCtCY0LLQsNC9INCSLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDUyNSzQn9GA0LjQt9C10YAK0KHQtdGA0LPQtdC5INCaLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0ODQs0J/RgNC40LfQtdGACtCR0YPQu9Cw0YIg0JwuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw1MjUs0J/QvtCx0LXQtNC40YLQtdC70YwK0JXQs9C+0YAg0JsuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDU2OCzQn9C+0LHQtdC00LjRgtC10LvRjArQkNC70LXQutGB0LDQvdC00YAg0KYuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM1OCwK0JXQs9C+0YAg0JEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQyMSwK0JDQu9C10LrRgdC10Lkg0JEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4MCzQn9GA0LjQt9C10YAK0JzQsNC60YHQuNC8INCaLizQmtGA0LDRgdC90L7Rj9GA0YHQutC40Lkg0LrRgNCw0LksNDQzLNCf0YDQuNC30LXRgArQkNC90LTRgNC10Lkg0KcuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQxMywK0JzQsNGA0LjRjyDQoC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDg0LNCf0YDQuNC30LXRgArQlNC80LjRgtGA0LjQuSDQkC4s0JrQvtGB0YLRgNC+0LzRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MjUs0J/RgNC40LfQtdGACtCe0LvRjNCz0LAg0KAuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4NizQn9GA0LjQt9C10YAK0KHQtdGA0LPQtdC5INCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NDcs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQnC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzk2LArQktCw0LTQuNC8INCULizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzNjYsCtCc0LjRhdCw0LjQuyDQny4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDY1LNCf0YDQuNC30LXRgArQmNCy0LDQvSDQnC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDU0LNCf0YDQuNC30LXRgArQktC70LDQtNC40LzQuNGAINCaLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDM5NiwK0JDRgNGC0LXQvCDQoS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzIxLArQmtC40YDQuNC70Lsg0KcuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQxMywK0JLQsNC70LXRgNC40Lkg0JEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ5NizQn9GA0LjQt9C10YAK0JDQu9C10LrRgdCw0L3QtNGAINCULizQodCw0YDQsNGC0L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM0MiwK0JTQvNC40YLRgNC40Lkg0JMuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ1NSzQn9GA0LjQt9C10YAK0KLQuNC80YPRgCDQpS4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDMxMSwK0JLQsNC70LXQvdGC0LjQvSDQmC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzA3LArQmNCz0L7RgNGMINCfLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NTIs0J/RgNC40LfQtdGACtCh0L7RhNGM0Y8g0JcuLNCb0LjQv9C10YbQutCw0Y8g0L7QsdC70LDRgdGC0YwsMzU1LArQnNCw0YDQuiDQmC4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywzMDcsCtCQ0YDRgtC10Lwg0JwuLNCh0LDQvNCw0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MDEs0J/RgNC40LfQtdGACtCa0LDQvNC40LvRjCDQqC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ0NyzQn9GA0LjQt9C10YAK0JTQvNC40YLRgNC40Lkg0KMuLNCg0LXRgdC/0YPQsdC70LjQutCwINCc0L7RgNC00L7QstC40Y8sNTExLNCf0YDQuNC30LXRgAo=</file>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>15</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[from shutil import copyfile
+__student_answer__ = """{{ STUDENT_ANSWER | e('py') }}"""
+
+SEPARATOR = "#<ab@17943918#@>#"
+
+{% for TEST in TESTCASES %}
+copyfile(str({{ TEST.testcode }})+'.csv', 'olymp.csv')
+
+{{ STUDENT_ANSWER }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}]]></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer>region = input()
+
+with open('olymp.csv', encoding='utf8') as fh:
+    for line in fh:
+        line = line.strip()
+        if line.split(',')[1] == region and line.split(',')[-1] == 'Победитель':
+            print(line)</answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>0</text>
+      </testcode>
+      <stdin>
+                <text>город Санкт-Петербург</text>
+      </stdin>
+      <expected>
+                <text>Александр М.,город Санкт-Петербург,681,Победитель
+Андрей Е.,город Санкт-Петербург,583,Победитель
+Сергей Х.,город Санкт-Петербург,544,Победитель</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>1</text>
+      </testcode>
+      <stdin>
+                <text>Республика Татарстан</text>
+      </stdin>
+      <expected>
+                <text>Асхат С.,Республика Татарстан,625,Победитель
+Ильдар Г.,Республика Татарстан,614,Победитель
+Рамазан Р.,Республика Татарстан,646,Победитель</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>2</text>
+      </testcode>
+      <stdin>
+                <text>Челябинская область</text>
+      </stdin>
+      <expected>
+                <text>Роман К.,Челябинская область,595,Победитель
+Денис Ш.,Челябинская область,640,Победитель</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+<file name="0.csv" path="/" encoding="base64">0JDRgNGC0LXQvCDQki4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw0ODks0J/RgNC40LfQtdGACtCa0L7QvdGB0YLQsNC90YLQuNC9INCQLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1NTcs0J/QvtCx0LXQtNC40YLQtdC70YwK0JDQu9C10LrRgdCw0L3QtNGAINCcLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDY4MSzQn9C+0LHQtdC00LjRgtC10LvRjArQodC10YDQs9C10Lkg0KUuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsMzgyLArQnNC40YXQsNC40Lsg0KguLNCS0L7Qu9C+0LPQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsMzQzLArQmNCy0LDQvSDQkS4s0JLQvtC70L7Qs9C+0LTRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MTcsCtCQ0LvQtdC60YHQsNC90LTRgCDQnS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzE3LArQm9C10LIg0JsuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDUwLNCf0YDQuNC30LXRgArQnNC40LrQsNC40Lsg0JEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4MCzQn9GA0LjQt9C10YAK0J3QuNC60L7Qu9Cw0Lkg0J8uLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4MCzQn9GA0LjQt9C10YAK0JDQvdC00YDQtdC5INCVLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDU4MyzQn9C+0LHQtdC00LjRgtC10LvRjArQkNC90YLQvtC9INChLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1NDQs0J/QvtCx0LXQtNC40YLQtdC70YwK0KHQtdC80ZHQvSDQoS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNTYxLNCf0L7QsdC10LTQuNGC0LXQu9GMCtCc0LjRhdCw0LjQuyDQky4s0KHQsNGA0LDRgtC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NDEs0J/RgNC40LfQtdGACtCQ0YDRgtGR0Lwg0J0uLNCj0LTQvNGD0YDRgtGB0LrQsNGPINCg0LXRgdC/0YPQsdC70LjQutCwLDQzMiwK0JTQvNC40YLRgNC40Lkg0JQuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM1NywK0JXQstCz0LXQvdC40Lkg0JouLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDQwLNCf0YDQuNC30LXRgArQmNCz0L7RgNGMINCbLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NTcs0J/RgNC40LfQtdGACtCf0LXRgtGAINCmLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDMwNywK0KHQstC10YLQu9Cw0L3QsCDQqC4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MDgs0J/RgNC40LfQtdGACtCQ0L3QtNGA0LXQuSDQpC4s0KHQsNGA0LDRgtC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzNDgsCtCV0LPQvtGAINCTLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0OTgs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQsNC90LTRgCDQkS4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ1MizQn9GA0LjQt9C10YAK0JDRgNGC0YPRgCDQoS4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywzOTQsCtCY0LvRjNC00LDRgCDQky4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDY5NyzQn9C+0LHQtdC00LjRgtC10LvRjArQkdGD0LvQsNGCINCoLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MDYsCtCQ0LvQtdC60YHQsNC90LTRgCDQqC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNTQwLNCf0L7QsdC10LTQuNGC0LXQu9GMCtCV0LrQsNGC0LXRgNC40L3QsCDQqC4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NTIs0J/RgNC40LfQtdGACtCv0YDQvtGB0LvQsNCyINCYLizQp9GD0LLQsNGI0YHQutCw0Y8g0KDQtdGB0L/Rg9Cx0LvQuNC60LAsMzExLArQkNC70LXQutGB0LXQuSDQoy4s0J3QuNC20LXQs9C+0YDQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTM1LNCf0L7QsdC10LTQuNGC0LXQu9GMCtCd0LjQutC40YLQsCDQnC4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0MDMsCtCQ0YDRgtGR0Lwg0JEuLNCc0L7RgdC60L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDMzMiwK0JDQvdGC0L7QvSDQkS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDUyLNCf0YDQuNC30LXRgArQmtC40YDQuNC70Lsg0JAuLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDg0LNCf0YDQuNC30LXRgArQkNC30LDRgiDQmC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ5NyzQn9GA0LjQt9C10YAK0JTQtdC90LjRgSDQkS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDUyLNCf0YDQuNC30LXRgArQnNC40YXQsNC40Lsg0JwuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0OTks0J/RgNC40LfQtdGACtCc0LDRgNC40L3QsCDQny4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSwzOTAsCtCU0LDQvdC40LjQuyDQqC4s0KPQtNC80YPRgNGC0YHQutCw0Y8g0KDQtdGB0L/Rg9Cx0LvQuNC60LAsMzk2LArQkNC70LXQutGB0LXQuSDQnC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ3NyzQn9GA0LjQt9C10YAK0JzQsNC60YHQuNC8INCdLizQn9C10YDQvNGB0LrQuNC5INC60YDQsNC5LDM0NiwK0JTQvNC40YLRgNC40Lkg0JguLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDA2LArQkNC70LXQutGB0LDQvdC00YAg0KEuLNCh0LDRgNCw0YLQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDQyLNCf0YDQuNC30LXRgArQn9Cw0LLQtdC7INCXLizQm9C40L/QtdGG0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ0OSzQn9GA0LjQt9C10YAK0JHRg9C70LDRgiDQnC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ4NCzQn9GA0LjQt9C10YAK0KHQsNCy0LXQu9C40Lkg0JEuLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDg2LNCf0YDQuNC30LXRgArQlNCw0L3QuNC40Lsg0JguLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDUxLNCf0YDQuNC30LXRgArQlNCw0L3QuNC40Lsg0J8uLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQwMywK0JDQvdGC0L7QvSDQmy4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JDQtNGL0LPQtdGPLDMzMywK0JTQsNC90LjQuNC7INCSLizQodCw0LzQsNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTExLNCf0YDQuNC30LXRgArQkNC90LTRgNC10Lkg0JguLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4MCzQn9GA0LjQt9C10YAK0JTQsNC90LjQuNC7INCQLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDM4MSwK0JzQsNGA0LPQsNGA0LjRgtCwINCcLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDQ4NyzQn9GA0LjQt9C10YAK0JDQu9C10LrRgdC10Lkg0JAuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDUwOCzQn9GA0LjQt9C10YAK0KHRgtCw0L3QuNGB0LvQsNCyINCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0MDAsCtCU0LDRgNGM0Y8g0KEuLNCa0YDQsNGB0L3QvtGP0YDRgdC60LjQuSDQutGA0LDQuSw0MjQsCtCu0YDQuNC5INChLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1MTEs0J/RgNC40LfQtdGACtCV0LrQsNGC0LXRgNC40L3QsCDQoi4s0KXQsNC90YLRiy3QnNCw0L3RgdC40LnRgdC60LjQuSDQsNCy0YLQvtC90L7QvNC90YvQuSDQvtC60YDRg9CzLDQ1MyzQn9GA0LjQt9C10YAK0JDQvdCw0YHRgtCw0YHQuNGPINCgLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzOTUsCtCS0LvQsNC00LjQvNC40YAg0KAuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDU0NyzQn9C+0LHQtdC00LjRgtC10LvRjArQldCz0L7RgCDQmi4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw1MDIs0J/RgNC40LfQtdGACtCY0LvRjNGPINCjLizQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTAwLNCf0YDQuNC30LXRgArQmNCz0L7RgNGMINCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzNTcsCtCd0LjQutC40YLQsCDQqC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JzQvtGA0LTQvtCy0LjRjywzNjcsCtCa0LjRgNC40LvQuyDQkS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDA2LArQkdGD0LvQsNGCINClLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDU2LNCf0YDQuNC30LXRgArQkNC90LTRgNC10Lkg0J4uLNCb0LXQvdC40L3Qs9GA0LDQtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1MizQn9C+0LHQtdC00LjRgtC10LvRjArQkNGA0YLRkdC8INCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzODUsCtCc0LjRhdCw0LjQuyDQkS4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MjYs0J/QvtCx0LXQtNC40YLQtdC70YwK0JzQuNGF0LDQuNC7INCgLizQn9C10YDQvNGB0LrQuNC5INC60YDQsNC5LDQyMSwK0J/QsNCy0LXQuyDQmi4s0KPQtNC80YPRgNGC0YHQutCw0Y8g0KDQtdGB0L/Rg9Cx0LvQuNC60LAsNDk0LNCf0YDQuNC30LXRgArQktC10L3QuNCw0LzQuNC9INCkLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1MDMs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQmi4s0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ3MCzQn9GA0LjQt9C10YAK0JjQstCw0L0g0KQuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ5NyzQn9GA0LjQt9C10YAK0JfQsNGF0LDRgCDQmi4s0KHQsNC80LDRgNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM1NiwK0JDQvdC00YDQtdC5INCYLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0MjEsCtCY0LPQvtGA0Ywg0JAuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NjYs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQni4s0JvQuNC/0LXRhtC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MjUs0J/RgNC40LfQtdGACtCU0LXQvdC40YEg0JwuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDMyNywK0J/QvtC70LjQvdCwINCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NzYs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQsNC90LTRgCDQoC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDAwLArQodC10YDQs9C10Lkg0JsuLNCh0LDQvNCw0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0Mzks0J/RgNC40LfQtdGACtCU0LDQvdC40LjQuyDQny4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw1MDgs0J/RgNC40LfQtdGACtCv0YDQvtGB0LvQsNCy0LAg0KEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ1OSzQn9GA0LjQt9C10YAK0J3QuNC60LjRgtCwINCTLizQmNCy0LDQvdC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NzAs0J/RgNC40LfQtdGACtCe0LvQtdCzINCoLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1Nzks0J/QvtCx0LXQtNC40YLQtdC70YwK0JjQstCw0L0g0JMuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQwNywK0JXQu9C40YHQtdC5INChLizQktC+0LvQvtCz0L7QtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQxNCwK0JTQsNC90LjQuyDQmi4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0OTMs0J/RgNC40LfQtdGACtCS0LvQsNC00LjQvNC40YAg0JouLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQzNywK0JTQtdC90LjRgSDQmi4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0NTIs0J/RgNC40LfQtdGACtCQ0L3QtNGA0LXQuSDQny4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTEwLNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JQuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQzOCzQn9GA0LjQt9C10YAK0KHQtdGA0LPQtdC5INCQLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0MTEsCtCQ0YDRgtGR0Lwg0KIuLNCY0LLQsNC90L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQxMiwK0JDQu9C10LrRgdC10Lkg0JouLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDMxMCwK0JLRj9GH0LXRgdC70LDQsiDQoS4s0JHQtdC70LPQvtGA0L7QtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUyNSzQn9GA0LjQt9C10YAK0JDQvdCw0YLQvtC70LjQuSDQki4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDk0LNCf0YDQuNC30LXRgArQkdC+0LPQtNCw0L0g0K8uLNCl0LDQsdCw0YDQvtCy0YHQutC40Lkg0LrRgNCw0LksMzUxLArQnNC40YXQsNC40Lsg0KEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM4NiwK0JDQu9C10LrRgdCw0L3QtNGAINCcLizQodGC0LDQstGA0L7Qv9C+0LvRjNGB0LrQuNC5INC60YDQsNC5LDQyNCwK0J3QsNGC0LDQu9GM0Y8g0KEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQzOCwK0JXQstCz0LXQvdC40Lkg0J8uLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MzgsCtCc0LDQutGB0LjQvCDQqC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDk0LNCf0YDQuNC30LXRgArQktCw0YXRgtCw0L3QsyDQlS4s0JLQvtC70L7Qs9C+0LTRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzMDcsCtCU0LXQvdC40YEg0JAuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDUyLNCf0YDQuNC30LXRgArQktC40LrRgtC+0YAg0JwuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MzIsCtCh0LXRgNCz0LXQuSDQnC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzQ3LArQntC70LXQsyDQki4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzcwLArQktC70LDQtNC40LzQuNGAINCgLizQkdC10LvQs9C+0YDQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsMzExLArQktGP0YfQtdGB0LvQsNCyINCnLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCw0MDUsCtCQ0LvQtdC60YHQsNC90LTRgCDQlC4s0JrQsNC70LjQvdC40L3Qs9GA0LDQtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM4MSwK0JPRgNC40LPQvtGA0LjQuSDQnC4s0JLQvtGA0L7QvdC10LbRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MjIsCtCS0LDQu9C10YDQuNC5INCXLizQr9GA0L7RgdC70LDQstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU2OSzQn9C+0LHQtdC00LjRgtC10LvRjArQpNGR0LTQvtGAINCjLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0ODMs0J/RgNC40LfQtdGACtCc0LDQutGB0LjQvCDQnC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JrQsNGA0LXQu9C40Y8sNDUyLNCf0YDQuNC30LXRgArQldCy0LPQtdC90LjQuSDQoi4s0J7RgNC10L3QsdGD0YDQs9GB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDMzMiwK0JDQu9C10LrRgdCw0L3QtNGAINCTLizQn9C10YDQvNGB0LrQuNC5INC60YDQsNC5LDUwOCzQn9GA0LjQt9C10YAK0JTQtdC90LjRgSDQki4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JzQvtGA0LTQvtCy0LjRjyw0NjYs0J/RgNC40LfQtdGACtCX0LDRhdCw0YAg0JouLNCv0YDQvtGB0LvQsNCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDY2LNCf0YDQuNC30LXRgArQmtC40YDQuNC70Lsg0KEuLNCg0LXRgdC/0YPQsdC70LjQutCwINCc0L7RgNC00L7QstC40Y8sNDMyLArQntC70LXQsyDQnS4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDkyLNCf0YDQuNC30LXRgArQkNC70YzQsdC10YDRgiDQoS4s0KDQvtGB0YLQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsMzc5LArQlNCw0L3QuNC40Lsg0JUuLNCh0YLQsNCy0YDQvtC/0L7Qu9GM0YHQutC40Lkg0LrRgNCw0LksNDA1LArQpNGR0LTQvtGAINCaLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzODIsCtCQ0LvQtdC60YHQsNC90LTRgCDQnC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzQxLArQkNC90LDRgdGC0LDRgdC40Y8g0KIuLNCg0LXRgdC/0YPQsdC70LjQutCwINCc0L7RgNC00L7QstC40Y8sMzk1LArQlNCw0L3QuNC40Lsg0JouLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MDMs0J/RgNC40LfQtdGACtCY0LvRjNGPINCaLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCwzNzUsCtCh0LDQstC10LvQuNC5INCTLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUzNyzQn9C+0LHQtdC00LjRgtC10LvRjArQldCz0L7RgCDQny4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MDQsCtCb0LXQvtC90LjQtCDQmC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNTMzLNCf0L7QsdC10LTQuNGC0LXQu9GMCtCQ0YDRgtC10Lwg0JguLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzNTYsCtCU0LDQvdC40LvQsCDQly4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JDQtNGL0LPQtdGPLDUwMSzQn9GA0LjQt9C10YAK0KHQtdGA0LPQtdC5INCTLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NjYs0J/RgNC40LfQtdGACtCS0LvQsNC00LjRgdC70LDQsiDQnS4s0JrRgNCw0YHQvdC+0LTQsNGA0YHQutC40Lkg0LrRgNCw0LksMzkwLArQkNGA0YLQtdC8INCfLizQkNC70YLQsNC50YHQutC40Lkg0LrRgNCw0LksNDEzLArQodGC0LXQv9Cw0L0g0JQuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQzMiwK0KLQuNC80L7RhNC10Lkg0JMuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM2OSwK0JDQu9C10LrRgdCw0L3QtNGAINCdLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1MDMs0J/RgNC40LfQtdGACtCQ0YDRgdC10L3QuNC5INChLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDYxLNCf0YDQuNC30LXRgArQnNC40YXQsNC40Lsg0JouLNCa0YDQsNGB0L3QvtGP0YDRgdC60LjQuSDQutGA0LDQuSw0NzMs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQtdC5INCoLizQodCw0YDQsNGC0L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM4NywK0KHQtdGA0LPQtdC5INCbLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NDMs0J/RgNC40LfQtdGACtCQ0YDRgtC10Lwg0KIuLNCd0LjQttC10LPQvtGA0L7QtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQwNywK0JTQvNC40YLRgNC40Lkg0J8uLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ0MyzQn9GA0LjQt9C10YAK0J3QsNC80LjQsyDQlC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDM4LNCf0YDQuNC30LXRgArQkNGA0YLRkdC8INCXLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCw0MTUsCtCu0YDQuNC5INCfLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzMDcsCtCi0LjQvNC+0YTQtdC5INCkLizQoNC10YHQv9GD0LHQu9C40LrQsCDQnNC+0YDQtNC+0LLQuNGPLDU0OCzQn9C+0LHQtdC00LjRgtC10LvRjArQk9C10L7RgNCz0LjQuSDQoS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzE2LArQmNCy0LDQvSDQlC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzU3LArQkNC70LXRgdGPINCYLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NzYs0J/RgNC40LfQtdGACtCi0LDQs9C40YAg0KUuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw0NDUs0J/RgNC40LfQtdGACtCQ0LvQuNGB0LAg0JMuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0ODQs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQsNC90LTRgCDQny4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzgxLArQrdC80LjQu9GMINCSLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDEwLArQpNGR0LTQvtGAINCaLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw1MjMs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQtdC5INCfLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM5MSwK0KHQtdGA0LPQtdC5INClLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDU0NCzQn9C+0LHQtdC00LjRgtC10LvRjArQmNC90YHQsNGEINClLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDY2LNCf0YDQuNC30LXRgArQmNC70YzRjyDQmy4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDUyLNCf0YDQuNC30LXRgArQlNCw0LvQtdGAINCXLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sMzE1LArQkNC70LXQvSDQkC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDgwLNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JouLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ5NCzQn9GA0LjQt9C10YAK0JrQuNGA0LjQu9C7INCRLizQoNC10YHQv9GD0LHQu9C40LrQsCDQnNC+0YDQtNC+0LLQuNGPLDM5NSwK0JDQu9C10LrRgdC10Lkg0JouLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDUwNyzQn9GA0LjQt9C10YAK0JzQsNC60YHQuNC8INCTLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MjUs0J/RgNC40LfQtdGACtCY0LLQsNC9INCbLizQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDg5LNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JIuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzMTAsCtCh0YLQtdC/0LDQvSDQni4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw0NzYs0J/RgNC40LfQtdGACtCh0YLQsNC90LjRgdC70LDQsiDQlC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDQ0LNCf0YDQuNC30LXRgArQodC10YDQs9C10Lkg0J8uLNCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksNDgzLNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JMuLNCa0LjRgNC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwzODEsCtCc0LDQutGB0LjQvCDQkC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JrQvtC80LgsMzYyLArQodC10YDQs9C10Lkg0J8uLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ0NCzQn9GA0LjQt9C10YAK0J3QuNC60L7Qu9Cw0Lkg0JsuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4NizQn9GA0LjQt9C10YAK0KTRkdC00L7RgCDQkS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDExLArQmtC+0L3RgdGC0LDQvdGC0LjQvSDQpC4s0JvQuNC/0LXRhtC60LDRjyDQvtCx0LvQsNGB0YLRjCw1NDks0J/QvtCx0LXQtNC40YLQtdC70YwK0JjQstCw0L0g0JMuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM1NiwK0JLQsNC00LjQvCDQmi4s0JrQsNC70LjQvdC40L3Qs9GA0LDQtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUyNyzQn9C+0LHQtdC00LjRgtC10LvRjArQkNC90LTRgNC10Lkg0JMuLNCg0LXRgdC/0YPQsdC70LjQutCwINCR0LDRiNC60L7RgNGC0L7RgdGC0LDQvSwzOTYsCtCh0LLRj9GC0L7RgdC70LDQsiDQpi4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDg0LNCf0YDQuNC30LXRgArQlNCw0L3QuNC70LAg0KMuLNCh0LDQvNCw0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0MDksCtCY0LLQsNC9INCSLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDUyNSzQn9GA0LjQt9C10YAK0KHQtdGA0LPQtdC5INCaLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0ODQs0J/RgNC40LfQtdGACtCR0YPQu9Cw0YIg0JwuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw1MjUs0J/QvtCx0LXQtNC40YLQtdC70YwK0JXQs9C+0YAg0JsuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDU2OCzQn9C+0LHQtdC00LjRgtC10LvRjArQkNC70LXQutGB0LDQvdC00YAg0KYuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDM1OCwK0JXQs9C+0YAg0JEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQyMSwK0JDQu9C10LrRgdC10Lkg0JEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4MCzQn9GA0LjQt9C10YAK0JzQsNC60YHQuNC8INCaLizQmtGA0LDRgdC90L7Rj9GA0YHQutC40Lkg0LrRgNCw0LksNDQzLNCf0YDQuNC30LXRgArQkNC90LTRgNC10Lkg0KcuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQxMywK0JzQsNGA0LjRjyDQoC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDg0LNCf0YDQuNC30LXRgArQlNC80LjRgtGA0LjQuSDQkC4s0JrQvtGB0YLRgNC+0LzRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MjUs0J/RgNC40LfQtdGACtCe0LvRjNCz0LAg0KAuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ4NizQn9GA0LjQt9C10YAK0KHQtdGA0LPQtdC5INCcLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NDcs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQnC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzk2LArQktCw0LTQuNC8INCULizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCwzNjYsCtCc0LjRhdCw0LjQuyDQny4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDY1LNCf0YDQuNC30LXRgArQmNCy0LDQvSDQnC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsNDU0LNCf0YDQuNC30LXRgArQktC70LDQtNC40LzQuNGAINCaLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDM5NiwK0JDRgNGC0LXQvCDQoS4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzIxLArQmtC40YDQuNC70Lsg0KcuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQxMywK0JLQsNC70LXRgNC40Lkg0JEuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ5NizQn9GA0LjQt9C10YAK0JDQu9C10LrRgdCw0L3QtNGAINCULizQodCw0YDQsNGC0L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDM0MiwK0JTQvNC40YLRgNC40Lkg0JMuLNCz0L7RgNC+0LQg0JzQvtGB0LrQstCwLDQ1NSzQn9GA0LjQt9C10YAK0KLQuNC80YPRgCDQpS4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDMxMSwK0JLQsNC70LXQvdGC0LjQvSDQmC4s0LPQvtGA0L7QtCDQnNC+0YHQutCy0LAsMzA3LArQmNCz0L7RgNGMINCfLizQs9C+0YDQvtC0INCc0L7RgdC60LLQsCw0NTIs0J/RgNC40LfQtdGACtCh0L7RhNGM0Y8g0JcuLNCb0LjQv9C10YbQutCw0Y8g0L7QsdC70LDRgdGC0YwsMzU1LArQnNCw0YDQuiDQmC4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywzMDcsCtCQ0YDRgtC10Lwg0JwuLNCh0LDQvNCw0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MDEs0J/RgNC40LfQtdGACtCa0LDQvNC40LvRjCDQqC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ0NyzQn9GA0LjQt9C10YAK0JTQvNC40YLRgNC40Lkg0KMuLNCg0LXRgdC/0YPQsdC70LjQutCwINCc0L7RgNC00L7QstC40Y8sNTExLNCf0YDQuNC30LXRgAo=</file>
+<file name="1.csv" path="/" encoding="base64">0JTQtdC90LjRgSDQmi4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0ODgsCtCU0LzQuNGC0YDQuNC5INChLizQktC+0LvQvtCz0L7QtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1MCzQn9GA0LjQt9C10YAK0JzQuNGF0LDQuNC7INCeLizQm9C40L/QtdGG0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUxOSzQn9GA0LjQt9C10YAK0JTQvNC40YLRgNC40Lkg0J8uLNCc0L7RgdC60LLQsCw1ODUs0J/QvtCx0LXQtNC40YLQtdC70YwK0J3QuNC60L7Qu9Cw0Lkg0J8uLNCc0L7RgdC60LLQsCw0ODcsCtCQ0L3RgtC+0L0g0KEuLNCc0L7RgdC60LLQsCw1NjQs0J/RgNC40LfQtdGACtCU0LDQvdC40LjQuyDQny4s0JzQvtGB0LrQstCwLDUxMizQn9GA0LjQt9C10YAK0JDQvdC00YDQtdC5INCeLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU2NizQn9GA0LjQt9C10YAK0JTQvNC40YLRgNC40Lkg0JQuLNCh0LDQvNCw0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0OTYsCtCU0LzQuNGC0YDQuNC5INCfLizQnNC+0YHQutCy0LAsNTI2LNCf0YDQuNC30LXRgArQk9C70LXQsSDQmy4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTM1LNCf0YDQuNC30LXRgArQktC70LDQtNC40LzQuNGAINCgLizQnNC+0YHQutCy0LAsNjY2LNCf0L7QsdC10LTQuNGC0LXQu9GMCtCf0LDQstC10Lsg0JcuLNCb0LjQv9C10YbQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTAzLNCf0YDQuNC30LXRgArQn9GR0YLRgCDQky4s0JzQvtGB0LrQstCwLDUwMizQn9GA0LjQt9C10YAK0JDQu9C10LrRgdCw0L3QtNGAINChLizQodCw0YDQsNGC0L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUwOSzQn9GA0LjQt9C10YAK0JrQvtC90YHRgtCw0L3RgtC40L0g0KQuLNCb0LjQv9C10YbQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTM0LNCf0YDQuNC30LXRgArQotC40LzQvtGE0LXQuSDQpC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JzQvtGA0LTQvtCy0LjRjyw0OTEsCtCQ0LvQtdC60YHQsNC90LTRgCDQky4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0OTgsCtCS0Y/Rh9C10YHQu9Cw0LIg0KEuLNCR0LXQu9Cz0L7RgNC+0LTRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1Mzks0J/RgNC40LfQtdGACtCU0LDQvdC40LjQuyDQpC4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw2MTgs0J/QvtCx0LXQtNC40YLQtdC70YwK0JzQuNGF0LDQuNC7INCfLizQm9C40L/QtdGG0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUyNizQn9GA0LjQt9C10YAK0JDQu9C10L0g0JAuLNCc0L7RgdC60LLQsCw1MTIs0J/RgNC40LfQtdGACtCh0LDQstC10LvQuNC5INCTLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU0OSzQn9GA0LjQt9C10YAK0JTQsNC90LjQu9CwINCjLizQodCw0LzQsNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDgyLArQnNCw0LrRgdC40Lwg0JMuLNCc0L7RgdC60LLQsCw1NDQs0J/RgNC40LfQtdGACtCg0L7QvNCw0L0g0JouLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTk1LNCf0L7QsdC10LTQuNGC0LXQu9GMCtCd0LDRgtCw0LvRjNGPINChLizQmtGA0LDRgdC90L7Rj9GA0YHQutC40Lkg0LrRgNCw0LksNDk5LArQndC40LrQuNGC0LAg0KQuLNCc0L7RgdC60LLQsCw1MTAs0J/RgNC40LfQtdGACtCh0YLQtdC/0LDQvSDQni4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw0OTMsCtCU0LDQvdC40LjQuyDQki4s0KHQsNC80LDRgNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ2OCwK0JTQsNC90LjQuyDQny4s0KPQtNC80YPRgNGC0YHQutCw0Y8g0KDQtdGB0L/Rg9Cx0LvQuNC60LAsNTIzLNCf0YDQuNC30LXRgArQl9Cw0YXQsNGAINCvLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDUzNizQn9GA0LjQt9C10YAK0JvQtdC+0L3QuNC0INCYLizQnNC+0YHQutCy0LAsNTI1LNCf0YDQuNC30LXRgArQnNCw0YDQuiDQry4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTE0LNCf0YDQuNC30LXRgArQkNC70LXQutGB0LXQuSDQmC4s0J3QuNC20LXQs9C+0YDQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTczLNCf0YDQuNC30LXRgArQkNC70LXQutGB0LXQuSDQnC4s0JzQvtGB0LrQstCwLDUxMSzQn9GA0LjQt9C10YAK0K3QvNC40LvRjCDQki4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ2MCwK0JDQvdC00YDQtdC5INCXLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDYwNizQn9C+0LHQtdC00LjRgtC10LvRjArQkNC70LXQutGB0LXQuSDQkS4s0JzQvtGB0LrQstCwLDUwMSzQn9GA0LjQt9C10YAK0JXQs9C+0YAg0KEuLNCc0L7RgdC60L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1OCzQn9GA0LjQt9C10YAK0JTQsNC90LjQuNC7INCdLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw2NzMs0J/QvtCx0LXQtNC40YLQtdC70YwK0J3QuNC60L7Qu9Cw0Lkg0JouLNCc0L7RgdC60LLQsCw1NTcs0J/RgNC40LfQtdGACtCQ0L3RgtC+0L0g0KguLNCY0YDQutGD0YLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1NzEs0J/RgNC40LfQtdGACtCV0LrQsNGC0LXRgNC40L3QsCDQlC4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDk2LArQodC10YDQs9C10Lkg0J8uLNCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksNTI0LNCf0YDQuNC30LXRgArQkNGA0YLQtdC8INCcLizQodCw0LzQsNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTU2LNCf0YDQuNC30LXRgArQldCz0L7RgCDQky4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw2MDEs0J/QvtCx0LXQtNC40YLQtdC70YwK0JDQu9C10LrRgdCw0L3QtNGAINCdLizQnNC+0YHQutCy0LAsNTc5LNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JwuLNCh0YLQsNCy0YDQvtC/0L7Qu9GM0YHQutC40Lkg0LrRgNCw0LksNDgzLArQkNC70LXQutGB0LXQuSDQoS4s0JzQvtGB0LrQstCwLDU3NizQn9GA0LjQt9C10YAK0JTQvNC40YLRgNC40Lkg0JcuLNCc0L7RgdC60LLQsCw1Mzgs0J/RgNC40LfQtdGACtCQ0L3QtNGA0LXQuSDQmC4s0JzQvtGB0LrQstCwLDQ3OCwK0JDQu9C10LrRgdCw0L3QtNGAINCaLizQnNC+0YHQutCy0LAsNTUyLNCf0YDQuNC30LXRgArQktCw0LTQuNC8INCgLizQnNC+0YHQutCy0LAsNDc5LArQpNC40LvQuNC/0L8g0JMuLNCc0L7RgdC60LLQsCw1ODMs0J/RgNC40LfQtdGACtCQ0L3QtNGA0LXQuSDQni4s0JvQtdC90LjQvdCz0YDQsNC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTEwLNCf0YDQuNC30LXRgArQldCz0L7RgCDQmy4s0JzQvtGB0LrQstCwLDYwNyzQn9C+0LHQtdC00LjRgtC10LvRjArQlNCw0L3QuNC70LAg0JcuLNCg0LXRgdC/0YPQsdC70LjQutCwINCQ0LTRi9Cz0LXRjyw1NDAs0J/RgNC40LfQtdGACtCY0LvRjNGPINCTLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MzMs0J/RgNC40LfQtdGACtCc0LDQutGB0LjQvCDQmy4s0JzQvtGB0LrQstCwLDU0OCzQn9GA0LjQt9C10YAK0JHRg9C70LDRgiDQnC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDUyMizQn9GA0LjQt9C10YAK0JzQsNGA0Log0J0uLNCj0LTQvNGD0YDRgtGB0LrQsNGPINCg0LXRgdC/0YPQsdC70LjQutCwLDUxMCzQn9GA0LjQt9C10YAK0J3QuNC60LjRgtCwINCmLizQndC+0LLQs9C+0YDQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTAwLArQndC40LrQvtC70LDQuSDQoi4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDUzNCzQn9GA0LjQt9C10YAK0JTQtdC90LjRgSDQqC4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw2NDAs0J/QvtCx0LXQtNC40YLQtdC70YwK0JDQu9C10LrRgdCw0L3QtNGAINCmLizQnNC+0YHQutCy0LAsNTIxLNCf0YDQuNC30LXRgArQnNC40LrQsNC40Lsg0JEuLNCc0L7RgdC60LLQsCw1MDYs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQkC4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw3MTks0J/QvtCx0LXQtNC40YLQtdC70YwK0JrQvtC90YHRgtCw0L3RgtC40L0g0JAuLNCc0L7RgdC60LLQsCw1Mzks0J/RgNC40LfQtdGACtCd0LjQutC+0LvQsNC5INCQLizQodCw0LzQsNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTQ0LNCf0YDQuNC30LXRgArQktC70LDQtNC40YHQu9Cw0LIg0JwuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNTUwLNCf0YDQuNC30LXRgArQpNGR0LTQvtGAINCjLizQnNC+0YHQutCy0LAsNTMyLNCf0YDQuNC30LXRgArQlNC80LjRgtGA0LjQuSDQoi4s0JzQvtGB0LrQstCwLDUwMyzQn9GA0LjQt9C10YAK0JDQvdC00YDQtdC5INCVLizQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTc2LNCf0YDQuNC30LXRgArQrtGA0LjQuSDQoS4s0JvQuNC/0LXRhtC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NzMsCtCQ0LvQtdC60YHQsNC90LTRgCDQqC4s0JzQvtGB0LrQstCwLDU0MyzQn9GA0LjQt9C10YAK0JDQu9C10LrRgdC10Lkg0J8uLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDkzLArQldCy0LPQtdC90LjQuSDQmi4s0JzQvtGB0LrQstCwLDUyMCzQn9GA0LjQt9C10YAK0KTQtdC00L7RgCDQmi4s0JzQvtGB0LrQstCwLDU4NizQn9C+0LHQtdC00LjRgtC10LvRjArQndC40LrQuNGC0LAg0KEuLNCc0L7RgdC60L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUwOSzQn9GA0LjQt9C10YAK0JLQsNC70LXRgNC40Lkg0JEuLNCc0L7RgdC60LLQsCw1MjEs0J/RgNC40LfQtdGACtCh0LXQvNGR0L0g0KEuLNCc0L7RgdC60LLQsCw2MTIs0J/QvtCx0LXQtNC40YLQtdC70YwK0KHRgtCw0L3QuNGB0LvQsNCyINCaLizQoNC+0YHRgtC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MzQs0J/RgNC40LfQtdGACtCQ0LfQsNGCINCYLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNTQwLNCf0YDQuNC30LXRgArQndC40LrQvtC70LDQuSDQmy4s0JzQvtGB0LrQstCwLDUyMyzQn9GA0LjQt9C10YAK0JDRgNGC0LXQvCDQmC4s0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUwOCzQn9GA0LjQt9C10YAK0KHRgtC10L/QsNC9INCkLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDYzNizQn9C+0LHQtdC00LjRgtC10LvRjArQotC40L3Qs9C40YAg0JEuLNCc0L7RgdC60LLQsCw1MTEs0J/RgNC40LfQtdGACtCe0LvQtdCzINCdLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MTIs0J/RgNC40LfQtdGACtCY0YHQutCw0L3QtNC10YAg0KEuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw0ODEsCtCQ0LvQtdC60YHQsNC90LTRgCDQly4s0KHQsNC80LDRgNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU0NizQn9GA0LjQt9C10YAK0JLQuNC60YLQvtGAINCuLizQpdCw0L3RgtGLLdCc0LDQvdGB0LjQudGB0LrQuNC5INCw0LLRgtC+0L3QvtC80L3Ri9C5INC+0LrRgNGD0LMgLSDQrtCz0YDQsCw0OTUsCtCd0LjQutC+0LvQsNC5INCiLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCw1ODEs0J/RgNC40LfQtdGACtCe0LvQtdCzINCoLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MTcs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQni4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw1Nzks0J/RgNC40LfQtdGACtCd0LjQutC40YLQsCDQkS4s0JjRgNC60YPRgtGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1NizQn9GA0LjQt9C10YAK0JDQu9C10LrRgdCw0L3QtNGAINCcLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDYzMSzQn9C+0LHQtdC00LjRgtC10LvRjArQmNGB0LzQsNCz0LjQuyDQoS4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDU1MizQn9GA0LjQt9C10YAK0JDRgNGB0LXQvdC40Lkg0KEuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw1MjEs0J/RgNC40LfQtdGACtCY0LPQvtGA0Ywg0JcuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw1MzYs0J/RgNC40LfQtdGACtCh0LLRj9GC0L7RgdC70LDQsiDQpi4s0JzQvtGB0LrQstCwLDU0MyzQn9GA0LjQt9C10YAK0JDRgdGF0LDRgiDQoS4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDYyNSzQn9C+0LHQtdC00LjRgtC10LvRjArQk9C70LXQsSDQoi4s0KHQsNC80LDRgNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ4MiwK0KHQstC10YLQu9Cw0L3QsCDQqC4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MTEs0J/RgNC40LfQtdGACtCV0LPQvtGAINCTLizQnNC+0YHQutCy0LAsNTUwLNCf0YDQuNC30LXRgArQodC10YDQs9C10Lkg0KUuLNCh0LDRhdCw0LvQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDk4LArQmtC40YDQuNC70Lsg0JAuLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTAyLNCf0YDQuNC30LXRgArQntC70YzQs9CwINCgLizQnNC+0YHQutCy0LAsNTIzLNCf0YDQuNC30LXRgArQlNCw0L3QuNC40Lsg0KguLNCj0LTQvNGD0YDRgtGB0LrQsNGPINCg0LXRgdC/0YPQsdC70LjQutCwLDQ4MywK0JfQsNC80LjRgCDQkC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JTQsNCz0LXRgdGC0LDQvSw1Mzgs0J/RgNC40LfQtdGACtCS0LDQtNC40Lwg0KEuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNTUzLNCf0YDQuNC30LXRgArQmNCy0LDQvSDQki4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0NzIsCtCS0LDQtNC40Lwg0JEuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NzksCtCQ0LvQtdC60YHQtdC5INChLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ4OSwK0J7Qu9C10LMg0KguLNCc0L7RgdC60LLQsCw1MTgs0J/RgNC40LfQtdGACtCh0LXQvNC10L0g0KIuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1Mzgs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQsNC90LTRgCDQky4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw1NTYs0J/RgNC40LfQtdGACtCQ0YDRgtC10Lwg0JIuLNCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksNDk5LArQk9GA0LjQs9C+0YDQuNC5INCcLizQktC+0YDQvtC90LXQttGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ4MSwK0JPQtdC+0YDQs9C40Lkg0KEuLNCc0L7RgdC60LLQsCw1MjUs0J/RgNC40LfQtdGACtCY0LvRjNGPINCaLizQkNC70YLQsNC50YHQutC40Lkg0LrRgNCw0LksNDgyLArQlNC80LjRgtGA0LjQuSDQkC4s0JrQvtGB0YLRgNC+0LzRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NzQsCtCY0LLQsNC9INChLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDY3NyzQn9C+0LHQtdC00LjRgtC10LvRjArQn9Cw0LLQtdC7INCaLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCw1MDEs0J/RgNC40LfQtdGACtCU0LXQvdC40YEg0JEuLNCc0L7RgdC60LLQsCw0OTksCtCY0LvRjNC00LDRgCDQky4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDYxNCzQn9C+0LHQtdC00LjRgtC10LvRjArQlNC80LjRgtGA0LjQuSDQky4s0JzQvtGB0LrQstCwLDU4MCzQn9GA0LjQt9C10YAK0JjQu9GM0Y8g0KMuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0ODksCtCg0L7QvNCw0L0g0JIuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDc0LArQnNCw0YDQs9Cw0YDQuNGC0LAg0JwuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDk5LArQmNCy0LDQvSDQmy4s0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUzMyzQn9GA0LjQt9C10YAK0JXQutCw0YLQtdGA0LjQvdCwINCkLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDUyMSzQn9GA0LjQt9C10YAK0JjQstCw0L0g0JwuLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTA1LNCf0YDQuNC30LXRgArQnNC40YXQsNC40Lsg0JwuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0ODAsCtCQ0LvQtdC60YHQtdC5INCcLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDYwLArQotC40LzQvtGE0LXQuSDQoS4s0JzQvtGB0LrQstCwLDUxMCzQn9GA0LjQt9C10YAK0JjQu9GM0Y8g0JIuLNCc0L7RgdC60LLQsCw1MTQs0J/RgNC40LfQtdGACtCc0LDRgNC40L3QsCDQny4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw1Mjks0J/RgNC40LfQtdGACtCS0LDQtNC40Lwg0J8uLNCc0L7RgdC60LLQsCw1MDIs0J/RgNC40LfQtdGACtCS0LDQu9C10YDQuNC5INCXLizQr9GA0L7RgdC70LDQstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1NCzQn9GA0LjQt9C10YAK0JDQu9C10LrRgdC10Lkg0JAuLNCc0L7RgdC60LLQsCw1MjIs0J/RgNC40LfQtdGACtCg0LDQvNCw0LfQsNC9INCgLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNjQ2LNCf0L7QsdC10LTQuNGC0LXQu9GMCtCc0LDQutGB0LjQvCDQky4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDYxLArQkNC90LDRgtC+0LvQuNC5INCQLizQmtC40YDQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNjEzLNCf0L7QsdC10LTQuNGC0LXQu9GMCtCQ0L3QtNGA0LXQuSDQmC4s0JzQvtGB0LrQstCwLDQ4MSwK0JzQuNGF0LDQuNC7INCaLizQnNC+0YHQutCy0LAsNDYyLArQktC10L3QuNCw0LzQuNC9INCkLizQnNC+0YHQutCy0LAsNDg0LArQnNCw0LrRgdC40Lwg0KguLNCc0L7RgdC60LLQsCw0OTUsCtCS0Y/Rh9C10YHQu9Cw0LIg0KcuLNCj0LTQvNGD0YDRgtGB0LrQsNGPINCg0LXRgdC/0YPQsdC70LjQutCwLDUwMCwK</file>
+<file name="2.csv" path="/" encoding="base64">0JTQtdC90LjRgSDQmi4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0ODgsCtCU0LzQuNGC0YDQuNC5INChLizQktC+0LvQvtCz0L7QtNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1MCzQn9GA0LjQt9C10YAK0JzQuNGF0LDQuNC7INCeLizQm9C40L/QtdGG0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUxOSzQn9GA0LjQt9C10YAK0JTQvNC40YLRgNC40Lkg0J8uLNCc0L7RgdC60LLQsCw1ODUs0J/QvtCx0LXQtNC40YLQtdC70YwK0J3QuNC60L7Qu9Cw0Lkg0J8uLNCc0L7RgdC60LLQsCw0ODcsCtCQ0L3RgtC+0L0g0KEuLNCc0L7RgdC60LLQsCw1NjQs0J/RgNC40LfQtdGACtCU0LDQvdC40LjQuyDQny4s0JzQvtGB0LrQstCwLDUxMizQn9GA0LjQt9C10YAK0JDQvdC00YDQtdC5INCeLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU2NizQn9GA0LjQt9C10YAK0JTQvNC40YLRgNC40Lkg0JQuLNCh0LDQvNCw0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0OTYsCtCU0LzQuNGC0YDQuNC5INCfLizQnNC+0YHQutCy0LAsNTI2LNCf0YDQuNC30LXRgArQk9C70LXQsSDQmy4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTM1LNCf0YDQuNC30LXRgArQktC70LDQtNC40LzQuNGAINCgLizQnNC+0YHQutCy0LAsNjY2LNCf0L7QsdC10LTQuNGC0LXQu9GMCtCf0LDQstC10Lsg0JcuLNCb0LjQv9C10YbQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTAzLNCf0YDQuNC30LXRgArQn9GR0YLRgCDQky4s0JzQvtGB0LrQstCwLDUwMizQn9GA0LjQt9C10YAK0JDQu9C10LrRgdCw0L3QtNGAINChLizQodCw0YDQsNGC0L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUwOSzQn9GA0LjQt9C10YAK0JrQvtC90YHRgtCw0L3RgtC40L0g0KQuLNCb0LjQv9C10YbQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTM0LNCf0YDQuNC30LXRgArQotC40LzQvtGE0LXQuSDQpC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JzQvtGA0LTQvtCy0LjRjyw0OTEsCtCQ0LvQtdC60YHQsNC90LTRgCDQky4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0OTgsCtCS0Y/Rh9C10YHQu9Cw0LIg0KEuLNCR0LXQu9Cz0L7RgNC+0LTRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1Mzks0J/RgNC40LfQtdGACtCU0LDQvdC40LjQuyDQpC4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw2MTgs0J/QvtCx0LXQtNC40YLQtdC70YwK0JzQuNGF0LDQuNC7INCfLizQm9C40L/QtdGG0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUyNizQn9GA0LjQt9C10YAK0JDQu9C10L0g0JAuLNCc0L7RgdC60LLQsCw1MTIs0J/RgNC40LfQtdGACtCh0LDQstC10LvQuNC5INCTLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU0OSzQn9GA0LjQt9C10YAK0JTQsNC90LjQu9CwINCjLizQodCw0LzQsNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDgyLArQnNCw0LrRgdC40Lwg0JMuLNCc0L7RgdC60LLQsCw1NDQs0J/RgNC40LfQtdGACtCg0L7QvNCw0L0g0JouLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTk1LNCf0L7QsdC10LTQuNGC0LXQu9GMCtCd0LDRgtCw0LvRjNGPINChLizQmtGA0LDRgdC90L7Rj9GA0YHQutC40Lkg0LrRgNCw0LksNDk5LArQndC40LrQuNGC0LAg0KQuLNCc0L7RgdC60LLQsCw1MTAs0J/RgNC40LfQtdGACtCh0YLQtdC/0LDQvSDQni4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw0OTMsCtCU0LDQvdC40LjQuyDQki4s0KHQsNC80LDRgNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ2OCwK0JTQsNC90LjQuyDQny4s0KPQtNC80YPRgNGC0YHQutCw0Y8g0KDQtdGB0L/Rg9Cx0LvQuNC60LAsNTIzLNCf0YDQuNC30LXRgArQl9Cw0YXQsNGAINCvLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDUzNizQn9GA0LjQt9C10YAK0JvQtdC+0L3QuNC0INCYLizQnNC+0YHQutCy0LAsNTI1LNCf0YDQuNC30LXRgArQnNCw0YDQuiDQry4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTE0LNCf0YDQuNC30LXRgArQkNC70LXQutGB0LXQuSDQmC4s0J3QuNC20LXQs9C+0YDQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTczLNCf0YDQuNC30LXRgArQkNC70LXQutGB0LXQuSDQnC4s0JzQvtGB0LrQstCwLDUxMSzQn9GA0LjQt9C10YAK0K3QvNC40LvRjCDQki4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDQ2MCwK0JDQvdC00YDQtdC5INCXLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDYwNizQn9C+0LHQtdC00LjRgtC10LvRjArQkNC70LXQutGB0LXQuSDQkS4s0JzQvtGB0LrQstCwLDUwMSzQn9GA0LjQt9C10YAK0JXQs9C+0YAg0KEuLNCc0L7RgdC60L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1OCzQn9GA0LjQt9C10YAK0JTQsNC90LjQuNC7INCdLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw2NzMs0J/QvtCx0LXQtNC40YLQtdC70YwK0J3QuNC60L7Qu9Cw0Lkg0JouLNCc0L7RgdC60LLQsCw1NTcs0J/RgNC40LfQtdGACtCQ0L3RgtC+0L0g0KguLNCY0YDQutGD0YLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1NzEs0J/RgNC40LfQtdGACtCV0LrQsNGC0LXRgNC40L3QsCDQlC4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDk2LArQodC10YDQs9C10Lkg0J8uLNCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksNTI0LNCf0YDQuNC30LXRgArQkNGA0YLQtdC8INCcLizQodCw0LzQsNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTU2LNCf0YDQuNC30LXRgArQldCz0L7RgCDQky4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw2MDEs0J/QvtCx0LXQtNC40YLQtdC70YwK0JDQu9C10LrRgdCw0L3QtNGAINCdLizQnNC+0YHQutCy0LAsNTc5LNCf0YDQuNC30LXRgArQkNC70LXQutGB0LDQvdC00YAg0JwuLNCh0YLQsNCy0YDQvtC/0L7Qu9GM0YHQutC40Lkg0LrRgNCw0LksNDgzLArQkNC70LXQutGB0LXQuSDQoS4s0JzQvtGB0LrQstCwLDU3NizQn9GA0LjQt9C10YAK0JTQvNC40YLRgNC40Lkg0JcuLNCc0L7RgdC60LLQsCw1Mzgs0J/RgNC40LfQtdGACtCQ0L3QtNGA0LXQuSDQmC4s0JzQvtGB0LrQstCwLDQ3OCwK0JDQu9C10LrRgdCw0L3QtNGAINCaLizQnNC+0YHQutCy0LAsNTUyLNCf0YDQuNC30LXRgArQktCw0LTQuNC8INCgLizQnNC+0YHQutCy0LAsNDc5LArQpNC40LvQuNC/0L8g0JMuLNCc0L7RgdC60LLQsCw1ODMs0J/RgNC40LfQtdGACtCQ0L3QtNGA0LXQuSDQni4s0JvQtdC90LjQvdCz0YDQsNC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTEwLNCf0YDQuNC30LXRgArQldCz0L7RgCDQmy4s0JzQvtGB0LrQstCwLDYwNyzQn9C+0LHQtdC00LjRgtC10LvRjArQlNCw0L3QuNC70LAg0JcuLNCg0LXRgdC/0YPQsdC70LjQutCwINCQ0LTRi9Cz0LXRjyw1NDAs0J/RgNC40LfQtdGACtCY0LvRjNGPINCTLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MzMs0J/RgNC40LfQtdGACtCc0LDQutGB0LjQvCDQmy4s0JzQvtGB0LrQstCwLDU0OCzQn9GA0LjQt9C10YAK0JHRg9C70LDRgiDQnC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDUyMizQn9GA0LjQt9C10YAK0JzQsNGA0Log0J0uLNCj0LTQvNGD0YDRgtGB0LrQsNGPINCg0LXRgdC/0YPQsdC70LjQutCwLDUxMCzQn9GA0LjQt9C10YAK0J3QuNC60LjRgtCwINCmLizQndC+0LLQs9C+0YDQvtC00YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTAwLArQndC40LrQvtC70LDQuSDQoi4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDUzNCzQn9GA0LjQt9C10YAK0JTQtdC90LjRgSDQqC4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw2NDAs0J/QvtCx0LXQtNC40YLQtdC70YwK0JDQu9C10LrRgdCw0L3QtNGAINCmLizQnNC+0YHQutCy0LAsNTIxLNCf0YDQuNC30LXRgArQnNC40LrQsNC40Lsg0JEuLNCc0L7RgdC60LLQsCw1MDYs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQkC4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw3MTks0J/QvtCx0LXQtNC40YLQtdC70YwK0JrQvtC90YHRgtCw0L3RgtC40L0g0JAuLNCc0L7RgdC60LLQsCw1Mzks0J/RgNC40LfQtdGACtCd0LjQutC+0LvQsNC5INCQLizQodCw0LzQsNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTQ0LNCf0YDQuNC30LXRgArQktC70LDQtNC40YHQu9Cw0LIg0JwuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNTUwLNCf0YDQuNC30LXRgArQpNGR0LTQvtGAINCjLizQnNC+0YHQutCy0LAsNTMyLNCf0YDQuNC30LXRgArQlNC80LjRgtGA0LjQuSDQoi4s0JzQvtGB0LrQstCwLDUwMyzQn9GA0LjQt9C10YAK0JDQvdC00YDQtdC5INCVLizQodCy0LXRgNC00LvQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTc2LNCf0YDQuNC30LXRgArQrtGA0LjQuSDQoS4s0JvQuNC/0LXRhtC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NzMsCtCQ0LvQtdC60YHQsNC90LTRgCDQqC4s0JzQvtGB0LrQstCwLDU0MyzQn9GA0LjQt9C10YAK0JDQu9C10LrRgdC10Lkg0J8uLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDkzLArQldCy0LPQtdC90LjQuSDQmi4s0JzQvtGB0LrQstCwLDUyMCzQn9GA0LjQt9C10YAK0KTQtdC00L7RgCDQmi4s0JzQvtGB0LrQstCwLDU4NizQn9C+0LHQtdC00LjRgtC10LvRjArQndC40LrQuNGC0LAg0KEuLNCc0L7RgdC60L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUwOSzQn9GA0LjQt9C10YAK0JLQsNC70LXRgNC40Lkg0JEuLNCc0L7RgdC60LLQsCw1MjEs0J/RgNC40LfQtdGACtCh0LXQvNGR0L0g0KEuLNCc0L7RgdC60LLQsCw2MTIs0J/QvtCx0LXQtNC40YLQtdC70YwK0KHRgtCw0L3QuNGB0LvQsNCyINCaLizQoNC+0YHRgtC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MzQs0J/RgNC40LfQtdGACtCQ0LfQsNGCINCYLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNTQwLNCf0YDQuNC30LXRgArQndC40LrQvtC70LDQuSDQmy4s0JzQvtGB0LrQstCwLDUyMyzQn9GA0LjQt9C10YAK0JDRgNGC0LXQvCDQmC4s0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUwOCzQn9GA0LjQt9C10YAK0KHRgtC10L/QsNC9INCkLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDYzNizQn9C+0LHQtdC00LjRgtC10LvRjArQotC40L3Qs9C40YAg0JEuLNCc0L7RgdC60LLQsCw1MTEs0J/RgNC40LfQtdGACtCe0LvQtdCzINCdLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MTIs0J/RgNC40LfQtdGACtCY0YHQutCw0L3QtNC10YAg0KEuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw0ODEsCtCQ0LvQtdC60YHQsNC90LTRgCDQly4s0KHQsNC80LDRgNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU0NizQn9GA0LjQt9C10YAK0JLQuNC60YLQvtGAINCuLizQpdCw0L3RgtGLLdCc0LDQvdGB0LjQudGB0LrQuNC5INCw0LLRgtC+0L3QvtC80L3Ri9C5INC+0LrRgNGD0LMgLSDQrtCz0YDQsCw0OTUsCtCd0LjQutC+0LvQsNC5INCiLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCw1ODEs0J/RgNC40LfQtdGACtCe0LvQtdCzINCoLizQnNC+0YHQutC+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MTcs0J/RgNC40LfQtdGACtCc0LjRhdCw0LjQuyDQni4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw1Nzks0J/RgNC40LfQtdGACtCd0LjQutC40YLQsCDQkS4s0JjRgNC60YPRgtGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1NizQn9GA0LjQt9C10YAK0JDQu9C10LrRgdCw0L3QtNGAINCcLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDYzMSzQn9C+0LHQtdC00LjRgtC10LvRjArQmNGB0LzQsNCz0LjQuyDQoS4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDU1MizQn9GA0LjQt9C10YAK0JDRgNGB0LXQvdC40Lkg0KEuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw1MjEs0J/RgNC40LfQtdGACtCY0LPQvtGA0Ywg0JcuLNCg0LXRgdC/0YPQsdC70LjQutCwINCi0LDRgtCw0YDRgdGC0LDQvSw1MzYs0J/RgNC40LfQtdGACtCh0LLRj9GC0L7RgdC70LDQsiDQpi4s0JzQvtGB0LrQstCwLDU0MyzQn9GA0LjQt9C10YAK0JDRgdGF0LDRgiDQoS4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDYyNSzQn9C+0LHQtdC00LjRgtC10LvRjArQk9C70LXQsSDQoi4s0KHQsNC80LDRgNGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ4MiwK0KHQstC10YLQu9Cw0L3QsCDQqC4s0KfQtdC70Y/QsdC40L3RgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1MTEs0J/RgNC40LfQtdGACtCV0LPQvtGAINCTLizQnNC+0YHQutCy0LAsNTUwLNCf0YDQuNC30LXRgArQodC10YDQs9C10Lkg0KUuLNCh0LDRhdCw0LvQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDk4LArQmtC40YDQuNC70Lsg0JAuLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTAyLNCf0YDQuNC30LXRgArQntC70YzQs9CwINCgLizQnNC+0YHQutCy0LAsNTIzLNCf0YDQuNC30LXRgArQlNCw0L3QuNC40Lsg0KguLNCj0LTQvNGD0YDRgtGB0LrQsNGPINCg0LXRgdC/0YPQsdC70LjQutCwLDQ4MywK0JfQsNC80LjRgCDQkC4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0JTQsNCz0LXRgdGC0LDQvSw1Mzgs0J/RgNC40LfQtdGACtCS0LDQtNC40Lwg0KEuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNTUzLNCf0YDQuNC30LXRgArQmNCy0LDQvSDQki4s0LPQvtGA0L7QtCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsyw0NzIsCtCS0LDQtNC40Lwg0JEuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NzksCtCQ0LvQtdC60YHQtdC5INChLizQp9C10LvRj9Cx0LjQvdGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ4OSwK0J7Qu9C10LMg0KguLNCc0L7RgdC60LLQsCw1MTgs0J/RgNC40LfQtdGACtCh0LXQvNC10L0g0KIuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw1Mzgs0J/RgNC40LfQtdGACtCQ0LvQtdC60YHQsNC90LTRgCDQky4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw1NTYs0J/RgNC40LfQtdGACtCQ0YDRgtC10Lwg0JIuLNCf0LXRgNC80YHQutC40Lkg0LrRgNCw0LksNDk5LArQk9GA0LjQs9C+0YDQuNC5INCcLizQktC+0YDQvtC90LXQttGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDQ4MSwK0JPQtdC+0YDQs9C40Lkg0KEuLNCc0L7RgdC60LLQsCw1MjUs0J/RgNC40LfQtdGACtCY0LvRjNGPINCaLizQkNC70YLQsNC50YHQutC40Lkg0LrRgNCw0LksNDgyLArQlNC80LjRgtGA0LjQuSDQkC4s0JrQvtGB0YLRgNC+0LzRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0NzQsCtCY0LLQsNC9INChLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDY3NyzQn9C+0LHQtdC00LjRgtC10LvRjArQn9Cw0LLQtdC7INCaLizQo9C00LzRg9GA0YLRgdC60LDRjyDQoNC10YHQv9GD0LHQu9C40LrQsCw1MDEs0J/RgNC40LfQtdGACtCU0LXQvdC40YEg0JEuLNCc0L7RgdC60LLQsCw0OTksCtCY0LvRjNC00LDRgCDQky4s0KDQtdGB0L/Rg9Cx0LvQuNC60LAg0KLQsNGC0LDRgNGB0YLQsNC9LDYxNCzQn9C+0LHQtdC00LjRgtC10LvRjArQlNC80LjRgtGA0LjQuSDQky4s0JzQvtGB0LrQstCwLDU4MCzQn9GA0LjQt9C10YAK0JjQu9GM0Y8g0KMuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0ODksCtCg0L7QvNCw0L0g0JIuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDc0LArQnNCw0YDQs9Cw0YDQuNGC0LAg0JwuLNCz0L7RgNC+0LQg0KHQsNC90LrRgi3Qn9C10YLQtdGA0LHRg9GA0LMsNDk5LArQmNCy0LDQvSDQmy4s0KHQstC10YDQtNC70L7QstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDUzMyzQn9GA0LjQt9C10YAK0JXQutCw0YLQtdGA0LjQvdCwINCkLizQs9C+0YDQvtC0INCh0LDQvdC60YIt0J/QtdGC0LXRgNCx0YPRgNCzLDUyMSzQn9GA0LjQt9C10YAK0JjQstCw0L0g0JwuLNCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNTA1LNCf0YDQuNC30LXRgArQnNC40YXQsNC40Lsg0JwuLNCh0LLQtdGA0LTQu9C+0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCw0ODAsCtCQ0LvQtdC60YHQtdC5INCcLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNDYwLArQotC40LzQvtGE0LXQuSDQoS4s0JzQvtGB0LrQstCwLDUxMCzQn9GA0LjQt9C10YAK0JjQu9GM0Y8g0JIuLNCc0L7RgdC60LLQsCw1MTQs0J/RgNC40LfQtdGACtCc0LDRgNC40L3QsCDQny4s0J/QtdGA0LzRgdC60LjQuSDQutGA0LDQuSw1Mjks0J/RgNC40LfQtdGACtCS0LDQtNC40Lwg0J8uLNCc0L7RgdC60LLQsCw1MDIs0J/RgNC40LfQtdGACtCS0LDQu9C10YDQuNC5INCXLizQr9GA0L7RgdC70LDQstGB0LrQsNGPINC+0LHQu9Cw0YHRgtGMLDU1NCzQn9GA0LjQt9C10YAK0JDQu9C10LrRgdC10Lkg0JAuLNCc0L7RgdC60LLQsCw1MjIs0J/RgNC40LfQtdGACtCg0LDQvNCw0LfQsNC9INCgLizQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0sNjQ2LNCf0L7QsdC10LTQuNGC0LXQu9GMCtCc0LDQutGB0LjQvCDQky4s0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNDYxLArQkNC90LDRgtC+0LvQuNC5INCQLizQmtC40YDQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsNjEzLNCf0L7QsdC10LTQuNGC0LXQu9GMCtCQ0L3QtNGA0LXQuSDQmC4s0JzQvtGB0LrQstCwLDQ4MSwK0JzQuNGF0LDQuNC7INCaLizQnNC+0YHQutCy0LAsNDYyLArQktC10L3QuNCw0LzQuNC9INCkLizQnNC+0YHQutCy0LAsNDg0LArQnNCw0LrRgdC40Lwg0KguLNCc0L7RgdC60LLQsCw0OTUsCtCS0Y/Rh9C10YHQu9Cw0LIg0KcuLNCj0LTQvNGD0YDRgtGB0LrQsNGPINCg0LXRgdC/0YPQsdC70LjQutCwLDUwMCwK</file>
+    </testcases>
+  </question>
+
+<!-- question: 13319755  -->
+  <question type="coderunner">
+    <name>
+      <text>B04_INTERM_PROG_DEMO_2024/25</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В магазинчике итальянского мороженого продается мороженое разных вкусов, при этом в одной порции можно собрать несколько шариков разных вкусов.&nbsp;</span></p>
+
+<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Для каждой проданной порции записываются вкусы всех шариков в этой порции.&nbsp;</span></p>
+
+<p><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Напишите программу, которая определяет вкус, встречающийся в наибольшем количестве проданных порций.</span></p>
+
+<h5><strong>ФОРМАТ ВВОДА</strong></h5>
+
+<ul>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Файл&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">ice-cream.csv</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">&nbsp;в кодировке&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">utf-8</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">, гарантировано, что в файле есть минимум одна строка с данными.</span>
+
+    </li>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">На каждой строке файла записаны вкусы шариков через точку с запятой. Например,&nbsp;</span><strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">'клубника;манго;зеленое яблоко'</span></strong><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.&nbsp;</span><br></li>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Одна строка файла описывает одну порцию мороженого.</span></li>
+
+</ul>
+
+<p></p>
+
+<h5><strong>ФОРМАТ ВЫВОДА&nbsp;</strong></h5>
+
+<p></p>
+
+<ul>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Вкус мороженого, который встречался <u>в наибольшем</u> количестве порций (каждая порция описана одной строкой таблицы).&nbsp;</span></li>
+
+    <li><span id="docs-internal-guid-5e6bd384-7fff-44ec-f489-42f3da18b777"><span><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Если в одной порции присутствует несколько шариков с одинаковым вкусом, то такой вкус для этой порции нужно учесть только один раз.</span></span>
+
+        </span>
+
+    </li>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">Гарантируется, что самый популярный вкус только один.</span></li>
+
+</ul>
+
+<p></p>
+
+<h5><strong>ДОПОЛНИТЕЛЬНО</strong></h5>
+
+<p></p>
+
+<p></p>
+
+<ul>
+
+    <li><span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;" class="">Ваше решение будет проверяться на закрытых тестах. Ваш код должен считывать файл <strong>ice-cream</strong></span><strong style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;"><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">.csv</span></strong>
+
+        <span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;" class="">&nbsp;без дополнительных указаний (например, пути к файлу на вашем компьютере).</span>
+
+    </li>
+
+    <li><span style="font-size: 0.9375rem; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В открытом тесте используется файл&nbsp;<strong style="font-size: 0.9375rem;"><span><a href="@@PLUGINFILE@@/ice-cream.csv" target="_blank">ice-cream.csv</a></span></strong>
+
+        <span style="font-size: 0.9375rem;">. Вы можете скачать его и проверить свое решение локально.</span>
+
+            </span><br></li>
+
+    <li><span class="" style="font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif;">В примере в первой колонке отображается номер теста (0 — открытый тест), считывать это число или использовать его в вашем решении не нужно.</span></li></ul><ol>
+
+</ol>]]></text>
+<file name="ice-cream.csv" path="/" encoding="base64">0LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwO9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L4K0LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LAK0YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LA70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+CtC60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YAK0LDRgNCx0YPQtwrQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwCtGP0LHQu9C+0LrQvjvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0CtC60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YAK0LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvQsNGA0LHRg9C3CtC80LDQvdCz0L470LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtC60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgArRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470LDRgNCx0YPQtzvQvNCw0L3Qs9C+CtGH0LjQt9C60LXQudC6O9GH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGACtGH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQ70YfQuNC30LrQtdC50LoK0LzQsNC90LPQvgrQutC70YPQsdC90LjQutCwO9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvRh9C40LfQutC10LnQujvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9C80LDQvdCz0L470LDRgNCx0YPQtzvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YAK0LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtDvQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9C80LDQvdCz0L470YfQuNC30LrQtdC50Lo70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3O9GH0LjQt9C60LXQudC6O9C60LvRg9Cx0L3QuNC60LAK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3O9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0YfQuNC30LrQtdC50LoK0LzQsNC90LPQvjvRh9C40LfQutC10LnQujvRh9C40LfQutC10LnQujvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwCtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0LcK0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGACtC/0LvQvtC80LHQuNGAO9GH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvjvQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L4K0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9GI0L7QutC+0LvQsNC0O9GI0L7QutC+0LvQsNC0O9C80LDQvdCz0L4K0Y/QsdC70L7QutC+CtC80LDQvdCz0L470LDRgNCx0YPQtzvRh9C40LfQutC10LnQujvQsNGA0LHRg9C3O9Cw0YDQsdGD0LcK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQK0YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LDRgNCx0YPQtwrQsNGA0LHRg9C3CtGP0LHQu9C+0LrQvjvQsNGA0LHRg9C3O9GI0L7QutC+0LvQsNC0CtCw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9C80LDQvdCz0L4K0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50Lo70Y/QsdC70L7QutC+O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtGH0LjQt9C60LXQudC6O9C80LDQvdCz0L4K0Y/QsdC70L7QutC+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70YfQuNC30LrQtdC50LoK0YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvRiNC+0LrQvtC70LDQtDvQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9GI0L7QutC+0LvQsNC0CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70L/Qu9C+0LzQsdC40YAK0LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9GH0LjQt9C60LXQudC6O9C/0LvQvtC80LHQuNGACtC80LDQvdCz0L470Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6CtGH0LjQt9C60LXQudC6CtCw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470Y/QsdC70L7QutC+CtGH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YfQuNC30LrQtdC50Lo70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L4K0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtC80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3CtC60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50Lo70YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvRh9C40LfQutC10LnQugrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+CtGP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+O9C/0LvQvtC80LHQuNGAO9C80LDQvdCz0L4K0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LA70L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0LcK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+CtC/0LvQvtC80LHQuNGACtGI0L7QutC+0LvQsNC0O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtzvQvNCw0L3Qs9C+O9C/0LvQvtC80LHQuNGACtGP0LHQu9C+0LrQvjvRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9Cw0YDQsdGD0LcK0LzQsNC90LPQvgrRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70YjQvtC60L7Qu9Cw0LQK0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3CtC80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6CtC60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L4K0L/Qu9C+0LzQsdC40YA70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470Y/QsdC70L7QutC+O9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L4K0LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwO9GP0LHQu9C+0LrQvgrRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvgrRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvgrQvNCw0L3Qs9C+O9GI0L7QutC+0LvQsNC0O9Cw0YDQsdGD0LcK0LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LAK0LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtArQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6O9C80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgDvQv9C70L7QvNCx0LjRgArRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGACtGP0LHQu9C+0LrQvjvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvRj9Cx0LvQvtC60L470LDRgNCx0YPQtwrQsNGA0LHRg9C3O9GP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70LzQsNC90LPQvgrRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+CtC80LDQvdCz0L4K0LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9C60LvRg9Cx0L3QuNC60LAK0YjQvtC60L7Qu9Cw0LQ70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQugrRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+CtC80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtwrRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+CtGP0LHQu9C+0LrQvgrQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgDvRh9C40LfQutC10LnQugrRj9Cx0LvQvtC60L470LzQsNC90LPQvgrRj9Cx0LvQvtC60L470LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtwrQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQsNGA0LHRg9C3O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvgrRh9C40LfQutC10LnQugrRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3CtGH0LjQt9C60LXQudC6Cg==</file>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p dir="ltr"><br></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>20</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[from shutil import copyfile
+__student_answer__ = """{{ STUDENT_ANSWER | e('py') }}"""
+
+SEPARATOR = "#<ab@17943918#@>#"
+
+{% for TEST in TESTCASES %}
+copyfile(str({{ TEST.testcode }})+'.csv', 'ice-cream.csv')
+
+{{ STUDENT_ANSWER }}
+{% if not loop.last %}
+print(SEPARATOR)
+{% endif %}
+{% endfor %}]]></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer>data = {}
+
+with open('ice-cream.csv', encoding = 'utf8') as inf:
+    for line in inf:
+        ice_cream = set(line.strip().split(';'))
+        for i in ice_cream:
+            if i not in data:
+                data[i] = 1
+            else:
+                data[i] += 1
+
+maxi = max(data.values())
+
+for k, v in data.items():
+    if v == maxi:
+        print(k)</answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <extractcodefromjson>1</extractcodefromjson>
+    <templateparamslang>twig</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>0</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>манго</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>1</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>яблоко</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>HIDE</text>
+      </display>
+    </testcase>
+<file name="0.csv" path="/" encoding="base64">0LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwO9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L4K0LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LAK0YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LA70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+CtC60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YAK0LDRgNCx0YPQtwrQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwCtGP0LHQu9C+0LrQvjvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0CtC60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YAK0LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvQsNGA0LHRg9C3CtC80LDQvdCz0L470LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtC60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgArRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470LDRgNCx0YPQtzvQvNCw0L3Qs9C+CtGH0LjQt9C60LXQudC6O9GH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGACtGH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQ70YfQuNC30LrQtdC50LoK0LzQsNC90LPQvgrQutC70YPQsdC90LjQutCwO9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvRh9C40LfQutC10LnQujvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9C80LDQvdCz0L470LDRgNCx0YPQtzvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YAK0LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtDvQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9C80LDQvdCz0L470YfQuNC30LrQtdC50Lo70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3O9GH0LjQt9C60LXQudC6O9C60LvRg9Cx0L3QuNC60LAK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3O9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0YfQuNC30LrQtdC50LoK0LzQsNC90LPQvjvRh9C40LfQutC10LnQujvRh9C40LfQutC10LnQujvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwCtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0LcK0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGACtC/0LvQvtC80LHQuNGAO9GH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6CtGI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvjvQv9C70L7QvNCx0LjRgDvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L4K0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9GI0L7QutC+0LvQsNC0O9GI0L7QutC+0LvQsNC0O9C80LDQvdCz0L4K0Y/QsdC70L7QutC+CtC80LDQvdCz0L470LDRgNCx0YPQtzvRh9C40LfQutC10LnQujvQsNGA0LHRg9C3O9Cw0YDQsdGD0LcK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQK0YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LDRgNCx0YPQtwrQsNGA0LHRg9C3CtGP0LHQu9C+0LrQvjvQsNGA0LHRg9C3O9GI0L7QutC+0LvQsNC0CtCw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9C80LDQvdCz0L4K0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LAK0L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50Lo70Y/QsdC70L7QutC+O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtGH0LjQt9C60LXQudC6O9C80LDQvdCz0L4K0Y/QsdC70L7QutC+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70YfQuNC30LrQtdC50LoK0YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvRiNC+0LrQvtC70LDQtDvQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9GI0L7QutC+0LvQsNC0CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70L/Qu9C+0LzQsdC40YAK0LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9GH0LjQt9C60LXQudC6O9C/0LvQvtC80LHQuNGACtC80LDQvdCz0L470Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6CtGH0LjQt9C60LXQudC6CtCw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470Y/QsdC70L7QutC+CtGH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YfQuNC30LrQtdC50Lo70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L4K0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsArQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6CtC80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3CtC60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50Lo70YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvRh9C40LfQutC10LnQugrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+CtGP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+O9C/0LvQvtC80LHQuNGAO9C80LDQvdCz0L4K0YfQuNC30LrQtdC50Lo70L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LA70L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0LcK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+CtC/0LvQvtC80LHQuNGACtGI0L7QutC+0LvQsNC0O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtzvQvNCw0L3Qs9C+O9C/0LvQvtC80LHQuNGACtGP0LHQu9C+0LrQvjvRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQK0YfQuNC30LrQtdC50Lo70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9Cw0YDQsdGD0LcK0LzQsNC90LPQvgrRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70YjQvtC60L7Qu9Cw0LQK0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvQsNGA0LHRg9C3CtC80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6CtC60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L4K0L/Qu9C+0LzQsdC40YA70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQK0LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470Y/QsdC70L7QutC+O9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L4K0LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwO9GP0LHQu9C+0LrQvgrRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvgrRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LzQsNC90LPQvgrQvNCw0L3Qs9C+O9GI0L7QutC+0LvQsNC0O9Cw0YDQsdGD0LcK0LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+O9C60LvRg9Cx0L3QuNC60LAK0LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtArQutC70YPQsdC90LjQutCwO9GH0LjQt9C60LXQudC6O9C80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgDvQv9C70L7QvNCx0LjRgArRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGACtGP0LHQu9C+0LrQvjvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvRj9Cx0LvQvtC60L470LDRgNCx0YPQtwrQsNGA0LHRg9C3O9GP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70LzQsNC90LPQvgrRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsDvQvNCw0L3Qs9C+CtC80LDQvdCz0L4K0LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwO9C60LvRg9Cx0L3QuNC60LAK0YjQvtC60L7Qu9Cw0LQ70LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQugrRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+CtC80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtwrRh9C40LfQutC10LnQujvRiNC+0LrQvtC70LDQtDvQvNCw0L3Qs9C+CtGP0LHQu9C+0LrQvgrQutC70YPQsdC90LjQutCwO9C80LDQvdCz0L470LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgDvRh9C40LfQutC10LnQugrRj9Cx0LvQvtC60L470LzQsNC90LPQvgrRj9Cx0LvQvtC60L470LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgDvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtwrQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9GP0LHQu9C+0LrQvjvRj9Cx0LvQvtC60L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQsNGA0LHRg9C3O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvgrRh9C40LfQutC10LnQugrRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3CtGH0LjQt9C60LXQudC6Cg==</file>
+<file name="1.csv" path="/" encoding="base64">0Y/QsdC70L7QutC+O9GP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+CtGH0LjQt9C60LXQudC6O9GH0LjQt9C60LXQudC6O9GP0LHQu9C+0LrQvjvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC70LjQvdCwO9GP0LHQu9C+0LrQvjvQutGA0LXQvC3QsdGA0Y7Qu9C1CtGI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQK0Y/QsdC70L7QutC+CtC60YDQtdC8LdCx0YDRjtC70LU70LrQu9GD0LHQvdC40LrQsDvQvNCw0LvQuNC90LAK0L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9GH0LjQt9C60LXQudC6O9C60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0LzQsNC90LPQvjvRj9Cx0LvQvtC60L4K0LDRgNCx0YPQtwrQvNCw0LvQuNC90LA70LzQsNC90LPQvjvRj9Cx0LvQvtC60L470LrRgNC10Lwt0LHRgNGO0LvQtQrQvNCw0LvQuNC90LA70LDRgNCx0YPQtzvQv9C70L7QvNCx0LjRgArRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L4K0LDRgNCx0YPQtzvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgDvQutC70YPQsdC90LjQutCwCtGI0L7QutC+0LvQsNC0O9C80LDQu9C40L3QsDvQutGA0LXQvC3QsdGA0Y7Qu9C1O9C60YDQtdC8LdCx0YDRjtC70LU70LzQsNC90LPQvgrQutGA0LXQvC3QsdGA0Y7Qu9C1CtGP0LHQu9C+0LrQvgrRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC70LjQvdCwCtGH0LjQt9C60LXQudC6O9C/0LvQvtC80LHQuNGAO9C80LDQu9C40L3QsDvRj9Cx0LvQvtC60L4K0YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgArQsNGA0LHRg9C3O9C80LDQvdCz0L470LrRgNC10Lwt0LHRgNGO0LvQtTvQutGA0LXQvC3QsdGA0Y7Qu9C1O9C60LvRg9Cx0L3QuNC60LAK0LzQsNC70LjQvdCwO9Cw0YDQsdGD0LcK0LDRgNCx0YPQtwrQsNGA0LHRg9C3O9Cw0YDQsdGD0Lc70YfQuNC30LrQtdC50LoK0LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L4K0Y/QsdC70L7QutC+O9C80LDQu9C40L3QsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQvNCw0LvQuNC90LA70LrRgNC10Lwt0LHRgNGO0LvQtQrQvNCw0LvQuNC90LA70Y/QsdC70L7QutC+O9C80LDQvdCz0L470LzQsNC70LjQvdCwCtCw0YDQsdGD0Lc70YfQuNC30LrQtdC50LoK0L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtzvQvNCw0L3Qs9C+O9Cw0YDQsdGD0Lc70YjQvtC60L7Qu9Cw0LQK0LzQsNC70LjQvdCwO9GI0L7QutC+0LvQsNC0O9C/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YAK0LrRgNC10Lwt0LHRgNGO0LvQtTvQsNGA0LHRg9C3O9C/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LA70YfQuNC30LrQtdC50LoK0LDRgNCx0YPQtwrQvNCw0L3Qs9C+O9C80LDQvdCz0L470YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70LDRgNCx0YPQtzvQsNGA0LHRg9C3O9C80LDQu9C40L3QsArQvNCw0LvQuNC90LA70LzQsNC90LPQvjvQvNCw0LvQuNC90LAK0L/Qu9C+0LzQsdC40YA70LzQsNC90LPQvjvQvNCw0L3Qs9C+O9GH0LjQt9C60LXQudC6CtC/0LvQvtC80LHQuNGAO9Cw0YDQsdGD0Lc70LrQu9GD0LHQvdC40LrQsDvRj9Cx0LvQvtC60L470LzQsNC70LjQvdCwCtC80LDQu9C40L3QsDvRh9C40LfQutC10LnQugrQutC70YPQsdC90LjQutCwO9C60YDQtdC8LdCx0YDRjtC70LU70LzQsNC90LPQvjvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgDvQvNCw0LvQuNC90LA70LrQu9GD0LHQvdC40LrQsDvQutC70YPQsdC90LjQutCwCtC80LDQvdCz0L4K0LrRgNC10Lwt0LHRgNGO0LvQtQrQvNCw0L3Qs9C+O9C80LDQu9C40L3QsDvQutC70YPQsdC90LjQutCwO9C/0LvQvtC80LHQuNGACtGI0L7QutC+0LvQsNC0CtC60YDQtdC8LdCx0YDRjtC70LU70YfQuNC30LrQtdC50Lo70LrRgNC10Lwt0LHRgNGO0LvQtQrQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGACtC80LDQvdCz0L470Y/QsdC70L7QutC+O9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0LrRgNC10Lwt0LHRgNGO0LvQtTvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgDvQsNGA0LHRg9C3O9C60YDQtdC8LdCx0YDRjtC70LU70Y/QsdC70L7QutC+CtC80LDQu9C40L3QsDvRiNC+0LrQvtC70LDQtDvRh9C40LfQutC10LnQugrQvNCw0L3Qs9C+CtC80LDQu9C40L3QsDvRiNC+0LrQvtC70LDQtArRj9Cx0LvQvtC60L470LzQsNC70LjQvdCwCtGH0LjQt9C60LXQudC6O9GI0L7QutC+0LvQsNC0O9GI0L7QutC+0LvQsNC0O9GH0LjQt9C60LXQudC6O9C60YDQtdC8LdCx0YDRjtC70LUK0LrRgNC10Lwt0LHRgNGO0LvQtTvRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70LrRgNC10Lwt0LHRgNGO0LvQtQrQutGA0LXQvC3QsdGA0Y7Qu9C1CtC80LDQu9C40L3QsDvQsNGA0LHRg9C3O9C60LvRg9Cx0L3QuNC60LAK0YfQuNC30LrQtdC50Lo70LzQsNC70LjQvdCwCtGH0LjQt9C60LXQudC6O9C80LDQu9C40L3QsArQutGA0LXQvC3QsdGA0Y7Qu9C1O9C/0LvQvtC80LHQuNGAO9GI0L7QutC+0LvQsNC0CtC80LDQvdCz0L470LrRgNC10Lwt0LHRgNGO0LvQtTvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGAO9C60LvRg9Cx0L3QuNC60LAK0LzQsNC70LjQvdCwO9C60YDQtdC8LdCx0YDRjtC70LU70LDRgNCx0YPQtzvQutGA0LXQvC3QsdGA0Y7Qu9C1CtGI0L7QutC+0LvQsNC0O9GI0L7QutC+0LvQsNC0O9C80LDQvdCz0L470YfQuNC30LrQtdC50LoK0YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70LzQsNC70LjQvdCwO9C80LDQu9C40L3QsArQutC70YPQsdC90LjQutCwO9GP0LHQu9C+0LrQvgrRiNC+0LrQvtC70LDQtDvQvNCw0LvQuNC90LA70LzQsNC90LPQvgrQv9C70L7QvNCx0LjRgArRh9C40LfQutC10LnQujvQvNCw0L3Qs9C+O9C60LvRg9Cx0L3QuNC60LA70LrQu9GD0LHQvdC40LrQsDvQutGA0LXQvC3QsdGA0Y7Qu9C1CtGI0L7QutC+0LvQsNC0O9GP0LHQu9C+0LrQvjvQutC70YPQsdC90LjQutCwCtGI0L7QutC+0LvQsNC0O9C60YDQtdC8LdCx0YDRjtC70LU70Y/QsdC70L7QutC+O9C60YDQtdC8LdCx0YDRjtC70LU70Y/QsdC70L7QutC+CtC/0LvQvtC80LHQuNGAO9C60YDQtdC8LdCx0YDRjtC70LU70L/Qu9C+0LzQsdC40YA70YfQuNC30LrQtdC50LoK0LzQsNC70LjQvdCwO9C80LDQu9C40L3QsArRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470LrQu9GD0LHQvdC40LrQsDvRh9C40LfQutC10LnQujvQv9C70L7QvNCx0LjRgArQvNCw0L3Qs9C+O9C80LDQvdCz0L470L/Qu9C+0LzQsdC40YA70LrQu9GD0LHQvdC40LrQsArQutGA0LXQvC3QsdGA0Y7Qu9C1O9GI0L7QutC+0LvQsNC0CtC60LvRg9Cx0L3QuNC60LAK0LzQsNC90LPQvjvRh9C40LfQutC10LnQugrQsNGA0LHRg9C3O9C60YDQtdC8LdCx0YDRjtC70LU70Y/QsdC70L7QutC+O9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YAK0YfQuNC30LrQtdC50Lo70YjQvtC60L7Qu9Cw0LQ70YjQvtC60L7Qu9Cw0LQ70LzQsNC70LjQvdCwCtC80LDQu9C40L3QsDvQutC70YPQsdC90LjQutCwO9C60YDQtdC8LdCx0YDRjtC70LU70LzQsNC90LPQvjvRiNC+0LrQvtC70LDQtArRh9C40LfQutC10LnQujvQutGA0LXQvC3QsdGA0Y7Qu9C1O9C60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtwrQsNGA0LHRg9C3CtC/0LvQvtC80LHQuNGACtGH0LjQt9C60LXQudC6O9GP0LHQu9C+0LrQvjvRiNC+0LrQvtC70LDQtDvRj9Cx0LvQvtC60L470Y/QsdC70L7QutC+CtGP0LHQu9C+0LrQvjvQvNCw0L3Qs9C+CtC60YDQtdC8LdCx0YDRjtC70LU70LrRgNC10Lwt0LHRgNGO0LvQtQrQutGA0LXQvC3QsdGA0Y7Qu9C1O9GP0LHQu9C+0LrQvjvQsNGA0LHRg9C3O9C80LDQvdCz0L4K0L/Qu9C+0LzQsdC40YA70Y/QsdC70L7QutC+O9C80LDQvdCz0L470LzQsNC90LPQvgrQutC70YPQsdC90LjQutCwO9Cw0YDQsdGD0Lc70L/Qu9C+0LzQsdC40YA70LDRgNCx0YPQtwrRj9Cx0LvQvtC60L470YfQuNC30LrQtdC50LoK0YfQuNC30LrQtdC50LoK0LzQsNC70LjQvdCwO9GP0LHQu9C+0LrQvgrQutGA0LXQvC3QsdGA0Y7Qu9C1O9C80LDQu9C40L3QsDvRiNC+0LrQvtC70LDQtDvQv9C70L7QvNCx0LjRgArQv9C70L7QvNCx0LjRgArQutGA0LXQvC3QsdGA0Y7Qu9C1CtC60YDQtdC8LdCx0YDRjtC70LU70LzQsNC70LjQvdCwCtGP0LHQu9C+0LrQvgrRj9Cx0LvQvtC60L470YjQvtC60L7Qu9Cw0LQ70LzQsNC90LPQvjvQutGA0LXQvC3QsdGA0Y7Qu9C1O9GI0L7QutC+0LvQsNC0CtGI0L7QutC+0LvQsNC0O9C60YDQtdC8LdCx0YDRjtC70LU70LDRgNCx0YPQtzvQutC70YPQsdC90LjQutCwCtC60LvRg9Cx0L3QuNC60LA70LDRgNCx0YPQtwrQutC70YPQsdC90LjQutCwO9GP0LHQu9C+0LrQvgrRiNC+0LrQvtC70LDQtDvQutGA0LXQvC3QsdGA0Y7Qu9C1O9C60LvRg9Cx0L3QuNC60LA70LzQsNC70LjQvdCwCg==</file>
+    </testcases>
+  </question>
+
+</quiz>

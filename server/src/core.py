@@ -18,11 +18,13 @@ from src.schemas import AnswerMultichoice, AnswerCoderunner, TestCase, Question
 logger = LoggerFactory.getLogger(__name__)
 
 
-async def ingest_quiz_xml(xml_contents: str, cursor: cursor) -> None:
+async def ingest_quiz_xml(xml_contents: str, cursor: cursor) -> List[int]:
+    affected_question_ids = []
     questions = extract_quiz_data(xml_contents=xml_contents)
     for question in questions:
-        await update_db_state(question=question, cursor=cursor)
-
+        question_id = await update_db_state(question=question, cursor=cursor)
+        affected_question_ids.append(question_id)
+    return affected_question_ids
 
 def extract_quiz_data(xml_contents: str) -> List[Question]:
     """Extract questions and answers from XML content and return Question objects."""

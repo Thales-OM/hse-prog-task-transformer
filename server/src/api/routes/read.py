@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends, status, Body, Path
+from fastapi import APIRouter, Depends, status, Body, Path, Query
 from fastapi.exceptions import HTTPException
 from fastapi.responses import StreamingResponse
 from psycopg2.extensions import cursor
 from io import StringIO
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 from src.logger import LoggerFactory
 from src.config import settings
 from src.utils import validate_xml
@@ -30,7 +30,7 @@ from src.database.crud import (
     get_inference_scores_all,
     get_user_groups_all,
 )
-from src.models.core import make_prompt, build_report_df
+from src.models.core import make_prompt, build_report_df, build_dataset_df
 
 
 logger = LoggerFactory.getLogger(__name__)
@@ -178,4 +178,38 @@ async def report_csv(cursor: cursor = Depends(get_db_cursor)):
     csv_buffer = StringIO()
     report_df.to_csv(csv_buffer, index=False)
     csv_buffer.seek(0)
-    return StreamingResponse(csv_buffer, media_type='text/csv', headers={"Content-Disposition": f"attachment; filename={settings.server.filenames.report_csv}"})
+    return StreamingResponse(
+        csv_buffer,
+        media_type="text/csv",
+        headers={
+            "Content-Disposition": f"attachment; filename={settings.server.filenames.report_csv}"
+        },
+    )
+
+
+@router.get(
+    "/dataset/csv",
+    response_model=None,
+    status_code=status.HTTP_200_OK,
+    summary="Create a dataset from questions (without inferences/scores) in a CSV file",
+)
+async def dataset_csv(question_ids: Optional[str] = Query(None), cursor: cursor = Depends(get_db_cursor)):
+    question_ids_list = question_ids
+    if question_ids is not None:
+        cleaned_ids = question_ids.replace(" ", "")
+        try:
+            question_ids_list = [int(id_str) for id_str in cleaned_ids.split(",")]
+        except ValueError:
+            raise HTTPException(status_code=400, detail="Invalid input: all items must be integers")
+    
+    dataset_df = await build_dataset_df(cursor=cursor, question_ids=question_ids_list)
+    csv_buffer = StringIO()
+    dataset_df.to_csv(csv_buffer, index=False)
+    csv_buffer.seek(0)
+    return StreamingResponse(
+        csv_buffer,
+        media_type="text/csv",
+        headers={
+            "Content-Disposition": f"attachment; filename={settings.server.filenames.dataset_csv}"
+        },
+    )

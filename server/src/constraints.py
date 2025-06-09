@@ -20,6 +20,7 @@ DEFAULT_DEV_HOST = "server"
 DEFAULT_DEV_PROTOCOL = "http"
 ## Filenames
 DEFAULT_FILENAME_REPORT_CSV = "report.csv"
+DEFAULT_FILENAME_DATASET_CSV = "dataset.csv"
 
 # Questions
 QUESTION_MULTICHOICE_TYPES = ("multichoice", "multichoiceset")
